@@ -641,6 +641,7 @@ button.btn.btn-default.srchBtn {
   }
   .login-and-location {
     padding-top: 0px;
+    margin-right: 60px !important;
   }
   .toggle-menu-for-tb-mb button.navbar-toggler {
     position: relative;
@@ -679,3 +680,8 @@ button.btn.btn-default.srchBtn {
     min-width: 0px;
   }
 }
+
+div#header-container {
+  z-index: 1000;
+}
+

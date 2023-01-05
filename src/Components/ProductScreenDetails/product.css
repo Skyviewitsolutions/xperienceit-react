@@ -873,8 +873,12 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   }
   .product_left_para {
     width: 100%;
-
     padding: 0%;
+  }
+
+  .package-left-area , .package-right-area {
+    height: 100%;
+   overflow: hidden;
   }
 }
 

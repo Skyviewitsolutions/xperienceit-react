@@ -238,10 +238,33 @@ const RelatedPackage = (props) => {
               </div>
             </div>
           </div>
-          <OwlCarousel
+          <div className="d-flex">
+          {allPackage.length < 5 ? 
+            allPackage.map((itmm, idx) => {
+              return (
+                <>
+                <div className="col-lg-3 col-md-4 col-sm-12">
+                  <Card
+                    data={itmm}
+                    img={itmm.image_id}
+                    heading={itmm.title}
+                    price={itmm.outlay_price}
+                    discountPrice={itmm.discounted_price}
+                    discount={itmm.discount_percnt}
+                    rating={itmm.rating}
+                    id={itmm.id}
+                    key={idx}
+                    subCategoryName={itmm.subcat_name}
+                    subCategoryId={itmm.subcat_id}
+                  />
+                  </div>
+                </>
+              );
+            }) : 
+            <OwlCarousel
             className="owl-theme category"
             id="category"
-            items={5}
+            items={3}
             loop
             margin={10}
             dots={false}
@@ -271,6 +294,10 @@ const RelatedPackage = (props) => {
         }
          
           </OwlCarousel>
+          
+          }
+          </div>
+          
         </div>
       </div>
     </div>}

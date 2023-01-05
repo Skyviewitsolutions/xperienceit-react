@@ -63,7 +63,8 @@ const TaskBar = (props) => {
       <div className="menu-bar d-lg-block d-none">
         <div className="container-fluid">
           <div className="taskbar">
-          <h4 className="shape_hd">Pick Our Xperiences</h4>
+          <h4 className="shape_hd mr-0">Pick Our Xperiences</h4>
+          <ul className="d-flex ml-0 mb-0 pl-0 tskList">
           {filterCategoryData.map((item, index) => {
             return (
               <>
@@ -74,6 +75,7 @@ const TaskBar = (props) => {
               </>
             );
           })}
+          </ul>
 
           <div className="megaMenuCont" onMouseLeave={hideMegaMenu}>
             <MegaMenu

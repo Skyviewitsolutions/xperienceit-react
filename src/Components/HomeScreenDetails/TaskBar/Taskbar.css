@@ -62,8 +62,9 @@
     color: var(--gray);
     font-weight: 500;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
+    white-space: nowrap;
   }
   .taskbar li h5:hover {
       color: rgb(255 171 2);
@@ -280,11 +281,12 @@
   }
 
   .taskbar .shape_hd {
-      padding: 16px 40px 15px 30px !important;
-      color: #fff;
-      margin-left: -45px !important;
-      background: #ffab02;
-      clip-path: polygon(0% 0%, 100% 0, 90% 51%, 100% 100%, 0% 100%);
+    padding: 10px 0px 10px 30px !important;
+    color: #fff;
+    margin-left: -45px !important;
+    background: #ffab02;
+    -webkit-clip-path: polygon(0% 0%, 100% 0, 90% 51%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 100% 0, 90% 51%, 100% 100%, 0% 100%);
   }
   .menu-bar .container-fluid {
       padding: 0px;
@@ -471,4 +473,19 @@
     margin: 0px!important;
   }
   
+  }
+
+  .tskList{
+    width: 100%;
+    overflow-x: scroll;
+  }
+  
+  .tskList::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+    
+  }
+  
+  .txkList li h5{
+    white-space: nowrap;
   }

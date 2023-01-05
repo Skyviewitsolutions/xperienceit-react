@@ -28,7 +28,8 @@ import GmailLogin from "./Components/Common/Authenication/GmailLogin";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import 'video-react/dist/video-react.css'; 
-import TermsConditions from "./Components/TermsConditions/TermsConditions";
+import TermsConditions from "./Screens/TermsConditions/TermsConditions";
+import Blogs from "./Screens/Blogs/Blogs";
 
 
 const App = () => {
@@ -93,7 +94,9 @@ const analytics = getAnalytics(app);
           <Route exact path="/past-bookings" component={PastBookingScreen} />
           {/* <Route exact path="/facebook" component={FacebookLogin} /> */}
           <Route exact path="/google" component={GmailLogin}/>
-          <Route exact path="/terms-and-condition" component={TermsConditions}/>
+          <Route exact path="/tnc" component={TermsConditions}/>
+          <Route exact path="/blogs" component={Blogs}/>
+
         </Switch>
       </Router>
       <ToastContainer/>

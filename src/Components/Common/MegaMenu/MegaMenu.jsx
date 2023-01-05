@@ -37,7 +37,6 @@ const MegaMenu = (props) => {
             return (
               <div className="megaMenuCol">
                 <h4>{item.name}</h4>
-
                 {childCategory.map((itmm, indd) => {
                   console.log(itmm , "idddd")
                   return (

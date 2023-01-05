@@ -47,3 +47,7 @@ body{
 .black{
   color : "green"
 }
+
+.owl-dots span{
+  transform: scale(0.5);
+}

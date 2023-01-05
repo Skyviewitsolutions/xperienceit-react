@@ -63,7 +63,7 @@ const UpcomingComp = (props) => {
                     <div className="media-img  coman-img">
                         {itm.image_id ? <img src={itm.image_id} /> : <Skeleton height={250} variant="rectangular" />}
                         <div className="wishlist">
-                            <span><AiOutlineHeart /></span>
+                            {/* <span><AiOutlineHeart /></span> */}
                         </div>
                     </div>
                     <div className="details">

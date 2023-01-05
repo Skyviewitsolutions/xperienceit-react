@@ -24,7 +24,9 @@ import "./Social.css";
 import FbLogin from "./FbLogin";
 import GmailLogin from "./GmailLogin";
 
+
 const Login = (props) => {
+  
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState("");
   const { setUserLogedIn, setShowAuthPopup, setAuthScreen } = props;

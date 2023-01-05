@@ -23,6 +23,7 @@ import RelatedPackage from "../RelactedPackage/RelatedPackage";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 
 const ProductPart2 = (props) => {
+  
   const {
     productTitle,
     titleContent,

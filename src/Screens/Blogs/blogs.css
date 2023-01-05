@@ -1,0 +1,10 @@
+.blogsCont{
+    background-color: #f5f2ed;
+    /* height: 500px; */
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.blogLogo{
+    width: 150px;
+    height: 150px;
+}

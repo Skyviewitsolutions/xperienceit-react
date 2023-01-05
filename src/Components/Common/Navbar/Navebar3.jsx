@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Logo from "./NavbarImages/Layer2.png";
-
 import User from "../../../assets/icons/user.png";
 import { useTranslation } from "react-i18next";
 import AuthPopup from "../Authenication/AuthPopup";
 import Location from "../ChooseLocation/Location";
-
 import SidebarComponent from "../Sidebar/SidebarComponent";
 import Profile from "../Profile/Profile";
 import { useHistory, generatePath } from "react-router-dom";
-
 import i18n from "../../../i18n";
 import { HiOutlineLogout } from "react-icons/hi";
 import { toast } from "react-toastify";
@@ -30,14 +27,18 @@ import { HiClock } from "react-icons/hi";
 import { HiClipboardCopy } from "react-icons/hi";
 import { FaHeart } from "react-icons/fa";
 import StickyMenu from "./StickyMenu";
+import MarriageForm from "../../MarriageForm/MarriageForm";
+import MarriageEnquiry from "../../MarriageForm/MarriageEnquiry";
+
 
 const Navebar3 = (props) => {
+
   const { updateLocation, setUpdateLocation, taskBarData } = props;
   const history = useHistory();
   const sLocat = localStorage.getItem("locationDetails");
   const selectedLocation = JSON.parse(sLocat);
   const [userProfile, setUserProfile] = useState("");
-
+  const [showMarriageForm , setShowMarriageForm] = useState(false)
   const { showSideBar, setShowSideBar } = props;
 
   const [showAuthPopup, setShowAuthPopup] = useState(false);
@@ -194,7 +195,6 @@ const Navebar3 = (props) => {
     history.push(path);
   };
 
-  console.log(isHovering , "hover")
 
   return (
     <>
@@ -225,7 +225,6 @@ const Navebar3 = (props) => {
                       <button className="btn btn-default srchBtn" type="button">
                         <i
                           className="glyphicon  srchBtn"
-                          
                         >
                           <FaSearch />
                         </i>
@@ -290,7 +289,7 @@ const Navebar3 = (props) => {
                       className="nav-item active ml-4 d-flex"
                       onClick={() => handleGifts()}
                     >
-                      <a className="nav-link font-weight-900" href="#">
+                      <a className="nav-link font-weight-900" >
                         <span className="nav-icon">
                           <AiOutlineGift />
                         </span>
@@ -299,7 +298,7 @@ const Navebar3 = (props) => {
                         </span>
                       </a>
                     </li>
-                    <li className="nav-item ml-4 d-flex">
+                    <li className="nav-item ml-4 d-flex" onClick={() => setShowMarriageForm(true)}>
                       <a className="nav-link font-weight-900" href="#">
                         <span className="nav-icon">
                           <GiBigDiamondRing />
@@ -570,6 +569,10 @@ const Navebar3 = (props) => {
         </div>
       </div> */}
       <StickyMenu handleGifts={handleGifts} />
+
+      {/* Marriage form */}
+
+      <MarriageEnquiry showMarriageForm={showMarriageForm} setShowMarriageForm={setShowMarriageForm}/>
     </>
   );
 };

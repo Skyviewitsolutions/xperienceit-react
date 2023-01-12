@@ -2,7 +2,9 @@
   display: inline;
   width: 100%;
 }
-  
+.reactplayer {
+  width: 852px!important;
+}
 .read-or-hide{
   color: rgb(192,192,192);
   cursor: pointer;

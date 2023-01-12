@@ -22,6 +22,7 @@ const Navbar2 = (props) => {
     const cityLocattion = JSON.parse(pkgLocation);
     const cityID = cityLocattion && cityLocattion.id;
 
+
     const headers = {
       "Content-Type": "application/json; charset=utf-8",
       credentials: "same-origin",
@@ -49,10 +50,9 @@ const Navbar2 = (props) => {
 
   const history = useHistory();
 
+  
   const toRenderNextPackeges = (data) => {
-
-    console.log(data , "data here")
-
+    window.location.reload();
     const name = data.subcategory_nm;
     const subCategoryName = name.replaceAll(" ", "-");
     const path = generatePath(
@@ -70,15 +70,16 @@ const Navbar2 = (props) => {
   return (
     <>
       {[false].map((expand) => (
-        <Navbar key={expand} expand={expand} className="right_side_menu">
+        <Navbar key={expand} expand={expand} className="right_side_menu" >
           <div className="mobile-menu-containr">
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
             >
-              <Offcanvas.Header closeButton>
+              <Offcanvas.Header closeButton >
                 <Offcanvas.Title>ExperienceIt</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>

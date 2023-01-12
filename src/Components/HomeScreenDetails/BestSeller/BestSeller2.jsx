@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import "./BestSeller2.css";
-import DrinkCouple from "./BestSellerImages/drinkCouple.svg"
+import DrinkCouple from "./BestSellerImages/candlelightsdinner.svg"
 import Ballonhat from "./BestSellerImages/party.svg"
 import BallonGirl from "./BestSellerImages/balloon_girl.png";
 import { generatePath , useHistory } from "react-router-dom";
@@ -60,7 +60,7 @@ const BestSeller2 = () =>{
         <div className="Offer-slider">
             <div className="offer-section-slider common-container">
                 <div className="container-fluid">
-                    <h4>Our Best Seller</h4>
+                    <h4 className="ourBestSellar">Our Best Seller</h4>
                
                 <div className="bestseller_container_area">
                     <div className="row">

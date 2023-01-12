@@ -15,9 +15,12 @@ import Customization from "../Components/Customization/Customization";
 import { useHistory } from "react-router-dom";
 import Navebar3 from "../Components/Common/Navbar/Navebar3";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
+import ProductStickBar from "../Components/ProductScreenDetails/ProductStickBar";
+
 
 const ProductScreen = () => {
-  // const [productDetails, setProductDetails] = useState([]);
+
+  const [productDetails, setProductDetails] = useState([]);
   const [productGalary, setProductGalary] = useState([]);
   const [productBanner, setProductBanner] = useState([]);
   const [productTitle, setProductTitle] = useState([]);
@@ -67,7 +70,7 @@ const ProductScreen = () => {
 
   const api = `https://admin.experienceit.in/api/getDetailPackage?id=${package_id}`;
 
-  // here we are getting the customization data ;
+ // here we are getting the customization data ;
 
   const getCustomization = () => {
     const data = {
@@ -90,11 +93,13 @@ const ProductScreen = () => {
       });
   };
 
+
   useEffect(() => {
     axios
       .get(api)
       .then((res) => {
         if (res.data.status === true) {
+          console.log(res, "responssproduct data here...");
           console.log(res, "responssproduct data here...");
           const galleryImg = res.data.body[0].gallery;
           setProductGalary(galleryImg);
@@ -102,6 +107,7 @@ const ProductScreen = () => {
           setProductBanner([productBannerImg]);
           const productName = res.data.body[0].title;
           setProductTitle(productName);
+          setPoductCategoryTitle(res.data.body[0]?.category_name);
           setPoductCategoryTitle(res.data.body[0]?.category_name);
           const headContent = res.data.body[0].content;
           setTitleContent(headContent);
@@ -114,7 +120,9 @@ const ProductScreen = () => {
           const rating = res.data.body[0].rating;
           setProductRating(rating);
           setReviewCount(res.data.body[0]?.review_count);
+          setReviewCount(res.data.body[0]?.review_count);
           const arrangmgnt = res.data.body[0].arrangments;
+          setExclusion(res.data.body[0]?.exclusion);
           setExclusion(res.data.body[0]?.exclusion);
           setArrangment(arrangmgnt);
           const FAQ = res.data.body[0].faqs;
@@ -123,7 +131,11 @@ const ProductScreen = () => {
           setNote(notes);
           const price = res.data.body[0].discounted_price;
           setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
+          setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
           setPackagePrice(price);
+          setDiscountedPrice(res.data.body[0]?.outlay_price);
+          setGstPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
+          setExperienceVideo(res.data.body[0]?.video);
           setDiscountedPrice(res.data.body[0]?.outlay_price);
           setGstPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
           setExperienceVideo(res.data.body[0]?.video);
@@ -146,7 +158,6 @@ const ProductScreen = () => {
       city_id: cityID,
     };
 
-    console.log(data, "pincode data here");
     axios
       .post(pincodeapi, data)
       .then((res) => {
@@ -167,6 +178,7 @@ const ProductScreen = () => {
   const timesApi = `https://admin.experienceit.in/api/package-timeslot`;
 
   useEffect(() => {
+
     const tsData = {
       package_id: package_id,
       pincode: selectedPincode,
@@ -176,7 +188,6 @@ const ProductScreen = () => {
       axios
         .post(timesApi, tsData)
         .then((res) => {
-          console.log(res, "timeslot response");
           if (res.data.status === true) {
             const val = res.data.body[0].time;
             setTimeSlot(val);
@@ -191,7 +202,9 @@ const ProductScreen = () => {
     }
   }, [selectedPincode]);
 
-  // package booking procedure ;
+
+
+  //package booking procedure ;
 
   const bookPackage = () => {
     if (selectedPincode === "") {
@@ -205,8 +218,9 @@ const ProductScreen = () => {
     }
   };
 
-  // here we are going through the booking procedure ;
+  //here we are going through the booking procedure ;
   const handleBookNow = () => {
+
     const val = {
       cityId: cityID,
       objectId: package_id,
@@ -218,6 +232,9 @@ const ProductScreen = () => {
       totalPrice: totalPrice,
       timeslot: selectedTimeSlot,
       packagePrice: packagePrice,
+      gstPrice: gstPrice,
+      productTitle: productTitle,
+      deliveryCharge: deliveryCharge,
       gstPrice: gstPrice,
       productTitle: productTitle,
       deliveryCharge: deliveryCharge,
@@ -241,7 +258,7 @@ const ProductScreen = () => {
     history.push(path, { bookingDetails: val });
   };
 
-  // Review api intigration;
+  //Review api intigration;
 
   const reviewapi = `https://admin.experienceit.in/api/review-by-package?package_id=${package_id}`;
 
@@ -261,6 +278,8 @@ const ProductScreen = () => {
         console.log(err, "Review Details Not Found");
       });
   };
+      
+  
   useEffect(() => {
     getReview();
     window.scrollTo({
@@ -268,6 +287,8 @@ const ProductScreen = () => {
       behavior: "smooth",
     });
   }, []);
+
+  
 
   return (
     <>
@@ -343,7 +364,9 @@ const ProductScreen = () => {
         <ToastContainer limit={1} />
         <Enquiry showEnquiry={showEnquiry} setShowEnquiry={setShowEnquiry} />
       </div>
+     
     </>
   );
-};
+  }
+  
 export default ProductScreen;

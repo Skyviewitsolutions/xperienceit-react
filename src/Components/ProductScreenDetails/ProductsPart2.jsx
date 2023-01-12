@@ -16,14 +16,13 @@ import CartGallary from "../CartGallary/CartGallary";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AiOutlineClockCircle } from "react-icons/ai";
-import { Button } from "react-bootstrap";
+import { Button, ToggleButton } from "react-bootstrap";
 import axios from "axios";
 import Cart3 from "../CartGallary/Cart3";
 import RelatedPackage from "../RelactedPackage/RelatedPackage";
-import ReactReadMoreReadLess from "react-read-more-read-less";
 
+import ReadMoreAndLess from "react-read-more-less";
 const ProductPart2 = (props) => {
-  
   const {
     productTitle,
     titleContent,
@@ -151,7 +150,7 @@ const ProductPart2 = (props) => {
     const limit = 6;
     setPincodeAvailableText(false);
     setShowSearchPincodegBox(true);
-    const val = e.target.value.slice(0,limit);
+    const val = e.target.value.slice(0, limit);
     setSelectedPincode(val);
     // setAdditionalCharge(true);
     // setDeliveryCharge(additional_charge);
@@ -160,15 +159,14 @@ const ProductPart2 = (props) => {
     });
 
     setFilteredPincodeNumbers(filteredPincode);
-    if (val.length  != 6) {
+    if (val.length != 6) {
       setFilteredPincodeNumbers(pincode);
       setTimeSlot([]);
-      setAdditionalCharge(0)
-      setPincodeAvailableText(false)
-      setSelecetedTimeSlot("")
+      setAdditionalCharge(0);
+      setPincodeAvailableText(false);
+      setSelecetedTimeSlot("");
     }
   };
-  
 
   const handlePincodeSelection = (item) => {
     const pin = item.pincode;
@@ -198,25 +196,6 @@ const ProductPart2 = (props) => {
       setShowSearchPincodegBox(false);
     }
   });
-
-  // Package details read more button
-  // const ReadMore = ({ children, }) => {
-  //   const text = children;
-  //   const [isReadMore, setIsReadMore] = useState(true);
-  //   const toggleReadMore = () => {
-  //     setIsReadMore(!isReadMore);
-  //   };
-  //   return (
-  //     <p className="text">
-  //       {isReadMore ? (typeof(text).toString).slice(0, 10) : text}
-  //       <span onClick={toggleReadMore} className="read-or-hide">
-  //         {isReadMore ? "...Read more" : " Show less"}
-  //       </span>
-  //     </p>
-
-  //   );
-  // };
-
 
   return (
     <>
@@ -262,11 +241,13 @@ const ProductPart2 = (props) => {
                     <div className="product_left_details common-card">
                       <h4>Product Details: </h4>
                       <div className="product_left_details_box">
-                        <h6>
-                         
-                            {titleContent && parse(props.titleContent)}
                        
-                        </h6>
+                          {" "}
+                          <h6>
+                            {titleContent && parse(props.titleContent)}
+                
+                          </h6>{" "}
+                        
                       </div>
                     </div>
                   )}
@@ -278,6 +259,7 @@ const ProductPart2 = (props) => {
                           {cancellationPolicy &&
                             parse(props.cancellationPolicy)}
                         </h6>
+                        
                       </div>
                     </div>
                   )}
@@ -363,6 +345,71 @@ const ProductPart2 = (props) => {
                       </div>
                     </div>
                   )}
+                  {arrangment && (
+                    <div className="product_arrngmgnt common-card">
+                      <h5>Arrangements</h5>
+
+                      <div className="product_arrngmgnt_text">
+                        {/* <img src={Hand} alt="Hand icon" /> */}
+                        <h6>{arrangment && parse(props.arrangment)}</h6>
+                      </div>
+                    </div>
+                  )}
+                  {termCondition && (
+                    <div className="product_trust">
+                      <h5>Terms & Condition</h5>
+
+                      <div className="product_trust_text">
+                        {/* <img src={Hand} alt="Hand icon" /> */}
+                        <h6>{termCondition && parse(props.termCondition)}</h6>
+                      </div>
+                    </div>
+                  )}
+
+                  {faq && (
+                    <div className="product_trust">
+                      <h5>FAQ</h5>
+
+                      <div className="product_trust_text">
+                        {/* <img src={Hand} alt="Hand icon" /> */}
+                        <h6>
+                          {faq.map((itm, idx) => {
+                            return (
+                              <>
+                                <li>{itm.title}</li>
+                                <span className="answr">{itm.content}</span>
+                              </>
+                            );
+                          })}
+                        </h6>
+                      </div>
+                    </div>
+                  )}
+
+                  {exclusion && (
+                    <div className="product_trust_exclusion">
+                      <h5>Exclusion</h5>
+
+                      <div className="product_trust_text_exclusion">
+                        {/* <img src={Hand} alt="Hand icon" /> */}
+                        <h6>{exclusion && parse(props.exclusion)}</h6>
+                      </div>
+                    </div>
+                  )}
+                  {experienceVideo && (
+                    <div className="product_trust_vedio">
+                      <h5>Xperience Video</h5>
+
+                      <div className="product_trust_text_vedio">
+                        <ReactPlayer
+                          className="reactplayer"
+                          url={props.experienceVideo}
+                          playsInline
+                          controls="true"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="col-lg-4">
@@ -373,21 +420,20 @@ const ProductPart2 = (props) => {
                       {discountedPrice && <s>₹{discountedPrice}</s>}
                       <hr />
                     </div>
-                    <div style={{position : "relative"}}>
-                    <div className="product_booking_input">
-                      <input
-                        type="number"
-                        maxLength={5}
-                        className="searchPincode"
-                        placeholder="Enter Pincode"
-                        id="numberField"
-                        value={selectedPincode}
-                        min="1"
-                        
-                        onChange={(e) => handelPincode(e)}
-                      />
+                    <div style={{ position: "relative" }}>
+                      <div className="product_booking_input">
+                        <input
+                          type="number"
+                          maxLength={5}
+                          className="searchPincode"
+                          placeholder="Enter Pincode"
+                          id="numberField"
+                          value={selectedPincode}
+                          min="1"
+                          onChange={(e) => handelPincode(e)}
+                        />
 
-                      {/* <select
+                        {/* <select
                         value={selectedPincode}
                         onChange={(e) => setSelectedPincode(e.target.value)}
                         id="pincode"
@@ -400,50 +446,49 @@ const ProductPart2 = (props) => {
                         })}
                       </select> */}
 
-                      {/* <input type="text" placeholder="Enter pin code" /> */}
-                      <img src={Marker} alt="marker icon" />
-                    </div>
-
-                    {showSearchPincodegBox === true && (
-                      <div className="pinCodeData">
-                        <ul>
-                          {filteredPincodeNumber.length != 0 ? (
-                            filteredPincodeNumber.map((item, index) => {
-                              var dta = pincode.filter((itm, ind) => {
-                                return itm.pincode == item.pincode;
-                              });
-                              dta = dta[0];
-                              var backgroundColor;
-                              var colors;
-                              if (dta) {
-                                backgroundColor = "#fe6684";
-                                colors = "#fff";
-                              } else {
-                                backgroundColor = "white";
-                                colors = "gray";
-                              }
-
-                              return (
-                                <li
-                                  onClick={() => handlePincodeSelection(item)}
-                                  style={{
-                                    background: backgroundColor,
-                                    color: colors,
-                                  }}
-                                >
-                                  {item.pincode}
-                                </li>
-                              );
-                            })
-                          ) : (
-                            <h6 className="pinNotAvlbl">
-                              Pincode not available
-                            </h6>
-                          )}
-                        </ul>
+                        {/* <input type="text" placeholder="Enter pin code" /> */}
+                        <img src={Marker} alt="marker icon" />
                       </div>
-                    )}
 
+                      {showSearchPincodegBox === true && (
+                        <div className="pinCodeData">
+                          <ul>
+                            {filteredPincodeNumber.length != 0 ? (
+                              filteredPincodeNumber.map((item, index) => {
+                                var dta = pincode.filter((itm, ind) => {
+                                  return itm.pincode == item.pincode;
+                                });
+                                dta = dta[0];
+                                var backgroundColor;
+                                var colors;
+                                if (dta) {
+                                  backgroundColor = "#fe6684";
+                                  colors = "#fff";
+                                } else {
+                                  backgroundColor = "white";
+                                  colors = "gray";
+                                }
+
+                                return (
+                                  <li
+                                    onClick={() => handlePincodeSelection(item)}
+                                    style={{
+                                      background: backgroundColor,
+                                      color: colors,
+                                    }}
+                                  >
+                                    {item.pincode}
+                                  </li>
+                                );
+                              })
+                            ) : (
+                              <h6 className="pinNotAvlbl">
+                                Pincode not available
+                              </h6>
+                            )}
+                          </ul>
+                        </div>
+                      )}
                     </div>
 
                     {pincodeAvailbleText && (
@@ -458,8 +503,6 @@ const ProductPart2 = (props) => {
                         {additionalCharge}
                       </h6>
                     )}
-
-                    
 
                     <div className="product_calendar" htmlFor="date">
                       <label htmlFor="date">
@@ -559,71 +602,10 @@ const ProductPart2 = (props) => {
 
                   {/* another box */}
 
-                  {arrangment && (
-                    <div className="product_arrngmgnt common-card">
-                      <h5>Arrangements</h5>
-
-                      <div className="product_arrngmgnt_text">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6>{arrangment && parse(props.arrangment)}</h6>
-                      </div>
-                    </div>
-                  )}
-                  {termCondition && (
-                    <div className="product_trust">
-                      <h5>Terms & Condition</h5>
-
-                      <div className="product_trust_text">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6>{termCondition && parse(props.termCondition)}</h6>
-                      </div>
-                    </div>
-                  )}
-                  {faq && (
-                    <div className="product_trust">
-                      <h5>FAQ</h5>
-
-                      <div className="product_trust_text">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6>
-                          {faq.map((itm, idx) => {
-                            return (
-                              <>
-                                <li>{itm.title}</li>
-                                <span className="answr">{itm.content}</span>
-                              </>
-                            );
-                          })}
-                        </h6>
-                      </div>
-                    </div>
-                  )}
-
                   {/* Exclusion */}
-                  {exclusion && (
-                    <div className="product_trust_exclusion">
-                      <h5>Exclusion</h5>
 
-                      <div className="product_trust_text_exclusion">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6>{exclusion && parse(props.exclusion)}</h6>
-                      </div>
-                    </div>
-                  )}
                   {/* Exclusion end */}
-                  {experienceVideo && (
-                    <div className="product_trust_vedio">
-                      <h5>Xperience Video</h5>
 
-                      <div className="product_trust_text_vedio">
-                        <ReactPlayer
-                          url={props.experienceVideo}
-                          playsInline
-                          controls="true"
-                        />
-                      </div>
-                    </div>
-                  )}
                   <div className="reiview_product common-card">
                     <h5>Write Reviews</h5>
 

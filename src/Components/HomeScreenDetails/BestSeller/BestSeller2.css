@@ -116,7 +116,9 @@
     align-items: center;
     margin-bottom: 5px;
 }
-
+.ourBestSellar{
+    text-align: center;
+}
 
 @media only screen and (max-width: 991px) and (min-width: 768px)  {  
    .seller_box2 .content_aria {

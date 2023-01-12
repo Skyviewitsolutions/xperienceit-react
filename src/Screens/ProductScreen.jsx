@@ -15,9 +15,9 @@ import Customization from "../Components/Customization/Customization";
 import { useHistory } from "react-router-dom";
 import Navebar3 from "../Components/Common/Navbar/Navebar3";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
+import ProductStickBar from "../Components/ProductScreenDetails/ProductStickBar";
 
 const ProductScreen = () => {
-  
   // const [productDetails, setProductDetails] = useState([]);
   const [productGalary, setProductGalary] = useState([]);
   const [productBanner, setProductBanner] = useState([]);
@@ -28,13 +28,13 @@ const ProductScreen = () => {
   const [faq, setFaq] = useState([""]);
   const [termCondition, setTermCondition] = useState("");
   const [arrangment, setArrangment] = useState("");
-  const [exclusion,setExclusion]=useState("")
+  const [exclusion, setExclusion] = useState("");
   const [note, setNote] = useState("");
   const [productRating, setProductRating] = useState();
   const [pincode, setPincode] = useState([]);
   const [timeSlot, setTimeSlot] = useState([]);
   const [offerAmount, setOfferAmount] = useState(0);
-  const [deliveryCharge , setDeliveryCharge] = useState(0)
+  const [deliveryCharge, setDeliveryCharge] = useState(0);
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTimeSlot, setSelecetedTimeSlot] = useState("");
@@ -46,17 +46,17 @@ const ProductScreen = () => {
   const [selectedCustomizationId, setSelectedCustomizationId] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [packagePrice, setPackagePrice] = useState(0);
-  const [discountedPrice , setDiscountedPrice] = useState(0)
-  const [gstPrice , setGstPrice] = useState(0);
+  const [discountedPrice, setDiscountedPrice] = useState(0);
+  const [gstPrice, setGstPrice] = useState(0);
   const [reviews, setReviews] = useState([]);
   const history = useHistory();
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
-  const [experienceVideo,setExperienceVideo]=useState("");
-  const [reviewCount,setReviewCount]=useState("");
-  const [poductCategoryTitle,setPoductCategoryTitle]=useState("");
+  const [experienceVideo, setExperienceVideo] = useState("");
+  const [reviewCount, setReviewCount] = useState("");
+  const [poductCategoryTitle, setPoductCategoryTitle] = useState("");
   const location = useLocation();
-  
+
   const { sub_category_name, sub_category_id, package_name, package_id } =
     useParams();
 
@@ -96,14 +96,14 @@ const ProductScreen = () => {
       .get(api)
       .then((res) => {
         if (res.data.status === true) {
-          console.log(res , "responssproduct data here...")
+          console.log(res, "responssproduct data here...");
           const galleryImg = res.data.body[0].gallery;
           setProductGalary(galleryImg);
           const productBannerImg = res.data.body[0].banner_image_id;
           setProductBanner([productBannerImg]);
           const productName = res.data.body[0].title;
           setProductTitle(productName);
-          setPoductCategoryTitle( res.data.body[0]?.category_name)
+          setPoductCategoryTitle(res.data.body[0]?.category_name);
           const headContent = res.data.body[0].content;
           setTitleContent(headContent);
           const cancel = res.data.body[0].cancellation;
@@ -114,21 +114,20 @@ const ProductScreen = () => {
           setTermCondition(termsCondtn);
           const rating = res.data.body[0].rating;
           setProductRating(rating);
-          setReviewCount(res.data.body[0]?.review_count)
+          setReviewCount(res.data.body[0]?.review_count);
           const arrangmgnt = res.data.body[0].arrangments;
-          setExclusion(res.data.body[0]?.exclusion)
+          setExclusion(res.data.body[0]?.exclusion);
           setArrangment(arrangmgnt);
           const FAQ = res.data.body[0].faqs;
           setFaq(FAQ);
           const notes = res.data.body[0].points_note;
           setNote(notes);
           const price = res.data.body[0].discounted_price;
-          setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",",''));
+          setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
           setPackagePrice(price);
-          setDiscountedPrice(res.data.body[0]?.outlay_price)
-          setGstPrice(res.data.body[0]?.gst_price.replaceAll(",",''))
-          setExperienceVideo(res.data.body[0]?.video)
-
+          setDiscountedPrice(res.data.body[0]?.outlay_price);
+          setGstPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
+          setExperienceVideo(res.data.body[0]?.video);
         } else if (res.data.success === false) {
           toast(res.data.message, { type: "error" });
         }
@@ -220,9 +219,9 @@ const ProductScreen = () => {
       totalPrice: totalPrice,
       timeslot: selectedTimeSlot,
       packagePrice: packagePrice,
-      gstPrice :gstPrice,
-      productTitle : productTitle ,
-      deliveryCharge : deliveryCharge ,
+      gstPrice: gstPrice,
+      productTitle: productTitle,
+      deliveryCharge: deliveryCharge,
       img: productGalary[0],
       packageIdd: package_id,
       selectedCustomization: selectedCustomization,
@@ -247,25 +246,37 @@ const ProductScreen = () => {
 
   const reviewapi = `https://admin.experienceit.in/api/review-by-package?package_id=${package_id}`;
 
-  const getReview = () =>{
+  const getReview = () => {
     axios
-    .get(reviewapi)
-    .then((res) => {
-      if (res.data.status === true) {
-        const val = res.data.body;
-        console.log(val, "review Api here...");
-        setReviews(val.reverse());
-      } else if (res.data.status === false) {
-        // toast(res.data.message, { type: "error" });
-      }
-    })
-    .catch((err) => {
-      console.log(err, "Review Details Not Found");
-    });
-  }
+      .get(reviewapi)
+      .then((res) => {
+        if (res.data.status === true) {
+          const val = res.data.body;
+          console.log(val, "review Api here...");
+          setReviews(val.reverse());
+        } else if (res.data.status === false) {
+          // toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "Review Details Not Found");
+      });
+  };
   useEffect(() => {
-   getReview()
+    getReview();
   }, []);
+
+  const review = () => {
+    alert("hello review");
+  };
+  const inclusions = () => {
+    alert("hello inclusion");
+  };
+  const Overviews = () => {
+    alert("hello overview");
+  };
+
+
 
   return (
     <>
@@ -275,10 +286,13 @@ const ProductScreen = () => {
           updateLocation={updateLocation}
           setUpdateLocation={setUpdateLocation}
           showSideBar={showSideBar}
-            setShowSideBar={setShowSideBar}
-            taskBarData={taskBarData}
+          setShowSideBar={setShowSideBar}
+          taskBarData={taskBarData}
         />
-        <TaskBar updateLocation={updateLocation}   setTaskBarData={setTaskBarData}/>
+        <TaskBar
+          updateLocation={updateLocation}
+          setTaskBarData={setTaskBarData}
+        />
         <ProductCarousel productBanner={productBanner} />
         <ProductPart2
           productTitle={productTitle}
@@ -306,8 +320,7 @@ const ProductScreen = () => {
           setSelecetedTimeSlot={setSelecetedTimeSlot}
           setSelecetedTimeSlotId={setSelecetedTimeSlotId}
           reviews={reviews}
-          deliveryCharge ={deliveryCharge}
-
+          deliveryCharge={deliveryCharge}
           packagePrice={packagePrice}
           packageIdd={package_id}
           discountedPrice={discountedPrice}
@@ -336,10 +349,14 @@ const ProductScreen = () => {
 
         <Footer2 />
         <PopupHandler />
-        <ToastContainer limit={1}/>
+        <ToastContainer limit={1} />
         <Enquiry showEnquiry={showEnquiry} setShowEnquiry={setShowEnquiry} />
       </div>
-     
+      <ProductStickBar
+        reviews={reviews}
+        packagePrice={packagePrice}
+        discountedPrice={discountedPrice}
+      />
     </>
   );
 };

@@ -238,12 +238,12 @@ const RelatedPackage = (props) => {
               </div>
             </div>
           </div>
-          <div className="d-flex">
+          <div className="row">
           {allPackage.length < 5 ? 
             allPackage.map((itmm, idx) => {
               return (
                 <>
-                <div className="col-lg-3 col-md-4 col-sm-12">
+                <div className="col-lg-3 col-md-6 col-sm-12">
                   <Card
                     data={itmm}
                     img={itmm.image_id}

@@ -6,125 +6,121 @@ import Button from "../../elements/Button/Button";
 import User from "../../../assets/icons/user.png";
 
 import { endpoints } from "../../../services/endpoints";
-import axios from "axios"
-import {toast , ToastContainer}  from "react-toastify"
-
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 const Profile = (props) => {
-
-  const { showProfile, setShowProfile, setUserProfile , setUserImg } = props;
+  const { showProfile, setShowProfile, setUserProfile, setUserImg } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [names, setNames] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
   const [refferalCode, setRefferalCode] = useState("sdrwd2342");
   const [errors, setErrors] = useState({});
-  const [img , setImg] = useState("");
-  const [imgFiles , setImgFiles] = useState([]);
-  
+  const [img, setImg] = useState("");
+  const [imgFiles, setImgFiles] = useState([]);
+
   // const [image , setImage] = useState("")
 
   const api = endpoints.authentication.userProfiles;
 
   const accessToken = localStorage.getItem("access_token");
 
-
   const saveProfile = () => {
-
     if (names == "" || null) {
       setErrors({ name: "Name must not be blank" });
     } else if (names?.length < 3) {
       setErrors({ name: "Name must be greater than 3 character" });
     } else if (phoneNo === "") {
       setErrors({ phoneNo: "Phone no must not be blank" });
-    } else if (phoneNo.toString().length !== 12) {
-      setErrors({ phoneNo: "Invalid phone no" });
-    } else {
+    }
+    //  else if (phoneNo.length > 10) {
+    //   setErrors({ phoneNo: "Invalid phone no" });
+    // } 
+    else {
       setErrors({});
 
       setIsLoading(true);
 
-      
-    
       const formData = new FormData();
 
-      formData.append("first_name" , names);
-      formData.append("phone" , phoneNo)
-      formData.append("profileImg" , imgFiles)
-      formData.append("name" , names)
-    
+      formData.append("first_name", names);
+      formData.append("phone", phoneNo);
+      formData.append("profileImg", imgFiles);
+      formData.append("name", names);
+
       const headers = {
         Authorization: `Bearer ${accessToken}`,
         Accept: "application/json",
       };
-      
-      axios.post("https://admin.experienceit.in/api/updProfiles" , formData , {headers : headers})
-        .then((result) =>{
-          console.log(result)
-          if(result.data.status === true){
-            toast("Profile updated successfully" , {type :  "success"})
-            setIsLoading(false)
-            setShowProfile(false)
+
+      axios
+        .post("https://admin.experienceit.in/api/updProfiles", formData, {
+          headers: headers,
+        })
+        .then((result) => {
+          console.log(result);
+          if (result.data.status === true) {
+            toast("Profile updated successfully", { type: "success" });
+            setIsLoading(false);
+            setShowProfile(false);
             getUserDetails();
+          } else if (result.data.status === false) {
+            toast(result.data.message, { type: "error" });
           }
-          else if(result.data.status === false){
-            toast(result.data.message , {type : "error"})
-          }
-         
         })
         .catch((err) => {
-          setIsLoading(false)
+          setIsLoading(false);
           console.log(err, "userdata not found  here");
         });
     }
   };
 
- const  getUserDetails = () =>{
+  const getUserDetails = () => {
+    if (accessToken) {
+      const headers = {
+        Authorization: `Bearer ${accessToken}`,
+        Accept: "application/json",
+      };
 
-  if (accessToken) {
-    const headers = {
-      Authorization: `Bearer ${accessToken}`,
-      Accept: "application/json",
-    };
-
-    fetch("https://admin.experienceit.in/api/userProfiles" , {headers : headers , method  : 'POST'})
-    .then((rs) => rs.json())
-    .then((result) => {
-    
-      if(result.status === true){
-        const data = result.body
-       setNames(data?.first_name);
-       setEmail(data?.email)
-       setPhoneNo(data?.phone)
-       setRefferalCode(data?.own_referral_code)
-       setIsLoading(false)
-       setImg(data?.profileImg)
-      //  setUserProfile(data?.profileImg)
-       console.log(data?.profileImg)
-       setUserImg(data?.profileImg);
-      }
-      else if(result.status === false){
-        toast(result.message , {type : "error"})
-        setIsLoading(false)
-      }
-    })
-    .catch((err) => {
-      console.log(err , "this is th error")
-      setIsLoading(false)
-    })
-  }
-  }
+      fetch("https://admin.experienceit.in/api/userProfiles", {
+        headers: headers,
+        method: "POST",
+      })
+        .then((rs) => rs.json())
+        .then((result) => {
+          if (result.status === true) {
+            const data = result.body;
+            setNames(data?.first_name);
+            setEmail(data?.email);
+            setPhoneNo(data?.phone);
+            setRefferalCode(data?.own_referral_code);
+            setIsLoading(false);
+            setImg(data?.profileImg);
+            //  setUserProfile(data?.profileImg)
+            console.log(data?.profileImg);
+            setUserImg(data?.profileImg);
+          } else if (result.status === false) {
+            toast(result.message, { type: "error" });
+            setIsLoading(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err, "this is th error");
+          setIsLoading(false);
+        });
+    }
+  };
 
   useEffect(() => {
-    getUserDetails()
-  }, [accessToken , showProfile]);
+    getUserDetails();
+  }, [accessToken, showProfile]);
 
   const handleChange = (e) => {
     setImgFiles(e.target.files[0]);
-    setImg(URL.createObjectURL(e.target.files[0]))
-    setUserImg(URL.createObjectURL(e.target.files[0]))
-  }
-
+    setImg(URL.createObjectURL(e.target.files[0]));
+    setUserImg(URL.createObjectURL(e.target.files[0]));
+  };
 
   return (
     <Modal
@@ -134,10 +130,20 @@ const Profile = (props) => {
       centered
     >
       <div className="auth">
-      <div className="auth_logo" style={{position : "relative"}}>
-          <img src={img ? img : User} alt="logo icon" style={{width : '100%'}}/>
+        <div className="auth_logo" style={{ position: "relative" }}>
+          <img
+            src={img ? img : User}
+            alt="logo icon"
+            style={{ width: "100%" }}
+          />
           <label htmlFor="uploadimg">+</label>
-          <input type="file" name="" id="uploadimg" onChange={(e) => handleChange(e)} style={{display : "none"}}/>
+          <input
+            type="file"
+            name=""
+            id="uploadimg"
+            onChange={(e) => handleChange(e)}
+            style={{ display: "none" }}
+          />
         </div>
 
         <div className="auth_input otp_form profileCont">
@@ -179,18 +185,24 @@ const Profile = (props) => {
           />
 
           <div className="profileBtn">
-            <button className="savelBtn"  onClick={saveProfile} >
+            <button className="savelBtn" onClick={saveProfile}>
               Save
             </button>
 
             <div className="cnclBtn">
-              <button onClick={() => setShowProfile(false)}>Cancel</button>
-               </div>
-            
+              <button
+                onClick={() => {
+                  setShowProfile(false);
+                  setErrors({});
+                }}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </Modal>
   );
 };

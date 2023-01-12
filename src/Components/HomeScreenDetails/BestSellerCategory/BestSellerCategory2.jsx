@@ -62,8 +62,6 @@ const Card = (props) => {
         return itm.id == data.id;
       });
 
-      console.log(data , "data here");
-
       const daata = {
         id: data.id,
         is_fav: isFav,
@@ -164,6 +162,8 @@ const Card = (props) => {
     </>
   );
 };
+
+
 
 const BestSellerCategory2 = (props) => {
 

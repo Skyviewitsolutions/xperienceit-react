@@ -166,21 +166,7 @@ const SignIn = (props) => {
             />
           </div>
         </div>
-
-        <div className="signIn_footer">
-          <h6>Other login method</h6>
-          <div className="signIn_footer_images">
-          
-            
-        
-           
-          <img src={Google} alt="gmail icon" />
-               <img src={Facebook} alt="facebook Icon" />
-            
-            <img src={Gmail} alt="gmail icon" />
-           
-          </div>
-        </div>
+      
         <div className="signIn_balloon">
           <img src={Balloon} alt="balloon image" />
         </div>

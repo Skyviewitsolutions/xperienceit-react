@@ -1,6 +1,5 @@
 .chlocation {
   width: 100%;
-
   border-radius: 8px;
   background: white;
   display: flex;
@@ -10,8 +9,8 @@
   position: relative;
 }
 
-.chlocation h2 {
-  margin: 42px 0px 34px 0px;
+.chlocation h3 {
+  margin: 17px 0px 10px 0px;
   font-size: 35px;
   font-weight: 600;
   color: var(--pink);
@@ -20,11 +19,16 @@
   font-family: "primary";
 }
 
+.chlocation span{
+  font-family: "primary";
+}
+
 .location_search {
   border: 2px solid var(--gray);
   padding: 0px 13px;
   border-radius: 50px;
   margin-bottom: 45px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .location_search .flag {
   width: 25px;
@@ -51,8 +55,8 @@
   margin-left: 43px;
   margin-right: 50px;
   z-index: 5 !important;
-  height: 240px !important ;
-  height: 240px;
+  height: 420px !important ;
+
   overflow: auto;
   margin-bottom: 20px;
 }
@@ -64,13 +68,13 @@
 
 /* Handle */
 .location_places::-webkit-scrollbar-thumb {
-  background: var(--blue);
+  background:  var(--pink);
   border-radius: 10px;
 }
 
 /* Handle on hover */
 .location_places::-webkit-scrollbar-thumb:hover {
-  background: var(--blue);
+  background:  var(--pink);
 }
 .location_places::-webkit-scrollbar {
   width: 6px;
@@ -231,7 +235,7 @@
   }
 }
 @media only screen and (min-width: 601px) and (max-width: 992px) {
-  .chlocation h2 {
+  .chlocation h3 {
     font-size: 30px;
   }
   .location_places {

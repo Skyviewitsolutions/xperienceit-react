@@ -8,3 +8,24 @@
     width: 150px;
     height: 150px;
 }
+.blogCont{
+    width: 90%;
+}
+
+.blogBtn{
+    padding: 4px 8px;
+    border-radius: 6px;
+    background-color: #e04f67;
+    color: white;
+    width: 140px;
+    margin: 8px 12px;
+    border: none;
+}
+
+.postingCrdCont{
+    margin-bottom: 2.5rem;
+}
+
+.blogsInput{
+    border-radius: 2px !important;
+}

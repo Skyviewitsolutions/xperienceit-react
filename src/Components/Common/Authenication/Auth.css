@@ -1,6 +1,6 @@
 /* here we will style all the component of the authenication part ; */
 .auth{
-    width: 75%;
+    width: 70%;
     margin: auto;
     background: white;
     height: 100%;
@@ -164,7 +164,6 @@ cursor: pointer;
 .login{
     width: 100%;
     margin-top: -50px;
-    margin-bottom: 40px;
 }
 
 .back {
@@ -375,6 +374,9 @@ margin-left: 50px;
    
     height: 40px;
 }
+.googleEmail{
+    width: 30px;
+}
 .Log{
     float: left;
     width:50%;
@@ -383,9 +385,11 @@ margin-left: 50px;
     float: left;
     width:50%;
     text-align: right;
+
 }
 .forgotPage{
     cursor: pointer;
+   
 }
 
 @media only screen and (max-width: 600px){

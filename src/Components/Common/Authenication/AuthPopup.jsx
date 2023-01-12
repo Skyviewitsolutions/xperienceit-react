@@ -7,6 +7,7 @@ import BackgroundImg from "./AuthImages/background.svg";
 import Logo from "./AuthImages/Layer2.png";
 import Login from "./Login";
 import Register from "./Register";
+import Gmail from "./AuthImages/gmail.svg";
 import Cut from "./AuthImages/cut.svg";
 import OtpPage from "./OtpPage";
 import OtpPanel from "./OtpPanel";
@@ -14,6 +15,8 @@ import EmailPanel from "./EmailPanel";
 import ForgatePassword from "./ForgatePassword";
 import ChangePassword from "./ChangePassword";
 import SignIn from "./SignIn";
+import FbLogin from "./FbLogin";
+import GmailLogin from "./GmailLogin";
 
 const AuthPopup = (props) => {
   const { showAuthPopup, setShowAuthPopup, setUserLogedIn, userLogedIn,authScreen,setAuthScreen } =
@@ -48,7 +51,7 @@ const AuthPopup = (props) => {
     <>
       <Modal
         show={showAuthPopup}
-        aria-labelledby="contained-modal-title-vcenter"
+        // aria-labelledby="contained-modal-title-vcenter"
         size="lg"
         centered
       >
@@ -82,6 +85,27 @@ const AuthPopup = (props) => {
               )}
             </>
           )}
+
+          {/* footer part here */}
+
+          <div className="otp_footer">
+          <h6  className="d-flex justify-content-between align-items-center"><hr style={{width : "40%"}}/> Or <hr style={{width : "40%"}}/></h6>
+          <div className="otp_footer_images">
+            <GmailLogin />
+
+            <FbLogin
+              setShowAuthPopup={setShowAuthPopup}
+              setUserLogedIn={setUserLogedIn}
+            />
+            
+            <img
+              src={Gmail}
+              alt="gmail icon"
+              onClick={() => setAuthScreen("login")}
+              className="googleEmail"
+            />
+          </div>
+        </div>
 
           <div className="auth_cut" onClick={() => setShowAuthPopup(false)}>
             <img src={Cut} alt="cut icon" />

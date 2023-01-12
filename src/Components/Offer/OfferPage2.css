@@ -7,3 +7,15 @@
 .all-pack-slider.inner-row-package .title-col {
     margin-bottom: 10px;
 }
+
+@media only screen and (max-width : 600px) {
+
+    button.owl-prev {
+       transform: translateX(26px);
+     }
+   
+    button.owl-next {
+       transform: translateX(-26px);
+     }
+   
+   }

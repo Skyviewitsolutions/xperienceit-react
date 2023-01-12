@@ -44,6 +44,9 @@ export const endpoints = {
     wishlist : {
         updateWishList : BASE_URL + "/wishlist" ,
         allWishtList : BASE_URL + "/user-wishlist"
+    },
+    blogs : {
+        allBlogs : BASE_URL + "/blog"
     }
 }
 

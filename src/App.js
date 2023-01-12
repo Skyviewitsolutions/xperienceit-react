@@ -30,6 +30,9 @@ import { getAnalytics } from "firebase/analytics";
 import 'video-react/dist/video-react.css'; 
 import TermsConditions from "./Screens/TermsConditions/TermsConditions";
 import Blogs from "./Screens/Blogs/Blogs";
+import About from "./Screens/About/About";
+import PrivacyPolicy from "./Screens/PrivacyPolicy/PrivacyPolicy";
+import BlogDetails from "./Screens/Blogs/BlogDetails";
 
 
 const App = () => {
@@ -72,7 +75,8 @@ const analytics = getAnalytics(app);
     }
   }
 
-  return (
+  
+  return (<>
     <div className="App">
       <Router>
         <Switch>
@@ -81,8 +85,9 @@ const analytics = getAnalytics(app);
           <Route exact path="/birthday_gifts/" component={BirthdayGiftsScreen} />
           <Route exact path="/birthday_screen" component={BirthdayScreen} />
           <Route exact path="/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id" component={ProductScreen} />
-          <Route exact path="/experiences/:location/:sub_category_name/:sub_category_id" component={CommonScreenPackeges}/>
-          <Route exact path="/experiences/:location/:category_name/category_id" component={CategoriesPackegesScreen} />
+          <Route exact path="/experiences/:location/:sub_category_name/:sub_category_id/child-category/:child_category_name/:child_category_id" component={CommonScreenPackeges}/>
+          {/* <Route exact path="/experiences/:location/:sub_category_name/:sub_category_id" component={CommonScreenPackeges}/> */}
+          <Route exact path="/experiences/:location/category/:category_name/:category_id" component={CategoriesPackegesScreen} />
           <Route exact path="/experiences/:location/subCategory/:subCategory_name/:subCategory_id" component={SubCategoryScreen} />
           <Route exact path="/experiences/offer/:location/:offerName/:offerId" component={OfferScreen}/>
           <Route exact path="/all_packages" component={AllPackagesScreen}/>
@@ -92,16 +97,18 @@ const analytics = getAnalytics(app);
           <Route exact path="/wishlist" component={WishlistScreen} />
           <Route exact path="/upcoming-bookings" component={UpcomingBooking}/>
           <Route exact path="/past-bookings" component={PastBookingScreen} />
-          {/* <Route exact path="/facebook" component={FacebookLogin} /> */}
           <Route exact path="/google" component={GmailLogin}/>
           <Route exact path="/tnc" component={TermsConditions}/>
           <Route exact path="/blogs" component={Blogs}/>
+          <Route exact path="/blogs/:blog_name" component={BlogDetails} />
+          <Route exact path="/about" component={About}/>
+          <Route exact path="/privacy-policy" component={PrivacyPolicy} />
 
         </Switch>
       </Router>
       <ToastContainer/>
     </div>
-  );
+    </>);
 };
 
 export default App;

@@ -16,7 +16,9 @@ import SubCategory from '../Components/SubCategory/SubCategory'
 import SubCategory2 from '../Components/SubCategory/SubCategory2'
 
 
+
 const SubCategoryScreen = () => {
+
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
   const [updateLocation , setUpdateLocation] = useState(false);
@@ -38,7 +40,6 @@ useEffect(()=>{
       console.log(res,'Sub Category Api  All Packages');
    if (res.data.status===true){
     const val=res.data.body;
-    
     setSubCatePack(val);
    }
   })
@@ -59,7 +60,7 @@ useEffect(()=>{
       <TaskBar updateLocation={updateLocation}  setTaskBarData={setTaskBarData}/>
      
       <Booking2 updateLocation={updateLocation}/>
-      {/* <SubCategory subCatePack={subCatePack} subCatePackName={subCategory_name} subCategory_id = {subCategory_id}/> */}
+     
       <SubCategory2  subCatePack={subCatePack} subCatePackName={subCategory_name} subCategory_id = {subCategory_id}/>
       <Banner2/>
      

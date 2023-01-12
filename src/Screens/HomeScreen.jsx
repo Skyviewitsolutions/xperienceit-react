@@ -19,10 +19,9 @@ import { updateWishList } from "../actions";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../utils/Loader";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
-
+import Booking from "../Components/HomeScreenDetails/Booking/Booking";
 
 const HomeScreen = () => {
-
   const [showListData, setShowListData] = useState([]);
   const [showSideBar, setShowSideBar] = useState(false);
   const [updateLocation, setUpdateLocation] = useState(false);
@@ -48,7 +47,7 @@ const HomeScreen = () => {
           // console.log(res, " Alll home Screen Listed Api");
           if (res.data.status === true) {
             const val = res.data.body;
-           
+
             setShowListData(val);
           }
         })
@@ -66,9 +65,7 @@ const HomeScreen = () => {
     (state) => state.handleWishtListData.status
   );
 
-
   useEffect(() => {
-    
     const allWishtListUrl = endpoints.wishlist.allWishtList;
 
     if (access_token) {
@@ -91,7 +88,6 @@ const HomeScreen = () => {
     }
   }, [wishListState]);
 
-
   return (
     <>
       <div className="homeScreen">
@@ -109,6 +105,7 @@ const HomeScreen = () => {
           />
         </header>
         <Mainpart2 updateLocation={updateLocation} />
+        {/* <Booking updateLocation={updateLocation}/> */}
         <Booking2 updateLocation={updateLocation} />
         <BestSeller2 />
         <BestSellerCategory2 showListData={showListData} />
@@ -119,7 +116,7 @@ const HomeScreen = () => {
         <Footer2 />
         {/* {loading && <Loader/>} */}
       </div>
-      <StickyMenu/>
+      <StickyMenu />
     </>
   );
 };

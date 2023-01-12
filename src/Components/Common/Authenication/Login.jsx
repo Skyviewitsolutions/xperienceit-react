@@ -164,7 +164,7 @@ const Login = (props) => {
           <div style={{ marginTop: "30px", marginBottom: "15px" }}>
             <Button title="Login" onClick={login} isLoading={isLoading} />
             <div className="LogFor">
-              <div className="Log">
+              <div className="Log mb-0">
                 <span
                   className="otp_page"
                   onClick={() => setAuthScreen("loginWithOtp")}
@@ -172,9 +172,9 @@ const Login = (props) => {
                   Login via otp
                 </span>
               </div>
-              <div className="Forg">
+              <div className="Forg mb-0">
                 <span
-                  className="forgotPage"
+                  className="forgotPage mb-0"
                   onClick={() => setAuthScreen("forgetPassword")}
                 >
                   Forgot Password
@@ -184,19 +184,7 @@ const Login = (props) => {
           </div>
         </div>
 
-        <div className="auth_footer">
-          <h6>Other login method</h6>
-          <div className="auth_footer_images">
-            {/* <img src={Google} alt="gmail icon" /> */}
-
-            {/* <img src={Facebook} /> */}
-
-            <GmailLogin/>
-
-            <FbLogin  setShowAuthPopup={setShowAuthPopup} setUserLogedIn={setUserLogedIn}/>
-            <img src={Gmail} alt="gmail icon" />
-          </div>
-        </div>
+       
 
         <div className="auth_balloon">
           <img src={Balloon} alt="balloon image" />

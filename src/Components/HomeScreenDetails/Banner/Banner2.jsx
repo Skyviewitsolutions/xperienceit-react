@@ -6,10 +6,9 @@ import "./Banner2.css";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-
+import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
-import Skeleton from "@mui/material/Skeleton";
 import { generatePath, useHistory } from "react-router-dom";
 
 
@@ -62,7 +61,7 @@ const Card = (props) => {
 
 const Banner2 = (props) => {
 
-  const [data, setData] = useState([1, 2]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const api = endpoints.home.bannerOffers;
@@ -114,13 +113,12 @@ const Banner2 = (props) => {
 
   return (
     <>
-
       <div className="Offer-slider">
         <div className="offer-section-slider common-container">
           <div className="container-fluid">
           <h4>Offers for you</h4>
             <OwlCarousel className='owl-theme category' id='category' items={5} loop margin={10} dots={false} {...options} nav>
-            {data.map((item, index) => {
+            {data.length != 0 ? data.map((item, index) => {
             return (
               <>
               {item.image_id != "" && 
@@ -135,7 +133,10 @@ const Banner2 = (props) => {
               }
               </>
             );
-          })}
+          }) : 
+          <Skeleton height={250} variant="rectangular" />
+
+          }
         
 
               {/* <div class='item'>

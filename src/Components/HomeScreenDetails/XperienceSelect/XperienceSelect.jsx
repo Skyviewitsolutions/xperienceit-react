@@ -11,11 +11,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { generatePath } from "react-router-dom";
 
-
 const XperienceSelect = (props) => {
-
   const [subcategory, setsubCategory] = useState([]);
-  const [allSubCategory ,setAllSubCategory] = useState([]);
+  const [allSubCategory, setAllSubCategory] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
   const history = useHistory();
   const [filterCategoryData, setFilterCategoryData] = useState([]);
@@ -47,7 +45,6 @@ const XperienceSelect = (props) => {
   const api = endpoints.home.filterCategory;
 
   useEffect(() => {
-    
     const pkgLocation = localStorage.getItem("locationDetails");
     const cityLocattion = JSON.parse(pkgLocation);
     const cityID = cityLocattion && cityLocattion.id;
@@ -58,30 +55,28 @@ const XperienceSelect = (props) => {
     };
 
     if (cityID) {
-      setsubCategory([])
+      setsubCategory([]);
       axios
         .post(api, { location_id: cityID, headers: headers })
         .then((res) => {
-          
           if (res.data.status === true) {
             const val = res.data.body;
+            console.log(val , "value here")
             setFilterCategoryData(val);
             val.map((itm, idx) => {
-              
-                  {
-                    itm.sub_category.length != 0 &&
-                    itm.sub_category.map((item, index) => {
-                      setsubCategory((itmm, index) => {
-                        return [...itmm, item];
-                      });
-                      
-                      setAllSubCategory((itmm, index) => {
-                        return [...itmm, item];
-                      });
-                      
-                    })}
-               
-            })
+              {
+                itm.sub_category.length != 0 &&
+                  itm.sub_category.map((item, index) => {
+                    setsubCategory((itmm, index) => {
+                      return [...itmm, item];
+                    });
+
+                    setAllSubCategory((itmm, index) => {
+                      return [...itmm, item];
+                    });
+                  });
+              }
+            });
           } else if (res.data.status === false) {
             // toast("", { type: "errors" });
           }
@@ -95,17 +90,14 @@ const XperienceSelect = (props) => {
     }
   }, [props.updateLocation]);
 
-
-
   const handleInput = (e) => {
-
     const val = e.target.value;
     setInputValue(val);
 
-    const filterSubCategory = allSubCategory.filter((itm,index) =>{
-      return itm.name.toLowerCase().includes(val.toLowerCase())
-    })
-    setsubCategory(filterSubCategory)
+    const filterSubCategory = allSubCategory.filter((itm, index) => {
+      return itm.name.toLowerCase().includes(val.toLowerCase());
+    });
+    setsubCategory(filterSubCategory);
   };
 
   return (

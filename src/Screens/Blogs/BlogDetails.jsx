@@ -1,5 +1,3 @@
-// This is the blogs section of the experience it;
-
 import React, { useEffect, useState } from "react";
 import Navebar3 from "../../Components/Common/Navbar/Navebar3";
 import "./blogs.css";
@@ -10,48 +8,19 @@ import GuidesCard from "../../Components/Blogs/GuidesCard/GuidesCard";
 import Footer2 from "../../Components/Common/Footer/Footer2";
 import { endpoints } from "../../services/endpoints";
 import axios from "axios";
-import { useHistory, generatePath, useLocation } from "react-router-dom";
+import Img2 from "../../assets/images/new-year.png";
+import { GiPlainSquare } from "react-icons/gi";
+import HtmlParser from "react-html-parser";
+import { useLocation, useHistory } from "react-router-dom";
 
-const Blogs = () => {
+const BlogDetails = () => {
   const location = useLocation();
   const history = useHistory();
 
-  const [allBlogs, setAllBlogs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  var blogDetails = location.state.blogDetails;
+  blogDetails = JSON.parse(blogDetails);
 
-  const getAllBlogs = () => {
-    const url = endpoints.blogs.allBlogs;
-
-    setLoading(true);
-
-    axios
-      .get(url)
-      .then((res) => {
-        setLoading(false);
-        if (res.data.status === true) {
-          const val = res.data.body;
-          setAllBlogs(val);
-        }
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err, "this is the error");
-      });
-  };
-
-  useEffect(() => {
-    getAllBlogs();
-  }, []);
-
-  const getBlogDetails = (data) => {
-
-    const title = data.title.replaceAll(" ", "-");
-    const path = generatePath("/blogs/:blog_name", {
-      "blog_name": title,
-    });
-
-    history.push(path , {blogDetails : JSON.stringify(data)})
-  };
+  console.log(blogDetails, "blogDetails here");
 
   return (
     <>
@@ -71,18 +40,65 @@ const Blogs = () => {
           {/* adding the bottom container */}
           <div className="px-5 py-5 row d-flex justify-content-between mx-5 blogCont">
             <div className="col-lg-7 col-md-12 col-sm-12 px-4 py-4  shadow rounded bg-light ">
-              {allBlogs.length != 0 &&
-                allBlogs.map((itm, ind) => {
+              <div className="row postingCrdCont">
+                <h3 className="fw-bold my-2 " style={{ width: "80%" }}>
+                  {blogDetails.title}
+                </h3>
+                <div className="col-12 d-flex align-items-center my-4">
+                  <h6 className="text-secondary pr-2 fs-6 text-uppercase">
+                    {blogDetails.user_person}
+                  </h6>
+                  <h6 className="text-secondary pr-2 fs-6">
+                    <GiPlainSquare size={6} />
+                  </h6>
+                  <h6 className="text-secondary pr-2 fs-6 text-uppercase">
+                    {blogDetails.date}
+                  </h6>
+                  <h6 className="text-secondary pr-2 fs-6">
+                    <GiPlainSquare size={6} />
+                  </h6>
+                  <h6 className="text-secondary pr-2 fs-6 text-uppercase">
+                    LEAVE A COMMENT
+                  </h6>
+                </div>
+                <img
+                  src={blogDetails.image_id ? blogDetails.image_id : Img2}
+                  alt=""
+                  className="mb-2"
+                />
+              </div>
+
+              {/* here we are showing the details of the blogs */}
+
+              {blogDetails.blog_part.length != 0 &&
+                blogDetails.blog_part.map((itm, ind) => {
                   return (
                     <>
-                      <PostingCard
-                        data={itm}
+                      <div
+                        className="row postingCrdCont px-0"
+                        style={{ marginTop: "2rem", marginBottom: "2rem" }}
                         key={ind}
-                        getBlogDetails={getBlogDetails}
-                      />
+                      >
+                        <h4 className="fw-bold my-2 " style={{ width: "80%" }}>
+                          {itm.title}
+                        </h4>
+                        <img
+                          src={itm.image ? itm.image : Img2}
+                          alt=""
+                          className="mb-2"
+                        />
+                        <p
+                          className="text-secondary my-1 "
+                          style={{ fontSize: "14px" }}
+                        >
+                          {HtmlParser(itm.content)}
+                        </p>
+                      </div>
                     </>
                   );
                 })}
+
+              {/* ------------------------------ */}
             </div>
             <div className="col-lg-5 col-md-12 col-sm-12 d-flex align-items-end flex-column ">
               <div className="col-11 shadow rounded bg-light py-4  px-4  mb-5">
@@ -127,4 +143,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default BlogDetails;

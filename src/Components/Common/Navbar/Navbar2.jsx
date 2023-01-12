@@ -1,4 +1,4 @@
-import React , {useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -6,21 +6,18 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useHistory , generatePath} from "react-router-dom";
+import { useHistory, generatePath } from "react-router-dom";
 import { endpoints } from "../../../services/endpoints";
 import axios from "axios";
 
-
 const Navbar2 = (props) => {
-
   const { handleGifts } = props;
 
-  const [taskBarData , setTaskBarData] = useState([]);
+  const [taskBarData, setTaskBarData] = useState([]);
 
   const api = endpoints.home.filterCategory;
 
   useEffect(() => {
-
     const pkgLocation = localStorage.getItem("locationDetails");
     const cityLocattion = JSON.parse(pkgLocation);
     const cityID = cityLocattion && cityLocattion.id;
@@ -36,8 +33,8 @@ const Navbar2 = (props) => {
         .then((res) => {
           if (res.data.status === true) {
             const val = res.data.body;
-            // setFilterCategoryData(val);
-            setTaskBarData(val)
+            //  setFilterCategoryData(val);
+            setTaskBarData(val);
           }
         })
         .catch((err) => {
@@ -46,24 +43,29 @@ const Navbar2 = (props) => {
     }
   }, [props.updateLocation]);
 
-
-
   const pkgLocation = localStorage.getItem("locationDetails");
-    const cityLocattion = JSON.parse(pkgLocation);
-    const cityID = cityLocattion && cityLocattion.id;
+  const cityLocattion = JSON.parse(pkgLocation);
+  const cityID = cityLocattion && cityLocattion.id;
 
-    const history = useHistory();
+  const history = useHistory();
 
   const toRenderNextPackeges = (data) => {
-    const name = data.name ;
-    const subCategoryName = name.replaceAll(' ', '-');
-    const path = generatePath("/experiences/:location/:sub_category_name/:sub_category_id" , {
-      sub_category_name : subCategoryName ,
-      location : cityLocattion.name ,
-      sub_category_id : data.id
-    })
-    history.push(path ,{allpackeges : data})
-  }
+
+    console.log(data , "data here")
+
+    const name = data.subcategory_nm;
+    const subCategoryName = name.replaceAll(" ", "-");
+    const path = generatePath(
+      "/experiences/:location/subCategory/:subCategory_name/:subCategory_id",
+      {
+        subCategory_name: subCategoryName,
+        location: cityLocattion.name,
+        subCategory_id: data.subcategory_id,
+      }
+    );
+
+    history.push(path, { allpackeges: data });
+  };
 
   return (
     <>
@@ -77,9 +79,7 @@ const Navbar2 = (props) => {
               placement="end"
             >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Offcanvas
-                </Offcanvas.Title>
+                <Offcanvas.Title>ExperienceIt</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1">
@@ -102,7 +102,9 @@ const Navbar2 = (props) => {
                                       return (
                                         <>
                                           <NavDropdown.Item
-                                            onClick={() => toRenderNextPackeges(child)}
+                                            onClick={() =>
+                                              toRenderNextPackeges(child)
+                                            }
                                             key={ind}
                                           >
                                             {child.name}

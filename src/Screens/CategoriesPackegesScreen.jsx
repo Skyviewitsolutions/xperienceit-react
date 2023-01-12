@@ -9,26 +9,33 @@ import Banner from "../Components/HomeScreenDetails/Banner/Banner";
 import Booking from "../Components/HomeScreenDetails/Booking/Booking";
 import Services2 from "../Components/HomeScreenDetails/Services/Services2";
 import TaskBar from "../Components/HomeScreenDetails/TaskBar/TaskBar";
-import Testimonial from "../Components/HomeScreenDetails/Testimonial/Testimonial";
+import Testimonial2 from "../Components/HomeScreenDetails/Testimonial/Testimonial2";
 import Navebar3 from "../Components/Common/Navbar/Navebar3";
 import Banner2 from "../Components/HomeScreenDetails/Banner/Banner2";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
+import Booking2 from "../Components/HomeScreenDetails/Booking/Booking2";
+
 
 const CategoriesPackegesScreen = () => {
+
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
   const [updateLocation, setUpdateLocation] = useState(false);
   const [showCategoryPack, setShowCategoryPack] = useState([]);
   const location = useLocation();
 
-  const { category_name, category_id } = useParams();
+  const { category_name, category_id,package_child_id } = useParams();
+
 
   useEffect(() => {
+
     const api = `https://admin.experienceit.in/api/getPackageByCategory?package_parent_id=${category_id}`;
+    
+    // const api = `https://admin.experienceit.in/api/getPackageByCategory?package_child=${packageChildId}`;
     axios
       .get(api)
       .then((res) => {
-        // console.log(res,'Category Api  All Packages');
+        console.log(res,'Category Api  All Packages');
         if (res.data.status === true) {
           const val = res.data.body;
           setShowCategoryPack(val);
@@ -51,15 +58,18 @@ const CategoriesPackegesScreen = () => {
             taskBarData={taskBarData}
         />
         <TaskBar updateLocation={updateLocation} setTaskBarData={setTaskBarData} />
-        <Booking  updateLocation={updateLocation}/>
+       
+        <Booking2 updateLocation={updateLocation}/>
+
         <CategoriesPackeges
           showCategoryPack={showCategoryPack}
           categoryName={category_name}
           category_id={category_id}
+          package_child_id={package_child_id}
         />
-        {/* <Banner /> */}
+
         <Banner2/>
-        <Testimonial />
+        <Testimonial2 />
         <Services2/>
         <Footer2 />
       </div>

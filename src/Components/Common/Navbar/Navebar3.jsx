@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import Logo from "./NavbarImages/Layer2.png";
 import User from "../../../assets/icons/user.png";
@@ -42,6 +43,7 @@ const Navebar3 = (props) => {
   const { showSideBar, setShowSideBar } = props;
 
   const [showAuthPopup, setShowAuthPopup] = useState(false);
+  const [mapIconColor , setMapIconColor] = useState("#663399");
   const [showLocation, setShowLocation] = useState(
     selectedLocation ? false : true
   );
@@ -75,7 +77,7 @@ const Navebar3 = (props) => {
   
 
   document.addEventListener("click", () => {
-    if(window.innerWidth > 800){
+    if(window.innerWidth > 992){
     setIsHovering(false);
     }
   });
@@ -83,7 +85,7 @@ const Navebar3 = (props) => {
   const logOut = () => {
     localStorage.removeItem("access_token");
     setUserLogedIn(false);
-    toast("Logout Successfully");
+    toast("Logout Successfully" , {type : "success"});
     history.push("./");
     setAuthScreen("loginWithOtp");
   };
@@ -124,7 +126,6 @@ const Navebar3 = (props) => {
               const chldCategory = childCategory[l];
               for (var j = 0; j < chldCategory.child_category.length; j++) {
                 const ddd = chldCategory.child_category[j];
-
                 if (ddd) {
                   childCateryArry.push(ddd);
                 }
@@ -164,16 +165,15 @@ const Navebar3 = (props) => {
 
   const handleSelectedPackage = (data) => {
 
-    console.log(data , "data here")
-
-    const name = data.name;
+    const name = data.subcategory_nm
+    ;
     const subCategoryName = name.replaceAll(" ", "-");
     const path = generatePath(
-      "/experiences/:location/:sub_category_name/:sub_category_id",
+      "/experiences/:location/subCategory/:subCategory_name/:subCategory_id",
       {
-        sub_category_name: subCategoryName,
+        subCategory_name: subCategoryName,
         location: cityLocattion.name,
-        sub_category_id: data.subcategory_id ,
+        subCategory_id: data.subcategory_id ,
       }
     );
 
@@ -210,6 +210,8 @@ const Navebar3 = (props) => {
                     height={70}
                     width={70}
                     className="logo"
+                    onClick={() => history.push("/")}
+                    style={{zIndex : 1000}}
                   />
                 </a>
                 <div className="form-inline for_desktop">
@@ -325,16 +327,18 @@ const Navebar3 = (props) => {
             </div>
             <div className="col-lg-4 col-md-6 col-10 mobile-col">
               <div className="login-and-location">
-                <div className="location_pick_btn">
+                <div className="location_pick_btn" >
                   <button
                     className="loc-btn"
                     onClick={() => setShowLocation(true)}
+                    style={{ background : mapIconColor == "#663399" ? "white" : "#fe6684" }}
+                    onMouseOver={() => setMapIconColor("white")}
+                    onMouseOut={()=> setMapIconColor("#663399")}
                   >
-                    {" "}
                     <span className="locImg" style={{ cursor: "pointer" }}>
-                      <BiMap />{" "}
+                      <BiMap color={mapIconColor} />
                     </span>
-                    <span className="lkn text-white">
+                    <span className="lkn " style={{color : mapIconColor}}>
                       {selectedLocation
                         ? selectedLocation.name
                         : "Accross India"}
@@ -444,7 +448,7 @@ const Navebar3 = (props) => {
                       <span>
                         <IoMdLogIn />
                       </span>{" "}
-                      <span className="login-txt d-lg-block d-none">Login</span>
+                      <span className="login-txt d-lg-block d-none"  onClick={() => setShowAuthPopup(true)}>Login</span>
                     </a>
                   </div>
                 )}

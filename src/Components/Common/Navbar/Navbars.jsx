@@ -122,7 +122,7 @@ const Navbars = (props) => {
         <Profile showProfile={showProfile} setShowProfile={setShowProfile} />
 
         {/* here we are adding the sidebar  */}
-        <SidebarComponent />
+        <SidebarComponent/>
       </div>
     </>
   );

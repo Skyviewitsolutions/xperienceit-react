@@ -13,6 +13,7 @@ import Youtube from "./FooterImages/youtube.svg";
 import "./Footer2.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
+
 const Footer2 = () => {
     const history = useHistory()
   return (
@@ -41,7 +42,7 @@ const Footer2 = () => {
                     <img src={Youtube} alt="Youtube icon" />
                   </a>
                 </div>
-                <a onClick={() =>history.push("/terms-and-condition")} className="tnc">
+                <a onClick={() =>history.push("/tnc")} className="tnc">
                   Terms and Conditions
                 </a>
               </div>
@@ -65,7 +66,7 @@ const Footer2 = () => {
                     <a href="">Who we are</a>
                   </li>
                   <li>
-                    <a href="">Blogs</a>
+                    <a href="/blogs">Blogs</a>
                   </li>
                 </ul>
               </div>
@@ -108,7 +109,7 @@ const Footer2 = () => {
         <div className="copy_right_area">
           <p class="text">
             {" "}
-            Copyright by Skyview smart solutions P.V.T LTD www.skyview.com
+            Copyright By Skyview Smart Solutions P.V.T LTD  <a href="www.skyview.com">www.skyview.com</a> 
           </p>
         </div>
       </footer>

@@ -1,6 +1,16 @@
 .bestseller-section img {
     width: 100%;
 }
+
+.seller_box1 img {
+    width: 100%;
+}
+.seller_box2 img {
+    width: 100%;
+}
+.seller_box3 img {
+    width: 100%;
+}
 .seller_box1 button {
     width: 100%;
     background: var(--pink);

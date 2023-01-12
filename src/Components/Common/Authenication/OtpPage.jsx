@@ -4,7 +4,7 @@ import axios from "axios";
 import Twitter from "./AuthImages/twitter.svg";
 import Facebook from "./AuthImages/facebook.svg";
 import Gmail from "./AuthImages/gmail.svg";
-import {FaUser} from 'react-icons/fa'
+import { FaUser } from "react-icons/fa";
 
 import Balloon from "./AuthImages/balloon.svg";
 import { endpoints } from "../../../services/endpoints";
@@ -18,7 +18,6 @@ import FbLogin from "./FbLogin";
 import GmailLogin from "./GmailLogin";
 
 const OtpPage = (props) => {
-
   const { setAuthScreen, setUserLogedIn, setShowAuthPopup } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -112,7 +111,7 @@ const OtpPage = (props) => {
     <>
       <div className="otpPage">
         <div className="otp_input">
-          <label htmlFor="number">Phone No.</label>
+          <label htmlFor="number">Mobile Login</label>
           <input
             type="number"
             placeholder="Enter 10 digit mobile number Eg:8745673414"
@@ -127,29 +126,10 @@ const OtpPage = (props) => {
               isLoading={isLoading}
               onClick={() => otpLogin()}
             />
-            
-          </div>
-          <h6 className="RegPageSignUp" onClick={()=>setAuthScreen("login")} ><i className="Fa-user"><FaUser/> </i> <span className="signUpLogin">SignUp</span></h6>
-        </div>
-
-        <div className="otp_footer">
-          <h6>Other login method</h6>
-          <div className="otp_footer_images">
-          
-
-            <GmailLogin />
-
-           
-            <FbLogin  setShowAuthPopup={setShowAuthPopup} setUserLogedIn={setUserLogedIn}/>
-
-            <img
-              src={Gmail}
-              alt="gmail icon"
-              onClick={() => setAuthScreen("login")}
-              className="googleEmail"
-            />
           </div>
         </div>
+
+        
         <div className="otp_balloon">
           <img src={Balloon} alt="balloon image" />
         </div>

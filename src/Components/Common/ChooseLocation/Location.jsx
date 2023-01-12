@@ -9,10 +9,10 @@ import Left from "./locationImages/left.png";
 import Right from "./locationImages/right.png";
 import "./Location.css";
 import { useDispatch } from "react-redux";
-
 import { useEffect } from "react";
 import { endpoints } from "../../../services/endpoints";
 import axios from "axios";
+import {GrFormClose} from "react-icons/gr"
 import { useHistory } from "react-router-dom";
 
 const Location = (props) => {
@@ -77,6 +77,8 @@ const Location = (props) => {
     }
   };
 
+
+  const locationData = localStorage.getItem("locationDetails")
   return (
     <>
       <Modal
@@ -86,7 +88,8 @@ const Location = (props) => {
         centered
       >
         <div className="chlocation">
-          <h2 className="chtxt">Choose City have xperience it</h2>
+          <h3 className="chtxt">Choose City have xperience it</h3>
+          <span className="mb-4 ">Find more than 3000 decorations, gifts and surprises!</span>
           <div className="location_search">
             <img src={Flag} alt="flag" className="flag" />
             <input
@@ -130,13 +133,14 @@ const Location = (props) => {
             CONTINUE
           </button> */}
 
+          {locationData && 
           <div
             className="location_cut"
             onClick={() => setShowLocation(false)}
             style={{ cursor: "pointer" }}
           >
-            <img src={Cut} alt="cut icon" />
-          </div>
+            <GrFormClose size={29}/>
+          </div>}
 
           <img src={Left} alt="left icon" className="location_left" />
           <img src={Right} alt="right icon" className="location_right" />

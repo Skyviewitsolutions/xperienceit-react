@@ -8,6 +8,8 @@ import { endpoints } from "../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
 
+
+
 const SubCategoryCard = (props) => {
     
   const { subCatePackName, subCategory_id } = props;
@@ -19,7 +21,9 @@ const SubCategoryCard = (props) => {
   const cityLocattion = JSON.parse(pkgLocation);
   const city = cityLocattion && cityLocattion.name;
 
+
   const renderToProduct = (data) => {
+
     const name = data.heading;
     const packageName = name.replaceAll(" ", "-");
     const path = generatePath(
@@ -32,6 +36,7 @@ const SubCategoryCard = (props) => {
         package_id: data.id,
       }
     );
+    
     history.push(path);
   };
 
@@ -41,7 +46,6 @@ const SubCategoryCard = (props) => {
   );
 
   
-
   const handleFavourite = (data, isFav) => {
 
     const access_token = localStorage.getItem("access_token");
@@ -56,8 +60,6 @@ const SubCategoryCard = (props) => {
       const selectedWishList = wishtListArray.filter((itm, ind) => {
         return itm.id == data.id;
       });
-
-      console.log(data , "data here");
 
       const daata = {
         id: data.id,
@@ -160,6 +162,7 @@ const SubCategoryCard = (props) => {
 };
 
 const SubCategory2 = (props) => {
+  
   const { subCatePack, subCatePackName, subCategory_id } = props;
 
   return (

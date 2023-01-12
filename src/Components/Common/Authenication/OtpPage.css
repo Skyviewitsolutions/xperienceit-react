@@ -1,6 +1,6 @@
 .otpPage{
     width: 100%;
-
+    margin-top: -25px;
 }
 span.signUpLogin {
 
@@ -45,10 +45,13 @@ h6.RegPageSignUp {
     margin-top:6rem;
     flex-direction: column;
 }
+
+
+
 .otp_footer{
     width: 70%;
     margin: auto;
-    margin: 20px auto;
+    margin: 5px auto;
 }
 
 .otp_footer_images img{
@@ -62,7 +65,7 @@ h6.RegPageSignUp {
 .otp_footer{
     width: 70%;
     margin: auto;
-    margin: 20px auto;
+    margin: 5px auto;
 }
 
 .otp_footer h6{
@@ -78,7 +81,7 @@ h6.RegPageSignUp {
     margin: auto;
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 

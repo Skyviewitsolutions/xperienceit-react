@@ -157,8 +157,10 @@ const OfferCard = (props) => {
   );
 };
 
+
 const OfferPage2 = (props) => {
-  const { offers, offerName, offerId } = props;
+
+  const { offers , offerName , offerId } = props ;
 
   return (
     <>
@@ -189,10 +191,8 @@ const OfferPage2 = (props) => {
                       img={item.image_id}
                       heading={item.title}
                       prices={item.outlay_price}
-                      // outlayprice={item.outlay_price}
                       discount={item.discounted_price}
                       rating={item.rating}
-                      // review={item.review}
                       key={index.key}
                       id={item.id}
                       offerName={offerName}

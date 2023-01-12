@@ -22,14 +22,12 @@ const TaskBar = (props) => {
   const hideMegaMenu = () => {
     setShowMegaMenu(false);
   };
-
  
   const api = endpoints.home.filterCategory;
 
   useEffect(() => {
 
     const pkgLocation = localStorage.getItem("locationDetails");
-   
     const cityLocattion = JSON.parse(pkgLocation);
     const cityID = cityLocattion && cityLocattion.id;
   
@@ -50,7 +48,8 @@ const TaskBar = (props) => {
       })
       .catch((err) => {
         console.log(err, "Filter Category api not response here...");
-      });}
+      })}
+
   }, [props.updateLocation]);
 
   const openCategory = (subCatgory) => {

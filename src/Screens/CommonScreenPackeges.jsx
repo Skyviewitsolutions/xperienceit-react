@@ -22,13 +22,13 @@ const CommonScreenPakeges = () => {
   // console.log(packgesID,"packages available here...")
   // const packageName=packges.name;
 
-  const { sub_category_id, sub_category_name } = useParams();
-  const packgesID = sub_category_id;
+  const { sub_category_id, sub_category_name , child_category_id , child_category_name } = useParams();
+  const packgesID = child_category_id;
 
-  const packageName = sub_category_name;
+  const packageName = child_category_name;
   useEffect(() => {
-    // const api = `https://admin.experienceit.in/api/getPackageByChildCategory?package_child_id=${packgesID}`;
-    const api = `https://admin.experienceit.in/api/getPackageBySubCategory?package_subcat_id=${packgesID}`;
+    const api = `https://admin.experienceit.in/api/getPackageByChildCategory?package_child_id=${packgesID}`;
+    // const api = `https://admin.experienceit.in/api/getPackageBySubCategory?package_subcat_id=${packgesID}`;
     axios
       .get(api)
       .then((res) => {

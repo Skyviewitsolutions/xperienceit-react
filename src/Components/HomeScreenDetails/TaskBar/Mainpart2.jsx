@@ -6,6 +6,7 @@ import "./Mainpart2.css";
 import XperienceSelect from "../XperienceSelect/XperienceSelect";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import Skeleton from "@mui/material/Skeleton";
 import RightArrow from "./TaskBarImages/rightarrow.svg";
 import HomePageImg from "../../../assets/images/HomePageimg1.png";
 import { endpoints } from "../../../services/endpoints";
@@ -13,7 +14,7 @@ import { endpoints } from "../../../services/endpoints";
 const Mainpart2 = ({ updateLocation }) => {
   const dispatch = useDispatch();
   const [showXperienceSelect, setShowXperienceSelect] = useState(false);
-  const [bannerImg, setBannerImg] = useState([1, 2, 3]);
+  const [bannerImg, setBannerImg] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const getBanner = () => {
@@ -56,7 +57,7 @@ const Mainpart2 = ({ updateLocation }) => {
             margin={10}
             nav={false}
           >
-            {bannerImg ? (
+            {bannerImg.length != 0 ? (
               bannerImg.map((item, index) => {
                 return (
                   <div class="item">
@@ -69,12 +70,11 @@ const Mainpart2 = ({ updateLocation }) => {
             ) : (
               <div class="item">
                 <div className="media-img">
-                  <img src={HomePageImg}   />
+                  <Skeleton height={300} variant="rectangular" />
                 </div>
               </div>
             )}
           </OwlCarousel>
-          ;
         </div>
         <div className="main_bottom_bar">
           <div className="main_bottom_bar_1">

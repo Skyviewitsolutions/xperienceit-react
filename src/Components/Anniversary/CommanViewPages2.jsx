@@ -108,7 +108,7 @@ const DinnerCard = (props) => {
 
   const isFavourite = checkWishList[0];
 
-console.log(props , "props here")
+// console.log(props , "props here")
 
   return (
     <>

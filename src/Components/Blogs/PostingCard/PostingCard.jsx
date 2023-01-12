@@ -1,24 +1,41 @@
-import React from 'react';
+import React from "react";
 import "./postingCard.css";
-import CardImg from "../../../assets/images/blogsimg.png"
-import {GiPlainSquare} from "react-icons/gi"
+import CardImg from "../../../assets/images/blogsimg.png";
+import { GiPlainSquare } from "react-icons/gi";
+import HtmlParser from "react-html-parser";
 
+const PostingCard = (props) => {
 
-const PostingCard = () => {
+  const {data , getBlogDetails} = props ;
+
   return (
     <>
-    <div className='row'>
-        <img src={CardImg} alt="" className='mb-2'/>
+      <div className="row postingCrdCont" onClick={() => getBlogDetails(data)}>
+        <img src={data.image_id ? data.image_id : CardImg} alt="" className="mb-2" />
         <div className="col-12 d-flex align-items-center">
-            <h6 className='text-secondary pr-2 fs-6'>ADITI ABROL</h6>
-            <h6 className='text-secondary pr-2 fs-6'><GiPlainSquare size={6}/></h6>
-            <h6 className='text-secondary pr-2 fs-6'>DECEMBER 26, 2022</h6>
-            <h6 className='text-secondary pr-2 fs-6'><GiPlainSquare size={6}/></h6>
-            <h6 className='text-secondary pr-2 fs-6'>LEAVE A COMMENT</h6>
+          <h6 className="text-secondary pr-2 fs-6 text-uppercase">{data.user_person}</h6>
+          <h6 className="text-secondary pr-2 fs-6">
+            <GiPlainSquare size={6} />
+          </h6>
+          <h6 className="text-secondary pr-2 fs-6 text-uppercase">{data.date}</h6>
+          <h6 className="text-secondary pr-2 fs-6">
+            <GiPlainSquare size={6} />
+          </h6>
+          <h6 className="text-secondary pr-2 fs-6 text-uppercase">LEAVE A COMMENT</h6>
         </div>
-    </div>
-    </>
-  )
-}
+        <h3 className="fw-bold my-2 " style={{ width: "80%" }}>
+          {data.title}
+        </h3>
+        <p className="text-secondary my-1 " style={{fontSize : "14px"}}>
+          {HtmlParser(data.content)}
+        </p>
 
-export default PostingCard
+        <button className="blogBtn ">Read More</button>
+        
+      </div>
+     
+    </>
+  );
+};
+
+export default PostingCard;

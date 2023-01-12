@@ -123,10 +123,10 @@ const ProductScreen = () => {
           const notes = res.data.body[0].points_note;
           setNote(notes);
           const price = res.data.body[0].discounted_price;
-          setTotalPrice(res.data.body[0]?.gst_price);
+          setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",",''));
           setPackagePrice(price);
           setDiscountedPrice(res.data.body[0]?.outlay_price)
-          setGstPrice(res.data.body[0]?.gst_price)
+          setGstPrice(res.data.body[0]?.gst_price.replaceAll(",",''))
           setExperienceVideo(res.data.body[0]?.video)
 
         } else if (res.data.success === false) {
@@ -254,7 +254,7 @@ const ProductScreen = () => {
       if (res.data.status === true) {
         const val = res.data.body;
         console.log(val, "review Api here...");
-        setReviews(val);
+        setReviews(val.reverse());
       } else if (res.data.status === false) {
         // toast(res.data.message, { type: "error" });
       }
@@ -336,7 +336,7 @@ const ProductScreen = () => {
 
         <Footer2 />
         <PopupHandler />
-        <ToastContainer />
+        <ToastContainer limit={1}/>
         <Enquiry showEnquiry={showEnquiry} setShowEnquiry={setShowEnquiry} />
       </div>
      

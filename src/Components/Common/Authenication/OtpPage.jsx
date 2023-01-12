@@ -130,9 +130,9 @@ const OtpPage = (props) => {
         </div>
 
         
-        <div className="otp_balloon">
+        {/* <div className="otp_balloon">
           <img src={Balloon} alt="balloon image" />
-        </div>
+        </div> */}
         {isLoading && <Loader />}
         <ToastContainer />
       </div>

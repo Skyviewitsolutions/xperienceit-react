@@ -19,9 +19,15 @@ import FbLogin from "./FbLogin";
 import GmailLogin from "./GmailLogin";
 
 const AuthPopup = (props) => {
-  const { showAuthPopup, setShowAuthPopup, setUserLogedIn, userLogedIn,authScreen,setAuthScreen } =
-    props;
-  
+  const {
+    showAuthPopup,
+    setShowAuthPopup,
+    setUserLogedIn,
+    userLogedIn,
+    authScreen,
+    setAuthScreen,
+  } = props;
+
   const [showLogin, setShowLogin] = useState(true);
 
   const [border, setBorder] = useState({
@@ -51,22 +57,49 @@ const AuthPopup = (props) => {
     <>
       <Modal
         show={showAuthPopup}
-        // aria-labelledby="contained-modal-title-vcenter"
+        aria-labelledby="contained-modal-title-vcenter"
         size="lg"
-        centered
       >
         <div className="auth">
           <div className="auth_logoo">
             <img src={Logo} alt="logo icon" />
           </div>
 
-          {authScreen === "otpScreen" && <OtpPanel setAuthScreen={setAuthScreen} setShowAuthPopup={setShowAuthPopup} setUserLogedIn={setUserLogedIn}/>}
-          {authScreen === "register" && <Register setAuthScreen={setAuthScreen} setShowAuthPopup={setShowAuthPopup} setUserLogedIn={setUserLogedIn}/>}
+          {authScreen === "otpScreen" && (
+            <OtpPanel
+              setAuthScreen={setAuthScreen}
+              setShowAuthPopup={setShowAuthPopup}
+              setUserLogedIn={setUserLogedIn}
+            />
+          )}
+          {authScreen === "register" && (
+            <Register
+              setAuthScreen={setAuthScreen}
+              setShowAuthPopup={setShowAuthPopup}
+              setUserLogedIn={setUserLogedIn}
+            />
+          )}
           {authScreen === "emailPanel" && <EmailPanel />}
-          {authScreen === "forgetPassword" && <ForgatePassword setAuthScreen={setAuthScreen}/>}
-          {authScreen === "changePassword" && <ChangePassword setAuthScreen={setAuthScreen}/>}
-          {authScreen === "loginWithOtp" && <OtpPage setAuthScreen={setAuthScreen} setShowAuthPopup={setShowAuthPopup} setUserLogedIn={setUserLogedIn}/>}
-          {authScreen === "userDetails" && <SignIn setAuthScreen={setAuthScreen} setShowAuthPopup={setShowAuthPopup} setUserLogedIn={setUserLogedIn}/>}
+          {authScreen === "forgetPassword" && (
+            <ForgatePassword setAuthScreen={setAuthScreen} />
+          )}
+          {authScreen === "changePassword" && (
+            <ChangePassword setAuthScreen={setAuthScreen} />
+          )}
+          {authScreen === "loginWithOtp" && (
+            <OtpPage
+              setAuthScreen={setAuthScreen}
+              setShowAuthPopup={setShowAuthPopup}
+              setUserLogedIn={setUserLogedIn}
+            />
+          )}
+          {authScreen === "userDetails" && (
+            <SignIn
+              setAuthScreen={setAuthScreen}
+              setShowAuthPopup={setShowAuthPopup}
+              setUserLogedIn={setUserLogedIn}
+            />
+          )}
 
           {authScreen === "login" && (
             <>
@@ -79,9 +112,9 @@ const AuthPopup = (props) => {
                 </div>
               </div>
               {showLogin ? (
-                <Login  {...props} />
+                <Login {...props} />
               ) : (
-                <Register  setAuthScreen={setAuthScreen}/>
+                <Register setAuthScreen={setAuthScreen} />
               )}
             </>
           )}
@@ -89,23 +122,34 @@ const AuthPopup = (props) => {
           {/* footer part here */}
 
           <div className="otp_footer">
-          <h6  className="d-flex justify-content-between align-items-center"><hr style={{width : "40%"}}/> Or <hr style={{width : "40%"}}/></h6>
-          <div className="otp_footer_images">
-            <GmailLogin />
+            <h6 className="d-flex justify-content-between align-items-center">
+              <hr style={{ width: "40%" }} /> Or <hr style={{ width: "40%" }} />
+            </h6>
+            <div className="otp_footer_images">
+              <div className="socialImgCon">
+                <GmailLogin />
+              </div>
 
-            <FbLogin
-              setShowAuthPopup={setShowAuthPopup}
-              setUserLogedIn={setUserLogedIn}
-            />
-            
-            <img
-              src={Gmail}
-              alt="gmail icon"
-              onClick={() => setAuthScreen("login")}
-              className="googleEmail"
-            />
+              <div className="socialImgCon">
+                <FbLogin
+                  setShowAuthPopup={setShowAuthPopup}
+                  setUserLogedIn={setUserLogedIn}
+                />
+              </div>
+
+              <div className="socialImgCon "  >
+                <img
+                  src={Gmail}
+                  alt="gmail icon"
+                  onClick={() => setAuthScreen("login")}
+                  className="googleEmail p-1"
+                />
+              </div>
+            </div>
           </div>
-        </div>
+
+          <p className="mb-4 text-center" style={{fontSize: 13}}>By Logging in you are agreeing to our <a target="_blank" href="/tnc"><span style={{color: 'rgb(0, 0, 255)', textDecoration: 'underline'}}>Terms and Conditions</span></a> and our <a target="_blank" href="/privacy-policy"><span style={{color: 'rgb(0, 0, 255)', textDecoration: 'underline'}}>Privacy Policy</span></a></p>
+
 
           <div className="auth_cut" onClick={() => setShowAuthPopup(false)}>
             <img src={Cut} alt="cut icon" />

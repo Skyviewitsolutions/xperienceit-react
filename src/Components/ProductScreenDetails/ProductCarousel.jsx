@@ -9,6 +9,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import HomePageImg from "../../assets/images/HomePageimg1.png";
+import Skeleton from "@mui/material/Skeleton";
 
 
 const ProductCarousel = (props) => {
@@ -46,12 +47,12 @@ const ProductCarousel = (props) => {
     <>
       <div className="package-details-banner">
         <OwlCarousel className="owl-theme" {...options} nav>
-          {productBanner ? (
+          {productBanner.length != 0 ? (
             productBanner.map((item, index) => {
               return (
                 <div class="item">
                   <div className="package-col">
-                    <div className="media-img resultbner">
+                    <div className=" resultbner">
                       <img src={item} alt="" />
                     </div>
                   </div>
@@ -60,12 +61,10 @@ const ProductCarousel = (props) => {
             })
           ) : (
             <div class="item">
-              <div className="package-col">
-                <div className="media-img resultbner">
-                  <img src={HomePageImg} alt="" />
+                <div className="media-img">
+                  <Skeleton height={350} variant="rectangular" />
                 </div>
               </div>
-            </div>
           )}
         </OwlCarousel>
       </div>

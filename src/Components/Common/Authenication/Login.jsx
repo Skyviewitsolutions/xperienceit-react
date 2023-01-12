@@ -24,9 +24,7 @@ import "./Social.css";
 import FbLogin from "./FbLogin";
 import GmailLogin from "./GmailLogin";
 
-
 const Login = (props) => {
-  
   const [provider, setProvider] = useState("");
   const [profile, setProfile] = useState("");
   const { setUserLogedIn, setShowAuthPopup, setAuthScreen } = props;
@@ -135,7 +133,6 @@ const Login = (props) => {
   return (
     <>
       <div className="back" onClick={() => setAuthScreen("loginWithOtp")}>
-        {/* <span><MdBackup/></span> */}
         <span>
           <TbArrowBackUp />
         </span>
@@ -185,10 +182,6 @@ const Login = (props) => {
         </div>
 
        
-
-        <div className="auth_balloon">
-          <img src={Balloon} alt="balloon image" />
-        </div>
 
         <ToastContainer />
       </div>

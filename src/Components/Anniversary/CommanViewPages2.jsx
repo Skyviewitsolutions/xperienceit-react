@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CommanViewPages2.css";
 // import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import { generatePath, useHistory } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
 import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+import NoPackages from "../../assets/images/noPackages.png"
 import { useSelector, useDispatch } from "react-redux";
 import { endpoints } from "../../services/endpoints";
-import {toast , ToastContainer} from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
 import axios from "axios";
 
-
 const DinnerCard = (props) => {
-
   const { sub_category_id, sub_category_name } = props;
   const dispatch = useDispatch();
 
@@ -22,7 +21,6 @@ const DinnerCard = (props) => {
   const city = cityLocattion && cityLocattion.name;
 
   const renderToCommanPackage = (data) => {
-
     const name = data.heading;
     const packageName = name.replaceAll(" ", "-");
     const path = generatePath(
@@ -44,24 +42,20 @@ const DinnerCard = (props) => {
     (state) => state.handleWishtListData.wishListArray
   );
 
-  
   const handleFavourite = (data, isFav) => {
-
     const access_token = localStorage.getItem("access_token");
-    
-    if (access_token) {
 
+    if (access_token) {
       const wishListUrl = endpoints.wishlist.updateWishList;
 
       const filterWishList = wishtListArray.filter((itm, indx) => {
         return itm.id !== data.id;
       });
-      
-      
+
       const selectedWishList = wishtListArray.filter((itm, ind) => {
         return itm.id == data.id;
       });
-      console.log(data , "filterwishlist");
+      console.log(data, "filterwishlist");
 
       const daata = {
         id: data.id,
@@ -89,7 +83,7 @@ const DinnerCard = (props) => {
       axios
         .post(wishListUrl, val, { headers: headers })
         .then((res) => {
-          console.log(res , "add wishlist response");
+          console.log(res, "add wishlist response");
           if (res.data.status) {
             dispatch(callWishListData());
           }
@@ -108,7 +102,7 @@ const DinnerCard = (props) => {
 
   const isFavourite = checkWishList[0];
 
-// console.log(props , "props here")
+  // console.log(props , "props here")
 
   return (
     <>
@@ -166,9 +160,15 @@ const DinnerCard = (props) => {
 };
 
 const CommanViewPages2 = (props) => {
-  
-  const { showPackeges, packageName, sub_category_id, sub_category_name } =
-    props;
+  const {
+    showPackeges,
+    packageName,
+    sub_category_id,
+    sub_category_name,
+    loading,
+  } = props;
+
+  const [item, setItem] = useState([1, 2, 3, 4]);
 
   return (
     <>
@@ -186,26 +186,46 @@ const CommanViewPages2 = (props) => {
             </div>
 
             <div className="row comman-card">
-              {showPackeges.map((item, index) => {
-                return (
-                  <>
-                    <DinnerCard
-                      img={item.image_id}
-                      heading={item.title}
-                      prices={item.discounted_price}
-                      outlayprice={item.outlay_price}
-                      discount={item.discount_percnt
-                      }
-                      rating={item.rating}
-                      review={item.review}
-                      key={index.key}
-                      id={item.id}
-                      sub_category_id={sub_category_id}
-                      sub_category_name={sub_category_name}
-                    />
-                  </>
-                );
-              })}
+              {showPackeges.length != 0 &&
+                showPackeges.map((item, index) => {
+                  return (
+                    <>
+                      <DinnerCard
+                        img={item.image_id}
+                        heading={item.title}
+                        prices={item.discounted_price}
+                        outlayprice={item.outlay_price}
+                        discount={item.discount_percnt}
+                        rating={item.rating}
+                        review={item.review}
+                        key={index.key}
+                        id={item.id}
+                        sub_category_id={sub_category_id}
+                        sub_category_name={sub_category_name}
+                      />
+                    </>
+                  );
+                })}
+
+              {loading && (
+                <div class="row comman-card">
+                  {item.map((itm, ind) => {
+                    return (
+                      <>
+                        <div className="col-lg-3 col-md-3 col-12 mb-3">
+                          <Skeleton height={300} variant="rectangular" />
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
+              )}
+
+              {!loading && showPackeges.length == 0 && (<>
+                <div style={{ width: "100%" }} className="my-2">
+                  <img src={NoPackages} alt="" style={{ width: "100%" }} />
+                </div>
+              </>)}
             </div>
           </div>
         </div>

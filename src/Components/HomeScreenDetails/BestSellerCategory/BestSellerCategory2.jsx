@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -11,10 +11,9 @@ import axios from "axios";
 import { endpoints } from "../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../../actions";
-
+import NoPackages from "../../../assets/images/noPackages.png";
 
 const Card = (props) => {
-
   const dispatch = useDispatch();
 
   const pkgLocation = localStorage.getItem("locationDetails");
@@ -25,10 +24,10 @@ const Card = (props) => {
 
   const history = useHistory();
   const renderToHomeData = (data) => {
-  const sub_category_name = title.replaceAll(" ", "-");
-  const name = data.heading;
-  const packageName = name.replaceAll(" ", "-");
-  const path = generatePath(
+    const sub_category_name = title.replaceAll(" ", "-");
+    const name = data.heading;
+    const packageName = name.replaceAll(" ", "-");
+    const path = generatePath(
       "/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id",
       {
         sub_category_name: sub_category_name,
@@ -48,11 +47,9 @@ const Card = (props) => {
   );
 
   const handleFavourite = (data, isFav) => {
-
     const access_token = localStorage.getItem("access_token");
-    
-    if (access_token) {
 
+    if (access_token) {
       const wishListUrl = endpoints.wishlist.updateWishList;
       const filterWishList = wishtListArray.filter((itm, indx) => {
         return itm.id !== data.id;
@@ -88,7 +85,7 @@ const Card = (props) => {
       axios
         .post(wishListUrl, val, { headers: headers })
         .then((res) => {
-          console.log(res , "add wishlist response");
+          console.log(res, "add wishlist response");
           if (res.data.status) {
             dispatch(callWishListData());
           }
@@ -107,10 +104,8 @@ const Card = (props) => {
 
   const isFavourite = checkWishList[0];
 
-
   return (
     <>
-   
       <div class="item">
         <div className="package-col">
           <div className="media-img">
@@ -163,11 +158,10 @@ const Card = (props) => {
   );
 };
 
-
-
 const BestSellerCategory2 = (props) => {
 
   const history = useHistory();
+  const [item, setItem] = useState([1, 2, 3, 4]);
 
   const renderToPackagesDetails = (data) => {
     history.push(`/all_packages_details`, {
@@ -175,7 +169,7 @@ const BestSellerCategory2 = (props) => {
     });
   };
 
-  const { showListData } = props;
+  const { showListData, loading } = props;
   const options = {
     margin: 20,
     responsiveClass: true,
@@ -206,68 +200,93 @@ const BestSellerCategory2 = (props) => {
 
   return (
     <>
-      {showListData.map((item, index) => {
-        return (
-          <div className="all-pack-slider">
-            <div className="package-section-slider common-container">
-              <div className="container-fluid">
-                <div className="title-with-button">
-                  <div className="row">
-                    <div className="title-col">
-                      <h2>
-                        Shop By <span> {item.heading}</span>
-                      </h2>
-                      <div className="more-btn">
-                        <button
-                          className="btn more-btn"
-                          onClick={() => renderToPackagesDetails(item)}
-                        >
-                          View All <BsArrowRightCircleFill />
-                        </button>
+      {!loading &&
+        showListData.map((item, index) => {
+         
+          return (
+            <div className="all-pack-slider">
+              <div className="package-section-slider common-container">
+                <div className="container-fluid">
+                  {item.content && item?.content?.length != 0 && (
+                    <>
+                      <div className="title-with-button">
+                        <div className="row">
+                          <div className="title-col">
+                            <h2>
+                              Shop By <span> {item.heading}</span>
+                            </h2>
+                            <div className="more-btn">
+                              <button
+                                className="btn more-btn"
+                                onClick={() => renderToPackagesDetails(item)}
+                              >
+                                View All <BsArrowRightCircleFill />
+                              </button>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <OwlCarousel
-                  className="owl-theme category"
-                  id="category"
-                  items={5}
-                  loop
-                  margin={10}
-                  dots={false}
-                  {...options}
-                  nav
-                >
-                  {item.content ? (
-                    item.content.map((itmm, idx) => {
-                    
-                      return (
-                        <>
-                          <Card
-                            img={itmm.image_id}
-                            heading={itmm.title}
-                            price={itmm.outlay_price}
-                            discountPrice={itmm.discounted_price}
-                            discount={itmm.discount_percnt}
-                            key={index}
-                            // review={item.review}
-                            rating={itmm.rating}
-                            id={itmm.id}
-                            title={itmm.subcat_name}
-                            titleId={itmm.subcat_id}
-                          />
-                        </>
-                      );
-                    })
-                  ) : (
-                    <h6>Sorry ! No package available</h6>
+                      <OwlCarousel
+                        className="owl-theme category"
+                        id="category"
+                        items={5}
+                        loop
+                        margin={10}
+                        dots={false}
+                        {...options}
+                        nav
+                      >
+                        {item.content.map((itmm, idx) => {
+                          return (
+                            <>
+                              <Card
+                                img={itmm.image_id}
+                                heading={itmm.title}
+                                price={itmm.outlay_price}
+                                discountPrice={itmm.discounted_price}
+                                discount={itmm.discount_percnt}
+                                key={index}
+                                // review={item.review}
+                                rating={itmm.rating}
+                                id={itmm.id}
+                                title={itmm.subcat_name}
+                                titleId={itmm.subcat_id}
+                              />
+                            </>
+                          );
+                        })}
+                      </OwlCarousel>
+                    </>
                   )}
-                </OwlCarousel>
+
+                  {!item.content && (
+                    <div style={{ width: "100%" }} className="my-2">
+                      <img src={NoPackages} alt="" style={{ width: "100%" }} />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+          );
+        })}
+
+      {loading && (
+        <div className="all-pack-slider">
+          <div className="package-section-slider common-container">
+            <div className="container-fluid row">
+              {item.map((itm, ind) => {
+                return (
+                  <>
+                    <div className="col-lg-3 col-md-3 col-12 mb-3">
+                      <Skeleton height={300} variant="rectangular" />
+                    </div>
+                  </>
+                );
+              })}
+            </div>
           </div>
-        );
-      })}
+        </div>
+      )}
     </>
   );
 };

@@ -38,20 +38,21 @@ const Card = (props) => {
 
 const Testimonial2 = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const api = endpoints.home.testimonials;
-
+    setLoading(true);
     axios
       .get(api)
       .then((res) => {
-        // console.log(res , "this is the response");
         if (res.data.status === true) {
           const val = res.data.body;
           setData(val);
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err, "this is the error which we are getting here");
       });
   }, []);
@@ -87,88 +88,95 @@ const Testimonial2 = () => {
       },
     },
   };
+
   const handleSlick = (index) => {
     // alert("slick slider")
   };
+
   return (
     <>
-      <div className="testimonial-pack-slider">
-        <div className="testimonial-section-slider">
-          <div className="container-fluid">
-            <div className="title">
-              <div className="row">
-                <div className="title-col">
-                  <h3>Testimonials</h3>
-                  <h2>Satisfied Clients About Us</h2>
-                </div>
-              </div>
-            </div>
-
-            <div className="row">
-              <div className="col-lg-10 offset-lg-1">
-                <OwlCarousel
-                  className="owl-theme category"
-                  id="category"
-                  items={5}
-                  loop
-                  margin={10}
-                  dots={false}
-                  {...options}
-                  nav
-                >
-                  {data.length != 0 ? (
-                    data.map((item, index) => {
-                      return (
-                        <>
-                          <Card
-                            icon={item.avatar}
-                            review={item.desc}
-                            key={index}
-                            onClick={() => handleSlick(index)}
-                          />
-                        </>
-                      );
-                    })
-                  ) : (
-                    <div class="item">
-                      <div className="">
-                        <Skeleton height={300} variant="rectangular" />
-                      </div>
+      {data.length != 0 && (
+        <div className="testimonial-pack-slider">
+          <div className="testimonial-section-slider">
+            <div className="container-fluid">
+              <>
+                <div className="title">
+                  <div className="row">
+                    <div className="title-col">
+                      <h3>Testimonials</h3>
+                      <h2>Satisfied Clients About Us</h2>
                     </div>
-                  )}
-                </OwlCarousel>
-              </div>
-            </div>
+                  </div>
+                </div>
 
-            <div className="baloon-elements">
-              <div
-                className="left_element"
-                data-aos="flip-left"
-                data-aos-duration="600"
-              >
-                <img
-                  src={Balloon1}
-                  alt="balloons"
-                  data-aos="fade-up"
-                  data-aos-duration="600"
-                />
-              </div>
-              <div
-                className="right_element"
-                data-aos="flip-left"
-                data-aos-duration="600"
-              >
-                <img
-                  src={Balloon2}
-                  alt="balloons"
-                  data-aos="fade-up"
-                  data-aos-duration="600"
-                />
-              </div>
+                <div className="row">
+                  <div className="col-lg-10 offset-lg-1">
+                    <OwlCarousel
+                      className="owl-theme category"
+                      id="category"
+                      items={5}
+                      loop
+                      margin={10}
+                      dots={false}
+                      {...options}
+                      nav
+                    >
+                      {data.length != 0 &&
+                        data.map((item, index) => {
+                          return (
+                            <>
+                              <Card
+                                icon={item.avatar}
+                                review={item.desc}
+                                key={index}
+                                onClick={() => handleSlick(index)}
+                              />
+                            </>
+                          );
+                        })}
+                      {/* 
+                      {loading && (
+                        <div class="item">
+                          <div className="">
+                            <Skeleton height={300} variant="rectangular" />
+                          </div>
+                        </div>
+                      )} */}
+                    </OwlCarousel>
+                  </div>
+                </div>
+
+                <div className="baloon-elements">
+                  <div
+                    className="left_element"
+                    data-aos="flip-left"
+                    data-aos-duration="600"
+                  >
+                    <img
+                      src={Balloon1}
+                      alt="balloons"
+                      data-aos="fade-up"
+                      data-aos-duration="600"
+                    />
+                  </div>
+                  <div
+                    className="right_element"
+                    data-aos="flip-left"
+                    data-aos-duration="600"
+                  >
+                    <img
+                      src={Balloon2}
+                      alt="balloons"
+                      data-aos="fade-up"
+                      data-aos-duration="600"
+                    />
+                  </div>
+                </div>
+              </>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

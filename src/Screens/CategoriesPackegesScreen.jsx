@@ -22,6 +22,7 @@ const CategoriesPackegesScreen = () => {
   const [taskBarData, setTaskBarData] = useState([]);
   const [updateLocation, setUpdateLocation] = useState(false);
   const [showCategoryPack, setShowCategoryPack] = useState([]);
+  const [loading , setLoading ] = useState(false);
   const location = useLocation();
 
   const { category_name, category_id,package_child_id } = useParams();
@@ -29,19 +30,22 @@ const CategoriesPackegesScreen = () => {
 
   useEffect(() => {
 
+    setLoading(true)
+
     const api = `https://admin.experienceit.in/api/getPackageByCategory?package_parent_id=${category_id}`;
     
     // const api = `https://admin.experienceit.in/api/getPackageByCategory?package_child=${packageChildId}`;
     axios
       .get(api)
       .then((res) => {
-        console.log(res,'Category Api  All Packages');
+        setLoading(false)
         if (res.data.status === true) {
           const val = res.data.body;
           setShowCategoryPack(val);
         }
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err, "Category Api All Packages Failed");
       });
   }, [category_id]);
@@ -66,6 +70,7 @@ const CategoriesPackegesScreen = () => {
           categoryName={category_name}
           category_id={category_id}
           package_child_id={package_child_id}
+          loading={loading}
         />
 
         <Banner2/>

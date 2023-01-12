@@ -9,8 +9,8 @@
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-top: 6px solid var(--pink);
-   top:40px
-   
+   top:40px;
+   z-index: 10001 !important;
 }
 
 
@@ -18,6 +18,7 @@
     background-color: var(--pink)!important;
 color: white;
 }
+
 .auth_logoo{
     position: absolute;
     top: 0px;
@@ -34,9 +35,9 @@ color: white;
 
 .auth_logoo img{
    width: 80px;
- 
    height:  80px;
 }
+
 .auth_logo{
     position: absolute;
     top: 0px;
@@ -51,6 +52,32 @@ color: white;
     background: white;
 }
 
+.socialImgCon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+}
+
+img.googleIcon {
+    top: 0px !important;
+    left: 2px !important;
+}
+
+button.kep-login-facebook.metro svg {
+    cursor: pointer;
+    position: relative;
+    right: 16px !important;
+    font-size: 36px !important;
+    bottom: 12px !important;
+}
+
 .auth_logo img{
    width: 80px;
  
@@ -60,10 +87,10 @@ color: white;
 .auth_header{
     width: 60%;
     display: flex;
-    margin: 40px auto;
+    margin: 23px auto;
     justify-content: space-around;
     align-items: center;
-    margin-top: 70px;
+    margin-top: 45px;
     cursor: pointer;
 }
 
@@ -163,7 +190,7 @@ cursor: pointer;
 
 .login{
     width: 100%;
-    margin-top: -50px;
+    margin-top: -53px;
 }
 
 .back {
@@ -171,7 +198,7 @@ cursor: pointer;
    
     left: 16px;
     font-size: 26px;
-    bottom: 151px;
+    bottom: 110px;
    color: black;
     text-decoration: underline;
     cursor: pointer;
@@ -182,7 +209,7 @@ cursor: pointer;
 .register{
     width: 78%;
     margin: auto;
-    margin-top: -50px;
+    margin-top: -60px;
 }
 .regBttn{
 width: 95%;

@@ -3,7 +3,6 @@
     margin-top: -25px;
 }
 span.signUpLogin {
-
     position: relative;
     top: 1px;
 }
@@ -52,6 +51,7 @@ h6.RegPageSignUp {
     width: 70%;
     margin: auto;
     margin: 5px auto;
+    margin-bottom: 15px;
 }
 
 .otp_footer_images img{
@@ -62,11 +62,7 @@ h6.RegPageSignUp {
     width: 90px;
 }
 
-.otp_footer{
-    width: 70%;
-    margin: auto;
-    margin: 5px auto;
-}
+
 
 .otp_footer h6{
     text-align: center;

@@ -18,6 +18,8 @@ const OfferScreen = () => {
   const [taskBarData, setTaskBarData] = useState([]);
   const [offers, setOffers] = useState([]);
   const [updateLocation, setUpdateLocation] = useState(false);
+  const [loading , setLoading] = useState(false)
+
   const location = useLocation();
 
   const { offerName, offerId } = useParams();
@@ -25,17 +27,20 @@ const OfferScreen = () => {
   const api = `https://admin.experienceit.in/api/offers-by-package?offer_id=${offerId}`;
 
   useEffect(() => {
+
+    setLoading(true);
+
     axios
       .get(api)
       .then((res) => {
-        console.log(res, "Offers Api  All Packages");
+        setLoading(false)
         if (res.data.status === true) {
           const val = res.data.body[0].services;
-          console.log(val, "ofersmjbdcmdcjb");
           setOffers(val);
         }
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err, "offers Api  data not found");
       });
   }, [offerId]);
@@ -62,6 +67,7 @@ const OfferScreen = () => {
           offerName={offerName}
           offerId={offerId}
           updateLocation={updateLocation}
+          loading={loading}
         />
         
         <Testimonial2 />

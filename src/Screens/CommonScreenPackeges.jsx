@@ -15,6 +15,7 @@ const CommonScreenPakeges = () => {
   const [taskBarData, setTaskBarData] = useState([]);
   const [updateLocation, setUpdateLocation] = useState(false);
   const [showPackeges, setShowPackeges] = useState([]);
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   // const packges = location.state.allpackeges;
   // console.log(packges, "allpackeges");
@@ -22,27 +23,39 @@ const CommonScreenPakeges = () => {
   // console.log(packgesID,"packages available here...")
   // const packageName=packges.name;
 
-  const { sub_category_id, sub_category_name , child_category_id , child_category_name } = useParams();
+  const {
+    sub_category_id,
+    sub_category_name,
+    child_category_id,
+    child_category_name,
+  } = useParams();
   const packgesID = child_category_id;
 
   const packageName = child_category_name;
+  
   useEffect(() => {
     const api = `https://admin.experienceit.in/api/getPackageByChildCategory?package_child_id=${packgesID}`;
     // const api = `https://admin.experienceit.in/api/getPackageBySubCategory?package_subcat_id=${packgesID}`;
+
+    setLoading(true);
+
     axios
       .get(api)
       .then((res) => {
         if (res.data.status === true) {
+          setLoading(false);
           const val = res.data.body;
           console.log(val, "Package Response hgjdgSKLdsflg;");
           setShowPackeges(val);
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.error(err, "Package Response Error");
       });
+
   }, [packgesID]);
-  
+
   return (
     <>
       <div className="Aniversary_screen">
@@ -62,6 +75,7 @@ const CommonScreenPakeges = () => {
           packageName={packageName}
           sub_category_id={sub_category_id}
           sub_category_name={sub_category_name}
+          loading={loading}
         />
         <Footer2 />
       </div>

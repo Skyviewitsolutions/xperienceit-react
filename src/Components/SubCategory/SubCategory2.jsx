@@ -7,11 +7,11 @@ import axios from "axios";
 import { endpoints } from "../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
-
-
+import NoPackages from "../../assets/images/noPackages.png";
+import { useState } from "react";
 
 const SubCategoryCard = (props) => {
-    
+
   const { subCatePackName, subCategory_id } = props;
   const dispatch = useDispatch();
 
@@ -21,9 +21,7 @@ const SubCategoryCard = (props) => {
   const cityLocattion = JSON.parse(pkgLocation);
   const city = cityLocattion && cityLocattion.name;
 
-
   const renderToProduct = (data) => {
-
     const name = data.heading;
     const packageName = name.replaceAll(" ", "-");
     const path = generatePath(
@@ -36,7 +34,7 @@ const SubCategoryCard = (props) => {
         package_id: data.id,
       }
     );
-    
+
     history.push(path);
   };
 
@@ -45,13 +43,10 @@ const SubCategoryCard = (props) => {
     (state) => state.handleWishtListData.wishListArray
   );
 
-  
   const handleFavourite = (data, isFav) => {
-
     const access_token = localStorage.getItem("access_token");
-    
-    if (access_token) {
 
+    if (access_token) {
       const wishListUrl = endpoints.wishlist.updateWishList;
       const filterWishList = wishtListArray.filter((itm, indx) => {
         return itm.id !== data.id;
@@ -87,7 +82,7 @@ const SubCategoryCard = (props) => {
       axios
         .post(wishListUrl, val, { headers: headers })
         .then((res) => {
-          console.log(res , "add wishlist response");
+          console.log(res, "add wishlist response");
           if (res.data.status) {
             dispatch(callWishListData());
           }
@@ -105,7 +100,6 @@ const SubCategoryCard = (props) => {
   });
 
   const isFavourite = checkWishList[0];
-
 
   return (
     <>
@@ -162,8 +156,9 @@ const SubCategoryCard = (props) => {
 };
 
 const SubCategory2 = (props) => {
-  
-  const { subCatePack, subCatePackName, subCategory_id } = props;
+
+  const { subCatePack, subCatePackName, subCategory_id, loading } = props;
+  const [item , setItem] = useState([1,2,3,4])
 
   return (
     <>
@@ -186,7 +181,7 @@ const SubCategory2 = (props) => {
                 </div>
               </div>
             </div>
-            {subCatePack.length != 0 ? (
+            {subCatePack.length != 0 && (
               <div className="row comman-card">
                 {subCatePack.map((item, index) => {
                   return (
@@ -208,12 +203,28 @@ const SubCategory2 = (props) => {
                   );
                 })}
               </div>
-            ) : (
-              <h5
-                style={{ marginLeft: "40px", color: "grey", marginTop: "20px" }}
-              >
-                Sorry no package available !
-              </h5>
+            )}
+
+            {loading && (
+              <div class="row comman-card">
+                {item.map((itm, ind) => {
+                  return (
+                    <>
+                      <div className="col-lg-3 col-md-3 col-12 mb-3">
+                        <Skeleton height={300} variant="rectangular" />
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            )}
+
+            {!loading && subCatePack.length == 0 && (
+              <>
+                <div style={{ width: "100%" }} className="my-2">
+                  <img src={NoPackages} alt="" style={{ width: "100%" }} />
+                </div>
+              </>
             )}
           </div>
         </div>

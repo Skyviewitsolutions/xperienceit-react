@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Star from "./star.svg";
 import "./CategoriesPackeges.css";
@@ -10,7 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
 import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import axios from "axios";
-
+import NoPackages from "../../assets/images/noPackages.png"
 
 const CategoryCard = (props) => {
 
@@ -23,7 +23,6 @@ const CategoryCard = (props) => {
 
   const { categoryName, category_id } = props;
 
-  
   //  checking favourite package ;
   const wishtListArray = useSelector(
     (state) => state.handleWishtListData.wishListArray
@@ -89,12 +88,11 @@ const CategoryCard = (props) => {
 
   const isFavourite = checkWishList[0];
 
-
   const renderToProduct = (data) => {
-    console.log(data, "data here")
+    console.log(data, "data here");
     const name = data.title;
-    const subCatName = data.subcat_name
-    const subCategoryName = subCatName.replaceAll(" ","-")
+    const subCatName = data.subcat_name;
+    const subCategoryName = subCatName.replaceAll(" ", "-");
     const packageName = name.replaceAll(" ", "-");
     const path = generatePath(
       "/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id",
@@ -111,7 +109,6 @@ const CategoryCard = (props) => {
   };
   return (
     <>
-    
       <div class="col-lg-3 col-md-6 col-12">
         <div className="package-col">
           <div className="media-img coman-img">
@@ -153,7 +150,12 @@ const CategoryCard = (props) => {
 
                 <s>₹{props.outlayprice}</s>
               </h4>
-              <button className="btn" onClick={() => renderToProduct(props.data)}>Book Now</button>
+              <button
+                className="btn"
+                onClick={() => renderToProduct(props.data)}
+              >
+                Book Now
+              </button>
             </div>
           </div>
         </div>
@@ -162,11 +164,9 @@ const CategoryCard = (props) => {
   );
 };
 
-
 const CategoriesPackeges = (props) => {
-
-  const { showCategoryPack, categoryName, category_id } = props;
-
+  const { showCategoryPack, categoryName, category_id, loading } = props;
+  const [item, setItem] = useState([1, 2, 3, 4]);
   return (
     <>
       <div className="all-pack-slider inner-row-package">
@@ -188,10 +188,10 @@ const CategoriesPackeges = (props) => {
                 </div>
               </div>
             </div>
-            {showCategoryPack.length != 0 ? (
+            {showCategoryPack.length != 0 && (
               <div className="row comman-card">
                 {showCategoryPack.map((item, index) => {
-                  console.log(item)
+                  console.log(item);
                   return (
                     <>
                       <CategoryCard
@@ -211,12 +211,28 @@ const CategoriesPackeges = (props) => {
                   );
                 })}
               </div>
-            ) : (
-              <h5
-                style={{ marginLeft: "40px", color: "grey", marginTop: "20px" }}
-              >
-                Sorry no package available !
-              </h5>
+            )}
+
+            {loading && (
+              <div class="row comman-card">
+                {item.map((itm, ind) => {
+                  return (
+                    <>
+                      <div className="col-lg-3 col-md-3 col-12 mb-3">
+                        <Skeleton height={300} variant="rectangular" />
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+            )}
+
+            {!loading && showCategoryPack.length == 0 && (
+              <>
+                <div style={{ width: "100%" }} className="my-2">
+                  <img src={NoPackages} alt="" style={{ width: "100%" }} />
+                </div>
+              </>
             )}
           </div>
         </div>

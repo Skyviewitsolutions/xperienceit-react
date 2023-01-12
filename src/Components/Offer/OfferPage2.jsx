@@ -1,14 +1,14 @@
-import React from "react";
+import React , {useState} from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { useHistory, generatePath } from "react-router-dom";
-import { AiOutlineStar, AiOutlineHeart , AiTwotoneHeart } from "react-icons/ai";
+import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import "./OfferPage2.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { endpoints } from "../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
-
+import NoPackages from "../../assets/images/noPackages.png"
 
 const OfferCard = (props) => {
 
@@ -35,19 +35,15 @@ const OfferCard = (props) => {
     history.push(path);
   };
 
-   //  checking favourite package ;
-   const wishtListArray = useSelector(
+  //  checking favourite package ;
+  const wishtListArray = useSelector(
     (state) => state.handleWishtListData.wishListArray
   );
 
-  
-
   const handleFavourite = (data, isFav) => {
-
     const access_token = localStorage.getItem("access_token");
-    
-    if (access_token) {
 
+    if (access_token) {
       const wishListUrl = endpoints.wishlist.updateWishList;
       const filterWishList = wishtListArray.filter((itm, indx) => {
         return itm.id !== data.id;
@@ -57,7 +53,7 @@ const OfferCard = (props) => {
         return itm.id == data.id;
       });
 
-      console.log(data , "data here");
+      console.log(data, "data here");
 
       const daata = {
         id: data.id,
@@ -85,7 +81,7 @@ const OfferCard = (props) => {
       axios
         .post(wishListUrl, val, { headers: headers })
         .then((res) => {
-          console.log(res , "add wishlist response");
+          console.log(res, "add wishlist response");
           if (res.data.status) {
             dispatch(callWishListData());
           }
@@ -114,7 +110,7 @@ const OfferCard = (props) => {
             ) : (
               <Skeleton height={250} variant="rectangular" />
             )}
-             <div className="wishlist">
+            <div className="wishlist">
               <span>
                 {isFavourite?.is_fav == "true" ? (
                   <AiTwotoneHeart
@@ -157,10 +153,9 @@ const OfferCard = (props) => {
   );
 };
 
-
 const OfferPage2 = (props) => {
-
-  const { offers , offerName , offerId } = props ;
+  const { offers, offerName, offerId, loading } = props;
+  const [item , setItem] = useState([1,2,3,4])
 
   return (
     <>
@@ -184,24 +179,51 @@ const OfferPage2 = (props) => {
             </div>
 
             <div className="row comman-card">
-              {offers.map((item, index) => {
-                return (
-                  <>
-                    <OfferCard
-                      img={item.image_id}
-                      heading={item.title}
-                      prices={item.outlay_price}
-                      discount={item.discounted_price}
-                      rating={item.rating}
-                      key={index.key}
-                      id={item.id}
-                      offerName={offerName}
-                      offerId={offerId}
-                      data={item}
-                    />
-                  </>
-                );
-              })}
+              {offers.length != 0 &&
+                offers.map((item, index) => {
+                  return (
+                    <>
+                      <OfferCard
+                        img={item.image_id}
+                        heading={item.title}
+                        prices={item.outlay_price}
+                        discount={item.discounted_price}
+                        rating={item.rating}
+                        key={index.key}
+                        id={item.id}
+                        offerName={offerName}
+                        offerId={offerId}
+                        data={item}
+                      />
+                    </>
+                  );
+                })}
+
+              {loading && (
+                <div class="row comman-card">
+                  {item.map((itm, ind) => {
+                    return (
+                      <>
+                        <div className="col-lg-3 col-md-3 col-12 mb-3">
+                          <Skeleton height={300} variant="rectangular" />
+                        </div>
+                      </>
+                    );
+                  })}
+
+                  {!loading && offers.length == 0 && (
+                    <>
+                      <div style={{ width: "100%" }} className="my-2">
+                        <img
+                          src={NoPackages}
+                          alt=""
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

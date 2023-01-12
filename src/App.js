@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useEffect} from "react";
 import HomeScreen from "./Screens/HomeScreen";
 import BirthdayScreen from "./Screens/BirthdayScreen";
 import ProductScreen from "./Screens/ProductScreen";
@@ -75,7 +75,9 @@ const analytics = getAnalytics(app);
     }
   }
 
-  
+ 
+
+
   return (<>
     <div className="App">
       <Router>

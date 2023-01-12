@@ -11,7 +11,9 @@ import RightArrow from "./TaskBarImages/rightarrow.svg";
 import HomePageImg from "../../../assets/images/HomePageimg1.png";
 import { endpoints } from "../../../services/endpoints";
 
+
 const Mainpart2 = ({ updateLocation }) => {
+
   const dispatch = useDispatch();
   const [showXperienceSelect, setShowXperienceSelect] = useState(false);
   const [bannerImg, setBannerImg] = useState([]);

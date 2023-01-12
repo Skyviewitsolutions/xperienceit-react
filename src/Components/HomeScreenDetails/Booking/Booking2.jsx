@@ -60,6 +60,7 @@ const Card = (props) => {
 };
 
 const Booking2 = (props) => {
+
   const [filterCategoryData, setFilterCategoryData] = useState([]);
   const [item, setItem] = useState([1, 2, 3, 4, 5, ]);
   const [loading, setLoading] = useState(false);
@@ -136,6 +137,8 @@ const Booking2 = (props) => {
 
   return (
     <>
+
+    {filterCategoryData.length != 0 && 
       <div className="category-section-slider common-container">
         <div className="container-fluid">
           <Carousel breakPoints={breakPoints} className="carousel_container">
@@ -176,7 +179,7 @@ const Booking2 = (props) => {
             )}
           </Carousel>
         </div>
-      </div>
+      </div>}
     </>
   );
 };

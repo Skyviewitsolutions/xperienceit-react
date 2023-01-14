@@ -47,6 +47,13 @@ const UpcomingBooking = () => {
     getUpcomingBookingList();
   },[]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+  
   return (
     <>
     <div className="homeScreen">
@@ -62,7 +69,7 @@ const UpcomingBooking = () => {
       </header>
       <UpcomingComp allBookings={allBookings} getUpcomingBookingList={getUpcomingBookingList}/>
     </div>
-    <StickyMenu/>
+   <StickyMenu/>
     </>
   );
 };

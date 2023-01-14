@@ -28,7 +28,12 @@ const SubCategoryScreen = () => {
   // const subCategoryPack=location.state.subcatData;
   // const subCategPackId=subCategoryPack.id;
   // const subCatePackName=subCategoryPack.name;
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const { subCategory_name, subCategory_id } = useParams();
 
   useEffect(() => {

@@ -183,7 +183,7 @@ const WishlistData = ({wishtListArray}) => {
     <>
       <div className="all-pack-slider inner-row-package">
         <div className="package-section-slider common-container">
-          <div className="container-fluid">
+          <div className="container-fluid whishlistRow">
             <div className="title-with-button">
               <div className="row">
                 <div className="title-col">

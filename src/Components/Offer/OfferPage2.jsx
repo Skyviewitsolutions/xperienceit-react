@@ -171,7 +171,7 @@ const OfferPage2 = (props) => {
                         color: "var(--pink)",
                       }}
                     >
-                      {offerName}
+                      {offerName.replaceAll('_'," ")}
                     </span>
                   </h2>
                 </div>

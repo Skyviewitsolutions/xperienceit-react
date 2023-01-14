@@ -140,8 +140,9 @@ const Card = (props) => {
               <h5>
                 <span>{props.discount}% off</span>
               </h5>
+              
               <div className="rating">
-                <span>{props?.rating}</span>
+                <span>{props.rating}</span>
                 <AiOutlineStar />
               </div>
             </div>

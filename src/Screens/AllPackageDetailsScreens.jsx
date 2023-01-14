@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import AllPackagesDetails from "../Components/AllPackagesDetails/AllPackagesDetails";
 import Footer2 from "../Components/Common/Footer/Footer2";
 import Navebar3 from "../Components/Common/Navbar/Navebar3";
@@ -17,7 +17,12 @@ const AllPackageDetailsScreens = () => {
   const [taskBarData, setTaskBarData] = useState([]);
   const cityLocattion = JSON.parse(pkgLocation);
   const city = cityLocattion && cityLocattion.name;
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <>
       <div className="AllPkgDetails_Screen">

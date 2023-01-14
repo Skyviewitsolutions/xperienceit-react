@@ -22,7 +22,6 @@ import StickyMenu from "../Components/Common/Navbar/StickyMenu";
 import Booking from "../Components/HomeScreenDetails/Booking/Booking";
 
 const HomeScreen = () => {
-  
   const [showListData, setShowListData] = useState([]);
   const [showSideBar, setShowSideBar] = useState(false);
   const [updateLocation, setUpdateLocation] = useState(false);
@@ -41,20 +40,20 @@ const HomeScreen = () => {
       "Content-Type": "application/json; charset=utf-8",
     };
 
-    setLoading(true)
+    setLoading(true);
 
     if (cityID) {
       axios
         .post(api, { location_id: cityID, headers: headers })
         .then((res) => {
-         setLoading(false)
+          setLoading(false);
           if (res.data.status === true) {
             const val = res.data.body;
             setShowListData(val);
           }
         })
         .catch((err) => {
-          setLoading(false)
+          setLoading(false);
           console.log(err, " home Screen Listed Api data not found");
         });
     }
@@ -91,6 +90,13 @@ const HomeScreen = () => {
     }
   }, [wishListState]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <>
       <div className="homeScreen">
@@ -111,7 +117,7 @@ const HomeScreen = () => {
         {/* <Booking updateLocation={updateLocation}/> */}
         <Booking2 updateLocation={updateLocation} />
         <BestSeller2 />
-        <BestSellerCategory2 showListData={showListData} loading={loading}/>
+        <BestSellerCategory2 showListData={showListData} loading={loading} />
         <Banner2 />
         <TourPanel2 />
         <Testimonial2 />

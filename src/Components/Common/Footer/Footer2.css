@@ -7,9 +7,10 @@ footer.section.footer_section {
 }
 .footer_section h4 {
     font-size: 25px;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 20px;
     color: #fff;
+    text-transform: capitalize;
 }
 .footer_section .footer_col.quick_links ul {
     padding-left: 0px;

@@ -2,7 +2,6 @@ import React from "react";
 import "./ProductStickyBar.css";
 
 const ProductStickBar = (props) => {
-
   const {
     inclusions,
     Overviews,
@@ -11,6 +10,9 @@ const ProductStickBar = (props) => {
     packagePrice,
     reviews,
     discountedPrice,
+    experienceVideo,
+    exclusion,
+    titleContent,
   } = props;
 
   return (
@@ -32,29 +34,32 @@ const ProductStickBar = (props) => {
             <a class="navbar-brand" href="#"></a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto mb-2 mb-md-0 ml-5 product_Sticky_contant">
-                <li class="nav-item active" onClick={Overviews}>
-                  <a class="nav-link" aria-current="page" >
-                    Overview
-                  </a>
-                </li>
-                <li class="nav-item active" onClick={inclusions}>
-                  <a class="nav-link" >
-                    Exclusions
-                  </a>
-                </li>
+                {titleContent && (
+                  <li class="nav-item active" onClick={Overviews}>
+                    <a class="nav-link" aria-current="page">
+                      Overview
+                    </a>
+                  </li>
+                )}
+                {exclusion && (
+                  <li class="nav-item active" onClick={inclusions}>
+                    <a class="nav-link">Exclusions</a>
+                  </li>
+                )}
                 <li class="nav-item active" onClick={review}>
-                  <a class="nav-link" >
-                    Review
-                  </a>
+                  <a class="nav-link">Review</a>
                 </li>
-                <li class="nav-item active" onClick={showVideo}>
-                  <a class="nav-link active" >
-                    Video
-                  </a>
-                </li>
+                {experienceVideo && (
+                  <li class="nav-item active" onClick={showVideo}>
+                    <a class="nav-link active">Video</a>
+                  </li>
+                )}
               </ul>
             </div>
-            <span className="stickyPackagePrice">Packages Price</span>
+            <span className="stickyPackagePrice">
+              Packages Price : {props.packagePrice}/
+              <s style={{color:"#e1be48"}}>{props.discountedPrice}</s>
+            </span>
           </div>
         </nav>
       </div>

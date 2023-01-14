@@ -37,6 +37,13 @@ const AllPackagesScreen=()=>{
 
      },[])
 
+     useEffect(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }, []);
+
     return(
         <>
     <div className="AllPackges_Screen">

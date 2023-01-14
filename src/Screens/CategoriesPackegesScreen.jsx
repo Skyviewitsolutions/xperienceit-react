@@ -50,6 +50,14 @@ const CategoriesPackegesScreen = () => {
       });
   }, [category_id]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
+
   return (
     <>
       <div className="Category_screen">

@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import Skeleton from "@mui/material/Skeleton";
+import './pastcomingcomp.css'
 const PastComingcomp = (props) => {
 
   const { allBookings } = props;
@@ -9,8 +10,8 @@ const PastComingcomp = (props) => {
     <>
 <div className="all-pack-slider inner-row-package">
 
-<div className="package-section-slider common-container">
-    <div className="container-fluid">
+<div className="package-section-slider common-container pastBokingMain">
+    <div className="container-fluid pastBookingContainer">
         <div className="title-with-button">
             <div className="row">
                 <div className="title-col">

@@ -11,14 +11,12 @@ import OfferPage2 from "../Components/Offer/OfferPage2";
 import Testimonial2 from "../Components/HomeScreenDetails/Testimonial/Testimonial2";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
 
-
 const OfferScreen = () => {
-
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
   const [offers, setOffers] = useState([]);
   const [updateLocation, setUpdateLocation] = useState(false);
-  const [loading , setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const location = useLocation();
 
@@ -27,28 +25,33 @@ const OfferScreen = () => {
   const api = `https://admin.experienceit.in/api/offers-by-package?offer_id=${offerId}`;
 
   useEffect(() => {
-
     setLoading(true);
 
     axios
       .get(api)
       .then((res) => {
-        setLoading(false)
+        setLoading(false);
         if (res.data.status === true) {
           const val = res.data.body[0].services;
           setOffers(val);
         }
       })
       .catch((err) => {
-        setLoading(false)
+        setLoading(false);
         console.log(err, "offers Api  data not found");
       });
   }, [offerId]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <>
       <div className="OfferScreens">
-
         <Navebar3
           updateLocation={updateLocation}
           setUpdateLocation={setUpdateLocation}
@@ -61,7 +64,7 @@ const OfferScreen = () => {
           updateLocation={updateLocation}
           setTaskBarData={setTaskBarData}
         />
-        
+
         <OfferPage2
           offers={offers}
           offerName={offerName}
@@ -69,7 +72,7 @@ const OfferScreen = () => {
           updateLocation={updateLocation}
           loading={loading}
         />
-        
+
         <Testimonial2 />
         <Services2 />
         <Footer2 />

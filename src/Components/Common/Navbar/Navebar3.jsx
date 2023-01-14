@@ -127,6 +127,7 @@ const Navebar3 = (props) => {
               for (var j = 0; j < chldCategory.child_category.length; j++) {
                 const ddd = chldCategory.child_category[j];
                 if (ddd) {
+                  console.log(ddd , "ddd ")
                   childCateryArry.push(ddd);
                 }
               }
@@ -184,7 +185,7 @@ const Navebar3 = (props) => {
 
   const handleGifts = () => {
     const path = generatePath(
-      "/experiences/:location/:category_name/:category_id",
+      "/experiences/:location/category/:category_name/:category_id",
       {
         category_name: "Gifts-&-Surprises",
         location: selectedLocation.name,
@@ -572,7 +573,7 @@ const Navebar3 = (props) => {
           </div>
         </div>
       </div> */}
-      <StickyMenu handleGifts={handleGifts} />
+      {/* <StickyMenu handleGifts={handleGifts} /> */}
 
       {/* Marriage form */}
 

@@ -38,6 +38,7 @@ const WishlistScreen = () => {
     (state) => state.handleWishtListData.status
   );
 
+ 
    useEffect(() => {
     
     const allWishtListUrl = endpoints.wishlist.allWishtList;
@@ -89,7 +90,12 @@ const WishlistScreen = () => {
 
   }, [wishListState]);
 
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
  
  
@@ -111,7 +117,7 @@ const WishlistScreen = () => {
           
         </header>
     </div>
-    {/* <StickyMenu/> */}
+   <StickyMenu/>
     </>
   )
 }

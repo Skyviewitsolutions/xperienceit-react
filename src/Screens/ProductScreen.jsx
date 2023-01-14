@@ -32,11 +32,11 @@ const ProductScreen = () => {
   const [arrangment, setArrangment] = useState("");
   const [exclusion, setExclusion] = useState("");
   const [note, setNote] = useState("");
-  const [productRating, setProductRating] = useState();
+  const [productRating, setProductRating] = useState("");
   const [pincode, setPincode] = useState([]);
   const [timeSlot, setTimeSlot] = useState([]);
-  const [offerAmount, setOfferAmount] = useState(0);
-  const [deliveryCharge, setDeliveryCharge] = useState(0);
+  const [offerAmount, setOfferAmount] = useState();
+  const [deliveryCharge, setDeliveryCharge] = useState();
   const [showEnquiry, setShowEnquiry] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTimeSlot, setSelecetedTimeSlot] = useState("");
@@ -51,6 +51,7 @@ const ProductScreen = () => {
   const [discountedPrice, setDiscountedPrice] = useState(0);
   const [gstPrice, setGstPrice] = useState(0);
   const [reviews, setReviews] = useState([]);
+  const [allReviews,setAllReviews]=useState([]);
   const history = useHistory();
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
@@ -364,7 +365,7 @@ const ProductScreen = () => {
         <ToastContainer limit={1} />
         <Enquiry showEnquiry={showEnquiry} setShowEnquiry={setShowEnquiry} />
       </div>
-     
+     <StickyMenu/>
     </>
   );
   }

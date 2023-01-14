@@ -1,6 +1,6 @@
 // This is the birthday gifts screen which we are going to create ;
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 // import Navbar2 from "../Components/Common/Navbar/Navbar2";
 import TaskBar from "../Components/HomeScreenDetails/TaskBar/TaskBar";
 import BirthdayBanner from "../Components/BirthdayGiftsDetails/BirthdayBanner";
@@ -20,6 +20,13 @@ const BirthdayGiftsScreen = () => {
   const [updateLocation , setUpdateLocation] = useState(false);
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <>
       <div className="birthdayGifts">

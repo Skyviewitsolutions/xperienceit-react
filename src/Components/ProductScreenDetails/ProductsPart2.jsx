@@ -164,7 +164,7 @@ const ProductPart2 = (props) => {
     if (val.length != 6) {
       setFilteredPincodeNumbers(pincode);
       setTimeSlot([]);
-      setAdditionalCharge(0);
+      setAdditionalCharge();
       setPincodeAvailableText(false);
       setSelecetedTimeSlot("");
     }
@@ -218,6 +218,8 @@ const ProductPart2 = (props) => {
   const showVideo = () => {
     videoRef.current.focus();
   };
+
+  console.log(props.exclusion , "exclusion")
 
   return (
     <>
@@ -278,7 +280,7 @@ const ProductPart2 = (props) => {
                   {cancellationPolicy && (
                     <div className="product_cancellation common-card">
                       <h5>Cancellation Policy:</h5>
-                      <div className="product_cancellation_text">
+                      <div className="product_cancellation_text cancellationPolicy">
                         <h6>
                           {cancellationPolicy &&
                             parse(props.cancellationPolicy)}
@@ -289,7 +291,7 @@ const ProductPart2 = (props) => {
                   {refundPolicy && (
                     <div className="product_cancellation common-card">
                       <h5>Refund Policy:</h5>
-                      <div className="product_cancellation_text">
+                      <div className="product_cancellation_text refundPolicy">
                         <h6>{refundPolicy && parse(props.refundPolicy)}</h6>
                       </div>
                     </div>
@@ -298,8 +300,8 @@ const ProductPart2 = (props) => {
                   {note && (
                     <div className="product_cancellation common-card">
                       <h5>Need To Know</h5>
-                      <div className="product_cancellation_text">
-                        <h6>{note && parse(props.note)}</h6>
+                      <div className="product_cancellation_text needToKnowText">
+                        <h6 className="needToKnow">{note && parse(props.note)}</h6>
                       </div>
                     </div>
                   )}
@@ -387,7 +389,7 @@ const ProductPart2 = (props) => {
                     <div className="product_trust">
                       <h5>Terms & Condition</h5>
 
-                      <div className="product_trust_text">
+                      <div className="product_trust_text termCondition">
                         {/* <img src={Hand} alt="Hand icon" /> */}
                         <h6>{termCondition && parse(props.termCondition)}</h6>
                       </div>
@@ -398,7 +400,7 @@ const ProductPart2 = (props) => {
                     <div className="product_trust">
                       <h5>FAQ</h5>
 
-                      <div className="product_trust_text">
+                      <div className="product_trust_text faqcontent">
                         {/* <img src={Hand} alt="Hand icon" /> */}
                         <h6>
                           {faq.map((itm, idx) => {
@@ -424,7 +426,7 @@ const ProductPart2 = (props) => {
                       />
                       <div className="product_trust_text_exclusion">
                         {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6>{exclusion && parse(props.exclusion)}</h6>
+                        <h6 className="productExclusion">{exclusion && parse(props.exclusion)}</h6>
                       </div>
                     </div>
                   )}
@@ -638,9 +640,7 @@ const ProductPart2 = (props) => {
 
                   {/* another box */}
 
-                  {/* Exclusion */}
-
-                  {/* Exclusion end */}
+              
 
                   <div className="reiview_product common-card">
                     <h5>Write Reviews</h5>
@@ -682,9 +682,12 @@ const ProductPart2 = (props) => {
         packagePrice={packagePrice}
         discountedPrice={discountedPrice}
         review={review}
-        inclusion={inclusions}
+        inclusions={inclusions}
         Overviews={Overviews}
         showVideo={showVideo}
+        experienceVideo={experienceVideo}
+        exclusion={exclusion}
+        titleContent={titleContent}
       />
     </>
   );

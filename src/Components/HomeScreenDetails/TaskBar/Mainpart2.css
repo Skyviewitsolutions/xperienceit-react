@@ -51,4 +51,8 @@
     top: 42%;
     transform: rotate(0);
   }
+  .main-banner-section .main_bottom_bar {
+    position: absolute;
+    bottom: -20px;
+}
 }

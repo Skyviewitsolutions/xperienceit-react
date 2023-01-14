@@ -47,6 +47,13 @@ const PastBookingScreen = () => {
     getPastBookingList();
   },[]);
 
+  useEffect(() => {
+     window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
+
   return (
     <>
     <div className="homeScreen">
@@ -62,7 +69,7 @@ const PastBookingScreen = () => {
       </header>
       <PastComingcomp allBookings={allBookings} />
     </div>
-    <StickyMenu/>
+   <StickyMenu/>
     </>
   );
 };

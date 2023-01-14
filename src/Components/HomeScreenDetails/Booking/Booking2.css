@@ -80,6 +80,7 @@ button.owl-next span {
 .common-container {
   padding: 30px;
   background: #f9f9f9;
+  padding-top: 5px !important;
 }
 .common-container .container-fluid {
   background: #fff;
@@ -92,9 +93,9 @@ button.owl-next span {
 .main-banner-section {
   background: #f9f9f9;
 }
-.category-section-slider {
-  padding-top: 70px !important;
-}
+/* .category-section-slider {
+ 
+} */
 
 /* button.owl-prev span {
     background: #fff;
@@ -142,6 +143,7 @@ button.owl-next span {
   min-height: 275px;
   object-fit: cover;
   cursor: pointer;
+  width: 100%!important;
 }
 .package-section-slider .media-img {
   position: relative;

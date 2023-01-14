@@ -30,8 +30,8 @@ export const endpoints = {
         pincode : BASE_URL + "/get-pincode",
         enquiry : BASE_URL + "/enquiry-form",
         bookingDetails : BASE_URL + "/book-now",
-        packageBySubCategory : BASE_URL + "/getPackageBySubCategory?package_subcat_id="
-        
+        packageBySubCategory : BASE_URL + "/getPackageBySubCategory?package_subcat_id=",
+        suggestions : BASE_URL+ "/suggestions",
     },
     birthday : {
         banner : BASE_URL + "/gift-banner" ,

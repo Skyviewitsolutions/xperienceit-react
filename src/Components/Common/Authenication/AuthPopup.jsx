@@ -148,7 +148,7 @@ const AuthPopup = (props) => {
             </div>
           </div>
 
-          <p className="mb-4 text-center" style={{fontSize: 13}}>By Logging in you are agreeing to our <a target="_blank" href="/tnc"><span style={{color: 'rgb(0, 0, 255)', textDecoration: 'underline'}}>Terms and Conditions</span></a> and our <a target="_blank" href="/privacy-policy"><span style={{color: 'rgb(0, 0, 255)', textDecoration: 'underline'}}>Privacy Policy</span></a></p>
+          <p className="mb-4 text-center px-2" style={{fontSize: 13}}>By Logging in you are agreeing to our <a target="_blank" href="/tnc"><span style={{color: 'rgb(0, 0, 255)', textDecoration: 'underline'}}>Terms and Conditions</span></a> and our <a target="_blank" href="/privacy-policy"><span style={{color: 'rgb(0, 0, 255)', textDecoration: 'underline'}}>Privacy Policy</span></a></p>
 
 
           <div className="auth_cut" onClick={() => setShowAuthPopup(false)}>

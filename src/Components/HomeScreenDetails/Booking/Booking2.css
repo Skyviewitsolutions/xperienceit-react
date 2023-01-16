@@ -13,6 +13,7 @@
 .category-section-slider .item {
   margin: 25px 0px;
   transition: 0.7s;
+  transform: scale(0.8);
   text-align: center;
 }
 .category-section-slider .media-img img:hover {

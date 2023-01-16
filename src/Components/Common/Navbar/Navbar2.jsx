@@ -10,7 +10,9 @@ import { useHistory, generatePath } from "react-router-dom";
 import { endpoints } from "../../../services/endpoints";
 import axios from "axios";
 
+
 const Navbar2 = (props) => {
+
   const { handleGifts } = props;
 
   const [taskBarData, setTaskBarData] = useState([]);
@@ -80,7 +82,7 @@ const Navbar2 = (props) => {
               placement="end"
             >
               <Offcanvas.Header closeButton >
-                <Offcanvas.Title>ExperienceIt</Offcanvas.Title>
+                <Offcanvas.Title>XperienceIt</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1">
@@ -120,6 +122,8 @@ const Navbar2 = (props) => {
                         </>
                       );
                     })}
+
+                    {taskBarData.length == 0 && <span className="py-2 px-3 text-secondary">Sorry! no package found</span>}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

@@ -67,7 +67,7 @@ const BestSeller2 = () =>{
                         <div className="col-lg-3 col-md-6" onClick={getCandleLightDinner}>
                             <div className="seller_box1">
                                 <img src={DrinkCouple} alt="" />
-                                <button>Cangle light dinner</button>
+                                <button>Candle light dinner</button>
                             </div>
                         </div>
                         <div className="col-lg-5 offset-lg-1 col-md-6" onClick={partyDecoration}>

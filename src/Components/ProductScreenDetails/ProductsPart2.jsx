@@ -386,7 +386,7 @@ const ProductPart2 = (props) => {
                             </>
                           );
                         })}
-                        {!showMoreReview ? (
+                        {!showMoreReview && reviews.length > 2 ? (
                           <span onClick={readMoreReview}>Read more..</span>
                         ) : (
                           <span onClick={readLessReview}>Read less...</span>
@@ -556,12 +556,12 @@ const ProductPart2 = (props) => {
                       </h6>
                     )}
 
-                    {!pincodeAvailbleText && additionalCharge && (
+                    {!pincodeAvailbleText && additionalCharge ? (
                       <h6 className="packageCharges">
                         For this pincode you have to pay delivery charge of Rs{" "}
                         {additionalCharge}
-                      </h6>
-                    )}
+                      </h6>) : null
+                    }
 
                     <div className="product_calendar" htmlFor="date">
                       <label htmlFor="date">

@@ -13,9 +13,10 @@ const StickyMenu = () => {
   const history = useHistory();
   const sLocat = localStorage.getItem("locationDetails");
   const selectedLocation = JSON.parse(sLocat);
+
   const handleGifts = () => {
     const path = generatePath(
-      "/experiences/:location/:category_name/:category_id",
+      "/experiences/:location/category/:category_name/:category_id",
       {
         category_name: "Gifts-&-Surprises",
         location: selectedLocation.name,
@@ -25,7 +26,6 @@ const StickyMenu = () => {
 
     history.push(path);
   };
-
   return (
     <>
       <div className="stiky_header_menu d-lg-none">

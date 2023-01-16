@@ -48,6 +48,7 @@ const ProductScreen = () => {
   const [selectedCustomizationId, setSelectedCustomizationId] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [packagePrice, setPackagePrice] = useState(0);
+  const [showMoreReview , setShowMoreReview] = useState(false)
   const [discountedPrice, setDiscountedPrice] = useState(0);
   const [gstPrice, setGstPrice] = useState(0);
   const [reviews, setReviews] = useState([]);
@@ -204,7 +205,6 @@ const ProductScreen = () => {
   }, [selectedPincode]);
 
 
-
   //package booking procedure ;
 
   const bookPackage = () => {
@@ -268,9 +268,20 @@ const ProductScreen = () => {
       .get(reviewapi)
       .then((res) => {
         if (res.data.status === true) {
-          const val = res.data.body;
-          console.log(val, "review Api here...");
-          setReviews(val.reverse());
+          var val = res.data.body;
+          val = val.reverse();
+
+          if(val.length == 1) {
+           var dta = [val[0]]
+           setReviews(dta)
+          }
+          else {
+            var dta = [val[0] , val[1]]
+            setReviews(dta)
+          }
+        
+          setAllReviews(val)
+          
         } else if (res.data.status === false) {
           // toast(res.data.message, { type: "error" });
         }
@@ -289,7 +300,22 @@ const ProductScreen = () => {
     });
   }, []);
 
-  
+  const readMoreReview = () =>{
+    setReviews(allReviews)
+    setShowMoreReview(true)
+  }
+
+  const readLessReview = () =>{
+    setShowMoreReview(false)
+    if(allReviews.length == 1) {
+      var dta = [allReviews[0]]
+      setReviews(dta)
+     }
+     else {
+       var dta = [allReviews[0] , allReviews[1]]
+       setReviews(dta)
+     }
+  }
 
   return (
     <>
@@ -314,8 +340,11 @@ const ProductScreen = () => {
           refundPolicy={refundPolicy}
           termCondition={termCondition}
           faq={faq}
+          readLessReview={readLessReview}
+          showMoreReview={showMoreReview}
           productRating={productRating}
           productGalary={productGalary}
+          readMoreReview={readMoreReview}
           arrangment={arrangment}
           note={note}
           setTimeSlot={setTimeSlot}

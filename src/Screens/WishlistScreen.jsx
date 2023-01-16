@@ -7,6 +7,8 @@ import Booking2 from "../Components/HomeScreenDetails/Booking/Booking2";
 import WishlistData from '../Components/WishlistData/WishlistData';
 import { callWishListData , updateWishList } from '../actions';
 import axios from 'axios';
+import Footer2 from "../Components/Common/Footer/Footer2";
+
 import { endpoints } from '../services/endpoints';
 import Loader from '../utils/Loader';
 import StickyMenu from '../Components/Common/Navbar/StickyMenu';
@@ -116,6 +118,7 @@ const WishlistScreen = () => {
           <WishlistData wishtListArray={wishListArray}/>
           
         </header>
+        <Footer2 />
     </div>
    <StickyMenu/>
     </>

@@ -1104,3 +1104,6 @@ textarea.form-control.mt-2:focus {
 top:0px;
 }
 }
+.product_revew_details{
+  cursor: pointer;
+}

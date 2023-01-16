@@ -54,9 +54,12 @@ const ProductPart2 = (props) => {
     faq,
     showCustomization,
     setShowCustomization,
+    readLessReview,
+    readMoreReview,
     reviews,
     packageIdd,
     totalPrice,
+    showMoreReview,
     exclusion,
     reviewCount,
     experienceVideo,
@@ -219,7 +222,7 @@ const ProductPart2 = (props) => {
     videoRef.current.focus();
   };
 
-  console.log(props.exclusion , "exclusion")
+  console.log(props.productRating, "rating");
 
   return (
     <>
@@ -238,15 +241,24 @@ const ProductPart2 = (props) => {
                         </h5>
                         <h3>{props.productTitle}</h3>
                         <div className="product_star">
-                          <img src={YellowStar} alt="star" />
+                          {props.productRating && props.productRating != 0 ? (
+                            <img src={YellowStar} alt="star" />
+                          ) : (
+                            ""
+                          )}
 
-                          {props.productRating && (
+                          {props.productRating && props.productRating != 0 ? (
                             <h6 className="prdctrtng">
                               {props?.productRating}
                             </h6>
+                          ) : (
+                            ""
                           )}
-                          {reviewCount && (
+
+                          {reviewCount && reviewCount != 0 ? (
                             <span>{props.reviewCount} review</span>
+                          ) : (
+                            ""
                           )}
                         </div>
                       </div>
@@ -301,7 +313,9 @@ const ProductPart2 = (props) => {
                     <div className="product_cancellation common-card">
                       <h5>Need To Know</h5>
                       <div className="product_cancellation_text needToKnowText">
-                        <h6 className="needToKnow">{note && parse(props.note)}</h6>
+                        <h6 className="needToKnow">
+                          {note && parse(props.note)}
+                        </h6>
                       </div>
                     </div>
                   )}
@@ -372,6 +386,11 @@ const ProductPart2 = (props) => {
                             </>
                           );
                         })}
+                        {!showMoreReview ? (
+                          <span onClick={readMoreReview}>Read more..</span>
+                        ) : (
+                          <span onClick={readLessReview}>Read less...</span>
+                        )}
                       </div>
                     </div>
                   )}
@@ -426,7 +445,9 @@ const ProductPart2 = (props) => {
                       />
                       <div className="product_trust_text_exclusion">
                         {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6 className="productExclusion">{exclusion && parse(props.exclusion)}</h6>
+                        <h6 className="productExclusion">
+                          {exclusion && parse(props.exclusion)}
+                        </h6>
                       </div>
                     </div>
                   )}
@@ -639,8 +660,6 @@ const ProductPart2 = (props) => {
                     </div> */}
 
                   {/* another box */}
-
-              
 
                   <div className="reiview_product common-card">
                     <h5>Write Reviews</h5>

@@ -462,4 +462,30 @@ button.owl-next span {
   .tour-section-slider .container-fluid.common-container {
     padding-top: 10px !important;
   }
+  
+
+.category-section-slider .media-img img {
+  width: 50px;
+  padding: 5px;
+ 
+}
+.category-section-slider h4 {
+  font-size: 10px;
+}
+.eRmJbc {
+height: 35px!important;
+min-width: 35px!important;
+line-height: 0px!important;
+font-size: 16px!important;
+background-color: white!important;
+color: #ffab02!important;
+}
+.khvUfi {
+  height: 35px!important;
+min-width: 30px!important;
+line-height: 0px!important;
+font-size: 16px!important;
+background-color: white!important;
+color: #ffab02!important;
+}
 }

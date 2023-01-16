@@ -54,7 +54,7 @@ const Navbar2 = (props) => {
 
   
   const toRenderNextPackeges = (data) => {
-    // window.location.reload();
+    window.location.reload();
     const name = data.subcategory_nm;
     const subCategoryName = name.replaceAll(" ", "-");
     const path = generatePath(

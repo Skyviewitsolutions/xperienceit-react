@@ -138,11 +138,15 @@ const Card = (props) => {
             </h3>
             <div className="rating-and-discount">
               <h5>
-                <span>{props.discount}% off</span>
+             {props.discount && props.discount != 0 ? ( <span>{props.discount}% off</span>) : (
+              ""
+             )}
               </h5>
               
               <div className="rating">
-                <span>{props.rating}</span>
+               {props.rating && props.rating !=0?  (<span>{props.rating}</span>):(
+                ""
+               )}
                 <AiOutlineStar />
               </div>
             </div>
@@ -232,7 +236,7 @@ const RelatedPackage = (props) => {
           <div className="title-with-button">
             <div className="row">
               <div className="title-col">
-                <h2>
+                <h2 className="shopbyRelatedPackages">
                   Shop By <span> Related Package</span>
                 </h2>
                 <div className="more-btn"></div>

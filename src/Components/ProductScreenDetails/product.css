@@ -280,12 +280,12 @@ h6.prdctrtng {
   margin-bottom: 20px;
   font-weight: 600;
   margin-left: 15px;
-  padding: 15px 12px 11px 4px;
+  padding: 15px 14px 12px 0px;
   border-bottom: 1.5px solid rgba(226, 226, 226, 0.4);
 }
 .product_left_details_box {
   display: flex;
-  margin-left: 40px;
+ padding:10px;
 }
 .product_cancellation {
   width: 100%;
@@ -764,7 +764,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
 .product_trust_text h6 li::marker {
   font-size: 15px;
   position: absolute;
-  color: rgb(253, 220, 32);
+  color: #15124b;
 }
 .package-details-page .product_booking.common-card {
   padding: 20px 20px;
@@ -949,7 +949,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   padding-left: 0px;
 }
 .package-details-page .common-card ul li::marker {
-  color: rgb(253, 220, 32);
+  color:#15124b;
   font-size: 15px;
 }
 
@@ -957,7 +957,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   margin-bottom: 8px;
 }
 .package-details-page .common-card h4 {
-  width: 97% !important;
+  width: 94% !important;
   font-size: 18px;
   font-weight: 600;
 }
@@ -1069,42 +1069,54 @@ textarea.form-control.mt-2:focus {
   .product_left_details_box {
     margin-left: 0px !important;
     text-align: justify !important;
+    padding: 5px;
   }
   .cancellationPolicy {
     margin-left: 20px !important;
+    padding: 5px;
   }
   .refundPolicy {
     margin-left: 20px !important;
+    padding: 5px;
   }
   .product_cancellation_text.needToKnowText {
     margin-left: 5px!important;
+    padding: 5px;
 }
   .product_arrngmgnt_text {
     margin-left: 5px!important;
+    padding: 5px;
   }
   .termCondition{
     margin-left: -15px!important;
   }
   .product_cancellation > h5 {
     margin-left: 0px!important;
+    padding: 5px;
   }
   .product_arrngmgnt > h5 {
     margin-left: 0px!important;
+    padding: 5px;
   }
   .product_trust > h5 {
     margin-left: 0px!important;
+    padding: 5px;
   }
   .faqcontent {
     margin-left: 0px;
+    padding: 5px;
 }
 .product_trust_exclusion h5{
   margin-left: 0px;
+  padding: 5px;
 }
 .product_trust_text_exclusion {
   margin-left: -20px;
+  padding: 5px;
 }
 .productExclusion ul li::after {
 top:0px;
+padding: 0px;
 }
 }
 .product_revew_details{

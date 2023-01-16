@@ -129,7 +129,6 @@ const Booking2 = (props) => {
     { width: 360, itemsToShow: 2 },
     { width: 500, itemsToShow: 2 },
     { width: 600, itemsToShow: 2 },
-    { width: 768, itemsToShow: 3 },
     { width: 900, itemsToShow: 3 },
     { width: 1100, itemsToShow: 6 },
     { width: 1300, itemsToShow: 6 },

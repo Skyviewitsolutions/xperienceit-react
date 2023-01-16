@@ -586,9 +586,9 @@ const ProductPart2 = (props) => {
                     <div className="product_time">
                       <span
                         style={{
-                          fontWeight: "bold",
-                          fontSize: "18",
-                          color: "grey",
+                          fontWeight: "600",
+                          fontSize: "18px",
+                          
                         }}
                       >
                         Select Time
@@ -596,9 +596,9 @@ const ProductPart2 = (props) => {
                       &nbsp;
                       <span
                         style={{
-                          fontWeight: "bold",
+                          fontWeight: "600",
                           fontSize: "20",
-                          color: "grey",
+                         
                           marginBottom: "2px",
                         }}
                       >

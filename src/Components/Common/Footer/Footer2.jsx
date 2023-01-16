@@ -25,7 +25,8 @@ const Footer2 = () => {
               <div className="footer_col social_media">
                 <h4>Need help ? </h4>
                 <div className="footer_col1_media">
-                  <a href="">
+                  <a href="https://www.facebook.com/xperienceit.in
+">
                     {" "}
                     <img src={Facebook} alt="facebook icon" />
                   </a>
@@ -33,11 +34,11 @@ const Footer2 = () => {
                     {" "}
                     <img src={Whatsapp} alt="Whatsapp icon" />
                   </a>
-                  <a href="">
+                  <a href="https://twitter.com/xperienceitpvt">
                     {" "}
                     <img src={Twitter} alt="Twitter icon" />
                   </a>
-                  <a href="">
+                  <a href="https://www.youtube.com/channel/UCppIPLXOZAF6LwZNjqmFthQ">
                     {" "}
                     <img src={Youtube} alt="Youtube icon" />
                   </a>
@@ -109,7 +110,7 @@ const Footer2 = () => {
         <div className="copy_right_area">
           <p class="text">
             {" "}
-            Copyright By Skyview Smart Solutions P.V.T LTD  <a href="www.skyview.com">www.skyview.com</a> 
+            &copy;By Skyview Smart Solutions P.V.T LTD  <a href="www.skyview.com">www.skyview.com</a> 
           </p>
         </div>
       </footer>

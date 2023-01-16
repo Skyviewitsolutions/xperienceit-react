@@ -52,7 +52,7 @@ const Navbar2 = (props) => {
 
   
   const toRenderNextPackeges = (data) => {
-    // window.location.reload();
+    window.location.reload();
     const name = data.subcategory_nm;
     const subCategoryName = name.replaceAll(" ", "-");
     const path = generatePath(
@@ -80,7 +80,7 @@ const Navbar2 = (props) => {
               placement="end"
             >
               <Offcanvas.Header closeButton >
-                <Offcanvas.Title>ExperienceIt</Offcanvas.Title>
+                <Offcanvas.Title>XperienceIt</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1">

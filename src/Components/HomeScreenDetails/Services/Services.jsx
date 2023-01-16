@@ -1,10 +1,10 @@
 // In this page  we are creating the services component ;
 import React from "react";
 import "./services.css";
-import Express from "./ServicesImages/express.png";
-import Medal from "./ServicesImages/medal.png";
-import Star from "./ServicesImages/star.png";
-import Teamwork from "./ServicesImages/teamwork.png";
+import Express from "./ServicesImages/4.png";
+import Medal from "./ServicesImages/1.png";
+import Star from "./ServicesImages/2.png";
+import Teamwork from "./ServicesImages/3.png";
 
 const Services = () => {
   return (

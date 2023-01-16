@@ -2,6 +2,9 @@
   display: inline;
   width: 100%;
 }
+/* .owl-carousel .owl-item img {
+  width: 100%!important;
+} */
 .reactplayer {
   width: 852px !important;
 }

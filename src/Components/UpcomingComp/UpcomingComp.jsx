@@ -5,11 +5,12 @@ import "./upcoming.css";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import Skeleton from "@mui/material/Skeleton";
 import Loader from "../../utils/Loader";
+import { useHistory } from "react-router-dom";
 
 const UpcomingComp = (props) => {
   const { allBookings, getUpcomingBookingList } = props;
   const [loading, setLoading] = useState(false);
-
+  const history = useHistory();
   const access_token = localStorage.getItem("access_token");
 
   const CancelOrder = (data) => {
@@ -42,6 +43,11 @@ const UpcomingComp = (props) => {
         console.log(err, "this is the eror");
       });
   };
+
+const BookingDetails=()=>{
+history.push("/booking-details")
+}
+
 
   return (
     <>
@@ -89,17 +95,16 @@ const UpcomingComp = (props) => {
                                 {itm.discounted_price}
                                 <s>₹{itm.purchased_price}</s>
                               </h4>
-                              <button
-                                className="btn"
-                                onClick={() => CancelOrder(itm)}
-                              >
-                                Cancel
-                              </button>
+                             
                             </div>
                             <div className="upcomingDte">
-                              <h6>Date</h6>
-                              <h6>:</h6>
-                              <h6>{itm.date}</h6>
+                            <button
+                                className="btn bokking-details"
+                               onClick={BookingDetails}
+                              >
+                              Boking Details
+                              </button>
+                             <button className="bokking-details"  onClick={() => CancelOrder(itm)}>Cancel</button>
                             </div>
                           </div>
                         </div>

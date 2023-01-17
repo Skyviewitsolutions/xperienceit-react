@@ -359,7 +359,7 @@ button.owl-next span {
 
 @media only screen and (max-width: 600px) {
   .package-section-slider .title-col h2 {
-    width: 70%;
+    width: 100%;
     font-size: 20px;
   }
   .package-section-slider .title-col {
@@ -484,7 +484,6 @@ color: #ffab02!important;
 min-width: 30px!important;
 line-height: 0px!important;
 font-size: 16px!important;
-background-color: white!important;
-color: #ffab02!important;
+
 }
 }

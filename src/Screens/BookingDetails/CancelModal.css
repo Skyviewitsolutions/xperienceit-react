@@ -1,0 +1,99 @@
+.cancelbookingbuttons {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+.noCancelation {
+  width: 100px;
+  font-size: 16px;
+  padding: 5px, 15;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: #bebebe;
+  height: 45px;
+  margin-right: 30px;
+}
+.noCancelation:hover {
+  background-color: #bebebe;
+  color: white;
+}
+.YesCancelation {
+  width: 150px;
+  font-size: 16px;
+  padding: 5px, 15;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: var(--pink);
+  height: 45px;
+  margin-left: 30px;
+}
+.YesCancelation:hover {
+  background-color: var(--pink);
+  color: white;
+}
+.otherResionInput{
+    margin-left: 50px;
+}
+input.writeResion {
+    height: 40px;
+    width: 80%;
+    border-radius: 5px;
+}
+input.writeResion:focus-visible{
+    border-radius: 5px;
+    box-shadow: none;
+    outline: none!important;
+
+}
+.cancelation-policy-no{
+    height: 500px;
+    width:80%;
+   background-color:white;
+   padding: 10px;
+   margin: auto;
+   border-radius: 5px;
+}
+.cancelRequest{
+   font-size: 20px;
+   text-align: center;
+    font-weight: 700;
+}
+.connectTeam{
+    font-size: 16px;
+   text-align: center;
+    font-weight: 500;
+}
+.CancelOk{
+    background-color: #15124b;
+    height: 45px;
+    padding: 5px 20px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    width:200px;
+    text-align: center;
+    margin:auto;
+    cursor: pointer;
+}
+.CancelOk:hover{
+    background-color: #15124b; 
+    color: white; 
+}
+.cancelOkButtons{
+    display: flex;
+height: 60px;
+justify-content: center;
+align-items: center;
+}
+.maskImages{
+    height: 200px;
+    width: 200px;
+  margin: auto;
+}

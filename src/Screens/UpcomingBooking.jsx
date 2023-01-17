@@ -8,6 +8,7 @@ import WishlistData from "../Components/WishlistData/WishlistData";
 import axios from "axios";
 import UpcomingComp from "../Components/UpcomingComp/UpcomingComp";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
+import Footer2 from "../Components/Common/Footer/Footer2";
 
 
 const UpcomingBooking = () => {
@@ -68,6 +69,7 @@ const UpcomingBooking = () => {
         <TaskBar updateLocation={updateLocation}  setTaskBarData={setTaskBarData}/>
       </header>
       <UpcomingComp allBookings={allBookings} getUpcomingBookingList={getUpcomingBookingList}/>
+      <Footer2/>
     </div>
    <StickyMenu/>
     </>

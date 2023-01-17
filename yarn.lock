@@ -2260,6 +2260,11 @@
     htmlparser2 "^7.1.2"
     ramda "^0.27.2"
 
+"@netojose/react-modal@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@netojose/react-modal/-/react-modal-1.0.4.tgz#8c87e3326ab284479dd6ada9bf23ddca0bcdae58"
+  integrity sha512-yyVvyqXGYKEjFMdhaJvP2EnaYWWNlD/Y8+SF7b4XmhiN/OLYR+snjmuHB251kVPL23snXWfjbycHkccfX3AhbA==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -6634,6 +6639,11 @@ execa@^4.0.0:
     onetime "^5.1.0"
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
+
+exenv@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/exenv/-/exenv-1.2.2.tgz#2ae78e85d9894158670b03d47bec1f03bd91bb9d"
+  integrity sha512-Z+ktTxTwv9ILfgKCk32OX3n/doe+OcLTRtqK9pcL+JsP3J1/VW8Uvl4ZjLlKqeW4rzK4oesDOGMEMRIZqtP4Iw==
 
 exit@^0.1.2:
   version "0.1.2"
@@ -12378,10 +12388,20 @@ react-jquery-plugin@^1.1.7:
   dependencies:
     jquery "^3.5.1"
 
-react-lifecycles-compat@^3.0.4:
+react-lifecycles-compat@^3.0.0, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-modal@^3.16.1:
+  version "3.16.1"
+  resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.16.1.tgz#34018528fc206561b1a5467fc3beeaddafb39b2b"
+  integrity sha512-VStHgI3BVcGo7OXczvnJN7yT2TWHJPDXZWyI/a0ssFNhGZWsPmB8cF0z33ewDXq4VfYMO1vXgiv/g8Nj9NDyWg==
+  dependencies:
+    exenv "^1.2.0"
+    prop-types "^15.7.2"
+    react-lifecycles-compat "^3.0.0"
+    warning "^4.0.3"
 
 react-multi-carousel@^2.8.2:
   version "2.8.2"
@@ -12453,6 +12473,18 @@ react-read-more-read-less@^1.0.7:
   dependencies:
     react "^16.2.0"
     webpack "^2.6.1"
+
+react-read-more@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-read-more/-/react-read-more-1.0.0.tgz#86a9e8ac14fa37863d99187d8d500457ce32b840"
+  integrity sha512-EzJ0E+TPxZYMxz171CqAKAiWzRKNFerTaggweaNgR434P5UUypAFYKj53hVcmtFS11e6NFABMVfCvNktyY9H0w==
+  dependencies:
+    rimraf "^2.5.4"
+
+react-readmore@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-readmore/-/react-readmore-1.0.2.tgz#b2ff5927fd1e77303375ccbedbb725d363ad8bb9"
+  integrity sha512-EG6RZtpPrKD4MM/gH5+DOOoKe+VbZWMVWVNer/80z+z6NSZ3FqK3pirbH+fvZtQwWc5U8AfE+OnwgUGy6fB19g==
 
 react-redux@^8.0.5:
   version "8.0.5"
@@ -12588,6 +12620,14 @@ react-scripts@4.0.3:
     workbox-webpack-plugin "5.1.4"
   optionalDependencies:
     fsevents "^2.1.3"
+
+react-show-more-text@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-show-more-text/-/react-show-more-text-1.6.2.tgz#46821c0ccf5fe5e3a28932bb857393a75607f499"
+  integrity sha512-Z6tRcnEosHvo07vZw36LxCjqYq4ghgaDI273b5XcayJ1PYbT56OKbaQlPqH7W9LGF5rhUVIhEDBPURuG5eO/Uw==
+  dependencies:
+    "@babel/polyfill" "^7.12.1"
+    prop-types "^15.7.2"
 
 react-slick-slider@^0.15.10:
   version "0.15.10"

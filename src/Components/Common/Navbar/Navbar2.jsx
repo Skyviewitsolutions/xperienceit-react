@@ -52,7 +52,7 @@ const Navbar2 = (props) => {
 
   
   const toRenderNextPackeges = (data) => {
-    window.location.reload();
+  
     const name = data.subcategory_nm;
     const subCategoryName = name.replaceAll(" ", "-");
     const path = generatePath(
@@ -62,9 +62,11 @@ const Navbar2 = (props) => {
         location: cityLocattion.name,
         subCategory_id: data.subcategory_id,
       }
+     
     );
 
     history.push(path, { allpackeges: data });
+    window.location.reload();
   };
 
   return (
@@ -79,8 +81,8 @@ const Navbar2 = (props) => {
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end"
             >
-              <Offcanvas.Header closeButton >
-                <Offcanvas.Title>XperienceIt</Offcanvas.Title>
+              <Offcanvas.Header closeButton>
+                <Offcanvas.Title>ExperienceIt</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1">
@@ -94,6 +96,7 @@ const Navbar2 = (props) => {
                           <NavDropdown
                             title={itm.name}
                             id={`offcanvasNavbarDropdown-expand-${expand}`}
+                            closeButton
                           >
                             {itm &&
                               itm?.sub_category.map((item, index) => {
@@ -102,9 +105,10 @@ const Navbar2 = (props) => {
                                     {item?.child_category.map((child, ind) => {
                                       return (
                                         <>
-                                          <NavDropdown.Item
+                                          <NavDropdown.Item 
                                             onClick={() =>
                                               toRenderNextPackeges(child)
+
                                             }
                                             key={ind}
                                           >

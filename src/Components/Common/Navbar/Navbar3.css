@@ -441,6 +441,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 .login-and-location {
   padding-top: 13px;
 }
+
 .logIn a {
   width: 100%;
   text-align: center;
@@ -450,7 +451,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 } */
 .logIn .button span {
   margin-right: 2px;
-  font-size: 20px;
+  font-size: 19px;
 }
 .logIn .button {
   font-weight: 600;
@@ -638,8 +639,8 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
       padding: 60px 0px 80px;
   }
   .navbar-light .navbar-toggler-icon {
-  
-    font-size: 22px;
+   margin-top: -4px;
+    font-size: 17px;
 }
 
 .chlocation h3 {

@@ -16,6 +16,11 @@ import { useHistory } from "react-router-dom"
 
 const Footer2 = () => {
     const history = useHistory()
+const WhoWeAre=()=>{
+  history.push("./who-we-are")
+}
+
+
   return (
     <>
       <footer class="section footer_section">
@@ -64,7 +69,7 @@ const Footer2 = () => {
                     <a href="">Services</a>
                   </li>
                   <li>
-                    <a href="">Who we are</a>
+                    <a href="/who-we-are">Who we are</a>
                   </li>
                   <li>
                     <a href="/blogs">Blogs</a>

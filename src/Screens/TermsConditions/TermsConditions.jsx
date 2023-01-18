@@ -1,8 +1,8 @@
 import React from 'react'
 
-function TermsConditions() {
+const TermsConditions=()=> {
   return (<>
-    <div>
+    <div className='container-fluid'>
   <h2 style={{textAlign: 'center'}}>Xperience It Events Private Limited Terms &amp; Conditions Agreement</h2>
   <ul>
     <p>Please read this terms of service agreement carefully. By accessing the Site / ordering product(s)/service(s) or services at/from https://xperienceit.in which also comprises of the mobile site, applications for iOS, Android, Windows Operating System or the social media pages owned by Xperience It Events Pvt. Ltd. (all together referred to as “Site” henceforth), you are agreeing to be bound by all of these terms of service mentioned in the document, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this Site are protected by applicable copyright and trademark law.
@@ -272,4 +272,4 @@ function TermsConditions() {
   </>)
 }
 
-export default TermsConditions
+export default TermsConditions;

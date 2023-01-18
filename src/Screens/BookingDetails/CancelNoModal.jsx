@@ -3,7 +3,13 @@ import { Modal } from "react-bootstrap";
 import Mask from "./BookingDetailsImages/MaskGroup240.png";
 
 const CancelNoModal = (props) => {
-  const { modalOpen, setModalOpen } = props;
+const CloseCancelModal=()=>{
+  setModalOpen(false);
+  CancelOrder();
+  
+}
+
+  const { modalOpen, setModalOpen,CancelOrder } = props;
   return (
     <div>
       <Modal
@@ -21,7 +27,7 @@ const CancelNoModal = (props) => {
         <h6 className="connectTeam">Our team will call you in 24 hour</h6>
         </div>
       <div className="cancelOkButtons">
-       <button className="CancelOk" onClick={()=>setModalOpen(false)} >OK</button>
+       <button className="CancelOk" onClick={CloseCancelModal} >OK</button>
        </div>
         </div>
       </Modal>

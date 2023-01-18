@@ -6,12 +6,14 @@ import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import Skeleton from "@mui/material/Skeleton";
 import Loader from "../../utils/Loader";
 import { useHistory } from "react-router-dom";
+import CancelModal from "../../Screens/BookingDetails/CancelModal";
 
 const UpcomingComp = (props) => {
   const { allBookings, getUpcomingBookingList } = props;
   const [loading, setLoading] = useState(false);
   const history = useHistory();
   const access_token = localStorage.getItem("access_token");
+  const [isOpen, setIsOpen] = useState(false);
 
   const CancelOrder = (data) => {
     const cancelUrl = "https://admin.experienceit.in/api/cancel-bookings";
@@ -22,7 +24,7 @@ const UpcomingComp = (props) => {
     };
 
     const val = {
-      package_id: data.id,
+      package_id: data.booking_id,
       status: "cancelled",
     };
 
@@ -104,7 +106,7 @@ history.push("/booking-details")
                               >
                               Boking Details
                               </button>
-                             <button className="bokking-details"  onClick={() => CancelOrder(itm)}>Cancel</button>
+                             <button className="bokking-details"  onClick={() =>setIsOpen(true) }>Cancel</button>
                             </div>
                           </div>
                         </div>
@@ -121,6 +123,10 @@ history.push("/booking-details")
           {/* <Loader /> */}
         </div>
       </div>
+      <CancelModal isOpen={isOpen}
+      setIsOpen={setIsOpen}
+      CancelOrder={CancelOrder}
+      />
     </>
   );
 };

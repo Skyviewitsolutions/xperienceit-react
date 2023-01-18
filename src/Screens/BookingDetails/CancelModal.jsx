@@ -7,11 +7,12 @@ import Close from "./BookingDetailsImages/close24.png";
 import CancelNoModal from "./CancelNoModal";
 const CancelModal = (props) => {
     const [modalOpen,setModalOpen]=useState(false);
-    const {isOpen,setIsOpen} =props ;
+    const {isOpen,setIsOpen,CancelOrder} =props ;
 
 const handelModal=()=>{
   setModalOpen(true)
   setIsOpen(false)
+  
 }
 
   return (
@@ -97,6 +98,7 @@ const handelModal=()=>{
      <CancelNoModal
      modalOpen={modalOpen}
      setModalOpen={setModalOpen}
+     CancelOrder={CancelOrder}
      />
     </>
   );

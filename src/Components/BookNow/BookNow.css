@@ -76,7 +76,12 @@
   outline: none;
   -webkit-appearance: none;
 }
-
+.container-fluid.booknow {
+  box-shadow: none!important;
+}
+input.form-control.selectpin {
+  background: white!important;
+}
 /* Arguments */
 
 .product_arrngmgnt {
@@ -310,6 +315,9 @@ a.whatsAppLink {
 }
 
 @media only screen and (max-width: 600px) {
+  .container-fluid.booknow {
+    box-shadow: none!important;
+  }
   .product_cancellation {
     width: 100%;
     margin: 30px 0px;

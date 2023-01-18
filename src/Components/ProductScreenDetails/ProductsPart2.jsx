@@ -430,7 +430,7 @@ const ProductPart2 = (props) => {
                           {faq.map((itm, idx) => {
                             return (
                               <>
-                                <li>{itm.title}</li>
+                                <span>{itm.title}</span>
                                 <span className="answr">{itm.content}</span>
                               </>
                             );

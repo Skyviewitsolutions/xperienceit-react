@@ -204,7 +204,7 @@ const BookNow = () => {
   return (
     <>
       <div className="productPart2 booking-section">
-        <div className="inner-booking-section common-container">
+        <div className="inner-booking-section common-container booknowContainer">
           <div className="container-fluid booknow">
             <div className="row">
               <div className="col-lg-7">
@@ -540,7 +540,7 @@ const BookNow = () => {
                     </div>
                   </div>
 
-                  <div className="product_About" data-aos="fade-right">
+                  <div className="product_About">
                     <h5 style={{ color: "green", fontSize: "30px" }}>
                       <a
                         href="https://api.whatsapp.com/send/?phone=917080581133&text&type=phone_number&app_absent=0"
@@ -684,7 +684,7 @@ const BookNow = () => {
                   packageIdd={packageIdd}
                 />
                
-                <ToastContainer />
+                <ToastContainer limit={1}/>
               </div>
             </div>
           </div>

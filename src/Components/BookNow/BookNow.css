@@ -1,3 +1,9 @@
+.inner-booking-section.common-container.booknowContainer {
+  padding: 0px!important;
+}
+.container-fluid.booknow {
+  box-shadow: none;
+}
 .productPart2 {
   width: 100%;
   margin: auto;
@@ -5,7 +11,18 @@
   padding: 0px;
   justify-content: space-between;
 }
-
+button.btn:focus {
+  box-shadow: none;
+}
+a.whatsApplogo {
+  color: green;
+  cursor: pointer;
+}
+a.whatsAppLink {
+  color: var(--gray2);
+  text-decoration: none;
+  cursor: pointer;
+}
 .form2 input {
   height: 14px;
   width: 14px;
@@ -76,12 +93,7 @@
   outline: none;
   -webkit-appearance: none;
 }
-.container-fluid.booknow {
-  box-shadow: none!important;
-}
-input.form-control.selectpin {
-  background: white!important;
-}
+
 /* Arguments */
 
 .product_arrngmgnt {
@@ -105,21 +117,21 @@ input.form-control.selectpin {
 
 .product_date {
   width: 30%;
-
-  text-align: center;
+text-align: center;
 }
 .product_date span {
   font-size: 25px;
   text-align: center;
 }
 .product_date h6 {
-  color: gray;
-  font-weight: 400;
-}
+    color: gray;
+    font-weight: 400;
+  }
+  
 
 .product_times {
   width: 45%;
-
+ 
   text-align: center;
 }
 .product_times span {
@@ -127,12 +139,13 @@ input.form-control.selectpin {
   text-align: center;
 }
 .product_times h6 {
-  color: gray;
-  font-weight: 400;
-}
+    color: gray;
+    font-weight: 400;
+  }
 .product_edit {
   width: 30%;
-
+ 
+ 
   text-align: center;
   align-items: center;
 }
@@ -140,9 +153,13 @@ input.form-control.selectpin {
   font-size: 25px;
   text-align: center;
 }
-.product_edit h6 {
-  color: gray;
-  font-weight: 400;
+.product_edit h6{
+    color: gray;
+    font-weight: 400; 
+    cursor: pointer;
+}
+.customdetails svg {
+  cursor: pointer;
 }
 .bookingimgdetails {
   width: 100%;
@@ -152,42 +169,39 @@ input.form-control.selectpin {
   align-items: center;
 }
 .booksingimg1 {
-  width: 20%;
-  border-radius: 5px;
-  height: 80px;
+    width:20%;
+    border-radius: 5px;
+    height: 80px;  
+   
 }
 .booksingimg2 {
-  width: 70%;
-  height: 80px;
-
-  align-items: center;
+    width: 55%;
+    height: 80px; 
+    display: flex;
+    align-items: center;
+    
 }
-.booksingimg2 span {
-  font-weight: 400;
-  color: grey;
-  display: flex;
-  flex-wrap: wrap;
+.booksingimg2 span{
+font-weight: 400;
+color:grey;
+display: flex;
+flex-wrap: wrap;
+font-weight: 600;
+}
+.dilevcharge1 span {
   font-size: 16px;
   font-weight: 600;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-.booksingimg2 p {
-  font-size: 16px;
-  font-weight: 600;
-  margin-left: 10px;
-  color: grey;
 }
 .booksingimg3 {
-  width: 150px;
-  height: 80px;
-  text-align: right;
+    width: 25%;
+    height: 80px; 
+    display: flex;
+    align-items: center;
+    
 }
-.booksingimg3 span {
-  font-size: 16px;
-  font-weight: 600;
-  position: relative;
-  top: 7px;
+.booksingimg3 span{
+margin-left: 55px;
+font-weight: 600;
 }
 .delaivery {
   width: 100%;
@@ -195,15 +209,8 @@ input.form-control.selectpin {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 16px;
-  font-weight: 600;
 }
-.dilevcharge1 span {
-  margin-right: 2px;
-}
-.customdetails svg {
-  cursor: pointer;
-}
+
 .customdetails {
   width: 100%;
   margin: 15px 0px;
@@ -218,8 +225,8 @@ input.form-control.selectpin {
   justify-content: space-between;
 }
 .customtotal1 {
-  margin-top: -20px;
-  font-size: 16px;
+    margin-top: -20px;
+    font-size: 16px;
   font-weight: 600;
 }
 .checkout {
@@ -229,48 +236,18 @@ input.form-control.selectpin {
   display: flex;
   justify-content: space-between;
 }
-.ckBtn {
+.ckBtn{
   width: 100%;
   text-align: center;
   font-weight: bold;
   color: white;
   border: none;
   font-size: 20px;
-  background-color: #15124b;
+  background-color:#15124b;
 }
-.ckBtn:hover {
+.ckBtn:hover{
   background-color: #15124b;
   color: white;
-}
-.bkngDetails {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.bkngDetails2 {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-h6.bkngTitle {
-  width: 40%;
-}
-h6.bkngQnty {
-  width: 20%;
-  text-align: center;
-}
-h6.bkngPrice {
-  width: 40%;
-  text-align: right;
-}
-a.whatsApplogo {
-  color: green;
-  cursor: pointer;
-}
-a.whatsAppLink {
-  color: var(--gray2);
-  text-decoration: none;
-  cursor: pointer;
 }
 @media only screen and (max-width: 768px) {
   .productPart2 {
@@ -282,7 +259,7 @@ a.whatsAppLink {
   margin-top: 0px;
 }
 .booking_step_right .product_arrngmgnt {
-  margin-top: 0px;
+  margin-top: 0px; 
 }
 .booking_step_left {
   padding: 10px;
@@ -290,7 +267,6 @@ a.whatsAppLink {
 .booking_step_right {
   padding: 10px;
 }
-
 .productPart2.booking-section .form2 p {
   border-bottom: 1.5px solid rgba(226, 226, 226, 0.4);
   padding-bottom: 15px;
@@ -314,73 +290,64 @@ a.whatsAppLink {
   padding-bottom: 10px;
 }
 
+
+
+
 @media only screen and (max-width: 600px) {
-  .container-fluid.booknow {
-    box-shadow: none!important;
-  }
   .product_cancellation {
-    width: 100%;
-    margin: 30px 0px;
-    padding: 15px 15px;
-  }
-  .productPart2.booking-section label {
-    font-size: 14px;
-    margin-bottom: 0px;
-  }
-  .booking_step_left {
-    padding: 0px;
-  }
-  .booksingimg2 span {
-    margin-top: 0px;
-    font-size: 14px;
-  }
-  .booksingimg2 p {
-    font-size: 13px;
-  }
-  .delaivery {
-    margin-top: 40px;
-  }
-
-  .product_About h5 {
-    margin-bottom: 0px;
-    font-size: 16px;
-    text-align: left;
-  }
-  .product_About {
-    padding: 15px 14px 25px;
-    height: auto;
-  }
-  .booking_step_right {
-    padding: 0px;
-  }
-  .booking_step_right .product_arrngmgnt {
-    padding: 0px 15px;
-  }
-  .booksingimg1 {
-    width: 30%;
-    border-radius: 5px;
-    height: 80px;
-  }
-  .booksingimg2 {
-    width: 70%;
-    height: 80px;
-
-    flex-direction: column;
-    align-items: center;
-  }
-  .booksingimg3 span {
-    margin-left: 5px;
-    font-weight: 600;
-  }
-  .booking_step_right .product_details h6 {
-    font-size: 14px !important;
-  }
+      width: 100%;
+      margin: 30px 0px;
+      padding: 15px 15px;
+    }
+    .productPart2.booking-section label {
+        font-size: 11px;
+        font-weight: 500;
+        margin-bottom: 0px;
+    }
+    .booking_step_left {
+        padding: 0px;
+    }
+    .product_About h5 {
+        margin-bottom: 0px;
+        font-size: 16px;
+        text-align: left;
+    }
+    .product_About {
+        padding: 15px 14px 6px;
+        height: auto;
+    }
+    .booking_step_right {
+        padding: 0px;
+        margin-top: 25px;
+    }
+    .booking_step_right .product_arrngmgnt {
+        padding: 0px 15px;
+    }
+    .booksingimg1 {
+        width: 30%;
+        border-radius: 5px;
+        height: 80px;
+    }
+    .booksingimg2 {
+        width: 50%;
+        height: 80px;
+        display: flex;
+        align-items: center;
+    }
+    .booksingimg3 span {
+        margin-left: 5px;
+        font-weight: 600;
+    }
+    .booking_step_right .product_details h6 {
+        font-size: 14px !important;
+    }
 }
+
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
   .product_About h5 {
-    margin-bottom: 0px;
-    font-size: 17px;
+      margin-bottom: 0px;
+      font-size: 17px;
   }
   .product_About {
     width: 100%;

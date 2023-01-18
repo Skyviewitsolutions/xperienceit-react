@@ -8,6 +8,12 @@ import CancelNoModal from "./CancelNoModal";
 const CancelModal = (props) => {
     const [modalOpen,setModalOpen]=useState(false);
     const {isOpen,setIsOpen} =props ;
+
+const handelModal=()=>{
+  setModalOpen(true)
+  setIsOpen(false)
+}
+
   return (
     <>
       <Modal aria-labelledby="contained-modal-title-vcenter" size="lg" centered 
@@ -79,12 +85,12 @@ const CancelModal = (props) => {
               </label>
             </div>
             <div className="otherResionInput">
-                <input type="text" className="writeResion"/>
+                <input type="text" className="writeResion" placeholder="write reason here..."/>
             </div>
           </div>
           <div className="cancelbookingbuttons">
             <button className="noCancelation" onClick={()=>setIsOpen(false)} >No</button>
-             <button className="YesCancelation" onClick={()=>setModalOpen(true)}>Yes, Cancel</button>
+             <button className="YesCancelation" onClick={handelModal}>Yes, Cancel</button>
           </div>
         </div>
       </Modal>

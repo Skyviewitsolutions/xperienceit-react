@@ -5,7 +5,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 40px;
   padding-bottom: 10px;
 }
 .noCancelation {
@@ -38,62 +38,91 @@
   background-color: var(--pink);
   color: white;
 }
-.otherResionInput{
-    margin-left: 50px;
+.otherResionInput {
+  margin-left: 20px;
 }
-input.writeResion {
-    height: 40px;
-    width: 80%;
-    border-radius: 5px;
-}
-input.writeResion:focus-visible{
-    border-radius: 5px;
-    box-shadow: none;
-    outline: none!important;
 
+input.writeResion {
+  height: 40px;
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  padding: 10px;
 }
-.cancelation-policy-no{
-    height: 500px;
-    width:80%;
-   background-color:white;
-   padding: 10px;
-   margin: auto;
-   border-radius: 5px;
+
+input.writeResion:focus-visible {
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  outline: none !important;
+  border: 1px solid lightgrey;
 }
-.cancelRequest{
-   font-size: 20px;
-   text-align: center;
-    font-weight: 700;
-}
-.connectTeam{
-    font-size: 16px;
-   text-align: center;
-    font-weight: 500;
-}
-.CancelOk{
-    background-color: #15124b;
-    height: 45px;
-    padding: 5px 20px;
-    border: none;
-    color: white;
-    border-radius: 5px;
-    width:200px;
-    text-align: center;
-    margin:auto;
-    cursor: pointer;
-}
-.CancelOk:hover{
-    background-color: #15124b; 
-    color: white; 
-}
-.cancelOkButtons{
-    display: flex;
-height: 60px;
-justify-content: center;
-align-items: center;
-}
-.maskImages{
-    height: 200px;
-    width: 200px;
+.cancelation-policy-no {
+  min-height: 600px;
+  width: 80%;
+  background-color: white;
+  padding: 10px;
   margin: auto;
+  border-radius: 5px;
+}
+.cancelRequest {
+  font-size: 28px;
+  text-align: center;
+  font-weight: 600;
+}
+.connectTeam {
+  font-size: 20px;
+  margin-top: 12px !important;
+  text-align: center;
+  font-weight: 500;
+}
+.CancelOk {
+  background-color: #15124b;
+  height: 45px;
+  padding: 5px 20px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+.CancelOk:hover {
+  background-color: #15124b;
+  color: white;
+}
+.cancelOkButtons {
+  display: flex;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
+ 
+  margin-top: 35px;
+}
+.maskImages {
+  width: 100%;
+}
+.cancelationMask {
+  margin-top: 30px !important;
+  margin: auto;
+  width: 230px;
+}
+.cancel-no-policy-text {
+  width: 100%;
+  margin-top: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .cancelation-policy-no {
+    width: 100%;
+  }
+  .cancelRequest {
+    font-size: 20px;
+  }
+  .connectTeam {
+    font-size: 16px;
+}
+cancelationMask {
+   width: 250px;
+}
 }

@@ -25,12 +25,18 @@ import ProductReview from "../../Components/ProductScreenDetails/ProductReview";
 import Footer2 from "../../Components/Common/Footer/Footer2";
 import CancelModal from "./CancelModal";
 import { useParams, useLocation } from "react-router-dom";
+import ProductCarousel from "../../Components/ProductScreenDetails/ProductCarousel";
+import { endpoints } from "../../services/endpoints";
 
 const BookingDetails = (props) => {
-  const { sub_category_name, sub_category_id, package_name, package_id } =
-    useParams();
+  const {
+    sub_category_name,
+    sub_category_id,
+    package_name,
+    package_id,
+    booking_id,
+  } = useParams();
   const location = useLocation();
-  const bookingData = location.state.bookingDetails;
 
   const [showSideBar, setShowSideBar] = useState(false);
   const [updateLocation, setUpdateLocation] = useState(false);
@@ -41,9 +47,8 @@ const BookingDetails = (props) => {
   const cityLocattion = JSON.parse(pkgLocation);
   const cityID = cityLocattion && cityLocattion.id;
 
-  console.log(bookingData, "bookingData here");
-
   // let's get all the data of the package and update it;
+  const [bookingData, setBookingData] = useState({});
   const [productGalary, setProductGalary] = useState([]);
   const [productBanner, setProductBanner] = useState([]);
   const [productTitle, setProductTitle] = useState([]);
@@ -56,42 +61,28 @@ const BookingDetails = (props) => {
   const [exclusion, setExclusion] = useState("");
   const [note, setNote] = useState("");
   const [productRating, setProductRating] = useState("");
-  const [pincode, setPincode] = useState([]);
-  const [timeSlot, setTimeSlot] = useState([]);
-  const [offerAmount, setOfferAmount] = useState();
-  const [deliveryCharge, setDeliveryCharge] = useState();
-  const [showEnquiry, setShowEnquiry] = useState(false);
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTimeSlot, setSelecetedTimeSlot] = useState("");
-  const [selectedTimeSlotId, setSelecetedTimeSlotId] = useState("");
-  const [selectedPincode, setSelectedPincode] = useState("");
-  const [showCustomization, setShowCustomization] = useState(false);
-  const [selectedCustomization, setSelectedCustomization] = useState([]);
-  const [customization, setCustomization] = useState([]);
-  const [selectedCustomizationId, setSelectedCustomizationId] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [packagePrice, setPackagePrice] = useState(0);
-  const [showMoreReview, setShowMoreReview] = useState(false);
   const [discountedPrice, setDiscountedPrice] = useState(0);
   const [gstPrice, setGstPrice] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [allReviews, setAllReviews] = useState([]);
+  const [rating, setRating] = useState(1);
+  const [showMoreReview , setShowMoreReview] = useState(false)
   const [experienceVideo, setExperienceVideo] = useState("");
   const [reviewCount, setReviewCount] = useState("");
   const [poductCategoryTitle, setPoductCategoryTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   //  getting the package data through the api;
 
   const getPackageData = () => {
-
     const api = `https://admin.experienceit.in/api/getDetailPackage?id=${package_id}`;
 
     axios
       .get(api)
       .then((res) => {
         if (res.data.status === true) {
-          console.log(res, "responssproduct data here...");
-          console.log(res, "responssproduct data here...");
           const galleryImg = res.data.body[0].gallery;
           setProductGalary(galleryImg);
           const productBannerImg = res.data.body[0].banner_image_id;
@@ -139,8 +130,69 @@ const BookingDetails = (props) => {
       });
   };
 
+  const getBookingData = () => {
+    const url = endpoints.booking.bookingDetailsUrl;
+    const access_token = localStorage.getItem("access_token");
+
+    const headers = {
+      Authorization: `Bearer ${access_token}`,
+      "Content-Type": "application/json",
+    };
+
+    const dta = {
+      booking_id: booking_id,
+    };
+
+    axios
+      .post(url, dta, { headers: headers })
+      .then((res) => {
+        console.log(res, "this is the response");
+        if (res.data.status) {
+          var data = res.data.body;
+          data = data[0];
+          setBookingData(data);
+        }
+      })
+      .catch((err) => {
+        console.log(err, "booking details errors");
+      });
+  };
+
+  const getReview = () => {
+
+    const reviewapi = `https://admin.experienceit.in/api/review-by-package?package_id=${package_id}`;
+
+    axios
+      .get(reviewapi)
+      .then((res) => {
+        if (res.data.status === true) {
+          var val = res.data.body;
+          val = val.reverse();
+
+          if(val.length == 1) {
+           var dta = [val[0]]
+           setReviews(dta)
+          }
+          else {
+            var dta = [val[0] , val[1]]
+            setReviews(dta)
+          }
+        
+          setAllReviews(val)
+          
+        } else if (res.data.status === false) {
+          // toast(res.data.message, { type: "error" });
+        }
+      })
+      .catch((err) => {
+        console.log(err, "Review Details Not Found");
+      });
+  };
+
   useEffect(() => {
     getPackageData();
+    getBookingData();
+    getReview();
   }, []);
 
   const options = {
@@ -183,6 +235,65 @@ const BookingDetails = (props) => {
       backgroundColor: "white",
     },
   };
+
+
+  const submitReview = () => {
+    
+    const access_token = localStorage.getItem("access_token");
+    const writeReviewApi = `https://admin.experienceit.in/api/customer-review`;
+
+    const reviewData = {
+      package_id: package_id,
+      model_type: "package",
+      rating: rating,
+      description: description,
+    };
+
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + access_token,
+    };
+
+    if (access_token) {
+      axios
+        .post(writeReviewApi, reviewData, { headers: headers })
+        .then((res) => {
+          console.log(res, "Review Details data here..");
+
+          if (res.data.status === true) {
+            getReview();
+            toast("Review Submitted successfully", { type: "success" });
+          } else if (res.data.status === false) {
+            toast(res.data.message, { type: "error" });
+          }
+        })
+        .catch((err) => {
+          console.log("Review details data not found", err);
+        });
+    } else {
+      toast("please login", { type: "warning" });
+    }
+  };
+
+
+  const readMoreReview = () =>{
+    setReviews(allReviews)
+    setShowMoreReview(true)
+  }
+
+  const readLessReview = () =>{
+    setShowMoreReview(false)
+    if(allReviews.length == 1) {
+      var dta = [allReviews[0]]
+      setReviews(dta)
+     }
+     else {
+       var dta = [allReviews[0] , allReviews[1]]
+       setReviews(dta)
+     }
+  }
+
+
   return (
     <>
       <div className="BokkingDetails">
@@ -198,38 +309,39 @@ const BookingDetails = (props) => {
           setTaskBarData={setTaskBarData}
         />
         <div className="booking-details-banner">
-          <OwlCarousel className="owl-theme" {...options} nav>
-            <div class="item">
-              <div className="package-col">
-                
-            <div class="item">
-                <div className="media-img">
-                  <Skeleton height={350} variant="rectangular" />
-                </div>
-              </div>
-              </div>
-            </div>
-
-          </OwlCarousel>
+          <ProductCarousel productBanner={productBanner} />
           <div className="package-details-page">
             <div className="inner-package-section common-container">
               <div className="container-fluid">
                 <div className="row">
-                  <div className="col-lg-8">
-                    <div className="package-left-area">
+                  <div className="col-lg-7 ">
+                    <div className="package-left-area ">
                       <div className="productLeft_heading">
                         <div className="row">
                           <div className="col-lg-9 col-md-8">
                             <h5>
-                              Home/Experiences/ <span>poductCategoryTitle</span>
+                              Home/Experiences/{" "}
+                              <span>{poductCategoryTitle}</span>
                             </h5>
-                            <h3>productTitle</h3>
+                            <h3>{productTitle}</h3>
                             <div className="product_star">
-                              <img src={YellowStar} alt="star" />
+                              {productRating && productRating != 0 ? (
+                                <img src={YellowStar} alt="star" />
+                              ) : (
+                                ""
+                              )}
 
-                              <h6 className="prdctrtng">productRating</h6>
+                              {productRating && productRating != 0 ? (
+                                <h6 className="prdctrtng">{productRating}</h6>
+                              ) : (
+                                ""
+                              )}
 
-                              <span>reviewCount review</span>
+                              {reviewCount && reviewCount != 0 ? (
+                                <span>{props.reviewCount} review</span>
+                              ) : (
+                                ""
+                              )}
                             </div>
                           </div>
                           <div className="col-lg-3 col-md-4"></div>
@@ -238,158 +350,173 @@ const BookingDetails = (props) => {
 
                       <div className="product_left_para2"></div>
 
-                      <div className="product_left_para gallery_slider common-card">
-                        {/* <Cart3/> */}
-                      </div>
+                      <div className="product_left_para gallery_slider common-card"></div>
 
-                      <div className="product_left_details common-card">
-                        <h4>Product Details: </h4>
-                        {/* <input
-                        type="radio"
-                        ref={overviewRef}
-                        style={{ width: "0px", height: "0px" }}
-                      /> */}
-                        <div className="product_left_details_box">
-                          {/* <ReadMoreAndLess
-                          className="read-more-content"
-                          charLimit={10}
-                          readMoreText="Read more"
-                         
-                        > */}
-                          <h6>titleContent</h6>
-                          {/* </ReadMoreAndLess> */}
+                      {titleContent && (
+                        <div className="product_left_details common-card">
+                          <h4>Product Details: </h4>
+
+                          <div className="product_left_details_box">
+                            <h6>{titleContent && parse(titleContent)}</h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_cancellation common-card">
-                        <h5>Cancellation Policy:</h5>
-                        <div className="product_cancellation_text cancellationPolicy">
-                          <h6>parseprops.cancellationPolicy</h6>
+                      {cancellationPolicy && (
+                        <div className="product_cancellation common-card">
+                          <h5>Cancellation Policy:</h5>
+                          <div className="product_cancellation_text cancellationPolicy">
+                            <h6>
+                              {cancellationPolicy && parse(cancellationPolicy)}
+                            </h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_cancellation common-card">
-                        <h5>Refund Policy:</h5>
-                        <div className="product_cancellation_text refundPolicy">
-                          <h6>refundPolicy</h6>
+                      {refundPolicy && (
+                        <div className="product_cancellation common-card">
+                          <h5>Refund Policy:</h5>
+                          <div className="product_cancellation_text refundPolicy">
+                            <h6>{refundPolicy && parse(refundPolicy)}</h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_cancellation common-card">
-                        <h5>Need To Know</h5>
-                        <div className="product_cancellation_text needToKnowText">
-                          <h6 className="needToKnow">note</h6>
+                      {note && (
+                        <div className="product_cancellation common-card">
+                          <h5>Need To Know</h5>
+                          <div className="product_cancellation_text needToKnowText">
+                            <h6 className="needToKnow">
+                              {note && parse(note)}
+                            </h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_arrngmgnt common-card">
-                        <h5>Arrangements</h5>
+                      {arrangment && (
+                        <div className="product_arrngmgnt common-card">
+                          <h5>Arrangements</h5>
 
-                        <div className="product_arrngmgnt_text">
-                          {/* <img src={Hand} alt="Hand icon" /> */}
-                          <h6>arrangment</h6>
+                          <div className="product_arrngmgnt_text">
+                            {/* <img src={Hand} alt="Hand icon" /> */}
+                            <h6>{arrangment && parse(arrangment)}</h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_trust">
-                        <h5>Terms & Condition</h5>
+                      {termCondition && (
+                        <div className="product_trust">
+                          <h5>Terms & Condition</h5>
 
-                        <div className="product_trust_text termCondition">
-                          {/* <img src={Hand} alt="Hand icon" /> */}
-                          <h6>termCondition </h6>
+                          <div className="product_trust_text termCondition">
+                            <h6>{termCondition && parse(termCondition)}</h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_trust">
-                        <h5>FAQ</h5>
+                      {faq && (
+                        <div className="product_trust">
+                          <h5>FAQ</h5>
 
-                        <div className="product_trust_text faqcontent">
-                          {/* <img src={Hand} alt="Hand icon" /> */}
-                          <h6>
-                            <li>Title</li>
-                            <span className="answr">content</span>
-                          </h6>
+                          <div className="product_trust_text faqcontent">
+                            {/* <img src={Hand} alt="Hand icon" /> */}
+                            <h6>
+                              {faq.map((itm, idx) => {
+                                return (
+                                  <>
+                                    <li>{itm.title}</li>
+                                    <span className="answr">{itm.content}</span>
+                                  </>
+                                );
+                              })}
+                            </h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
-                      <div className="product_trust_exclusion">
-                        <h5>Exclusion</h5>
-                        {/* <input
-                        type="radio"
-                        ref={inclusionRef}
-                        style={{ width: "0px", height: "0px" }}
-                      /> */}
-                        <div className="product_trust_text_exclusion">
-                          {/* <img src={Hand} alt="Hand icon" /> */}
-                          <h6 className="productExclusion">exclusion</h6>
-                        </div>
-                      </div>
+                      {exclusion && (
+                        <div className="product_trust_exclusion">
+                          <h5>Exclusion</h5>
 
-                      <div className="product_trust_vedio">
-                        <h5>Xperience Video</h5>
-                        {/* <input
-                        type="radio"
-                        ref={videoRef}
-                        style={{ width: "0px", height: "0px" }}
-                      /> */}
-                        <div className="product_trust_text_vedio">
-                          <ReactPlayer
-                            className="reactplayer"
-                            url=""
-                            playsInline
-                            controls="true"
-                          />
+                          <div className="product_trust_text_exclusion">
+                            {/* <img src={Hand} alt="Hand icon" /> */}
+                            <h6 className="productExclusion">
+                              {exclusion && parse(exclusion)}
+                            </h6>
+                          </div>
                         </div>
-                      </div>
+                      )}
+
+                      {experienceVideo && (
+                        <div className="product_trust_vedio">
+                          <h5>Xperience Video</h5>
+
+                          <div className="product_trust_text_vedio">
+                            <ReactPlayer
+                              className="reactplayer"
+                              url={experienceVideo}
+                              playsInline
+                              controls="true"
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
-                  <div className="col-lg-4">
+                  <div className="col-lg-5">
                     <div className="package-right-area">
                       <div className="product_booking common-card bookings-details-card">
                         <div className="product_booking_input_price">
                           <h6 className="Bookig-details-heading">
-                            Bokking Details
+                            Booking Details
                           </h6>
                           <div className="booking-pakages-time-slot">
-                            <span> Sun, 14 May, 2022</span>{" "}
-                            <span>Time : 10.00 am - 1.00 pm</span>
+                            <span> {bookingData.dateMonth}</span>{" "}
+                            <span>Time : {bookingData.time}</span>
                           </div>
                           <hr />
                           <div className="bokking-pakage-details">
-                            <span>
-                              Glorious Black And Golden Bi Glorious Black And
-                              Golden Bi
-                            </span>{" "}
-                            <span>₹2325</span>
+                            <span>{bookingData.title}</span>
+                            <span> {`₹${bookingData.gst_price}`}</span>
                           </div>
                           <div className="customdetails">
                             <span style={{ marginBottom: "10px" }}>
                               {/* Customization <BiEdit /> */}
                             </span>
 
-                            <div className="">
-                              <div className="bkngDetails">
-                                <h6 className="bkngTitle">Title</h6>
-                                <h6 className="bkngQnty">Quantity</h6>
-                                <h6 className="bkngPrice">Price</h6>
-                              </div>
+                            {bookingData?.customization &&
+                              bookingData.customization.length != 0 &&
+                              bookingData.customization.map((itm, ind) => {
+                                return (
+                                  <>
+                                    <div className="">
+                                      <div className="bkngDetails">
+                                        <h6 className="bkngTitle">Title</h6>
+                                        <h6 className="bkngQnty">Quantity</h6>
+                                        <h6 className="bkngPrice">Price</h6>
+                                      </div>
 
-                              <div className="bkngDetails2">
-                                <h6 className="bkngTitle">
-                                  Glorious Black And Golden Bi{" "}
-                                </h6>
-                                <h6 className="bkngQnty">2</h6>
-                                <h6 className="bkngPrice">Rs 2325 </h6>
-                              </div>
-                            </div>
-
-                            {/* <p>No Customization Added</p> */}
+                                      <div className="bkngDetails2">
+                                        <h6 className="bkngTitle">
+                                          {itm.title}
+                                        </h6>
+                                        <h6 className="bkngQnty">
+                                          {itm.quantity}
+                                        </h6>
+                                        <h6 className="bkngPrice">
+                                          Rs {itm.price}
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </>
+                                );
+                              })}
                           </div>
 
                           <hr />
                           <div className="booking-pakage-details-price">
                             <span>Total Cost</span>
-                            <span>₹2325</span>
+                            <span>{`₹ ${bookingData.purchased_price}`}</span>
                           </div>
                         </div>
 
@@ -406,7 +533,7 @@ const BookingDetails = (props) => {
 
                         <div className="product_review_text">
                           <h6> Select Star</h6>
-                          <ProductReview />
+                          <ProductReview setRating={setRating} />
                           <div className="rieview_form mt-2">
                             <lavel className="font-weight-900">
                               Write Description :
@@ -416,10 +543,13 @@ const BookingDetails = (props) => {
                               rows="4"
                               cols="50"
                               placeholder="Write message ..."
-                              //   value={description}
-                              //   onChange={(e) => setDescription(e.target.value)}
+                              value={description}
+                              onChange={(e) => setDescription(e.target.value)}
                             ></textarea>
-                            <Button className="review_submit mt-3">
+                            <Button
+                              className="review_submit mt-3"
+                              onClick={submitReview}
+                            >
                               Submit Review
                             </Button>
                           </div>
@@ -427,45 +557,71 @@ const BookingDetails = (props) => {
                       </div>
 
                       <div className="product_reviews">
-                        {/* <input
-                        type="radio"
-                        ref={reviewRef}
-                        style={{ width: "0px", height: "0px" }}
-                      /> */}
                         <div className="product_Revews_header">
                           <h5>Reviews</h5>
                         </div>
                         <div className="product_revew_details">
-                          <>
-                            <div className="row no-gutters revwDtlsBox">
-                              <div className="col-auto review_customer_img">
-                                <img src={User} alt="user image" />
+                         {reviews.map((item, index) => {
+                          return (
+                            <>
+                              <div className="row no-gutters revwDtlsBox">
+                                <div className="col-auto review_customer_img">
+                                  <img
+                                    src={
+                                      item.icon_image ? item.icon_image : User
+                                    }
+                                    alt="user image"
+                                  />
+                                </div>
+                                <div className="col rivewDetls">
+                                  <p className="review-customer-name">
+                                    {item.user_name}
+                                  </p>
+                                  <h6
+                                    style={{
+                                      display: "inline-block",
+                                      direction: "ltr",
+                                      justifyContent: "center",
+                                    }}
+                                  >
+                                    <span className="rivewDetls_rating">
+                                      {" "}
+                                      {item.rating}{" "}
+                                    </span>
+                                    <img src={YellowStar} alt="star" />
+                                  </h6>
+                                  <p className="review-cutomer-content">
+                                    {item.description}
+                                  </p>
+                                </div>
                               </div>
-                              <div className="col rivewDetls">
-                                <p className="review-customer-name">
-                                  user_name
-                                </p>
-                                <h6
-                                  style={{
-                                    display: "inline-block",
-                                    direction: "ltr",
-                                    justifyContent: "center",
-                                  }}
-                                >
-                                  <span className="rivewDetls_rating">
-                                    rating
-                                  </span>
-                                  <img src={YellowStar} alt="star" />
-                                </h6>
-                                <p className="review-cutomer-content">
-                                  description
-                                </p>
-                              </div>
-                            </div>
-                          </>
 
-                          <span onClick="">Read more..</span>
-                          {/* <span onClick={readLessReview}>Read less...</span> */}
+                              {/* <div className="product_review_user">
+                                <div className="product_review_user_box">
+                                  <img
+                                    src={
+                                      item.icon_image ? item.icon_image : User
+                                    }
+                                    alt="user image"
+                                  />
+                                  <ul>
+                                    <h6>{item.user_name}</h6>
+                                  </ul>
+                                  <div className="product_review_star">
+                                    <span>{item.rating}</span>&nbsp;
+                                    <img src={YellowStar} alt="star" />
+                                  </div>
+                                </div>
+                                <p>{item.description}</p>
+                              </div> */}
+                            </>
+                          );
+                        })}
+                        {reviews.length > 2 && (!showMoreReview  ? (
+                          <span onClick={readMoreReview}>Read more..</span>
+                        ) : (
+                          <span onClick={readLessReview}>Read less...</span>
+                        ))}
                         </div>
                       </div>
                     </div>

@@ -279,9 +279,7 @@ const ProductScreen = () => {
             var dta = [val[0] , val[1]]
             setReviews(dta)
           }
-        
           setAllReviews(val)
-          
         } else if (res.data.status === false) {
           // toast(res.data.message, { type: "error" });
         }

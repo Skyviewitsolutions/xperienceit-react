@@ -57,15 +57,16 @@ const UpcomingComp = (props) => {
     packageName = packageName.replaceAll(" " , "-")
 
 
-     const path = generatePath("/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details" , {
+     const path = generatePath("/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details/:booking_id" , {
       sub_category_name : subCatName ,
       sub_category_id : data.subcategory,
       location: cityLocattion.name,
       package_name : packageName ,
-      package_id : data.id
+      package_id : data.id ,
+      booking_id : data.booking_id
      })
 
-     history.push(path , {bookingDetails : data})
+     history.push(path)
 
   };
 

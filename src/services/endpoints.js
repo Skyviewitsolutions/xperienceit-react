@@ -47,6 +47,9 @@ export const endpoints = {
     },
     blogs : {
         allBlogs : BASE_URL + "/blog"
+    } ,
+    booking : {
+        bookingDetailsUrl : BASE_URL + "/booking-details" 
     }
 }
 

@@ -139,7 +139,7 @@ const App = () => {
             <Route exact path="/booking-details" component={BookingDetails} />
             <Route
               exact
-              path="/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details"
+              path="/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details/:booking_id"
               component={BookingDetails}
             />
           </Switch>

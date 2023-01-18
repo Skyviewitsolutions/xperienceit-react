@@ -24,7 +24,7 @@ import ProductStickBar from "./ProductStickBar";
 import ReadMoreAndLess from "react-read-more-less";
 
 const ProductPart2 = (props) => {
-  
+
   const {
     productTitle,
     titleContent,
@@ -69,6 +69,7 @@ const ProductPart2 = (props) => {
   } = props;
 
   // console.log(pincode,"available pincode")
+
   const [errors, setErrors] = useState({});
   const [writeReview, setWriteReview] = useState([]);
   const [description, setDescription] = useState("");
@@ -95,7 +96,7 @@ const ProductPart2 = (props) => {
   };
 
   const submitReview = () => {
-    // Write review Api
+    
     const access_token = localStorage.getItem("access_token");
     const writeReviewApi = `https://admin.experienceit.in/api/customer-review`;
 
@@ -269,7 +270,6 @@ const ProductPart2 = (props) => {
                   <div className="product_left_para2"></div>
 
                   <div className="product_left_para gallery_slider common-card">
-                    {/* <CartGallary productGalary={productGalary} /> */}
                     <Cart3 productGalary={productGalary} />
                   </div>
 
@@ -323,6 +323,7 @@ const ProductPart2 = (props) => {
                       </div>
                     </div>
                   )}
+
                   {reviews.length != 0 && (
                     <div className="product_reviews">
                       <input
@@ -390,11 +391,11 @@ const ProductPart2 = (props) => {
                             </>
                           );
                         })}
-                        {!showMoreReview && reviews.length > 2 ? (
+                        {reviews.length > 2 && (!showMoreReview  ? (
                           <span onClick={readMoreReview}>Read more..</span>
                         ) : (
                           <span onClick={readLessReview}>Read less...</span>
-                        )}
+                        ))}
                       </div>
                     </div>
                   )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiOutlineHome, AiOutlineGift } from "react-icons/ai";
 import { GiBigDiamondRing } from "react-icons/gi";
 import "./Navbar3.css";
@@ -7,13 +7,13 @@ import { BsTelephone } from "react-icons/bs";
 import i18n from "../../../i18n";
 import { useTranslation } from "react-i18next";
 import { useHistory, generatePath } from "react-router-dom";
-
+import MarriageEnquiry from "../../MarriageForm/MarriageEnquiry";
 const StickyMenu = () => {
   const { t } = useTranslation("translation");
   const history = useHistory();
   const sLocat = localStorage.getItem("locationDetails");
   const selectedLocation = JSON.parse(sLocat);
-
+  const [showMarriageForm , setShowMarriageForm] = useState(false)
   const handleGifts = () => {
     const path = generatePath(
       "/experiences/:location/category/:category_name/:category_id",
@@ -46,7 +46,7 @@ const StickyMenu = () => {
             <div className="link">
               <a
                 className="nav-link font-weight-900"
-                href="#"
+              
                 onClick={() => handleGifts()}
               >
                 <span className="nav-icon">
@@ -60,7 +60,7 @@ const StickyMenu = () => {
           </div>
           <div className="col-3">
             <div className="link">
-              <a className="nav-link font-weight-900" href="#">
+              <a className="nav-link font-weight-900"  onClick={() => setShowMarriageForm(true)}>
                 <span className="nav-icon">
                   <GiBigDiamondRing />
                 </span>
@@ -84,6 +84,7 @@ const StickyMenu = () => {
           </div>
         </div>
       </div>
+      <MarriageEnquiry showMarriageForm={showMarriageForm} setShowMarriageForm={setShowMarriageForm}/>
     </>
   );
 };

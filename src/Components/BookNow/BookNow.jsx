@@ -205,7 +205,7 @@ const BookNow = () => {
     <>
       <div className="productPart2 booking-section">
         <div className="inner-booking-section common-container">
-          <div className="container-fluid">
+          <div className="container-fluid booknow">
             <div className="row">
               <div className="col-lg-7">
                 <div className="booking_step_left">
@@ -233,7 +233,7 @@ const BookNow = () => {
                             <label for="">Pincode*</label>
                             <input
                               type="text"
-                              className="form-control"
+                              className="form-control selectpin"
                               placeholder="Please Share Pincode"
                               value={pincode}
                               readOnly={true}

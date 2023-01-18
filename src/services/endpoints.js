@@ -49,7 +49,9 @@ export const endpoints = {
         allBlogs : BASE_URL + "/blog"
     } ,
     booking : {
-        bookingDetailsUrl : BASE_URL + "/booking-details" 
+        bookingDetailsUrl : BASE_URL + "/booking-details" , 
+        cancelBooking : BASE_URL + "/cancel-bookings" ,
+        cancelReason : BASE_URL + "/cancel-reason"
     }
 }
 

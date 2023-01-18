@@ -127,7 +127,7 @@ const Navebar3 = (props) => {
               for (var j = 0; j < chldCategory.child_category.length; j++) {
                 const ddd = chldCategory.child_category[j];
                 if (ddd) {
-                  console.log(ddd , "ddd ")
+                  // console.log(ddd , "ddd ")
                   childCateryArry.push(ddd);
                 }
               }
@@ -301,7 +301,7 @@ const Navebar3 = (props) => {
                         </span>
                       </a>
                     </li>
-                    <li className="nav-item ml-4 d-flex" onClick={() => setShowMarriageForm(true)}>
+                    <li className="nav-item active ml-4 d-flex" onClick={() => setShowMarriageForm(true)}>
                       <a className="nav-link font-weight-900" href="#">
                         <span className="nav-icon">
                           <GiBigDiamondRing />

@@ -1,73 +1,92 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "./upcoming.css";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import Skeleton from "@mui/material/Skeleton";
 import Loader from "../../utils/Loader";
-import { useHistory , generatePath } from "react-router-dom";
-import NoBookings from "../../assets/images/noBookings.png"
+import { useHistory, generatePath } from "react-router-dom";
+import NoBookings from "../../assets/images/noBookings.png";
+import CancelModal from "../../Screens/BookingDetails/CancelModal";
+import { endpoints } from "../../services/endpoints";
 
 const UpcomingComp = (props) => {
+  const { allBookings, getUpcomingBookingList, loading, setLoading } = props;
 
-  const { allBookings, getUpcomingBookingList , loading , setLoading } = props;
   const history = useHistory();
-  const [item , setItem] =  useState([1,2,3,4]);
+  const [item, setItem] = useState([1, 2, 3, 4]);
   const pkgLocation = localStorage.getItem("locationDetails");
   const cityLocattion = JSON.parse(pkgLocation);
- 
+  const [showFinalCancel, setShowFinalCancel] = useState(false);
   const access_token = localStorage.getItem("access_token");
+  const [isOpen, setIsOpen] = useState(false);
 
-  const CancelOrder = (data) => {
-    const cancelUrl = "https://admin.experienceit.in/api/cancel-bookings";
-
-    const headers = {
-      Authorization: `Bearer ${access_token}`,
-      "Content-Type": "application/json",
-    };
-
-    const val = {
-      package_id: data.id,
-      status: "cancelled",
-    };
-
-    setLoading(true);
-    axios
-      .post(cancelUrl, val, { headers: headers })
-      .then((res) => {
-        setLoading(false);
-        if (res.data.status === true) {
-          toast("Booking cancelled Successfully", { type: "success" });
-          getUpcomingBookingList();
-        } else if (res.data.status === false) {
-          toast(res.data.message, { type: "error" });
-        }
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log(err, "this is the eror");
-      });
-  };
+  const [selectedPackage, setSelectedPackage] = useState({});
+  const [cancelReason, setCancelReason] = useState("");
 
   const handleBookingDetails = (data) => {
-
     var subCatName = data.subcategory_name;
-    subCatName = subCatName.replaceAll(" " , "-");
+    subCatName = subCatName.replaceAll(" ", "-");
     var packageName = data.title;
-    packageName = packageName.replaceAll(" " , "-")
+    packageName = packageName.replaceAll(" ", "-");
 
+    const path = generatePath(
+      "/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details/:booking_id",
+      {
+        sub_category_name: subCatName,
+        sub_category_id: data.subcategory,
+        location: cityLocattion.name,
+        package_name: packageName,
+        package_id: data.id,
+        booking_id: data.booking_id,
+      }
+    );
 
-     const path = generatePath("/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details/:booking_id" , {
-      sub_category_name : subCatName ,
-      sub_category_id : data.subcategory,
-      location: cityLocattion.name,
-      package_name : packageName ,
-      package_id : data.id ,
-      booking_id : data.booking_id
-     })
+    history.push(path);
+  };
 
-     history.push(path)
+  const handleCancelBtn = (dta) => {
+    setSelectedPackage(dta);
+    setIsOpen(true);
+  };
 
+  const CancelOrder = () => {
+    if (cancelReason == "") {
+      toast("Please give cancel reason", { type: "warning" });
+    } else {
+      const cancelUrl = endpoints.booking.cancelBooking;
+
+      const headers = {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      };
+
+      const val = {
+        package_id: selectedPackage.id,
+        status: "cancelled",
+        booking_id: selectedPackage.booking_id,
+        cancel_reason: cancelReason,
+      };
+
+      setLoading(true);
+      axios
+        .post(cancelUrl, val, { headers: headers })
+        .then((res) => {
+          setLoading(false);
+          if (res.data.status === true) {
+            toast("Booking cancelled Successfully", { type: "success" });
+            setShowFinalCancel(true);
+            setIsOpen(false);
+            getUpcomingBookingList();
+          } else if (res.data.status === false) {
+            toast(res.data.message, { type: "error" });
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err, "this is the eror");
+        });
+    }
   };
 
   return (
@@ -103,7 +122,7 @@ const UpcomingComp = (props) => {
                             <h3>{itm.title}</h3>
                             <div className="rating-and-discount">
                               <h5>
-                                <span>{itm.discount_percent}% off </span>
+                                <span>{itm.discount_percent} % off </span>
                               </h5>
                               <div className="rating">
                                 <span>{itm.rating}</span>
@@ -120,13 +139,13 @@ const UpcomingComp = (props) => {
                             <div className="upcomingDte">
                               <button
                                 className="btn bokking-details"
-                                onClick={() =>handleBookingDetails(itm)}
+                                onClick={() => handleBookingDetails(itm)}
                               >
                                 Boking Details
                               </button>
                               <button
                                 className="bokking-details"
-                                onClick={() => CancelOrder(itm)}
+                                onClick={() => handleCancelBtn(itm)}
                               >
                                 Cancel
                               </button>
@@ -164,6 +183,16 @@ const UpcomingComp = (props) => {
           {/* <Loader /> */}
         </div>
       </div>
+      <CancelModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        CancelOrder={CancelOrder}
+        setCancelReason={setCancelReason}
+        cancelReason={cancelReason}
+        showFinalCancel={showFinalCancel}
+        setShowFinalCancel={setShowFinalCancel}
+      />
+      <ToastContainer />
     </>
   );
 };

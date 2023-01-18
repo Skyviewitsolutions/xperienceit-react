@@ -28,7 +28,9 @@ import { useParams, useLocation } from "react-router-dom";
 import ProductCarousel from "../../Components/ProductScreenDetails/ProductCarousel";
 import { endpoints } from "../../services/endpoints";
 
+
 const BookingDetails = (props) => {
+
   const {
     sub_category_name,
     sub_category_id,
@@ -36,6 +38,7 @@ const BookingDetails = (props) => {
     package_id,
     booking_id,
   } = useParams();
+
   const location = useLocation();
 
   const [showSideBar, setShowSideBar] = useState(false);
@@ -73,6 +76,11 @@ const BookingDetails = (props) => {
   const [reviewCount, setReviewCount] = useState("");
   const [poductCategoryTitle, setPoductCategoryTitle] = useState("");
   const [description, setDescription] = useState("");
+  const access_token = localStorage.getItem("access_token");
+  const [loading , setLoading] = useState(false)
+  const [selectedPackage, setSelectedPackage] = useState({});
+  const [cancelReason, setCancelReason] = useState("");
+  const [showFinalCancel, setShowFinalCancel] = useState(false);
 
   //  getting the package data through the api;
 
@@ -292,6 +300,46 @@ const BookingDetails = (props) => {
        setReviews(dta)
      }
   }
+
+  const CancelOrder = () => {
+
+    if (cancelReason == "") {
+      toast("Please give cancel reason", { type: "warning" });
+    } else {
+      const cancelUrl = endpoints.booking.cancelBooking;
+
+      const headers = {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      };
+
+      const val = {
+        package_id: package_id,
+        status: "cancelled",
+        booking_id: booking_id,
+        cancel_reason: cancelReason,
+      };
+
+      setLoading(true);
+      axios
+        .post(cancelUrl, val, { headers: headers })
+        .then((res) => {
+          setLoading(false);
+          if (res.data.status === true) {
+            toast("Booking cancelled Successfully", { type: "success" });
+            setShowFinalCancel(true);
+            setIsOpen(false);
+
+          } else if (res.data.status === false) {
+            toast(res.data.message, { type: "error" });
+          }
+        })
+        .catch((err) => {
+          setLoading(false);
+          console.log(err, "this is the eror");
+        });
+    }
+  };
 
 
   return (
@@ -632,7 +680,15 @@ const BookingDetails = (props) => {
             </div>
           </div>
         </div>
-        <CancelModal setIsOpen={setIsOpen} isOpen={isOpen} />
+        <CancelModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        CancelOrder={CancelOrder}
+        setCancelReason={setCancelReason}
+        cancelReason={cancelReason}
+        showFinalCancel={showFinalCancel}
+        setShowFinalCancel={setShowFinalCancel}
+      />
         <Footer2 />
       </div>
     </>

@@ -1287,7 +1287,38 @@ font-size: 16px;
   .review-customer-name {
     font-size: 14px;
   }
+  .bokking-pakage-details {
+  
+    padding-left: 0px!important; 
+     padding-right: 0px!important;
+}
+.booking-pakages-time-slot {
+  
+  flex-wrap: wrap;
+}
+.booking-pakages-time-slot span {
+
+  font-size: 14px!important;
+}
+.bokking-pakage-details span {
+  font-size: 14px;
   }
+  h6.bkngTitle {
+    font-size: 14px!important;
+  }
+  h6.bkngQnty {
+    font-size: 14px!important;
+  }
+  h6.bkngPrice {
+    font-size: 14px!important;
+  }
+  .product_btn {
+    padding: 10px 0px;
+  }
+  .booking-pakage-details-price span {
+    font-size: 14px!important;
+  }
+}
   .product_revew_details{
     cursor: pointer;
   }

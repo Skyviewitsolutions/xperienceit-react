@@ -277,7 +277,7 @@ const BookingDetails = (props) => {
                                   Glorious Black And Golden Bi{" "}
                                 </h6>
                                 <h6 className="bkngQnty">2</h6>
-                                <h6 className="bkngPrice">Rs 2325 </h6>
+                                <h6 className="bkngPrice"> ₹2325 </h6>
                               </div>
                             </div>
 

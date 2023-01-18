@@ -8,44 +8,47 @@ import WishlistData from "../Components/WishlistData/WishlistData";
 import axios from "axios";
 import UpcomingComp from "../Components/UpcomingComp/UpcomingComp";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
-
+import Footer2 from "../Components/Common/Footer/Footer2";
 
 const UpcomingBooking = () => {
-
+  
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
-  
+
   const [updateLocation, setUpdateLocation] = useState(false);
   const [allBookings, setAllBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const url = "https://admin.experienceit.in/api/upcoming-bookings";
-  
 
   const access_token = localStorage.getItem("access_token");
 
-  const getUpcomingBookingList = () =>{
+  const getUpcomingBookingList = () => {
     const headers = {
       Authorization: `Bearer ${access_token}`,
       "Content-Type": "application/json",
     };
 
+    setLoading(true);
+
     axios
       .get(url, { headers: headers })
       .then((res) => {
-        console.log(res , "this upcoming response");
+        setLoading(false);
         if (res.data.status === true) {
           const val = res.data.body;
           setAllBookings(val);
         }
       })
       .catch((err) => {
+        setLoading(false);
         console.log(err, "this is upcoming error");
       });
-  }
+  };
 
   useEffect(() => {
     getUpcomingBookingList();
-  },[]);
+  }, []);
 
   useEffect(() => {
     window.scrollTo({
@@ -53,23 +56,32 @@ const UpcomingBooking = () => {
       behavior: "smooth",
     });
   }, []);
-  
+
   return (
     <>
-    <div className="homeScreen">
-      <header className="header">
-        <Navebar3
-          showSideBar={showSideBar}
-          setShowSideBar={setShowSideBar}
-          updateLocation={updateLocation}
-          setUpdateLocation={setUpdateLocation}
-          taskBarData={taskBarData}
+      <div className="homeScreen">
+        <header className="header">
+          <Navebar3
+            showSideBar={showSideBar}
+            setShowSideBar={setShowSideBar}
+            updateLocation={updateLocation}
+            setUpdateLocation={setUpdateLocation}
+            taskBarData={taskBarData}
+          />
+          <TaskBar
+            updateLocation={updateLocation}
+            setTaskBarData={setTaskBarData}
+          />
+        </header>
+        <UpcomingComp
+          allBookings={allBookings}
+          getUpcomingBookingList={getUpcomingBookingList}
+          loading={loading}
+          setLoading={setLoading}
         />
-        <TaskBar updateLocation={updateLocation}  setTaskBarData={setTaskBarData}/>
-      </header>
-      <UpcomingComp allBookings={allBookings} getUpcomingBookingList={getUpcomingBookingList}/>
-    </div>
-   <StickyMenu/>
+        <Footer2 />
+      </div>
+      <StickyMenu />
     </>
   );
 };

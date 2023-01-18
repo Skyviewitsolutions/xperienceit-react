@@ -14,12 +14,14 @@ import Loader from "../utils/Loader";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
 
 const WishlistScreen = () => {
+
   const [showSideBar, setShowSideBar] = useState(false);
   const [updateLocation, setUpdateLocation] = useState(false);
   const dispatch = useDispatch();
   const [taskBarData, setTaskBarData] = useState([]);
   const dispath = useDispatch();
   const [wishListArray, setWishListArray] = useState([]);
+  const [loading , setLoading] = useState(false);
   const access_token = localStorage.getItem("access_token");
   // const wishtListArray = useSelector(
   //   (state) => state.handleWishtListData.wishListArray
@@ -38,28 +40,6 @@ const WishlistScreen = () => {
 
   useEffect(() => {
     const allWishtListUrl = endpoints.wishlist.allWishtList;
-
-    // if (access_token) {
-    //   const headers = {
-    //     Authorization : `Bearer ${access_token}`,
-    //     Accept : "application/json"
-    //   };
-
-    //   axios
-    //     .post(allWishtListUrl , {headers : headers})
-    //     .then((res) => {
-    //       console.log(res , "wishlist array here")
-    //       if (res.data.status === true) {
-    //         const val = res.data.body;
-    //          setWishListArray(val)
-    //         dispatch(updateWishList(val));
-    //         localStorage.setItem("wishListArray", JSON.stringify(val));
-    //       }
-    //     })
-    //     .catch((err) => {
-    //       console.log(err, "this is the error");
-    //     });
-    // }
 
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${access_token}`);

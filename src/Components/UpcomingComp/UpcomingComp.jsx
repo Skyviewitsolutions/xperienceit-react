@@ -5,11 +5,17 @@ import "./upcoming.css";
 import { AiOutlineStar, AiOutlineHeart } from "react-icons/ai";
 import Skeleton from "@mui/material/Skeleton";
 import Loader from "../../utils/Loader";
+import { useHistory , generatePath } from "react-router-dom";
+import NoBookings from "../../assets/images/noBookings.png"
 
 const UpcomingComp = (props) => {
-  const { allBookings, getUpcomingBookingList } = props;
-  const [loading, setLoading] = useState(false);
 
+  const { allBookings, getUpcomingBookingList , loading , setLoading } = props;
+  const history = useHistory();
+  const [item , setItem] =  useState([1,2,3,4]);
+  const pkgLocation = localStorage.getItem("locationDetails");
+  const cityLocattion = JSON.parse(pkgLocation);
+ 
   const access_token = localStorage.getItem("access_token");
 
   const CancelOrder = (data) => {
@@ -41,6 +47,26 @@ const UpcomingComp = (props) => {
         setLoading(false);
         console.log(err, "this is the eror");
       });
+  };
+
+  const handleBookingDetails = (data) => {
+
+    var subCatName = data.subcategory_name;
+    subCatName = subCatName.replaceAll(" " , "-");
+    var packageName = data.title;
+    packageName = packageName.replaceAll(" " , "-")
+
+
+     const path = generatePath("/experiences/:location/:sub_category_name/:sub_category_id/:package_name/:package_id/booking-details" , {
+      sub_category_name : subCatName ,
+      sub_category_id : data.subcategory,
+      location: cityLocattion.name,
+      package_name : packageName ,
+      package_id : data.id
+     })
+
+     history.push(path , {bookingDetails : data})
+
   };
 
   return (
@@ -89,17 +115,20 @@ const UpcomingComp = (props) => {
                                 {itm.discounted_price}
                                 <s>₹{itm.purchased_price}</s>
                               </h4>
+                            </div>
+                            <div className="upcomingDte">
                               <button
-                                className="btn"
+                                className="btn bokking-details"
+                                onClick={() =>handleBookingDetails(itm)}
+                              >
+                                Boking Details
+                              </button>
+                              <button
+                                className="bokking-details"
                                 onClick={() => CancelOrder(itm)}
                               >
                                 Cancel
                               </button>
-                            </div>
-                            <div className="upcomingDte">
-                              <h6>Date</h6>
-                              <h6>:</h6>
-                              <h6>{itm.date}</h6>
                             </div>
                           </div>
                         </div>
@@ -109,8 +138,26 @@ const UpcomingComp = (props) => {
                 })}
             </div>
 
-            {allBookings.length == 0 && (
-              <h6 style={{ marginLeft: "25px" }}>Sorry , No data available</h6>
+            {!loading && allBookings.length == 0 && (
+              <>
+                <div style={{ width: "100%" }} className="my-2">
+                  <img src={NoBookings} alt="" style={{ width: "100%" }} />
+                </div>
+              </>
+            )}
+
+            {loading && (
+              <div class="row comman-card">
+                {item.map((itm, ind) => {
+                  return (
+                    <>
+                      <div className="col-lg-3 col-md-3 col-12 mb-3">
+                        <Skeleton height={300} variant="rectangular" />
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
             )}
           </div>
           {/* <Loader /> */}

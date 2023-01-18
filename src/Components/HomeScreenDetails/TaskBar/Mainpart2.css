@@ -1,7 +1,7 @@
 .main-banner-section .owl-dots {
   position: absolute;
   right: 0;
-  top: 42%;
+  top: 44%;
   transform: rotate(90deg);
 }
 .main-banner-section .owl-theme .owl-dots .owl-dot span {

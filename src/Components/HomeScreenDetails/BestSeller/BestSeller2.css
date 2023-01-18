@@ -135,7 +135,7 @@
         padding-bottom: 0;
         margin-left: 0;
         text-align: center;
-        min-height: 56px;
+        min-height: 40px;
         align-items: center;
     }
     .seller_box2 img {
@@ -158,25 +158,36 @@
     }
     .seller_box2 .content_aria h3 {
         padding-top: 4px;
+        font-weight: 100;
     }
     .bestseller-section .seller_box3 button {
         font-size: 33px;
         padding: 0px;
-        min-height: 56px;
+        min-height: 46px;
         border-radius: 10px 10px 0px 0px;
     }
     .seller_box2 .content_aria h5 {
         margin-bottom: 0px;
     }
     .seller_box2 img {
-        max-height: 250px;
+        max-height: 222px;
         object-fit: cover;
     }
     .seller_box1 img {
         max-height: 250px;
         object-fit: cover;
+        margin-top: -2px;
+       }
+       .seller_box2 .content_aria h3 {
+        font-size: 36px;
+        font-weight: 500;
+       }
+       .seller_box2 .content_aria h3 {
+        font-weight: 100px;
+       }
+       .seller_box1 {
+        margin-top: 12px;
     }
-    
 }
 
 @media only screen and (max-width: 600px) {

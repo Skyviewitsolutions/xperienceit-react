@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import Star from "./star.svg";
 import "./CategoriesPackeges.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,7 +9,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
 import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
 import axios from "axios";
-import NoPackages from "../../assets/images/noPackages.png"
+import NoPackages from "../../assets/images/noPackages.png";
+
 
 const CategoryCard = (props) => {
 
@@ -89,7 +89,7 @@ const CategoryCard = (props) => {
   const isFavourite = checkWishList[0];
 
   const renderToProduct = (data) => {
-    console.log(data, "data here");
+
     const name = data.title;
     const subCatName = data.subcat_name;
     const subCategoryName = subCatName.replaceAll(" ", "-");
@@ -165,8 +165,10 @@ const CategoryCard = (props) => {
 };
 
 const CategoriesPackeges = (props) => {
+
   const { showCategoryPack, categoryName, category_id, loading } = props;
   const [item, setItem] = useState([1, 2, 3, 4]);
+
   return (
     <>
       <div className="all-pack-slider inner-row-package">

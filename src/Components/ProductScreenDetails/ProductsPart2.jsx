@@ -21,10 +21,10 @@ import axios from "axios";
 import Cart3 from "../CartGallary/Cart3";
 import RelatedPackage from "../RelactedPackage/RelatedPackage";
 import ProductStickBar from "./ProductStickBar";
-
 import ReadMoreAndLess from "react-read-more-less";
 
 const ProductPart2 = (props) => {
+  
   const {
     productTitle,
     titleContent,
@@ -282,10 +282,14 @@ const ProductPart2 = (props) => {
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_left_details_box">
-                        {" "}
-                        <h6>
-                          {titleContent && parse(props.titleContent)}
-                        </h6>{" "}
+                        <ReadMoreAndLess
+                          className="read-more-content"
+                          charLimit={10}
+                          readMoreText="Read more"
+                         
+                        >
+                          <h6>{titleContent && parse(props.titleContent)}</h6>
+                        </ReadMoreAndLess>
                       </div>
                     </div>
                   )}
@@ -586,9 +590,9 @@ const ProductPart2 = (props) => {
                     <div className="product_time">
                       <span
                         style={{
-                          fontWeight: "bold",
-                          fontSize: "18",
-                          color: "grey",
+                          fontWeight: "600",
+                          fontSize: "18px",
+                          
                         }}
                       >
                         Select Time
@@ -596,9 +600,9 @@ const ProductPart2 = (props) => {
                       &nbsp;
                       <span
                         style={{
-                          fontWeight: "bold",
+                          fontWeight: "600",
                           fontSize: "20",
-                          color: "grey",
+                         
                           marginBottom: "2px",
                         }}
                       >
@@ -688,6 +692,65 @@ const ProductPart2 = (props) => {
                       </div>
                     </div>
                   </div>
+                  {reviews.length != 0 && (
+                    <div className="product_reviews">
+                      <input
+                        type="radio"
+                        ref={reviewRef}
+                        style={{ width: "0px", height: "0px" }}
+                      />
+                      <div className="product_Revews_header">
+                        <h5>Reviews</h5>
+                      </div>
+                      <div className="product_revew_details">
+                        {reviews.map((item, index) => {
+                          return (
+                            <>
+                              <div className="row no-gutters revwDtlsBox">
+                                <div className="col-auto review_customer_img">
+                                  <img
+                                    src={
+                                      item.icon_image ? item.icon_image : User
+                                    }
+                                    alt="user image"
+                                  />
+                                </div>
+                                <div className="col rivewDetls">
+                                  <p className="review-customer-name">
+                                    {item.user_name}
+                                  </p>
+                                  <h6
+                                    style={{
+                                      display: "inline-block",
+                                      direction: "ltr",
+                                      justifyContent: "center",
+                                    }}
+                                  >
+                                    <span className="rivewDetls_rating">
+                                      {" "}
+                                      {item.rating}{" "}
+                                    </span>
+                                    <img src={YellowStar} alt="star" />
+                                  </h6>
+                                  <p className="review-cutomer-content">
+                                    {item.description}
+                                  </p>
+                                </div>
+                              </div>
+
+                             
+                            </>
+                          );
+                        })}
+                        {!showMoreReview ? (
+                          <span onClick={readMoreReview}>Read more..</span>
+                        ) : (
+                          <span onClick={readLessReview}>Read less...</span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                 </div>
               </div>
               <ToastContainer />

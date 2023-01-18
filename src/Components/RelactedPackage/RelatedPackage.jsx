@@ -19,12 +19,10 @@ import { useParams } from "react-router-dom";
 // card to be shown ;
 
 const Card = (props) => {
-
   const dispatch = useDispatch();
   const pkgLocation = localStorage.getItem("locationDetails");
   const location = useLocation();
-  const { title, titleId , subCategoryName , subCategoryId } = props;
-
+  const { title, titleId, subCategoryName, subCategoryId } = props;
 
   const cityLocattion = JSON.parse(pkgLocation);
   const city = cityLocattion && cityLocattion.name;
@@ -138,11 +136,19 @@ const Card = (props) => {
             </h3>
             <div className="rating-and-discount">
               <h5>
-                <span>{props.discount}% off</span>
+                {props.discount && props.discount != 0 ? (
+                  <span>{props.discount}% off</span>
+                ) : (
+                  ""
+                )}
               </h5>
-              
+
               <div className="rating">
-                <span>{props.rating}</span>
+                {props.rating && props.rating != 0 ? (
+                  <span>{props.rating}</span>
+                ) : (
+                  ""
+                )}
                 <AiOutlineStar />
               </div>
             </div>
@@ -168,7 +174,6 @@ const Card = (props) => {
 };
 
 const RelatedPackage = (props) => {
-
   const { sub_category_name, sub_category_id, package_name, package_id } =
     useParams();
 
@@ -194,16 +199,18 @@ const RelatedPackage = (props) => {
         items: 2.5,
       },
       700: {
+        items: 2.5,
+      },
+      800: {
         items: 3.5,
       },
       1000: {
-        items: 4.5,
+        items: 3.8,
       },
     },
   };
 
   const getAllRelatedPackage = () => {
-
     const url = `${endpoints.home.packageBySubCategory}${sub_category_id}`;
 
     axios
@@ -223,86 +230,84 @@ const RelatedPackage = (props) => {
     getAllRelatedPackage();
   }, []);
 
-  return (<>
-
-    {allPackage.length != 0 &&  
-    <div className="all-pack-slider relatedPkgCont">
-      <div className="package-section-slider common-container">
-        <div className="container-fluid">
-          <div className="title-with-button">
-            <div className="row">
-              <div className="title-col">
-                <h2>
-                  Shop By <span> Related Package</span>
-                </h2>
-                <div className="more-btn"></div>
+  return (
+    <>
+      {allPackage.length != 0 && (
+        <div className="all-pack-slider relatedPkgCont">
+          <div className="package-section-slider common-container">
+            <div className="container-fluid">
+              <div className="title-with-button">
+                <div className="row">
+                  <div className="title-col">
+                    <h2 className="shopbyRelatedPackages">
+                      Shop By <span> Related Package</span>
+                    </h2>
+                    <div className="more-btn"></div>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                {allPackage.length < 5 ? (
+                  allPackage.map((itmm, idx) => {
+                    return (
+                      <>
+                        <div className="col-lg-3 col-md-6 col-sm-12">
+                          <Card
+                            data={itmm}
+                            img={itmm.image_id}
+                            heading={itmm.title}
+                            price={itmm.outlay_price}
+                            discountPrice={itmm.discounted_price}
+                            discount={itmm.discount_percnt}
+                            rating={itmm.rating}
+                            id={itmm.id}
+                            key={idx}
+                            subCategoryName={itmm.subcat_name}
+                            subCategoryId={itmm.subcat_id}
+                          />
+                        </div>
+                      </>
+                    );
+                  })
+                ) : (
+                  <OwlCarousel
+                    className="owl-theme category"
+                    id="category"
+                    items={3}
+                    loop
+                    margin={10}
+                    dots={false}
+                    {...options}
+                    nav
+                  >
+                    {allPackage.map((itmm, idx) => {
+                      return (
+                        <>
+                          <Card
+                            data={itmm}
+                            img={itmm.image_id}
+                            heading={itmm.title}
+                            price={itmm.outlay_price}
+                            discountPrice={itmm.discounted_price}
+                            discount={itmm.discount_percnt}
+                            rating={itmm.rating}
+                            id={itmm.id}
+                            key={idx}
+                            subCategoryName={itmm.subcat_name}
+                            subCategoryId={itmm.subcat_id}
+                          />
+                        </>
+                      );
+                    })}
+                  </OwlCarousel>
+                )}
               </div>
             </div>
           </div>
-          <div className="row">
-          {allPackage.length < 5 ? 
-            allPackage.map((itmm, idx) => {
-              return (
-                <>
-                <div className="col-lg-3 col-md-6 col-sm-12">
-                  <Card
-                    data={itmm}
-                    img={itmm.image_id}
-                    heading={itmm.title}
-                    price={itmm.outlay_price}
-                    discountPrice={itmm.discounted_price}
-                    discount={itmm.discount_percnt}
-                    rating={itmm.rating}
-                    id={itmm.id}
-                    key={idx}
-                    subCategoryName={itmm.subcat_name}
-                    subCategoryId={itmm.subcat_id}
-                  />
-                  </div>
-                </>
-              );
-            }) : 
-            <OwlCarousel
-            className="owl-theme category"
-            id="category"
-            items={3}
-            loop
-            margin={10}
-            dots={false}
-            {...options}
-            nav
-          >
-           { 
-            allPackage.map((itmm, idx) => {
-              return (
-                <>
-                  <Card
-                    data={itmm}
-                    img={itmm.image_id}
-                    heading={itmm.title}
-                    price={itmm.outlay_price}
-                    discountPrice={itmm.discounted_price}
-                    discount={itmm.discount_percnt}
-                    rating={itmm.rating}
-                    id={itmm.id}
-                    key={idx}
-                    subCategoryName={itmm.subcat_name}
-                    subCategoryId={itmm.subcat_id}
-                  />
-                </>
-              );
-            })
-        }
-         
-          </OwlCarousel>
-          
-          }
-          </div>
-          
         </div>
-      </div>
-    </div>}
-  </>);
+      )}
+    </>
+  );
 };
 
 export default RelatedPackage;

@@ -479,7 +479,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 .fixed-header {
   position: fixed;
   background: #fff;
-  z-index: 9999;
+  z-index: 100 !important;
   box-shadow: rgb(237 237 237 / 62%) 0px 1px 10px 1px;
 }
 .toggle-menu-for-tb-mb button.navbar-toggler.collapsed:focus {
@@ -646,7 +646,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
     font-size: 28px;
   }
   .header-section .location_pick_btn {
-    width: 170px;
+    /* width: 170px; */
     position: relative;
     bottom: 4px;
 }

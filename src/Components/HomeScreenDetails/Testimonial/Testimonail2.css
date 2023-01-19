@@ -149,13 +149,13 @@
   }
   .testimonial-pack-slider  button.owl-prev {
     position: absolute;
-    left: -5px;
-    top: 40%;
+    left: -31px;
+    top: 45%;
   }
   .testimonial-pack-slider  button.owl-next {
     position: absolute;
-    right: -5px;
-    top: 40%;
+    right: -31px;
+    top: 45%;
   }
   .testimonial-pack-slider h2 {
       margin-bottom: 0px;

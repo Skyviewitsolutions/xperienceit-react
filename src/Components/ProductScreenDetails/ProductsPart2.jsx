@@ -279,17 +279,18 @@ const ProductPart2 = (props) => {
                       <input
                         type="radio"
                         ref={overviewRef}
+                        className="reference"
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_left_details_box">
-                        <ReadMoreAndLess
+                        {/* <ReadMoreAndLess
                           className="read-more-content"
                           charLimit={10}
                           readMoreText="Read more"
                          
-                        >
+                        > */}
                           <h6>{titleContent && parse(props.titleContent)}</h6>
-                        </ReadMoreAndLess>
+                        {/* </ReadMoreAndLess> */}
                       </div>
                     </div>
                   )}
@@ -328,7 +329,8 @@ const ProductPart2 = (props) => {
                     <div className="product_reviews">
                       <input
                         type="radio"
-                        ref={reviewRef}
+                        ref={reviewRef} 
+                        className="reference"
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_Revews_header">
@@ -405,7 +407,7 @@ const ProductPart2 = (props) => {
 
                       <div className="product_arrngmgnt_text">
                         {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6>{arrangment && parse(props.arrangment)}</h6>
+                        <h6 className="arrangmentsIcon">{arrangment && parse(props.arrangment)}</h6>
                       </div>
                     </div>
                   )}
@@ -446,6 +448,7 @@ const ProductPart2 = (props) => {
                       <input
                         type="radio"
                         ref={inclusionRef}
+                        className="reference"
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_trust_text_exclusion">
@@ -462,6 +465,7 @@ const ProductPart2 = (props) => {
                       <input
                         type="radio"
                         ref={videoRef}
+                        className="reference"
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_trust_text_vedio">

@@ -1,7 +1,7 @@
 import Navebar3 from "../../Components/Common/Navbar/Navebar3";
 import Mainpart2 from "../../Components/HomeScreenDetails/TaskBar/Mainpart2";
 import TaskBar from "../../Components/HomeScreenDetails/TaskBar/TaskBar";
-import "./BookingDetails.css";
+// import "./BookingDetails.css";
 import OwlCarousel from "react-owl-carousel";
 import Skeleton from "@mui/material/Skeleton";
 import "owl.carousel/dist/assets/owl.carousel.css";
@@ -447,7 +447,7 @@ const BookingDetails = (props) => {
 
                           <div className="product_arrngmgnt_text">
                             {/* <img src={Hand} alt="Hand icon" /> */}
-                            <h6>{arrangment && parse(arrangment)}</h6>
+                            <h6 className="arrangmentsIcon">{arrangment && parse(arrangment)}</h6>
                           </div>
                         </div>
                       )}
@@ -524,8 +524,12 @@ const BookingDetails = (props) => {
                           </div>
                           <hr />
                           <div className="bokking-pakage-details">
-                            <span>{bookingData.title}</span>
+                            <span className="pr-2">{bookingData.title}</span>
                             <span> {`₹${bookingData.gst_price}`}</span>
+                          </div>
+                          <div className="bokking-pakage-details">
+                            <span>additional charge</span>
+                            <span> {`₹${bookingData.additional_charge}`}</span>
                           </div>
                           <div className="customdetails">
                             <span style={{ marginBottom: "10px" }}>

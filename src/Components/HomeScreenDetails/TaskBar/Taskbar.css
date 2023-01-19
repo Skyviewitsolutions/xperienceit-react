@@ -448,7 +448,7 @@
   }
   .main_bottom_bar_2 {
       margin-left: 12px;
-      height: 44%;
+      height: 100%;
       text-transform: capitalize;
       cursor: pointer;
   }

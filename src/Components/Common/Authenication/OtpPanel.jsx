@@ -114,13 +114,13 @@ const OtpPanel = (props) => {
                   {" "}
                   <MdBackup />
                 </span>
-                <span
+                {/* <span
                   className="otp_page"
                   style={{ color: "grey", fontWeight: "600" }}
                   onClick={() => setAuthScreen("loginWithOtp")}
                 >
                   GoBack
-                </span>
+                </span> */}
               </u>
             </div>
             {/* <div className="Forg">

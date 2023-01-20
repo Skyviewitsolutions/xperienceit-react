@@ -12,7 +12,7 @@ import { endpoints } from "../../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../../actions";
 import NoPackages from "../../../assets/images/noPackages.png";
-
+import "./BestSellarCategory2.css";
 const Card = (props) => {
   const dispatch = useDispatch();
 
@@ -147,7 +147,7 @@ const Card = (props) => {
                 )}{" "}
                 <s>₹{props.price}</s>
               </h4>
-              <button className="btn" onClick={() => renderToHomeData(props)}>
+              <button className="btn-catgory-book" onClick={() => renderToHomeData(props)}>
                 Book Now
               </button>
             </div>
@@ -198,7 +198,18 @@ const BestSellerCategory2 = (props) => {
       1000: {
         items: 4.5,
       },
-      
+      1024:{
+        items: 3,
+      },
+      1100: {
+        items: 4.2,
+      },
+      1280: {
+        items: 3.2,
+      },
+      1300: {
+        items: 4.5,
+      },
     },
   };
 

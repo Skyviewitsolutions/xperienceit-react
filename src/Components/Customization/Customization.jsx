@@ -1,7 +1,7 @@
 import React, { useEffect  } from "react";
 import { useState } from "react";
 import Cut from "./cut.svg";
-import Logo from "./logo.svg";
+import Logo from "./xpitlogo.png";
 import Img1 from "./img1.png";
 import { Modal } from "react-bootstrap";
 import "./Customization.css";
@@ -46,7 +46,7 @@ const Customization = (props) => {
           const val = res.data.body;
           setCustomization(val);
         } else if (res.data.status === false) {
-          toast(res.data.message, { type: "error" });
+          // toast(res.data.message, { type: "error" });
         }
       })
       .catch((err) => {
@@ -208,7 +208,10 @@ const Customization = (props) => {
           <div className="custom_header"></div>
 
           <div className="card-container">
-            {customization.map((item, index) => {
+
+    {customization.length == 0 && <span className="customNodata">No customization found !</span>}
+
+            {customization.length != 0 && customization.map((item, index) => {
 
               return (
                 <div className=" custom_card">

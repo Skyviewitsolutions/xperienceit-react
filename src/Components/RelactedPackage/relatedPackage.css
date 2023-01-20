@@ -4,3 +4,9 @@ h2.shopbyRelatedPackages {
     font-size: 18px!important;
     width: 80%;
 }
+
+@media screen and (max-width: 600px) {
+    h2.shopbyRelatedPackages {
+        width: 96%!important;
+    }
+}

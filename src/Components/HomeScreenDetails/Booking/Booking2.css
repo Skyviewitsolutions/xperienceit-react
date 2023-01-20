@@ -51,7 +51,7 @@
   background: #f9f9f9;
 }
 .category-section-slider {
-  padding-top: 70px !important;
+  padding-top: 8px !important;
 }
 .category-section-slider button.owl-prev {
   position: absolute;
@@ -364,7 +364,7 @@ button.owl-next span {
   }
   button.owl-prev span {
       background: #fff;
-      line-height: 26px;
+      line-height: 35px;
       border-radius: 50%;
       font-size: 40px;
       height: 38px;
@@ -374,7 +374,7 @@ button.owl-next span {
   }
   button.owl-next span {
       background: #fff;
-      line-height: 26px;
+      line-height: 35px;
       border-radius: 50%;
       font-size: 40px;
       height: 38px;

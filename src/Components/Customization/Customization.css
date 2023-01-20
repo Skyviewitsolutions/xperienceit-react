@@ -9,7 +9,12 @@
   border-bottom-left-radius: 8px;
   border-top: 6px solid var(--pink);
 }
-
+.customNodata{
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+}
 .custom_logo {
   position: absolute;
   top: 0px;

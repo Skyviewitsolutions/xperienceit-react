@@ -65,6 +65,9 @@ const Booking2 = (props) => {
   const [item, setItem] = useState([1, 2, 3, 4, 5, ]);
   const [loading, setLoading] = useState(false);
 
+
+
+  
   const api = endpoints.home.filterCategory;
 
   useEffect(() => {
@@ -125,22 +128,29 @@ const Booking2 = (props) => {
     },
   };
 
-  const breakPoints = [
-    { width: 360,itemsToShow: 1 },
-    { width: 500, itemsToShow: 1 },
-    { width: 600, itemsToShow: 1 },
-    {width:768,itemsToShow: 2},
-    { width: 900, itemsToShow: 3 },
-    { width: 1100, itemsToShow: 6 },
+  // const breakPoints = [
+  //   { width: 500, itemsToShow: 1 },
+  //   { width: 600, itemsToShow: 3 },
+  //   { width: 900, itemsToShow: 4 },
+  //   { width: 1300, itemsToShow: 6 },
+  // ];
+ const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2},
+    { width: 650, itemsToShow: 2},
+    { width: 850, itemsToShow: 3 },
+    { width: 1150, itemsToShow: 5 },
     { width: 1300, itemsToShow: 6 },
-  ];
+    { width: 1450, itemsToShow: 6 },
+    { width: 1750, itemsToShow: 6 },
+  ]
 
   return (
     <>
 
     {filterCategoryData.length != 0 && 
       <div className="category-section-slider common-container">
-        <div className="container-fluid">
+        <div className="container-fluid bokking-slider">
           <Carousel breakPoints={breakPoints} className="carousel_container">
             {filterCategoryData.length != 0 ? (
               filterCategoryData.map((itt, index) => {

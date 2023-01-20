@@ -35,6 +35,7 @@ import PrivacyPolicy from "./Screens/PrivacyPolicy/PrivacyPolicy";
 import BlogDetails from "./Screens/Blogs/BlogDetails";
 import BookingDetails from "./Screens/BookingDetails/BookingDetails";
 import WhoWeAre from "./Screens/WhoWeAre/WhoWeAre";
+import Invoice from "./Screens/Invoice/Invoice";
 
 const App = () => {
   const firebaseConfig = {
@@ -143,9 +144,10 @@ const App = () => {
               component={BookingDetails}
             />
             <Route exact path="/who-we-are" component={WhoWeAre}/>
+            <Route exact path="/inv/:booking_id" component={Invoice}/>
           </Switch>
         </Router>
-        <ToastContainer />
+        <ToastContainer limit={1} />
       </div>
     </>
   );

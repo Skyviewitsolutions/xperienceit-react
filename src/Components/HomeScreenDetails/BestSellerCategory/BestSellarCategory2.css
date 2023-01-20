@@ -1,0 +1,11 @@
+.btn-catgory-book{
+background: linear-gradient(135deg,#eccf66,#c59402);
+    color: #fff;
+    padding: 4px 10px;
+   cursor: pointer;
+   border:none;
+   border-radius: 5px;
+}
+.btn-catgory-book:hover{
+    color: #fff;
+}

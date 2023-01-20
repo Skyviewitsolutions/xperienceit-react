@@ -417,8 +417,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 .logIn .button {
   align-self: center;
   height: 44px;
-
-  background-color: #ffffff !important;
+background-color: #ffffff !important;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid;
@@ -449,6 +448,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 }
 .logIn .button {
   font-weight: 600;
+  padding-top: 5px;
 }
 .header-section .location_pick_btn button span.locImg {
   margin-right: 2px;

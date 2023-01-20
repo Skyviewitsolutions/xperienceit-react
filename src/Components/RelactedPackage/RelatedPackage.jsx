@@ -239,7 +239,7 @@ const RelatedPackage = (props) => {
               <div className="title-with-button">
                 <div className="row">
                   <div className="title-col">
-                    <h2 className="shopbyRelatedPackages">
+                    <h2 className="shopbyRelatedPackagesbookingscren">
                       Shop By <span> Related Package</span>
                     </h2>
                     <div className="more-btn"></div>

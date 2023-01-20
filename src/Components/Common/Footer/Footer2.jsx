@@ -51,6 +51,9 @@ const WhoWeAre=()=>{
                 <a onClick={() =>history.push("/tnc")} className="tnc">
                   Terms and Conditions
                 </a>
+                <a href="	https://admin.experienceit.in/page/become-a-vendor " className="tnc">
+                  Register Merchant
+                </a>
               </div>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-12">

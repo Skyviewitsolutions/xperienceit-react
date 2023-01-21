@@ -120,7 +120,7 @@
     text-align: center;
 }
 
-@media only screen and (max-width: 991px) and (min-width: 768px)  {  
+@media only screen and (min-width: 768px) and (max-width: 991px)  {  
    .seller_box2 .content_aria {
         z-index: 1;
         background: var(--blue);

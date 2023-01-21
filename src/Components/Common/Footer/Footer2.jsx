@@ -52,7 +52,7 @@ const WhoWeAre=()=>{
                   Terms and Conditions
                 </a>
                 <a href="	https://admin.experienceit.in/page/become-a-vendor " className="tnc">
-                  Register Merchant
+                 Become a Merchant
                 </a>
               </div>
             </div>

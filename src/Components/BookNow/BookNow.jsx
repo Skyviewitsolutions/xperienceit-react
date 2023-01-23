@@ -580,7 +580,7 @@ const BookNow = () => {
                         </span>
                         <h6>{bookingData?.timeslot}</h6>
                       </div>
-                      <div className="product_edit">
+                      <div className="product_edit" style={{display : "none"}}>
                         <span>
                           <BiEdit />
                         </span>

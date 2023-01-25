@@ -92,7 +92,7 @@ const BookNow = () => {
             object_model: "package",
             start_date: bookingData?.booking_date,
             end_date: bookingData?.booking_date,
-            status: "pending",
+            status: "confirmed",
             email: loginVal.email,
             first_name: loginVal.first_name,
             last_name: loginVal.first_name,

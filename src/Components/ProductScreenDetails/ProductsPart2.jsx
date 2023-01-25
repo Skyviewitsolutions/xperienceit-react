@@ -274,7 +274,7 @@ const ProductPart2 = (props) => {
                   </div>
 
                   {titleContent && (
-                    <div className="product_left_details common-card">
+                    <div className="product_left_details common-card ">
                       <h4>Product Details: </h4>
                       <input
                         type="radio"
@@ -289,7 +289,7 @@ const ProductPart2 = (props) => {
                           readMoreText="Read more"
                          
                         > */}
-                          <h6>{titleContent && parse(props.titleContent)}</h6>
+                          <h6 className="prdctDetails">{titleContent && parse(props.titleContent)}</h6>
                         {/* </ReadMoreAndLess> */}
                       </div>
                     </div>
@@ -357,7 +357,7 @@ const ProductPart2 = (props) => {
                           {faq.map((itm, idx) => {
                             return (
                               <>
-                                <span>{itm.title}</span>
+                                <span>{itm.title}</span><br/>
                                 <span className="answr">{itm.content}</span>
                               </>
                             );

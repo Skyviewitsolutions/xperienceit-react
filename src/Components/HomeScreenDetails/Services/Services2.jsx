@@ -1,12 +1,13 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Express from "./ServicesImages/express.png";
-import Medal from "./ServicesImages/medal.png";
-import Star from "./ServicesImages/star.png";
+import Express from "./ServicesImages/4.png";
+import Medal from "./ServicesImages/1.png";
+import Star from "./ServicesImages/2.png";
+import Teamwork from "./ServicesImages/3.png";
 import Girl from "./ServicesImages/Girl.png";
 import Balloon from "./ServicesImages/Gubbara.png"
-import Teamwork from "./ServicesImages/teamwork.png";
+
 import "./Services2.css";
 const Services2 = () => {
 
@@ -21,7 +22,7 @@ const Services2 = () => {
                         <div className='row'>
                             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12  border-right border-bottom text-center whoose_us_box">
                                 <div className='choose-us-col'>
-                                    <div className="icon">
+                                    <div className="icon whychoose-icons">
                                         <img src={Star} alt="star icon" />
 
                                     </div>
@@ -31,7 +32,7 @@ const Services2 = () => {
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12  border-bottom text-center whoose_us_box">
                                 <div className="choose-us-col">
-                                    <div className="icon">
+                                    <div className="icon whychoose-icons">
                                         <img src={Medal} alt="star icon" />
 
                                     </div>
@@ -42,7 +43,7 @@ const Services2 = () => {
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12  border-right  text-center whoose_us_box">
                                 <div className="choose-us-col">
-                                    <div className="icon">
+                                    <div className="icon whychoose-icons">
                                         <img src={Express} alt="star icon" />
 
                                     </div>
@@ -53,7 +54,7 @@ const Services2 = () => {
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center whoose_us_box">
                                 <div className="choose-us-col">
-                                    <div className="icon">
+                                    <div className="icon whychoose-icons">
                                         <img src={Teamwork} alt="medal" />
                                     </div>
 

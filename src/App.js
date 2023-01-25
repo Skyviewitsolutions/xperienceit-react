@@ -145,7 +145,7 @@ const App = () => {
             />
             <Route exact path="/who-we-are" component={WhoWeAre}/>
             {/* <Route exact path="/inv/:booking_id" component={Invoice}/> */}
-            <Route exact path="/inv" component={Invoice}/>
+            <Route exact path="/inv/:booking_id" component={Invoice}/>
           </Switch>
         </Router>
         <ToastContainer limit={1} />

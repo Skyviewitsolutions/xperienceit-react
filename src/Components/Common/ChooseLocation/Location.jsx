@@ -88,7 +88,7 @@ const Location = (props) => {
         centered
       >
         <div className="chlocation">
-          <h3 className="chtxt">Choose City have xperience it</h3>
+          <h3 className="chtxt">Choose City have XperienceIt</h3>
           <span className="mb-4 ">Find more than 3000 decorations, gifts and surprises!</span>
           <div className="location_search">
             <img src={Flag} alt="flag" className="flag" />

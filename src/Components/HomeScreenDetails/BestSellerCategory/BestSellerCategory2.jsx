@@ -192,6 +192,9 @@ const BestSellerCategory2 = (props) => {
       700: {
         items: 2,
       },
+      768: {
+        items: 2,
+      },
       800:{
         items: 2.5,
       },
@@ -209,6 +212,12 @@ const BestSellerCategory2 = (props) => {
       },
       1300: {
         items: 4.5,
+      },
+      1366: {
+        items: 4.2,
+      },
+      1440: {
+        items: 4.2,
       },
     },
   };

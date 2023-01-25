@@ -92,7 +92,7 @@ const BookNow = () => {
             object_model: "package",
             start_date: bookingData?.booking_date,
             end_date: bookingData?.booking_date,
-            status: "pending",
+            status: "confirmed",
             email: loginVal.email,
             first_name: loginVal.first_name,
             last_name: loginVal.first_name,
@@ -183,7 +183,7 @@ const BookNow = () => {
       key: "rzp_test_2xp5hbZcfnYnT5",
       currency: "INR",
       amount: amount * 100,
-      name: "XperienceIt",
+      name: "XperienceIt Private Limited",
       description: "Thanks for purchasing",
       // image: {logo},
       handeler: function (response) {
@@ -191,7 +191,7 @@ const BookNow = () => {
         alert("Payment Successfully");
       },
       prifill: {
-        name: "XperienceIt",
+        name: "XperienceIt Private Limited",
         description: "Thanks for purchasing",
       },
     };

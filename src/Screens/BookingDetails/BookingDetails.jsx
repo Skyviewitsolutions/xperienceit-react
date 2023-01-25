@@ -556,7 +556,7 @@ const BookingDetails = (props) => {
                                           {itm.quantity}
                                         </h6>
                                         <h6 className="bkngPrice">
-                                          Rs {itm.price}
+                                        ₹ {itm.price}
                                         </h6>
                                       </div>
                                     </div>

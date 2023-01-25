@@ -219,7 +219,7 @@ const Navebar3 = (props) => {
                   <div className="input-group search">
                     <input
                       type="text"
-                      class="form-control"
+                      class="form-control serchPackages"
                       placeholder="Search..."
                       value={packageName}
                       onChange={(e) => handlePackageSearch(e)}

@@ -189,23 +189,41 @@ const RelatedPackage = (props) => {
     responsive: {
       0: {
         items: 1,
-        margin: 10,
+        // margin: 10,
       },
       400: {
         items: 1,
-        margin: 10,
+        // margin: 10,
       },
       600: {
-        items: 2.5,
+        items: 1.7,
       },
       700: {
+        items: 2,
+      },
+      800:{
         items: 2.5,
       },
-      800: {
-        items: 3.5,
-      },
       1000: {
-        items: 3.8,
+        items: 4.5,
+      },
+      1024:{
+        items: 3,
+      },
+      1100: {
+        items: 4.2,
+      },
+      1280: {
+        items: 3.2,
+      },
+      1300: {
+        items: 4.5,
+      },
+      1366: {
+        items: 4,
+      },
+      1440: {
+        items: 4,
       },
     },
   };

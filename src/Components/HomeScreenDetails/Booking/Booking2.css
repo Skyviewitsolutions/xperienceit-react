@@ -288,8 +288,97 @@ button.owl-next span {
 /* Media Query For tablet View */
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
-
-  
+  .common-container {
+    padding: 20px!important;
+  }
+  button.sc-bdfBQB.eRmJbc.rec.rec-arrow.rec.rec-arrow-left {
+    box-sizing: border-box;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    font-size: 18px!important;
+    background-color: white;
+    color: gold;
+    box-shadow: 0 0 2px 0px #333;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    line-height: 40px;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    cursor: pointer;
+    outline: none;
+}
+button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-right{
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 18px!important;
+  background-color: white;
+  color: gold;
+  box-shadow: 0 0 2px 0px #333;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  line-height: 40px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+}
+button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 18px!important;
+  background-color: white;
+  color: gold;
+  box-shadow: 0 0 2px 0px #333;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  line-height: 40px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+}
+button.sc-bdfBQB.eRmJbc.rec.rec-arrow.rec.rec-arrow-right{
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-size: 18px!important;
+  background-color: white;
+  color: gold;
+  box-shadow: 0 0 2px 0px #333;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  line-height: 40px;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  cursor: pointer;
+  outline: none;
+}
+  .common-container .container-fluid {
+   
+    /* padding: 25px 0px!important; */
+}
   .category-section-slider h4 {
       font-size: 15px;
       text-align: center;
@@ -305,15 +394,17 @@ button.owl-next span {
       padding: 15px;
   }
   .category-section-slider {
-      padding-top: 30px !important;
+      padding-top: 6px !important;
+     position: relative;
+      top: 30px;
   }    
   .main-banner-section .main_bottom_bar {
       position: relative;
-      bottom: 0px;
+      
   }
   button.owl-next span {
       background: #fff;
-      line-height: 34px;
+      line-height: 38px;
       border-radius: 50%;
       font-size: 32px;
       height: 40px;
@@ -323,7 +414,7 @@ button.owl-next span {
   }
   button.owl-prev span {
       background: #fff;
-      line-height: 34px;
+      line-height: 38px;
       border-radius: 50%;
       font-size: 32px;
       height: 40px;
@@ -338,6 +429,9 @@ button.owl-next span {
       width: 70%;
       font-size: 20px;
   }
+  button.btn-catgory-book {
+    margin-left: 10px;
+}
   .package-section-slider .title-col {
       display: flex;
       width: 100%;
@@ -524,8 +618,12 @@ button.sc-bdfBQB.eRmJbc.rec.rec-arrow.rec.rec-arrow-right{
     transform: scale(1.1) !important;
     text-align: center;
   }
-  @media screen and (min-width: 768px) and (max-width:768px) { 
-    /* STYLES HERE */
+
+
 }
 
+@media  screen and (min-width : 1000px)and (max-width:1024px){
+  .row.comman-card .col-lg-3 {
+    width: 33.33%!important;
+}
 }

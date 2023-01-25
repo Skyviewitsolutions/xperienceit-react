@@ -112,3 +112,9 @@ color: #e1be48;
     }
   }
 
+
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+    .footer_col1_media a img {
+        width: 50px;
+    }
+}

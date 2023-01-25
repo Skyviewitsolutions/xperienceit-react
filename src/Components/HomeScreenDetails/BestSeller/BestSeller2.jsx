@@ -2,9 +2,9 @@
 
 import React, { useEffect } from "react";
 import "./BestSeller2.css";
-import DrinkCouple from "./BestSellerImages/candlelightsdinner.svg"
-import Ballonhat from "./BestSellerImages/party.svg"
-import BallonGirl from "./BestSellerImages/balloon_girl.png";
+import DrinkCouple from "./BestSellerImages/candlelightdinnerwebsiteimg.svg"
+import Ballonhat from "./BestSellerImages/ballondecorations.svg"
+import BallonGirl from "./BestSellerImages/partydecoration.svg";
 import { generatePath , useHistory } from "react-router-dom";
 
 
@@ -58,8 +58,8 @@ const BestSeller2 = () =>{
     
     return (<>
         <div className="Offer-slider">
-            <div className="offer-section-slider common-container">
-                <div className="container-fluid">
+            <div className="offer-section-slider common-container ">
+                <div className="container-fluid ourbestSeller">
                     <h4 className="ourBestSellar">Our Best Seller</h4>
                
                 <div className="bestseller_container_area">

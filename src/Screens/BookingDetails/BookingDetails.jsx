@@ -398,7 +398,7 @@ const BookingDetails = (props) => {
 
                       <div className="product_left_para2"></div>
 
-                      <div className="product_left_para gallery_slider common-card"></div>
+                    
 
                       {titleContent && (
                         <div className="product_left_details common-card">
@@ -556,7 +556,7 @@ const BookingDetails = (props) => {
                                           {itm.quantity}
                                         </h6>
                                         <h6 className="bkngPrice">
-                                          Rs {itm.price}
+                                        ₹ {itm.price}
                                         </h6>
                                       </div>
                                     </div>

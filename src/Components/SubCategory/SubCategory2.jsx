@@ -129,10 +129,10 @@ const SubCategoryCard = (props) => {
             <h3>{props.heading}</h3>
             <div className="rating-and-discount">
               <h5>
-                <span>{props.discount} </span>
+               {props.discount && props.discount !=0? ( <span>{props.discount}% Off </span>):("")}
               </h5>
               <div className="rating">
-                <span>{props.rating}</span>
+               {props.rating && props.rating !=0? ( <span>{props.rating}</span>):("")}
                 <AiOutlineStar />
               </div>
             </div>
@@ -159,6 +159,8 @@ const SubCategory2 = (props) => {
 
   const { subCatePack, subCatePackName, subCategory_id, loading } = props;
   const [item , setItem] = useState([1,2,3,4])
+
+console.log(subCatePack,"subCatePackkjhflsdhgl")
 
   return (
     <>
@@ -191,7 +193,7 @@ const SubCategory2 = (props) => {
                         heading={item.title}
                         prices={item.discounted_price}
                         outlayprice={item.outlay_price}
-                        // discount={item.discount}
+                         discount={item.discount_percnt}
                         rating={item.rating}
                         // review={item.review}
                         key={index.key}

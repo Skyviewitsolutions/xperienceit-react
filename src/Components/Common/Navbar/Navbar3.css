@@ -132,7 +132,22 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
   color: black;
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 1000px) {
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+  .header-section .seach-with-log .input-group.search input.form-control {
+    min-height: 46px;
+    min-width: 170px!important;
+    
+}
+li.nav-item.ml-4.d-flex {
+  margin-left: 10px!important;
+}
+.input-group.search{
+  right: -10px;
+}
+  .srchBtn {
+    z-index: 1!important;
+    min-height: 44px;
+  }
   span.profile_text {
     display: none;
   }
@@ -140,8 +155,8 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
     margin-left: 44px !important;
   }
   ul.navbar-nav.ml-5.topnav {
-    margin-left: -15px !important;
-    margin-right: -46px !important;
+    margin-left: 0px !important;
+    margin-right: -80px !important;
     padding-left: 0px !important;
   }
   .btn:not(:disabled):not(.disabled) {
@@ -159,7 +174,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
     font-size: 14px;
   }
   ul.navbar-nav.ml-5.topnav svg {
-    width: 16px;
+    width: 22px;
     position: relative;
     top: -2px;
     margin-right: 3px;
@@ -177,6 +192,9 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
   .logIn {
     margin-left: 10px;
   }
+  input.form-control.serchPackages {
+    width: 200px!important;
+}
 }
 
 .searchRslt::-webkit-scrollbar {
@@ -322,11 +340,11 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
   }
 }
 
-@media screen and (min-width: 720px) and (max-width: 768px) {
-  .logIn {
+@media screen and (min-width:601px) and (max-width: 768px) {
+  /* .logIn {
     text-align: center;
     margin-left: 60px !important;
-  }
+  } */
 }
 @media screen and (min-width: 360px) and (max-width: 480px) {
   /* .location_pick_btn {
@@ -417,8 +435,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 .logIn .button {
   align-self: center;
   height: 44px;
-
-  background-color: #ffffff !important;
+background-color: #ffffff !important;
   border-radius: 5px;
   cursor: pointer;
   border: 1px solid;
@@ -449,6 +466,7 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
 }
 .logIn .button {
   font-weight: 600;
+  padding-top: 5px;
 }
 .header-section .location_pick_btn button span.locImg {
   margin-right: 2px;
@@ -551,6 +569,11 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
     min-height: 44px;
     min-width: 230px;
   }
+  .form-inline.my-2.d-flex.userBox {
+    position: relative;
+    left: 95px;
+    bottom: 7px;
+}
   .header-section .seach-with-log a.navbar-brand {
     margin-right: 10px;
   }
@@ -561,7 +584,21 @@ button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
   .logIn {
     text-align: center;
     margin-left: 0px !important;
+    position: relative;
+    left: 30px;
   }
+  .header-section .location_pick_btn {
+    
+    position: relative;
+    left: 30px;
+}
+.input-group.search {
+  
+  position: relative;
+  left: 40px;
+  min-width: 200px!important;
+
+}
   .login-and-location {
     float: left;
     padding-top: 5px;
@@ -658,5 +695,10 @@ a.nav-link.btn.btn-danger.text-grey.bg-white.userProfile {
   position: relative;
   bottom: 9px;
   border-radius: 50%!important;
+}
+}
+@media  screen and (min-width: 1366px) {
+  input.form-control.serchPackages {
+    min-width: 260px!important;
 }
 }

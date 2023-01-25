@@ -84,7 +84,7 @@ const Navbar2 = (props) => {
               placement="end"
             >
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title>ExperienceIt</Offcanvas.Title>
+                <Offcanvas.Title>XperienceIt</Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1">

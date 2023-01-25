@@ -305,7 +305,11 @@
     /* .taskbar{
           transform: translateX(1%);
       }     */
-  
+      .tskList::-webkit-scrollbar {
+        width: 1px !important;
+        /* height: 0px !important; */
+        
+      }
     .main {
       transform: translateX(1%);
     }
@@ -319,10 +323,13 @@
     }
   
     .taskbar {
-      overflow-x: scroll;
+      /* overflow-x: scroll; */
+      /* overflow: hidden; */
+      
     }
     .taskbar::-webkit-scrollbar{
       height: 2px;
+      width: 2px;  
     }
     .main_left {
       width: 54%;

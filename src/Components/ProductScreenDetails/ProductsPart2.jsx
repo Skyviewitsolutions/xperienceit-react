@@ -274,7 +274,7 @@ const ProductPart2 = (props) => {
                   </div>
 
                   {titleContent && (
-                    <div className="product_left_details common-card">
+                    <div className="product_left_details common-card ">
                       <h4>Product Details: </h4>
                       <input
                         type="radio"
@@ -289,7 +289,7 @@ const ProductPart2 = (props) => {
                           readMoreText="Read more"
                          
                         > */}
-                          <h6>{titleContent && parse(props.titleContent)}</h6>
+                          <h6 className="prdctDetails">{titleContent && parse(props.titleContent)}</h6>
                         {/* </ReadMoreAndLess> */}
                       </div>
                     </div>
@@ -325,82 +325,7 @@ const ProductPart2 = (props) => {
                     </div>
                   )}
 
-                  {reviews.length != 0 && (
-                    <div className="product_reviews">
-                      <input
-                        type="radio"
-                        ref={reviewRef} 
-                        className="reference"
-                        style={{ width: "0px", height: "0px" }}
-                      />
-                      <div className="product_Revews_header">
-                        <h5>Reviews</h5>
-                      </div>
-                      <div className="product_revew_details">
-                        {reviews.map((item, index) => {
-                          return (
-                            <>
-                              <div className="row no-gutters revwDtlsBox">
-                                <div className="col-auto review_customer_img">
-                                  <img
-                                    src={
-                                      item.icon_image ? item.icon_image : User
-                                    }
-                                    alt="user image"
-                                  />
-                                </div>
-                                <div className="col rivewDetls">
-                                  <p className="review-customer-name">
-                                    {item.user_name}
-                                  </p>
-                                  <h6
-                                    style={{
-                                      display: "inline-block",
-                                      direction: "ltr",
-                                      justifyContent: "center",
-                                    }}
-                                  >
-                                    <span className="rivewDetls_rating">
-                                      {" "}
-                                      {item.rating}{" "}
-                                    </span>
-                                    <img src={YellowStar} alt="star" />
-                                  </h6>
-                                  <p className="review-cutomer-content">
-                                    {item.description}
-                                  </p>
-                                </div>
-                              </div>
-
-                              {/* <div className="product_review_user">
-                                <div className="product_review_user_box">
-                                  <img
-                                    src={
-                                      item.icon_image ? item.icon_image : User
-                                    }
-                                    alt="user image"
-                                  />
-                                  <ul>
-                                    <h6>{item.user_name}</h6>
-                                  </ul>
-                                  <div className="product_review_star">
-                                    <span>{item.rating}</span>&nbsp;
-                                    <img src={YellowStar} alt="star" />
-                                  </div>
-                                </div>
-                                <p>{item.description}</p>
-                              </div> */}
-                            </>
-                          );
-                        })}
-                        {reviews.length > 2 && (!showMoreReview  ? (
-                          <span onClick={readMoreReview}>Read more..</span>
-                        ) : (
-                          <span onClick={readLessReview}>Read less...</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                 
                   {arrangment && (
                     <div className="product_arrngmgnt common-card">
                       <h5>Arrangements</h5>
@@ -432,7 +357,7 @@ const ProductPart2 = (props) => {
                           {faq.map((itm, idx) => {
                             return (
                               <>
-                                <span>{itm.title}</span>
+                                <span>{itm.title}</span><br/>
                                 <span className="answr">{itm.content}</span>
                               </>
                             );

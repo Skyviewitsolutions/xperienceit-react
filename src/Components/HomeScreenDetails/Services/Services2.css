@@ -2,12 +2,18 @@
    display: flex; justify-content: center;
 }
 .why_chhose_us_section .whoose_us_box .icon img {
+   width: 100%;
+   height: 100%;
+}
+.whychoose-icons{
+    margin:auto;
     border-radius: 50%;
     width: 100px;
     height: 100px;
     padding: 28px;
     box-shadow: rgb(0 0 0 / 24%) 0px 0px 4px;
     margin-bottom: 25px;
+   
 }
 .why_chhose_us_section .choose-us-col {
     padding: 20px;
@@ -74,7 +80,7 @@
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) { 
     .why_chhose_us_section .what_we_offer_box {
-        padding: 20px 0px 0px;
+        padding: 20px 15px 0px;
     }
     .footer_section .footer_col.app_img img {
         width: 181px !important;

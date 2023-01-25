@@ -27,7 +27,7 @@ const Card = (props) => {
               <q id="quate"> {props.review} </q>
             </p>
           </div>
-          <div className="media-img">
+          <div className="media-img testimonial-Icons">
             <img src={props.icon} alt="man icon" />
           </div>
         </div>

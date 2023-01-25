@@ -141,7 +141,7 @@ const UpcomingComp = (props) => {
                                 className="btn bokking-details"
                                 onClick={() => handleBookingDetails(itm)}
                               >
-                                Boking Details
+                                Booking Details
                               </button>
                               <button
                                 className="bokking-details"

@@ -9,7 +9,12 @@
   border-bottom-left-radius: 8px;
   border-top: 6px solid var(--pink);
 }
-
+.customNodata{
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px;
+}
 .custom_logo {
   position: absolute;
   top: 0px;
@@ -74,7 +79,7 @@ input[type="number"]::-webkit-outer-spin-button {
   position: relative;
   border-radius: 10px;
   margin-bottom: 20px;
-  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 5px;
 }
 img.img.img-responsive {

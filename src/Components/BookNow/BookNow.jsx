@@ -128,7 +128,7 @@ const BookNow = () => {
                 setIsLoading(false);
                 history.push("/");
               } else if (res.data.status === false) {
-                toast(res.data.message, { type: "error" });
+                // toast(res.data.message, { type: "error" });
                 setIsLoading(false);
               }
             })
@@ -183,7 +183,7 @@ const BookNow = () => {
       key: "rzp_test_2xp5hbZcfnYnT5",
       currency: "INR",
       amount: amount * 100,
-      name: "XperienceIt",
+      name: "XperienceIt Private Limited",
       description: "Thanks for purchasing",
       // image: {logo},
       handeler: function (response) {
@@ -191,7 +191,7 @@ const BookNow = () => {
         alert("Payment Successfully");
       },
       prifill: {
-        name: "XperienceIt",
+        name: "XperienceIt Private Limited",
         description: "Thanks for purchasing",
       },
     };
@@ -565,7 +565,7 @@ const BookNow = () => {
               <div className="col-lg-5">
                 <div className="booking_step_right">
                   <div className="product_arrngmgnt" data-aos="fade-left">
-                    <h5>Order Summury</h5>
+                    <h5>Order Summary</h5>
 
                     <div className="product_details">
                       <div className="product_date">
@@ -598,8 +598,10 @@ const BookNow = () => {
                         />
                       </div>
                       <div className="booksingimg2">
-                        <span>{bookingData?.productTitle}</span>
-                        <p>(Inc. 18% GST)</p>
+                        <span>{bookingData?.productTitle}
+                        <p className="bokinggstText">(Inc. 18% GST)</p>
+                        </span>
+                        
                       </div>
                       <div className="booksingimg3">
                         <span> Rs {bookingData?.gstPrice}</span>

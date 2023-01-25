@@ -57,7 +57,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
-  height: 150px;
+  height: 145px;
 }
 .testimonial-pack-slider .author {
   font-size: 18px;
@@ -166,4 +166,16 @@
   .baloon-elements {
       display: none;
   }
+}
+@media  screen and (min-width : 1024px)and (max-width:1280px){
+  .testimonial-pack-slider .item {
+    margin: 45px 0px;
+}
+.testimonial-Icons{
+  top:30px;
+
+}
+.qt-icon {
+  margin-top: -40px;
+}
 }

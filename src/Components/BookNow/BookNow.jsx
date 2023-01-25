@@ -123,7 +123,7 @@ const BookNow = () => {
             .post(api, data, { headers: headers })
             .then((res) => {
               if (res.data.status === true) {
-                toast("Thanks for booking !", { type: "success" });
+                // toast("Thanks for booking !", { type: "success" });
                 displayRazorpay(parseInt(bookingData.totalPrice));
                 setIsLoading(false);
                 history.push("/");
@@ -180,12 +180,13 @@ const BookNow = () => {
     }
 
     const options = {
-      key: "rzp_test_2xp5hbZcfnYnT5",
+      // key: "rzp_test_2xp5hbZcfnYnT5",
+      key:"rzp_live_aQItc9wjdMGC69",
       currency: "INR",
       amount: amount * 100,
       name: "XperienceIt Private Limited",
       description: "Thanks for purchasing",
-      // image: {logo},
+      
       handeler: function (response) {
         alert(response.razorpay_payment_id);
         alert("Payment Successfully");

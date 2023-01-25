@@ -14,7 +14,7 @@ const Invoice2 = () => {
   const { booking_id } = useParams();
 
   useEffect(() => {
-    const invoiceUrl = `http://admin.experienceit.in/api/invoice`;
+    const invoiceUrl = `https://admin.experienceit.in/api/invoice`;
     console.log(invoiceUrl, "invoiceUrl");
     const val = {
       booking_id: booking_id,

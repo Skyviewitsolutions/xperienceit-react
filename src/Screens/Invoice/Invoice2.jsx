@@ -46,49 +46,70 @@ const Invoice2 = () => {
               <div className="Invoice-Logo">
                 <img src={Logo} className="Logo-Img" />
               </div>
-              <div className="InvoceBill">
-                <h6>Bill To :</h6>
-                <p>
-                  {invoiceData.first_name} {invoiceData.last_name}{" "}
-                </p>
-                <p>
-                  Contact : <a href="tel:01241234568">{invoiceData.phone}</a>
-                </p>
-                <p>
-                  Email : <a href="email">{invoiceData.email}</a>
-                </p>
-                <p>
-                  Address : <a>Regd Off. 19/9, Pant Nagar</a>
-                </p>
-              </div>
             </div>
             <div className="col-sm-2">
               <h1 className="invoice-heading">INVOICE</h1>
             </div>
-            <div className="col-sm-5">
-              <div className="invoice-content">
-                <h6>Xperience It Events Pvt Ltd</h6>
-                <p>Regd Off. 19/9, Pant Nagar</p>
-                <p>Jangpura, South Delhi</p>
-                <p>New Delhi, Delhi 110014</p>
-                <p>India</p>
-                <p>
-                  Mobile : <a href="tel:01241234568">+ 91-8920933486</a>
-                </p>
+            <div className="col-sm-5"></div>
+            <div className="row">
+              <div className="col-6">
+                <div className="InvoceBill">
+                  <h6>Bill To :</h6>
+                  <p>
+                    {invoiceData.first_name} {invoiceData.last_name}{" "}
+                  </p>
+                  <p>
+                    Contact : <a href="tel:01241234568">{invoiceData.phone}</a>
+                  </p>
+                  <p>
+                    Email : <a href="email">{invoiceData.email}</a>
+                  </p>
+                  <p>
+                    Address : <a>Regd Off. 19/9, Pant Nagar</a>
+                  </p>
+                </div>
+              </div>
+              <div className="col-6">
+                <div className="invoice-content">
+                  <h6>Xperience It Events Pvt Ltd</h6>
+                  <p>Regd Off. 19/9, Pant Nagar</p>
+                  <p>Jangpura, South Delhi</p>
+                  <p>New Delhi, Delhi 110014</p>
+                  <p>India</p>
+                  <p>
+                    Mobile : <a href="tel:01241234568">+ 91-8920933486</a>
+                  </p>
 
-                <p>
-                  <a
-                    href="https://www.experienceit.in"
-                    style={{ fontWeight: "600" }}
-                  >
-                    www.xperienceit.in
-                  </a>
-                </p>
+                  <p>
+                    <a
+                      href="https://www.experienceit.in"
+                      style={{ fontWeight: "600" }}
+                    >
+                      www.xperienceit.in
+                    </a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6"></div>
+            <div className="col-sm-6">
+            <div className="Invoice-Details">
+                <li>
+                  <p>Invoice No</p> : <span>{invoiceData.booking_code}</span>
+                </li>
+                <li>
+                  <p>Invoice Date</p> : <span>23 Feb, 2023</span>
+                </li>
+                <li>
+                  <p>Payment Date</p> :<span>23 Feb, 2023</span>
+                </li>
+                <li>
+                  <p>Amount Pay (INR)</p> :{" "}
+                  <span>₹{invoiceData.booking_total}/- </span>
+                </li>
+              </div>
+            </div>
             <div className="col-sm-6">
               <div className="Invoice-PackageDetails">
                 <h6>Xperience : {invoiceData.package_name}</h6>
@@ -105,21 +126,7 @@ const Invoice2 = () => {
           <div className="row">
             <div className="col-sm-6"></div>
             <div className="col-sm-6">
-              <div className="Invoice-Details">
-                <li>
-                  <p>Invoice No</p> : <span>{invoiceData.booking_code}</span>
-                </li>
-                <li>
-                  <p>Invoice Date</p> : <span>23 Feb, 2023</span>
-                </li>
-                <li>
-                  <p>Payment Date</p> :<span>23 Feb, 2023</span>
-                </li>
-                <li>
-                  <p>Amount Pay (INR)</p> :{" "}
-                  <span>₹{invoiceData.booking_total}/- </span>
-                </li>
-              </div>
+             
             </div>
           </div>
           <div className="row">
@@ -131,7 +138,11 @@ const Invoice2 = () => {
                     <th scope="col">Items</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Rate</th>
-                    <th> {(invoiceData.coupon_price || invoiceData.offer_price) && "Discount/Coupon" }</th>
+                    <th>
+                      {" "}
+                      {(invoiceData.coupon_price || invoiceData.offer_price) &&
+                        "Discount/Coupon"}
+                    </th>
                     <th>Amount</th>
                   </tr>
                 </thead>
@@ -140,10 +151,10 @@ const Invoice2 = () => {
                     <th scope="row">1</th>
                     <td>{invoiceData.package_name}</td>
                     <td></td>
-                    <td>₹ {invoiceData.package_price}/-</td>
+                    <td>₹ {invoiceData.package_price}</td>
                     <td></td>
 
-                    <td>₹{invoiceData.package_price}/-</td>
+                    <td>₹{invoiceData.package_price}</td>
                   </tr>
                   {customizations.map((item, index) => {
                     return (
@@ -152,7 +163,7 @@ const Invoice2 = () => {
                           <th scope="row">{index + 2}</th>
                           <td>{item.title}</td>
                           <td>{item.quantity}</td>
-                          <td>₹ {item.price}/-</td>
+                          <td>₹ {item.price}</td>
                           <td></td>
                           <td>₹ {item.total_custom_amount}/-</td>
                         </tr>
@@ -160,15 +171,18 @@ const Invoice2 = () => {
                     );
                   })}
 
-                {(invoiceData.coupon_price || invoiceData.offer_price) && 
-                 <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{invoiceData.coupon_price} {invoiceData.offer_price} fdg</td>
-                    <td></td>
-                  </tr>}
+                  {(invoiceData.coupon_price || invoiceData.offer_price) && (
+                    <tr>
+                      <th scope="row"></th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        {invoiceData.coupon_price} {invoiceData.offer_price} fdg
+                      </td>
+                      <td></td>
+                    </tr>
+                  )}
 
                   <tr>
                     <th scope="row"></th>

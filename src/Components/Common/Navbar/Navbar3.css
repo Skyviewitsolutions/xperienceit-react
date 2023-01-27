@@ -666,6 +666,12 @@ background-color: #ffffff !important;
     top: 3px !important;
     height: 36px;
     padding: 0px 4px !important;
+    border: none;
+    background-color: #fff;
+  }
+  .toggle-menu-for-tb-mb button.navbar-toggler:focus-visible{
+    border: none;
+    outline: none;
   }
   header.header img.logo {
     width: 70px;

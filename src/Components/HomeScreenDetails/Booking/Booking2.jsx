@@ -12,8 +12,7 @@ import Carousel from "react-elastic-carousel";
 
 const Card = (props) => {
   const { data } = props;
-
-  const history = useHistory();
+ const history = useHistory();
 
   const pkgLocation = localStorage.getItem("locationDetails");
   const cityLocattion = JSON.parse(pkgLocation);
@@ -60,6 +59,17 @@ const Card = (props) => {
 };
 
 const Booking2 = (props) => {
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 3},
+    { width: 650, itemsToShow: 3},
+    { width: 850, itemsToShow: 5 },
+    { width: 1000, itemsToShow: 5 },
+    { width: 1300, itemsToShow: 6 },
+    { width: 1366, itemsToShow: 6 },
+    { width: 1450, itemsToShow: 6 },
+    { width: 1750, itemsToShow: 6 },
+  ]
 
   const [filterCategoryData, setFilterCategoryData] = useState([]);
   const [item, setItem] = useState([1, 2, 3, 4, 5, ]);
@@ -128,23 +138,7 @@ const Booking2 = (props) => {
     },
   };
 
-  // const breakPoints = [
-  //   { width: 500, itemsToShow: 1 },
-  //   { width: 600, itemsToShow: 3 },
-  //   { width: 900, itemsToShow: 4 },
-  //   { width: 1300, itemsToShow: 6 },
-  // ];
- const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2},
-    { width: 650, itemsToShow: 2},
-    { width: 850, itemsToShow: 3 },
-    { width: 1000, itemsToShow: 3 },
-    { width: 1300, itemsToShow: 6 },
-    { width: 1366, itemsToShow: 6 },
-    { width: 1450, itemsToShow: 6 },
-    { width: 1750, itemsToShow: 6 },
-  ]
+
 
   return (
     <>

@@ -62,9 +62,9 @@ const Mainpart2 = ({ updateLocation }) => {
             {bannerImg.length != 0 ? (
               bannerImg.map((item, index) => {
                 return (
-                  <div class="item">
-                    <div className="media-img">
-                      <img src={item.bg_images} key={index} />
+                  <div class="item main-part-carousel">
+                    <div className="media-img main-part-carousel-img-box">
+                      <img src={item.bg_images} key={index}  className="main-part-carousel-img"/>
                     </div>
                   </div>
                 );
@@ -78,7 +78,7 @@ const Mainpart2 = ({ updateLocation }) => {
             )}
           </OwlCarousel>
         </div>
-        <div className="main_bottom_bar">
+        {/* <div className="main_bottom_bar">
           <div className="main_bottom_bar_1">
             <h5>Search your</h5>
             <h3>Xperiences</h3>
@@ -96,7 +96,7 @@ const Mainpart2 = ({ updateLocation }) => {
           <div className="main_bottom_bar_3" style={{ background: "#1c1956" }}>
             <h5>Find Surprises</h5>
           </div>
-        </div>
+        </div> */}
       </div>
       <XperienceSelect
         showXperienceSelect={showXperienceSelect}

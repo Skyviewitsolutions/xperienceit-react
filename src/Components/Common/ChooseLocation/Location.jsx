@@ -151,8 +151,8 @@ const Location = (props) => {
             <GrFormClose size={29}/>
           </div>}
 
-          <img src={Left} alt="left icon" className="location_left" />
-           <img src={Right} alt="right icon" className="location_right" />
+          {/* <img src={Left} alt="left icon" className="location_left" />
+           <img src={Right} alt="right icon" className="location_right" /> */}
         
         
 

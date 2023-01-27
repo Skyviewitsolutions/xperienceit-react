@@ -48,7 +48,7 @@ const BirthdayGiftsScreen = () => {
         <SidebarComponent />
         <Footer2/>
       </div>
-      <StickyMenu/>
+      {/* <StickyMenu/> */}
     </>
   );
 };

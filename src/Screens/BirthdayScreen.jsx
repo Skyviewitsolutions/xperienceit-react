@@ -37,7 +37,7 @@ const BirthdayScreen = () =>{
     <Footer2/>
     <PopupHandler/>
     </div>
-    <StickyMenu/>
+    {/* <StickyMenu/> */}
     </>)
 }
 

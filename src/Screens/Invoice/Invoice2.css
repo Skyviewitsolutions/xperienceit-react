@@ -92,7 +92,8 @@
   margin-right: 15px;
   margin-top: 20px;
   float: right;
-  width: 50%;
+  width: 98%;
+  min-height: 120px;
 }
 .Invoice-PackageDetails h6 {
   text-align: right;
@@ -114,17 +115,18 @@
 }
 .Invoice-Details {
   margin-top: 20px;
-  padding: 10px;
+  padding: 5px;
   border-left: 3px solid #e39c07;
   margin-left: 15px;
   float: left;
-  width: 50%;
+  width: 98%;
+  min-height: 120px;
 }
 .Invoice-Details li {
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+ 
 }
 .Invoice-Details li p {
   margin-top: 0px;
@@ -133,6 +135,7 @@
   /* text-align: right; */
   font-weight: 600;
   text-align: left;
+  width:100px;
   font-family: Arial, Helvetica, sans-serif;
 }
 .Invoice-Details span {
@@ -142,6 +145,7 @@
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
+  margin-left: 10px;
 }
 .invoice-all-details {
   width: 96%;

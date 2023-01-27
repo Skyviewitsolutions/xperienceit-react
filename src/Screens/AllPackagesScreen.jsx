@@ -62,7 +62,7 @@ const AllPackagesScreen=()=>{
         <Services2/>
         <Footer2/>
     </div>
-<StickyMenu/>
+{/* <StickyMenu/> */}
         </>
     );
 }

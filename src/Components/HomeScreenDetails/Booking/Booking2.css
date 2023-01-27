@@ -51,7 +51,7 @@
   background: #f9f9f9;
 }
 .category-section-slider {
-  padding-top: 8px !important;
+  padding-top: 40px !important;
 }
 .category-section-slider button.owl-prev {
   position: absolute;
@@ -261,7 +261,7 @@ button.owl-next span {
 }
 .package-section-slider.common-container {
   padding-bottom: 5px;
-  padding-top: 0px;
+  /* padding-top: 65px; */
   cursor: pointer;
 }
 .all-pack-slider .container-fluid {

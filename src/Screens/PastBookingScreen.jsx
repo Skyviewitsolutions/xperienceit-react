@@ -69,7 +69,7 @@ const PastBookingScreen = () => {
       </header>
       <PastComingcomp allBookings={allBookings} />
     </div>
-   <StickyMenu/>
+   {/* <StickyMenu/> */}
     </>
   );
 };

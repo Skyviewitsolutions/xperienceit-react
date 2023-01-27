@@ -55,4 +55,34 @@
     position: absolute;
     bottom: -20px;
 }
+.main-part-carousel{
+  height: 175px!important;
+  background-color: #ffab02;
+}
+.main-part-carousel-img{
+height: 100%!important;
+width: 100%!important;
+}
+.main-part-carousel-img-box{
+  height: 100%!important;
+
+}
+.owl-theme .owl-nav.disabled + .owl-dots {
+  margin-top: -30px!important;
+}
+}
+@media (min-width: 601px) and (max-width: 991px) {
+  .main-part-carousel{
+    height: 200px!important;
+    background-color: #ffab02;
+  }
+  .main-part-carousel-img{
+  height: 100%!important;
+  width: 100%!important;
+  }
+  .main-part-carousel-img-box{
+    height: 100%!important;
+  
+  }
+  
 }

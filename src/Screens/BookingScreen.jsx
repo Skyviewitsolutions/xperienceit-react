@@ -26,7 +26,7 @@ const BookingScreen = () => {
         <BookNow />
         <Footer2 />
       </div>
-      <StickyMenu />
+      {/* <StickyMenu /> */}
     </div>
   );
 };

@@ -91,20 +91,6 @@ const Location = (props) => {
           <div className="modal-location-header">
           <h3 className="chtxt">Choose City have XperienceIt</h3>
           </div>
-         
-       
-         
-          {/* <div className="location_search">
-            <img src={Flag} alt="flag" className="flag" />
-            <input
-              type="text"
-              placeholder="Search City"
-              value={searchCity}
-              onChange={(e) => handleSearch(e)}
-            />
-            <img src={Search} alt="search icon" className="serch" />
-          </div> */}
-
           <div className="location_places">
         <div className="text-center"><span>Find more than 3000 decorations, gifts and surprises!</span></div>  
             <div className="_city-selection-container-flex">
@@ -135,13 +121,6 @@ const Location = (props) => {
           </div>
           </div>
 
-          {/* <button
-            className="location_btn"
-            onClick={() => setShowLocation(false)}
-          >
-            CONTINUE
-          </button> */}
-
           {locationData && 
           <div
             className="location_cut"
@@ -151,11 +130,8 @@ const Location = (props) => {
             <GrFormClose size={29}/>
           </div>}
 
-          <img src={Left} alt="left icon" className="location_left" />
-           <img src={Right} alt="right icon" className="location_right" />
-        
-        
-
+          {/* <img src={Left} alt="left icon" className="location_left" />
+           <img src={Right} alt="right icon" className="location_right" /> */}
 
         </div>
       </Modal>

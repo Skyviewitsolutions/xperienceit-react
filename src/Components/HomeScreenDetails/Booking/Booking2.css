@@ -67,7 +67,7 @@
 }
 button.owl-prev span {
   background: #fff;
-  line-height:42px;
+  line-height:33px;
   border-radius: 50%;
   font-size: 43px;
   height: 45px;
@@ -78,7 +78,7 @@ button.owl-prev span {
 }
 button.owl-next span {
   background: #fff;
-  line-height: 42px;
+  line-height: 33px;
   border-radius: 50%;
   font-size: 43px;
   height: 45px;
@@ -456,9 +456,10 @@ button.sc-bdfBQB.eRmJbc.rec.rec-arrow.rec.rec-arrow-right{
   .category-section-slider.common-container {
       padding:15px;
   }
+  
   button.owl-prev span {
       background: #fff;
-      line-height: 35px;
+      line-height: 26px;
       border-radius: 50%;
       font-size: 40px;
       height: 38px;
@@ -468,7 +469,7 @@ button.sc-bdfBQB.eRmJbc.rec.rec-arrow.rec.rec-arrow-right{
   }
   button.owl-next span {
       background: #fff;
-      line-height: 35px;
+      line-height: 26px;
       border-radius: 50%;
       font-size: 40px;
       height: 38px;

@@ -91,7 +91,7 @@ const WishlistScreen = () => {
         </header>
         <Footer2 />
       </div>
-      <StickyMenu />
+      {/* <StickyMenu /> */}
     </>
   );
 };

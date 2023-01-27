@@ -237,7 +237,7 @@ const ProductPart2 = (props) => {
                     <div className="row">
                       <div className="col-lg-9 col-md-8">
                         <h5>
-                          Home/Experiences/{" "}
+                         
                           <span>{props.poductCategoryTitle}</span>
                         </h5>
                         <h3>{props.productTitle}</h3>

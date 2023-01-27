@@ -132,6 +132,9 @@ const Location = (props) => {
 
           {/* <img src={Left} alt="left icon" className="location_left" />
            <img src={Right} alt="right icon" className="location_right" /> */}
+        
+        
+
 
         </div>
       </Modal>

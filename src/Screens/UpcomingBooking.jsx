@@ -81,7 +81,7 @@ const UpcomingBooking = () => {
         />
         <Footer2 />
       </div>
-      <StickyMenu />
+      {/* <StickyMenu /> */}
     </>
   );
 };

@@ -392,7 +392,7 @@ const ProductScreen = () => {
         <ToastContainer limit={1} />
         <Enquiry showEnquiry={showEnquiry} setShowEnquiry={setShowEnquiry} />
       </div>
-     <StickyMenu/>
+     {/* <StickyMenu/> */}
     </>
   );
   }

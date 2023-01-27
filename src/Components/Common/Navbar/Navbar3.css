@@ -107,6 +107,7 @@ input.form-control:focus {
 }
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .show > .nav-link {
+
   color: rgba(0, 0, 0, 0.9);
   background: white;
 }
@@ -115,19 +116,24 @@ input.form-control:focus {
 .khvUfi:focus:enabled {
   color: #fff;
   background-color: none !important;
-  box-shadow: 0 0 2px 0 #333;
+  box-shadow: none;
 }
-button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-right:focus {
-  background: none;
+.categoryCarouselOutline button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-right:hover {
+  box-shadow: none;
+  background-color: none;
+  background: transparent;
   color: black;
+  border: none;
 }
-.khvUfi:hover:enabled,
+/* .khvUfi:hover:enabled,
 .khvUfi:focus:enabled {
   color: #fff;
   background-color: none !important;
   box-shadow: 0 0 2px 0 #333;
-}
+} */
 button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
+  border:none;
+  box-shadow: none;
   background: none;
   color: black;
 }
@@ -233,7 +239,30 @@ li.nav-item.ml-4.d-flex {
     right: -10px;
   }
 }
+/** manisha css **/
+/* @media screen and (max-width: 600px){
+  .mobile-navbar .row{
+    padding:none;
+      }
+      .mobile-navbar  .col-2{
+        padding:0px;
+      }
+      .mobile-navbar  .col-3{
+        padding:0px;
+      }
+}
+@media only screen and (max-width: 600px){
+.toggle-menu-for-tb-mb button.navbar-toggler {
+   position: absolute;
+   
+    right: 5px;
+    top: 3px !important;
+    
+   
+}
+} */
 @media screen and (max-width: 600px) {
+  
   button.navbar-toggler {
     position: absolute;
     top: 30px;
@@ -661,27 +690,23 @@ background-color: #ffffff !important;
     padding-top: 0px;
   }
   .toggle-menu-for-tb-mb button.navbar-toggler {
+    border:none;
     position: absolute;
     right: 5px;
     top: 3px !important;
-    height: 36px;
+    height: 30px;
     padding: 0px 4px !important;
-    border: none;
-    background-color: #fff;
-  }
-  .toggle-menu-for-tb-mb button.navbar-toggler:focus-visible{
-    border: none;
-    outline: none;
   }
   header.header img.logo {
-    width: 70px;
+    height:40px;
+    width: 40px;
   }
   footer.section.footer_section {
     padding: 60px 0px 80px;
   }
   .navbar-light .navbar-toggler-icon {
    margin-top: -4px;
-    font-size: 17px;
+    font-size: 13px;
 }
 
   .chlocation h3 {

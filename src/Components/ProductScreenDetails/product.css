@@ -247,10 +247,12 @@ h6.prdctrtng {
 .package-details-page .common-container .container-fluid .package-left-area {
   padding-left: 5px;
   padding-right: 5px;
+
 }
 .package-details-page .common-container .container-fluid .package-right-area {
   padding-left: 5px;
   padding-right: 5px;
+  
 }
 
 .product_left_details_box ul li::marker {
@@ -910,6 +912,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   background: #f8f8f885;
   border-left: 4px solid #ffab02;
   border-radius: 10px 0px 0px 10px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 18%);
 }
 .package-details-page .productLeft_heading .row {
   align-items: center;
@@ -945,6 +948,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 0px !important;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 5%);
 }
 .package-details-page .common-card li {
   /* color: #777 !important; */

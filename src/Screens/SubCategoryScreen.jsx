@@ -84,7 +84,7 @@ const SubCategoryScreen = () => {
         <Services2 />
         <Footer2 />
       </div>
-      <StickyMenu />
+      {/* <StickyMenu /> */}
     </>
   );
 };

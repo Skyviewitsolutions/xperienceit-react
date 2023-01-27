@@ -95,13 +95,23 @@ const WhoWeAre=()=>{
                     </a>
                   </div>
                   <div className="footer_col3_email">
-                    <a href="mailto:contact@experienceit.in">
+                    <a href="https://api.whatsapp.com/send/?phone=7080581133&text&type=phone_number&app_absent=0">
                       <img
                         src={Email}
                         alt="email icon"
                         style={{ width: "30px", marginRight: "11px" }}
                       />
                       contact@experienceit.in{" "}
+                    </a>
+                  </div>
+                  <div className="footer_col3_whatsapp">
+                    <a href="mailto:contact@experienceit.in">
+                      <img
+                        src={Whatsapp}
+                        alt="email icon"
+                        style={{ width: "30px", marginRight: "11px" }}
+                      />
+                       +91 7080581133
                     </a>
                   </div>
                 </div>
@@ -118,7 +128,7 @@ const WhoWeAre=()=>{
         <div className="copy_right_area">
           <p class="text">
             {" "}
-            &copy;By Skyview Smart Solutions P.V.T LTD  <a href="www.skyview.com">www.skyview.com</a> 
+            &copy;By Skyview Smart Solutions <a href="www.skyview.com">www.skyviewads.com</a> 
           </p>
         </div>
       </footer>

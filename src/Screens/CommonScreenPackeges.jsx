@@ -87,7 +87,7 @@ const CommonScreenPakeges = () => {
         />
         <Footer2 />
       </div>
-      <StickyMenu />
+      {/* <StickyMenu /> */}
     </>
   );
 };

@@ -20,6 +20,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../utils/Loader";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
 import Booking from "../Components/HomeScreenDetails/Booking/Booking";
+import BestSellar3 from "../Components/HomeScreenDetails/BestSeller/BestSellar3";
 
 const HomeScreen = () => {
   const [showListData, setShowListData] = useState([]);
@@ -116,7 +117,8 @@ const HomeScreen = () => {
         <Mainpart2 updateLocation={updateLocation} />
         {/* <Booking updateLocation={updateLocation}/> */}
         <Booking2 updateLocation={updateLocation} />
-        <BestSeller2 />
+        {/* <BestSeller2 /> */}
+        <BestSellar3/>
         <BestSellerCategory2 showListData={showListData} loading={loading} />
         <Banner2 />
         <TourPanel2 />

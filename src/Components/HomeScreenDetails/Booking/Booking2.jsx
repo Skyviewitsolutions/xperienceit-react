@@ -12,7 +12,8 @@ import Carousel from "react-elastic-carousel";
 
 const Card = (props) => {
   const { data } = props;
- const history = useHistory();
+
+  const history = useHistory();
 
   const pkgLocation = localStorage.getItem("locationDetails");
   const cityLocattion = JSON.parse(pkgLocation);
@@ -37,39 +38,19 @@ const Card = (props) => {
 
   return (
     <>
-      <div class="item">
+      <div class="item" >
         <div className="media-img" onClick={() => renderToCategoryPage(data)}>
           <img src={data.image_id} alt="" />
-          <h4>{data.name}</h4>
+          <h4>{data.name.replace("Xperience" , "")}</h4>
         </div>
       </div>
 
-      {/* <div
-        className="carousel_item"
-        data-aos="fade-up"
-        onClick={() => renderToCategoryPage(data)}
-      >
-        <div className="carousel_item_box">
-          <img src={data.image_id} alt="cake icon" />
-        </div>
-        <h4 className="bkName">{data.name}</h4>
-      </div> */}
+      
     </>
   );
 };
 
 const Booking2 = (props) => {
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 3},
-    { width: 650, itemsToShow: 3},
-    { width: 850, itemsToShow: 5 },
-    { width: 1000, itemsToShow: 5 },
-    { width: 1300, itemsToShow: 6 },
-    { width: 1366, itemsToShow: 6 },
-    { width: 1450, itemsToShow: 6 },
-    { width: 1750, itemsToShow: 6 },
-  ]
 
   const [filterCategoryData, setFilterCategoryData] = useState([]);
   const [item, setItem] = useState([1, 2, 3, 4, 5, ]);
@@ -111,7 +92,7 @@ const Booking2 = (props) => {
   }, [props.updateLocation]);
 
   const options = {
-    margin: 30,
+    margin: 10,
     responsiveClass: true,
     nav: true,
     dots: false,
@@ -121,31 +102,47 @@ const Booking2 = (props) => {
     smartSpeed: 1000,
     responsive: {
       0: {
-        items: 1,
+        items: 2,
       },
       400: {
-        items: 1,
+        items: 3,
       },
       600: {
-        items: 2,
+        items: 4,
       },
       700: {
-        items: 2,
+        items: 4,
       },
       1000: {
-        items: 7,
+        items: 5,
       },
     },
   };
 
-
+  // const breakPoints = [
+  //   { width: 500, itemsToShow: 1 },
+  //   { width: 600, itemsToShow: 3 },
+  //   { width: 900, itemsToShow: 4 },
+  //   { width: 1300, itemsToShow: 6 },
+  // ];
+ const breakPoints = [
+    { width: 1, itemsToShow: 3},
+    { width: 550, itemsToShow: 4},
+    { width: 650, itemsToShow: 4},
+    { width: 850, itemsToShow: 5 },
+    { width: 1000, itemsToShow: 6 },
+    { width: 1300, itemsToShow: 6 },
+    { width: 1366, itemsToShow: 6 },
+    { width: 1450, itemsToShow: 6 },
+    { width: 1750, itemsToShow: 6 },
+  ]
 
   return (
     <>
-
+<div className="categoryCarouselOutline">
     {filterCategoryData.length != 0 && 
-      <div className="category-section-slider common-container">
-        <div className="container-fluid bokking-slider">
+      <div className="category-section-slider common-container" >
+        <div className="container-fluid bokking-slider" >
           <Carousel breakPoints={breakPoints} className="carousel_container">
             {filterCategoryData.length != 0 ? (
               filterCategoryData.map((itt, index) => {
@@ -157,7 +154,7 @@ const Booking2 = (props) => {
               })
             ) : (
               <>
-                <div className="d-flex justify-content-around w-100  ">
+                <div className="d-flex justify-content-around w-50  ">
                   {item.map((itm, ind) => {
                     return (
                       <>
@@ -185,6 +182,7 @@ const Booking2 = (props) => {
           </Carousel>
         </div>
       </div>}
+      </div>
     </>
   );
 };

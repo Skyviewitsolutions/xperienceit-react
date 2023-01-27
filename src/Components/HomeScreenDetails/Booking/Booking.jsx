@@ -1,17 +1,15 @@
 // this is  the booking component here we are creating ;
 import React, { useState, useEffect } from "react";
+import OwlCarousel from "react-owl-carousel";
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
 import "./Booking.css";
-import Cake from "./BookingImages/cake.svg";
-import CandleLight from "./BookingImages/candle-light.svg";
-import Anniversary from "./BookingImages/anniversary.svg";
-import Car from "./BookingImages/car.svg";
-import Cinema from "./BookingImages/cinema.svg";
-import Couple from "./BookingImages/wedding-couple.svg";
-import Carousel from "react-elastic-carousel";
+import $ from "jquery";
 import { endpoints } from "../../../services/endpoints";
 import axios from "axios";
 import Skeleton from "@mui/material/Skeleton";
 import { generatePath, useHistory } from "react-router-dom";
+import Carousel from "react-elastic-carousel";
 
 
 const Card = (props) => {
@@ -24,11 +22,12 @@ const Card = (props) => {
   const cityID = cityLocattion && cityLocattion.id;
 
   const renderToCategoryPage = (dta) => {
-    const name = dta.name ;
-      const categoryName = name.replaceAll(' ', '_');
+    console.log(dta, "data here");
+    const name = dta.name;
+    const categoryName = name.replaceAll(" ", "-");
 
     const path = generatePath(
-      "/experiences/:location/:category_name/:category_id",
+      "/experiences/:location/category/:category_name/:category_id",
       {
         category_name: categoryName,
         location: cityLocattion.name,
@@ -43,7 +42,7 @@ const Card = (props) => {
     <>
       <div
         className="carousel_item"
-        data-aos="fade-up"
+        // data-aos="fade-up"
         onClick={() => renderToCategoryPage(data)}
       >
         <div className="carousel_item_box">
@@ -57,17 +56,10 @@ const Card = (props) => {
 
 const Booking = (props) => {
   
-  const data = [
-    { id: 1, text: "Birthday Surprises", img: Cake },
-    { id: 2, text: "Anniversary", img: Anniversary },
-    { id: 3, text: "Candle light dinner", img: CandleLight },
-    { id: 4, text: "Long rides", img: Car },
-    { id: 5, text: "Private movie", img: Cinema },
-    { id: 6, text: "Marriage", img: Couple },
-  ];
+ 
 
   const breakPoints = [
-    { width: 360, itemsToShow: 1 },
+    { width: 360, itemsToShow: 3 },
     { width: 500, itemsToShow: 1 },
     { width: 600, itemsToShow: 1 },
     { width: 768, itemsToShow: 2 },
@@ -91,15 +83,16 @@ const Booking = (props) => {
       "Content-Type": "application/json; charset=utf-8",
       credentials: "same-origin",
     };
+    setLoading(true);
 
     if (cityID) {
       axios
         .post(api, { location_id: cityID, headers: headers })
         .then((res) => {
+          setLoading(false);
           if (res.data.status === true) {
-            setLoading(false);
             const val = res.data.body;
-            console.log(val, "filter category data data show here...");
+            console.log(val, "booking category data here...");
             setFilterCategoryData(val);
           }
         })

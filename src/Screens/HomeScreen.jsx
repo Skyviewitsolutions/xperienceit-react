@@ -125,7 +125,7 @@ const HomeScreen = () => {
         <Footer2 />
         {/* {loading && <Loader/>} */}
       </div>
-      <StickyMenu />
+      {/* <StickyMenu /> */}
     </>
   );
 };

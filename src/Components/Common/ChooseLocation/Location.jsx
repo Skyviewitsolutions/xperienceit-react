@@ -87,10 +87,14 @@ const Location = (props) => {
         size="lg"
         centered
       >
-        <div className="chlocation">
+        <div className="chlocations">
+          <div className="modal-location-header">
           <h3 className="chtxt">Choose City have XperienceIt</h3>
-          <span className="mb-4 ">Find more than 3000 decorations, gifts and surprises!</span>
-          <div className="location_search">
+          </div>
+         
+       
+         
+          {/* <div className="location_search">
             <img src={Flag} alt="flag" className="flag" />
             <input
               type="text"
@@ -99,14 +103,17 @@ const Location = (props) => {
               onChange={(e) => handleSearch(e)}
             />
             <img src={Search} alt="search icon" className="serch" />
-          </div>
+          </div> */}
 
           <div className="location_places">
+        <div className="text-center"><span>Find more than 3000 decorations, gifts and surprises!</span></div>  
+            <div className="_city-selection-container-flex">
+            
             {city.map((item, index) => {
               return (
                 <>
                   <div
-                    className="location_places_box"
+                    className="_city-selection-container-row move-above-on-hover"
                     key={index}
                     name="location"
                     onClick={() => renderToLocation(item)}
@@ -119,13 +126,15 @@ const Location = (props) => {
                         width="50px"
                         alt=""
                       />
-                      <h6 style={{ marginTop: "5px" }}>{item.name}</h6>
+                      <h6 style={{ marginTop: "5px" }} className="location-city-name">{item.name}</h6>
                     </label>
                   </div>
                 </>
               );
             })}
           </div>
+          </div>
+
           {/* <button
             className="location_btn"
             onClick={() => setShowLocation(false)}
@@ -143,7 +152,11 @@ const Location = (props) => {
           </div>}
 
           <img src={Left} alt="left icon" className="location_left" />
-          <img src={Right} alt="right icon" className="location_right" />
+           <img src={Right} alt="right icon" className="location_right" />
+        
+        
+
+
         </div>
       </Modal>
     </>

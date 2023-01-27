@@ -54,10 +54,9 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 .invoice-content {
-  margin-top: 60px;
+  margin-right: -8px;
   padding: 10px;
   border-right: 3px solid #e39c07;
-  margin-right: 15px;
 }
 
 .invoice-content h4 {
@@ -92,6 +91,8 @@
   border-right: 3px solid #e39c07;
   margin-right: 15px;
   margin-top: 20px;
+  float: right;
+  width: 50%;
 }
 .Invoice-PackageDetails h6 {
   text-align: right;
@@ -114,11 +115,10 @@
 .Invoice-Details {
   margin-top: 20px;
   padding: 10px;
-  border-right: 3px solid #e39c07;
-  margin-right: 15px;
-
-  width: 250px;
-  float: right;
+  border-left: 3px solid #e39c07;
+  margin-left: 15px;
+  float: left;
+  width: 50%;
 }
 .Invoice-Details li {
   list-style: none;
@@ -132,20 +132,16 @@
   font-size: 14px;
   /* text-align: right; */
   font-weight: 600;
-
-  width: 100px;
-  text-align: right;
+  text-align: left;
   font-family: Arial, Helvetica, sans-serif;
 }
 .Invoice-Details span {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 14px;
-  text-align: right;
+  text-align: left;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
-  width: 100px;
-  text-align: right;
 }
 .invoice-all-details {
   width: 96%;
@@ -197,70 +193,67 @@
   display: flex;
   text-align: center;
   justify-content: center;
-
 }
-.invoice-social-content-text li p{
-    font-size: 14px;
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-
+.invoice-social-content-text li p {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.invoice-social-content-text li p a{
-    font-size: 14px;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-text-decoration: none;
-color: black;
+.invoice-social-content-text li p a {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  color: black;
 }
 span.in-line {
-    font-size: 14px;
-    padding-left: 2px;
-    padding-right: 2px;
+  font-size: 14px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
-.invoice-Social{
-    width: 96%;
+.invoice-Social {
+  width: 96%;
   margin: auto;
   padding-left: 10px;
   padding-right: 10px;
-  text-align: center; 
+  text-align: center;
 }
-.invoice-Social h6{
-    font-size: 16px;
-    font-weight: 600;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+.invoice-Social h6 {
+  font-size: 16px;
+  font-weight: 600;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
-.invoice-Social li{
-    display: flex;
-    text-align: center;
-    justify-content: center;
+.invoice-Social li {
+  display: flex;
+  text-align: center;
+  justify-content: center;
 }
-.invoice-Social li a{
-    height: 40px;
-    width: 40px;
-border-radius: 50%;
-margin: 10px;
+.invoice-Social li a {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin: 10px;
 }
-.invoice-Social li a img{
-    width: 100%;
-    width: 100%;
-    border-radius: 50%;
-    cursor: pointer;
+.invoice-Social li a img {
+  width: 100%;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
 }
-.invoice-footer-text{
-    width: 96%;
-    margin: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: center;  
+.invoice-footer-text {
+  width: 96%;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
 }
-.invoice-footer-text h6{
-    font-size: 12px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 10px;
-   
+.invoice-footer-text h6 {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 10px;
 }
-.invoice-table thead{
-background-color: #e39c07!important;
+.invoice-table thead {
+  background-color: #e39c07 !important;
 }

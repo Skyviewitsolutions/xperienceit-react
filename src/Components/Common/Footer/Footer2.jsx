@@ -109,7 +109,7 @@ const WhoWeAre=()=>{
                       <img
                         src={Whatsapp}
                         alt="email icon"
-                        style={{ width: "30px", marginRight: "11px" }}
+                        style={{ width: "32px", marginRight: "11px" }}
                       />
                        +91 7080581133
                     </a>

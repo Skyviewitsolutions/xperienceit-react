@@ -1,0 +1,107 @@
+.thanksWrpper {
+    padding-bottom:30px;
+    background-color: #ffff !important;
+}
+.thanksWrpper .modal-header{
+    border:none;
+}
+
+.thanksWrpper .modal-body{
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.thanksWrpper .modal-body h4{
+    font-family: poppins;
+    
+    font-size: 30px;
+}
+.thanksWrpper .modal-body h6{
+    font-family: poppins;
+    font-size: 17px;
+    font-weight: 600;
+}
+ .thanksWrpper .modal-body p{
+    font-weight: 600;
+    margin: 0px;
+    font-size: 18px;
+    font-family: poppins;
+    padding-top: 20px;
+}
+
+.thanksWrpper .modal-body svg{
+    font-size: 100px;
+    color: green;
+    text-align: center;
+}
+@media only screen and (max-width: 600px) {
+.thanksWrpper .modal-body{
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.thanksWrpper .modal-body h4{
+   
+    font-size: 15px;
+}
+.thanksWrpper .modal-body h6{
+    
+    font-size: 10px;
+    
+}
+.thanksWrpper .modal-body p{
+    
+    font-size: 12px;
+   
+    padding-top: 20px
+}
+.thanksWrpper .modal-body svg{
+    font-size: 50px;
+    
+}
+}
+
+.thanksWrpper .modal-footer{
+    border:none;   
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .thanksWrpper .modal-body{
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .thanksWrpper .modal-body h4{
+       
+        font-size: 20px;
+    }
+    .thanksWrpper .modal-body h6{
+        
+        font-size: 12px;
+        
+    }
+    .thanksWrpper .modal-body p{
+        
+        font-size: 12px;
+       
+        padding-top: 20px
+    }
+    .thanksWrpper .modal-body svg{
+        font-size: 50px;
+        
+    }
+    }
+    
+    .thanksWrpper .modal-footer{
+        border:none;   
+    }
+    

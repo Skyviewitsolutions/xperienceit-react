@@ -1,0 +1,32 @@
+.container-for-circular-icons {
+  min-height: 70px;
+}
+.circular-icons-top-division {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  width: 95%;
+}
+.react-multi-carousel-list {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.react-multi-carousel-track {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, transition;
+
+  transition: none 0s ease 0s; 
+  overflow: unset;
+   transform: translate3d(-720px, 0px, 0px);
+}

@@ -24,7 +24,6 @@ import ProductStickBar from "./ProductStickBar";
 import ReadMoreAndLess from "react-read-more-less";
 
 const ProductPart2 = (props) => {
-
   const {
     productTitle,
     titleContent,
@@ -96,7 +95,6 @@ const ProductPart2 = (props) => {
   };
 
   const submitReview = () => {
-    
     const access_token = localStorage.getItem("access_token");
     const writeReviewApi = `https://admin.experienceit.in/api/customer-review`;
 
@@ -229,15 +227,14 @@ const ProductPart2 = (props) => {
     <>
       <div className="package-details-page">
         <div className="inner-package-section common-container">
-          <div className="container-fluid">
+          <div className="container-fluid productdetails-screen-container">
             <div className="row">
-              <div className="col-lg-8">
+              <div className="col-lg-8" style={{ background: "#f7f9fc" }}>
                 <div className="package-left-area">
                   <div className="productLeft_heading">
                     <div className="row">
-                      <div className="col-lg-9 col-md-8">
+                      <div className="col-lg-12 col-md-12">
                         <h5>
-                         
                           <span>{props.poductCategoryTitle}</span>
                         </h5>
                         <h3>{props.productTitle}</h3>
@@ -263,7 +260,7 @@ const ProductPart2 = (props) => {
                           )}
                         </div>
                       </div>
-                      <div className="col-lg-3 col-md-4"></div>
+                     
                     </div>
                   </div>
 
@@ -289,7 +286,9 @@ const ProductPart2 = (props) => {
                           readMoreText="Read more"
                          
                         > */}
-                          <h6 className="prdctDetails">{titleContent && parse(props.titleContent)}</h6>
+                        <h6 className="prdctDetails">
+                          {titleContent && parse(props.titleContent)}
+                        </h6>
                         {/* </ReadMoreAndLess> */}
                       </div>
                     </div>
@@ -325,14 +324,15 @@ const ProductPart2 = (props) => {
                     </div>
                   )}
 
-                 
                   {arrangment && (
                     <div className="product_arrngmgnt common-card">
                       <h5>Arrangements</h5>
 
                       <div className="product_arrngmgnt_text">
                         {/* <img src={Hand} alt="Hand icon" /> */}
-                        <h6 className="arrangmentsIcon">{arrangment && parse(props.arrangment)}</h6>
+                        <h6 className="arrangmentsIcon">
+                          {arrangment && parse(props.arrangment)}
+                        </h6>
                       </div>
                     </div>
                   )}
@@ -357,7 +357,8 @@ const ProductPart2 = (props) => {
                           {faq.map((itm, idx) => {
                             return (
                               <>
-                                <span>{itm.title}</span><br/>
+                                <span>{itm.title}</span>
+                                <br />
                                 <span className="answr">{itm.content}</span>
                               </>
                             );
@@ -405,7 +406,7 @@ const ProductPart2 = (props) => {
                   )}
                 </div>
               </div>
-              <div className="col-lg-4">
+              <div className="col-lg-4" style={{ background: "#f7f9fc" }}>
                 <div className="package-right-area">
                   <div className="product_booking common-card">
                     <div className="product_booking_input_price">
@@ -494,8 +495,8 @@ const ProductPart2 = (props) => {
                       <h6 className="packageCharges">
                         For this pincode you have to pay delivery charge of Rs{" "}
                         {additionalCharge}
-                      </h6>) : null
-                    }
+                      </h6>
+                    ) : null}
 
                     <div className="product_calendar" htmlFor="date">
                       <label htmlFor="date">
@@ -516,31 +517,30 @@ const ProductPart2 = (props) => {
                         onChange={(e) => setSelectedDate(e.target.value)}
                       />
                     </div>
+                    {timeSlot && (
+                      <div className="product_time">
+                        <span
+                          style={{
+                            fontWeight: "600",
+                            fontSize: "18px",
+                          }}
+                        >
+                          Select Time
+                        </span>
+                        &nbsp;
+                        <span
+                          style={{
+                            fontWeight: "600",
+                            fontSize: "20",
 
-                    <div className="product_time">
-                      <span
-                        style={{
-                          fontWeight: "600",
-                          fontSize: "18px",
-                          
-                        }}
-                      >
-                        Select Time
-                      </span>
-                      &nbsp;
-                      <span
-                        style={{
-                          fontWeight: "600",
-                          fontSize: "20",
-                         
-                          marginBottom: "2px",
-                        }}
-                      >
-                        <AiOutlineClockCircle />
-                      </span>
-                      {/* <img src={Clock} alt="clock icon" /> */}
-                    </div>
-
+                            marginBottom: "2px",
+                          }}
+                        >
+                          <AiOutlineClockCircle />
+                        </span>
+                        {/* <img src={Clock} alt="clock icon" /> */}
+                      </div>
+                    )}
                     <div className="product_select_time">
                       {timeSlot.map((item, index) => {
                         return (
@@ -560,6 +560,7 @@ const ProductPart2 = (props) => {
                         );
                       })}
                     </div>
+
                     <button className="product_btn" onClick={bookPackage}>
                       Book Now
                     </button>
@@ -667,8 +668,6 @@ const ProductPart2 = (props) => {
                                   </p>
                                 </div>
                               </div>
-
-                             
                             </>
                           );
                         })}
@@ -680,7 +679,6 @@ const ProductPart2 = (props) => {
                       </div>
                     </div>
                   )}
-
                 </div>
               </div>
               <ToastContainer />

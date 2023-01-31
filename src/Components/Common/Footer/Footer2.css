@@ -115,8 +115,10 @@ footer.section.footer_section .container {
     text-align: center;
   }
   .copy_right_area {
-    position: absolute;
+   
     bottom: 0px;
+    width: 100%;
+    margin-bottom: 0px;
   }
 }
 

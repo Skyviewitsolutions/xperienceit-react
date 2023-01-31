@@ -13,6 +13,8 @@ import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../../actions";
 import NoPackages from "../../../assets/images/noPackages.png";
 import "./BestSellarCategory2.css";
+import { AiTwotoneLike, AiFillLike } from "react-icons/ai";
+
 const Card = (props) => {
   const dispatch = useDispatch();
 
@@ -106,7 +108,78 @@ const Card = (props) => {
 
   return (
     <>
-      <div class="item">
+
+<div class=" package-card-cont" key={props.key}>
+      <div className="package-card"  onClick={() => renderToHomeData(props)}>
+        <div className="media-img coman-img">
+          {props.img ? (
+            <img src={props.img} />
+          ) : (
+            <Skeleton height={250} variant="rectangular" />
+          )}
+        </div>
+        <div className="details">
+        <h3>
+              {props.heading ? props.heading : <Skeleton variant="text" />}
+            </h3>
+          <div className="rating-and-discount">
+            <h5>
+              {props.discount && props.discount != 0 ? (
+                <span>{props.discount}% Off </span>
+              ) : (
+                ""
+              )}
+            </h5>
+            <div className="rating">
+              <AiFillLike />
+              {props.rating && props.rating != 0 ? (
+                <span>
+                  {typeof props.rating == "string"
+                    ? parseFloat(props.rating).toFixed(1)
+                    : props.rating.toFixed(1)}
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
+          <div className="price-and-btn">
+            <h4>
+            {props.discountPrice ? (
+                  ` ₹${props.discountPrice}`
+                ) : (
+                  <Skeleton variant="text" width={80} />
+                )}{" "}
+                <s>₹{props.price}</s>
+            </h4>
+          </div>
+        </div>
+      </div>
+      <div className="wishlist">
+      <span>
+                {isFavourite?.is_fav == "true" ? (
+                  <AiTwotoneHeart
+                    onClick={() => handleFavourite(props, "false")}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => handleFavourite(props, "true")}
+                  />
+                )}
+              </span>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+      {/* <div class="item">
         <div className="package-col">
           <div className="media-img">
             <img src={props.img} alt="" />
@@ -153,7 +226,7 @@ const Card = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

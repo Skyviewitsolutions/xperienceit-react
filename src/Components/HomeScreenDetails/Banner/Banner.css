@@ -6,7 +6,9 @@
   border: none;
  
 }
-
+.Offer-slider {
+  margin-top: -10px;
+}
 .banners button.sc-bdfBQB.khvUfi.rec.rec-arrow.rec.rec-arrow-left {
   position: absolute !important;
   left: 3.4% !important;

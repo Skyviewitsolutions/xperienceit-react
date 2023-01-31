@@ -358,6 +358,8 @@ const Navebar3 = (props) => {
                       href="#"
                       data-toggle="modal"
                       data-target="#myModal"
+                      onMouseOver={() => setIsHovering(true)}
+                      onClick={() => setIsHovering(!isHovering)}
                     >
                       <img
                         src={userImg ? userImg : User}
@@ -518,7 +520,7 @@ const Navebar3 = (props) => {
         />
 
         {/* here we are adding the sidebar  */}
-        <SidebarComponent />
+        {/* <SidebarComponent /> */}
       </div>
       {/* 
       <div className="stiky_header_menu d-lg-none">

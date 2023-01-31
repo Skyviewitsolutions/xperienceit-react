@@ -140,7 +140,9 @@
 .why_chhose_us_section.container h5 {
   font-size: 18px;
 }
-
+img.aos-init.aos-animate {
+  margin-top: -13px!important;
+}
 
 @media only screen and (max-width: 600px) {
   .testimonial-section-slider .col-lg-10.offset-lg-1 {

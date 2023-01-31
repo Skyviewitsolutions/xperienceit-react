@@ -59,21 +59,21 @@ const BookNow = () => {
     if (access_token) {
       if (address === "") {
         setErrors({ address: "Address not must be blank" });
-        toast("Please enter address", { type: "warning" });
+        // toast("Please enter address", { type: "warning" });
       } else if (pincode === "") {
         setErrors({ pincode: "pincode not must be blank" });
-        toast("Please enter pincode", { type: "warning" });
+        // toast("Please enter pincode", { type: "warning" });
       } else if (city === "") {
         setErrors({ city: "city not must be blank" });
-        toast("Please enter city", { type: "warning" });
+        // toast("Please enter city", { type: "warning" });
       } else if (states === "") {
         setErrors({ state: "state not must be blank" });
-        toast("Please enter state", { type: "warning" });
+        // toast("Please enter state", { type: "warning" });
       } else if (aboutInfo === "") {
         toast("Please choose about information");
         toast("Please enter about info", { type: "warning" });
       } else if (occasion === "") {
-        toast("Please choose a occasion");
+        // toast("Please choose a occasion");
         toast("Please choose a occassion", { type: "warning" });
       } else {
         setErrors({});

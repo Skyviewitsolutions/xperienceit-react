@@ -188,7 +188,7 @@ const Invoice2 = () => {
                     <th scope="row"></th>
                     <td></td>
                     <td></td>
-                    <td>{invoiceData.gst}</td>
+                    <td>{invoiceData.gst} (SGST and CGST)</td>
                     <td></td>
 
                     <td></td>

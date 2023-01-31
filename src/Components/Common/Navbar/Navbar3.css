@@ -669,6 +669,7 @@ background-color: #ffffff !important;
     text-align: center;
     margin-left: 0px !important;
     max-width: 45px !important;
+    display: none;
   }
   .login-and-location {
     display: grid;
@@ -721,6 +722,7 @@ background-color: #ffffff !important;
   
   .form-inline.my-2.d-flex.userBox img {
     border-radius: 50%;
+    display: none;
 }
 a.nav-link.btn.btn-danger.text-grey.bg-white.userProfile {
   position: relative;

@@ -10,7 +10,7 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
 const Profile = (props) => {
-  const { showProfile, setShowProfile, setUserProfile, setUserImg } = props;
+  const { showProfile, setShowProfile, setUserProfile, setUserImg,setUserName } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [names, setNames] = useState("");
   const [email, setEmail] = useState("");
@@ -92,6 +92,7 @@ const Profile = (props) => {
           if (result.status === true) {
             const data = result.body;
             setNames(data?.first_name);
+            setUserName(data?.first_name)
             setEmail(data?.email);
             setPhoneNo(data?.phone);
             setRefferalCode(data?.own_referral_code);

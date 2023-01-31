@@ -3,6 +3,7 @@
 }
 .container-fluid.booknow {
   box-shadow: none;
+  background: #f7f9fc!important;
 }
 .productPart2 {
   width: 100%;
@@ -67,12 +68,13 @@ a.whatsAppLink {
 .product_About {
   width: 100%;
   height: 100px;
-  box-shadow: rgb(0 0 0 / 9%) 0px 1px 6px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 18%) !important;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 20px;
+  background: white;
 }
 .product_About h5 {
   margin-bottom: 0px;
@@ -250,18 +252,15 @@ font-weight: 600;
   background-color: #15124b;
   color: white;
 }
-@media only screen and (max-width: 768px) {
-  .productPart2 {
-    flex-direction: column;
-  }
-}
+
 .booking_step_left .product_cancellation {
   padding-top: 0px !important;
   margin-top: 0px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 18%) !important;
 }
-.booking_step_right .product_arrngmgnt {
-  margin-top: 0px; 
-}
+
 .booking_step_left {
   padding: 10px;
 }
@@ -286,12 +285,20 @@ font-weight: 600;
 }
 .booking_step_right .product_arrngmgnt {
   padding: 0px 30px;
-}
-.booking_step_right .product_arrngmgnt {
+  margin-top: 0px; 
   padding-bottom: 10px;
+  background-color: white;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 18%) !important;
 }
 
-
+input.form-control.selectpin {
+  background: white;
+}
+@media only screen and (max-width: 768px) {
+  .productPart2 {
+    flex-direction: column;
+  }
+}
 
 
 @media only screen and (max-width: 600px) {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./wishlistdata.css";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineStar } from "react-icons/ai";
-import { AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiTwotoneHeart ,AiFillLike} from "react-icons/ai";
 import Skeleton from "@mui/material/Skeleton";
 import axios from "axios";
 import { callWishListData, updateWishList } from "../../actions";
@@ -115,59 +115,134 @@ const AllPackagesCard = (props) => {
   return (
     <>
       {isFavourite?.is_fav == "true" && (
-        <div class="col-lg-3 col-md-6 col-12">
-          <div className="package-col">
-            <div className="media-img  coman-img">
-              {props.img ? (
-                <img src={props.img} />
+        // new design
+        <div class="col-lg-3 col-md-6 col-6">
+    <div class=" package-card-cont whislist-card-mobile" key={props.key}>
+      <div className="package-card whishlist-cards"  onClick={() => renderToAllPackagesDetails(props)}>
+        <div className="media-img coman-img whishlist-card-img">
+          {props.img ? (
+            <img src={props.img} />
+          ) : (
+            <Skeleton height={250} variant="rectangular" />
+          )}
+        </div>
+        <div className="details whishlist-details">
+        <h3>
+              {props.heading ? props.heading : <Skeleton variant="text" />}
+            </h3>
+          <div className="rating-and-discount">
+            <h5 className="whishlist-dicount">
+              {props.discount && props.discount != 0 ? (
+                <span >{props.discount}% Off </span>
               ) : (
-                <Skeleton height={250} variant="rectangular" />
+                ""
               )}
-              <div className="wishlist">
+            </h5>
+            <div className="rating whishlist-rating">
+              <AiFillLike />
+              {props.rating && props.rating != 0 ? (
                 <span>
-                  {isFavourite?.is_fav == "true" ? (
-                    <AiTwotoneHeart
-                      onClick={() => handleFavourite(props, "false")}
-                    />
-                  ) : (
-                    <AiOutlineHeart
-                      onClick={() => handleFavourite(props, "true")}
-                    />
-                  )}
+                  {typeof props.rating == "string"
+                    ? parseFloat(props.rating).toFixed(1)
+                    : props.rating.toFixed(1)}
                 </span>
-              </div>
+              ) : (
+                ""
+              )}
             </div>
-            <div className="details">
-              <h3>{props.heading}</h3>
-              <div className="rating-and-discount">
-                <h5>
-                  <span>{props.discount}% off</span>
-                </h5>
-                <div className="rating">
-                  <span>{props.rating}</span>
-                  <AiOutlineStar />
-                </div>
-              </div>
-              <div className="price-and-btn">
-                <h4>
-                  <span>₹</span>
-                  {props.price ? (
+          </div>
+
+          <div className="price-and-btn whislist-price-btn">
+              <h4>
+                {/* <span>₹</span> */}
+                  {/* {props.price ? (
                     props.price
                   ) : (
                     <Skeleton variant="text" width={80} />
                   )}{" "}
-                  <s> ₹{props.outlayprice}</s>
+                  <s> ₹{props.outlayprice}</s> */}
+                   ₹{props.price && props.price!=0 ?(<span>{props.price}</span> ):(
+                  <span>{props.outlayprice}</span>
+                )}
+               {props.price!=0 && <s>₹{props.outlayprice}</s>}
                 </h4>
-                <button
-                  className="btn"
-                  onClick={() => renderToAllPackagesDetails(props)}
-                >
-                  Book Now
-                </button>
-              </div>
-            </div>
           </div>
         </div>
+      </div>
+      <div className="wishlist">
+      <span>
+                {isFavourite?.is_fav == "true" ? (
+                  <AiTwotoneHeart
+                    onClick={() => handleFavourite(props, "false")}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => handleFavourite(props, "true")}
+                  />
+                )}
+              </span>
+      </div>
+    </div>
+
+    </div>
+        // <div class="col-lg-3 col-md-6 col-12">
+        //   <div className="package-col">
+        //     <div className="media-img  coman-img">
+        //       {props.img ? (
+        //         <img src={props.img} />
+        //       ) : (
+        //         <Skeleton height={250} variant="rectangular" />
+        //       )}
+        //       <div className="wishlist">
+        //         <span>
+        //           {isFavourite?.is_fav == "true" ? (
+        //             <AiTwotoneHeart
+        //               onClick={() => handleFavourite(props, "false")}
+        //             />
+        //           ) : (
+        //             <AiOutlineHeart
+        //               onClick={() => handleFavourite(props, "true")}
+        //             />
+        //           )}
+        //         </span>
+        //       </div>
+        //     </div>
+        //     <div className="details">
+        //       <h3>{props.heading}</h3>
+        //       <div className="rating-and-discount">
+        //         <h5>
+        //           <span>{props.discount}% off</span>
+        //         </h5>
+        //         <div className="rating">
+        //           <span>{props.rating}</span>
+        //           <AiOutlineStar />
+        //         </div>
+        //       </div>
+        //       <div className="price-and-btn">
+        //         <h4>
+        //           <span>₹</span>
+        //           {props.price ? (
+        //             props.price
+        //           ) : (
+        //             <Skeleton variant="text" width={80} />
+        //           )}{" "}
+        //           <s> ₹{props.outlayprice}</s>
+        //         </h4>
+        //         <button
+        //           className="btn"
+        //           onClick={() => renderToAllPackagesDetails(props)}
+        //         >
+        //           Book Now
+        //         </button>
+        //       </div>
+        //     </div>
+        //   </div>
+        // </div>
+
+
+
+
+        
       )}
     </>
   );
@@ -184,7 +259,7 @@ const WishlistData = ({ wishtListArray }) => {
             <div className="title-with-button">
               <div className="row">
                 <div className="title-col">
-                  <h2>
+                  <h2 className="whislist-heding">
                     <span>Favourite</span>
                   </h2>
                 </div>

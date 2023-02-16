@@ -15,7 +15,7 @@ const Invoice2 = () => {
 
   useEffect(() => {
     const invoiceUrl = `https://admin.experienceit.in/api/invoice`;
-    console.log(invoiceUrl, "invoiceUrl");
+    // console.log(invoiceUrl, "invoiceUrl");
     const val = {
       booking_id: booking_id,
     };
@@ -24,11 +24,12 @@ const Invoice2 = () => {
       .then((res) => {
         if (res.data.status === true) {
           var vals = res.data.body;
+          console.log(vals, "invoiceUrl vals");
           var invoiceDetails = vals[0];
           var custtomiseData = vals[0].customization;
           setCustomizations(custtomiseData);
 
-          console.log(invoiceDetails, "invoice data ");
+        
           setInvoiceData(invoiceDetails);
         }
       })
@@ -36,7 +37,7 @@ const Invoice2 = () => {
         console.log(err, "invoice data not found");
       });
   }, []);
-
+  console.log(invoiceData, "invoice data ");
   return (
     <>
       <div className="container invoiceContainer">
@@ -178,7 +179,7 @@ const Invoice2 = () => {
                       <td></td>
                       <td></td>
                       <td>
-                        {invoiceData.coupon_price} {invoiceData.offer_price} fdg
+                        {invoiceData.coupon_price} {invoiceData.offer_price} 
                       </td>
                       <td></td>
                     </tr>
@@ -188,20 +189,20 @@ const Invoice2 = () => {
                     <th scope="row"></th>
                     <td></td>
                     <td></td>
-                    <td>{invoiceData.gst} (SGST and CGST)</td>
+                    <td> {invoiceData.cgst}</td>
                     <td></td>
 
                     <td></td>
                   </tr>
-                  {/* <tr>
+                  <tr>
                     <th scope="row"></th>
                     <td></td>
                     <td></td>
-                    <td>SGST 9%</td>
+                    <td>{invoiceData.sgst}</td>
                     <td></td>
 
                     <td></td>
-                  </tr> */}
+                  </tr>
                   <tr style={{ border: "1px solid white" }}>
                     <th scope="row"></th>
                     <td></td>

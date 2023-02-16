@@ -131,9 +131,19 @@ const UpcomingComp = (props) => {
                             </div>
                             <div className="price-and-btn">
                               <h4>
-                                <span>₹</span>
-                                {itm.discounted_price}
-                                <s>₹{itm.purchased_price}</s>
+                                {/* <span>₹</span> */}
+                                {/* {itm.discounted_price}
+                                <s>₹{itm.purchased_price}</s> */}
+                                ₹
+                                {itm.discounted_price &&
+                                itm.discounted_price != 0 ? (
+                                  <span>{itm.discounted_price}</span>
+                                ) : (
+                                  <span>{itm.purchased_price}</span>
+                                )}
+                                {itm.discounted_price != 0 && (
+                                  <s>₹{itm.purchased_price}</s>
+                                )}
                               </h4>
                             </div>
                             <div className="upcomingDte">

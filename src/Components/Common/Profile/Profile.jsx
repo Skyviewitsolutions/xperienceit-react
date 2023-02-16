@@ -10,7 +10,8 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 
 const Profile = (props) => {
-  const { showProfile, setShowProfile, setUserProfile, setUserImg,setUserName } = props;
+
+  const { showProfile, setShowProfile,  setUserImg,setUserName } = props;
   const [isLoading, setIsLoading] = useState(false);
   const [names, setNames] = useState("");
   const [email, setEmail] = useState("");
@@ -34,9 +35,7 @@ const Profile = (props) => {
     } else if (phoneNo === "") {
       setErrors({ phoneNo: "Phone no must not be blank" });
     }
-    //  else if (phoneNo.length > 10) {
-    //   setErrors({ phoneNo: "Invalid phone no" });
-    // } 
+     
     else {
       setErrors({});
 
@@ -91,6 +90,7 @@ const Profile = (props) => {
         .then((result) => {
           if (result.status === true) {
             const data = result.body;
+            console.log(data , "data here");
             setNames(data?.first_name);
             setUserName(data?.first_name)
             setEmail(data?.email);
@@ -112,6 +112,7 @@ const Profile = (props) => {
         });
     }
   };
+
 
   useEffect(() => {
     getUserDetails();

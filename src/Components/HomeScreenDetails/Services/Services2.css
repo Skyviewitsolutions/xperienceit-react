@@ -24,6 +24,7 @@
     font-weight: 700;
     color:rgb(28, 25, 86);
     font-family: var(--pacifico);
+    padding-top: 10px;
 }
 .why_chhose_us_section .what_we_offer_box {
     padding: 20px 40px;
@@ -55,25 +56,35 @@
 .girlsballoon img {
     max-width: 168px;
 }
-
+.what_we_offer_box p {
+    text-align: justify;
+    padding: 0px!important;
+    margin:0px!important;
+}
 @media only screen and (max-width: 600px) { 
     .why_chhose_us_section .what_we_offer_box {
         padding: 20px 10px;
     }
+    .what_we_offer_box {
+        font-size: 0!important;
+    }
     .what_we_offer_box p {
         font-size: 15px;
+        text-align: justify;
+    padding: 0px!important;
+    margin:0px!important;
+    word-spacing: 0px;
     }
     .why_chhose_us_section.container h5 {
         font-size: 17px;
     }
-    .what_we_offer_box {
-        text-align: justify;
-    }
+   
     .girlsballoon {
         position: relative;
         margin-bottom: -25px;
     }
     .why_chhose_us_section h2 {
+        margin-top: 0px;
         font-size: 30px;
     }
 }

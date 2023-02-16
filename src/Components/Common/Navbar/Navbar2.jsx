@@ -38,6 +38,7 @@ const Navbar2 = (props) => {
   const accessToken = localStorage.getItem("access_token");
   const [userImg, setUserImg] = useState("");
   const [userName,setUserName]=useState("");
+  
   useEffect(() => {
     const pkgLocation = localStorage.getItem("locationDetails");
     const cityLocattion = JSON.parse(pkgLocation);
@@ -348,6 +349,7 @@ setUpdateLocation={setUpdateLocation}
         setShowProfile={setShowProfile}
         setUserImg={setUserImg}
         setUserName={setUserName}
+        userImg={userImg}
       />
     </>
   );

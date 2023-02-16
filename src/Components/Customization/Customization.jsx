@@ -270,7 +270,7 @@ const Customization = (props) => {
           <div className="customFooter">
             <div className="totalAmt">
               <span>Total</span>
-              <h6>Rs {totalPrice}</h6>
+              <h6>Rs {totalPrice}(Inc. 18% GST)</h6>
             </div>
             <div className="totalAmtbtn">
               <button type="button" class="btn checkedAvlb" onClick={handleBookNow}>

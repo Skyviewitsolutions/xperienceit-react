@@ -65,6 +65,7 @@ const ProductPart2 = (props) => {
     discountedPrice,
     gstPrice,
     poductCategoryTitle,
+    offersPrice,
   } = props;
 
   // console.log(pincode,"available pincode")
@@ -280,16 +281,11 @@ const ProductPart2 = (props) => {
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_left_details_box">
-                        {/* <ReadMoreAndLess
-                          className="read-more-content"
-                          charLimit={10}
-                          readMoreText="Read more"
-                         
-                        > */}
+                        
                         <h6 className="prdctDetails">
                           {titleContent && parse(props.titleContent)}
                         </h6>
-                        {/* </ReadMoreAndLess> */}
+                     
                       </div>
                     </div>
                   )}
@@ -329,7 +325,7 @@ const ProductPart2 = (props) => {
                       <h5>Arrangements</h5>
 
                       <div className="product_arrngmgnt_text">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
+                      
                         <h6 className="arrangmentsIcon">
                           {arrangment && parse(props.arrangment)}
                         </h6>
@@ -341,7 +337,7 @@ const ProductPart2 = (props) => {
                       <h5>Terms & Condition</h5>
 
                       <div className="product_trust_text termCondition">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
+                     
                         <h6>{termCondition && parse(props.termCondition)}</h6>
                       </div>
                     </div>
@@ -352,7 +348,7 @@ const ProductPart2 = (props) => {
                       <h5>FAQ</h5>
 
                       <div className="product_trust_text faqcontent">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
+                       
                         <h6>
                           {faq.map((itm, idx) => {
                             return (
@@ -378,7 +374,7 @@ const ProductPart2 = (props) => {
                         style={{ width: "0px", height: "0px" }}
                       />
                       <div className="product_trust_text_exclusion">
-                        {/* <img src={Hand} alt="Hand icon" /> */}
+                      
                         <h6 className="productExclusion">
                           {exclusion && parse(props.exclusion)}
                         </h6>
@@ -410,8 +406,8 @@ const ProductPart2 = (props) => {
                 <div className="package-right-area">
                   <div className="product_booking common-card">
                     <div className="product_booking_input_price">
-                      <h6>Packages Price</h6>₹{packagePrice} /{" "}
-                      {discountedPrice && <s>₹{discountedPrice}</s>}
+                      <h6>Packages Price</h6>₹{(packagePrice &&  packagePrice !=0) ? packagePrice: discountedPrice} /{" "}
+                      { packagePrice !=0 && <s>₹{discountedPrice}</s>}
                       <hr />
                     </div>
                     <div style={{ position: "relative" }}>
@@ -566,35 +562,7 @@ const ProductPart2 = (props) => {
                     </button>
                   </div>
 
-                  {/* adding another box  */}
-                  {/* <div className="product_trust" data-aos="fade-left">
-                      <h5>
-                        Why{" "}
-                        <img
-                          src={Chat}
-                          alt="chat icon"
-                          style={{ width: "35px", margin: "0px 4px" }}
-                        />{" "}
-                        Us ?
-                      </h5>
-
-                      <div className="product_trust_text">
-                        <img src={Hand} alt="Hand icon" />
-                        <h6>Trusted Platform - More Than 10,000 Celebrations</h6>
-                      </div>
-                      <div className="product_trust_text">
-                        <img src={Hand} alt="Hand icon" />
-                        <h6>Trusted Platform - More Than 10,000 Celebrations</h6>
-                      </div>
-                      <div className="product_trust_text">
-                        <img src={Hand} alt="Hand icon" />
-                        <h6>
-                          Trusted Platform - More Than 10,000 Celebrations Every month
-                        </h6>
-                      </div>
-                    </div> */}
-
-                  {/* another box */}
+               
 
                   <div className="reiview_product common-card">
                     <h5>Write Reviews</h5>
@@ -615,7 +583,7 @@ const ProductPart2 = (props) => {
                           onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                         <Button
-                          className="review_submit mt-3"
+                          className="review_submit mt-3 "
                           onClick={submitReview}
                         >
                           Submit Review
@@ -698,6 +666,7 @@ const ProductPart2 = (props) => {
         experienceVideo={experienceVideo}
         exclusion={exclusion}
         titleContent={titleContent}
+        offersPrice={offersPrice}
       />
     </>
   );

@@ -50,6 +50,8 @@ const ProductScreen = () => {
   const [packagePrice, setPackagePrice] = useState(0);
   const [showMoreReview , setShowMoreReview] = useState(false)
   const [discountedPrice, setDiscountedPrice] = useState(0);
+  const[wholesalePrice,setWholesalePrice]=useState(0);
+  const[offersPrice,setoffersPrice]=useState(0);
   const [gstPrice, setGstPrice] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [allReviews,setAllReviews]=useState([]);
@@ -134,6 +136,7 @@ const ProductScreen = () => {
           const price = res.data.body[0].discounted_price;
           setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
           setTotalPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
+          setoffersPrice(res.data.body[0]?.offer_price);
           setPackagePrice(price);
           setDiscountedPrice(res.data.body[0]?.outlay_price);
           setGstPrice(res.data.body[0]?.gst_price.replaceAll(",", ""));
@@ -246,7 +249,7 @@ const ProductScreen = () => {
     };
 
     const path = generatePath(
-      "/experiences/booking/:location/:parent_name/:parent_id/:package_name/:package_id",
+      "/checkout",
       {
         location: cityLocattion.name,
         parent_name: sub_category_name,
@@ -371,7 +374,8 @@ const ProductScreen = () => {
           reviewCount={reviewCount}
           experienceVideo={experienceVideo}
           poductCategoryTitle={poductCategoryTitle}
-        />
+          offersPrice={offersPrice}       
+           />
 
         <Customization
           showCustomization={showCustomization}

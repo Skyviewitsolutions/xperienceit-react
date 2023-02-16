@@ -9,6 +9,8 @@ import Navebar3 from "../Components/Common/Navbar/Navebar3";
 import StickyMenu from "../Components/Common/Navbar/StickyMenu";
 import TaskBar from "../Components/HomeScreenDetails/TaskBar/TaskBar";
 import "./screen.css";
+// import './CommonScreenPackeges.css';
+// import {AiFillLike} from 'react-icons/ai';
 
 const CommonScreenPakeges = () => {
   const [showSideBar, setShowSideBar] = useState(false);

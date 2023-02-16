@@ -272,6 +272,9 @@ font-weight: 600;
   padding-bottom: 15px;
   font-weight: 500;
 }
+img.book-now-small-img {
+  object-fit: cover!important;
+}
 .booking_step_right .product_arrngmgnt h5 {
   width: 100%;
   font-size: 22px;

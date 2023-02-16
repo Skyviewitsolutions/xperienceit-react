@@ -107,8 +107,18 @@ input[type=number]::-webkit-outer-spin-button {
     text-align: right;
 }
 
-@media only screen and (max-width: 360px){
+@media only screen and (max-width: 600px){
     .auth_balloon img {
         width: 35px;
     }
+    .otp_footer_images {
+         width: 100%; 
+    }
   }
+  @media only screen and (max-width: 768px){
+    .otp_input {
+        width: 90%;}
+  }
+  .otp_footer {
+    width: 90%;}
+    

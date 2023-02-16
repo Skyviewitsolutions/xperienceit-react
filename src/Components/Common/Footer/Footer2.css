@@ -24,11 +24,21 @@ footer.section.footer_section {
   margin-bottom: 5px;
   display: block;
 }
+.footer_section .footer_col.quick_links li a:hover {
+  
+  color:#e1be48;
+}
+.footer_col.social_media a:hover {
+  color: #e1be48 !important;;
+}
 .copy_right_area {
   color: #fff;
   text-align: center;
   background: #00000047;
   padding: 5px;
+  /* position: absolute;
+  width: 100%;
+  bottom: 0px; */
 }
 footer.section.footer_section .container {
   padding-bottom: 55px;
@@ -40,12 +50,27 @@ footer.section.footer_section .container {
   margin-left: -7px;
   display: flex;
 }
+.footer_section .footer_col1_media img {
+ height:50px;
+ width:50px;
+}
+.footer_section .footer_col1_media img:hover {
+  transform: scale(1.2);
+ }
+/* .footer_section .footer_col1_media img:hover {
+transition: translate(1.2);
+ 
+ } */
 .footer_col.social_media a {
   color: #fff;
   font-size: 17px;
   text-decoration: none;
   margin-top: 12px;
   display: block;
+}
+.footer_col.social_media a:hover {
+  
+  color:#e1be48;
 }
 .footer_section a {
   font-size: 18px;
@@ -81,7 +106,30 @@ footer.section.footer_section .container {
 .tnc:hover {
   color: white !important;
 }
+a.mrchant-anker {
+  margin-top: 0px!important;
+}
+button.merchant-btn a.mrchant-anker:hover{
+ color:#1c1956 !important;
+}
+button.merchant-btn {
+  background: linear-gradient(to bottom, #eccf66, #c59402);
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
 @media only screen and (max-width: 600px) {
+  .copy_right_area {
+    position: absolute;
+    width: 100%;
+    /* bottom: 0px; */
+  }
   .footer_col.app_img img {
     width: 145px !important;
     margin-top: 20px;
@@ -114,14 +162,25 @@ footer.section.footer_section .container {
     font-size: 14px;
     text-align: center;
   }
-  .copy_right_area {
-   
-    bottom: 0px;
-    width: 100%;
-    margin-bottom: 0px;
+
+  footer.section.footer_section {
+      padding: 20px 0px 35px!important;
   }
+  /* .copy_right_area {
+    position: absolute;
+    bottom: 0px;
+  } */
 }
 
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+  footer.section.footer_section {
+    padding: 15px 0px 40px!important;
+  }
+  .copy_right_area {
+    width:100%!important;
+    position: absolute;
+  }
+}
 @media only screen and (min-width: 1000px) and (max-width: 1200px) {
   .footer_col1_media a img {
     width: 50px;

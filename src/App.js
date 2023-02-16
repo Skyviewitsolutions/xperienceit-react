@@ -36,6 +36,8 @@ import BlogDetails from "./Screens/Blogs/BlogDetails";
 import BookingDetails from "./Screens/BookingDetails/BookingDetails";
 import WhoWeAre from "./Screens/WhoWeAre/WhoWeAre";
 import Invoice from "./Screens/Invoice/Invoice2";
+import Contact from "./Components/HomeScreenDetails/ContactUs/Contact";
+import CancelationPolicy from "./Screens/CancelatinoPolicy/CancelationPolicy";
 
 const App = () => {
   const firebaseConfig = {
@@ -117,7 +119,7 @@ const App = () => {
             <Route exact path="/tour" component={TourForm8} />
             <Route
               exact
-              path="/experiences/booking/:location/:parent_name/:parent_id/:package_name/:package_id"
+              path="/checkout"
               component={BookingScreen}
             />
             <Route
@@ -136,7 +138,7 @@ const App = () => {
             <Route exact path="/tnc" component={TermsConditions} />
             <Route exact path="/blogs" component={Blogs} />
             <Route exact path="/blogs/:blog_name" component={BlogDetails} />
-            <Route exact path="/about" component={About} />
+            <Route exact path="/about-us" component={About} />
             <Route exact path="/privacy-policy" component={PrivacyPolicy} />
             <Route
               exact
@@ -146,6 +148,8 @@ const App = () => {
             <Route exact path="/who-we-are" component={WhoWeAre}/>
             {/* <Route exact path="/inv/:booking_id" component={Invoice}/> */}
             <Route exact path="/inv/:booking_id" component={Invoice}/>
+            <Route exact path="/contact-us" component={Contact}/>
+            <Route exact path="/cancellation-policy" component={CancelationPolicy}/>
           </Switch>
         </Router>
         <ToastContainer limit={1} />

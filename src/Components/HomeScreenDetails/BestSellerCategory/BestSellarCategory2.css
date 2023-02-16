@@ -1,150 +1,275 @@
 .pkgCarousel {
-    width: 100%;
-    overflow: hidden;
-  }
-  
-  .package-card-cont {
-    position: relative;
-    margin: 8px 0.5px;
-  }
-  
-  .package-card {
-    box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
-    padding: 8px;
-    margin: 0px;
-    transition: 0.6s;
-    cursor: pointer;
-    z-index: 99;
-  }
-  .package-card .media-img {
-    position: relative;
-    cursor: pointer;
-  }
-  
+  width: 100%;
+  overflow: hidden;
+}
+.package-section-slider.common-container.best-sellar2-categories-cont {
+  padding: 14px!important;
+}
+.all-pack-slider.best-sellar-all-pack-slider{
+  padding-bottom: 0px!important;
+}
+.container-fluid.best-sellar2-categories-container {
+  padding: 5px 10px!important;
+}
+.package-card-cont {
+  position: relative;
+  margin: 8px 0.5px;
+}
+.media-img {
+  border-radius: 5px;
+}
+.package-card {
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  padding: 8px;
+  margin: 0px;
+  transition: 0.6s;
+  cursor: pointer;
+  z-index: 99;
+  /* box-shadow: 0 6px 16px 0 rgb(0 0 0 / 14%); */
+  border-radius: 5px;
+}
+.package-card .media-img {
+  position: relative;
+  cursor: pointer;
+  height: 270px;
+}
+.package-card .media-img img {
+  height: 100%;
+  width: 100%;
+}
+.package-card-cont .wishlist {
+  position: absolute;
+  top: 4%;
+  right: 9%;
+  background: #fff;
+  width: 38px;
+  height: 38px;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.package-card-cont .wishlist svg {
+  font-size: 25px;
+  color: #e5c454;
+  cursor: pointer;
+}
+.package-card .details {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.package-card .details h3 {
+  font-size: 16px;
+  margin-top: 8px;
+  font-weight: 500;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.package-card .details .price-and-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn {
+  display: flex;
+  margin: 4px 0px 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn h4 {
+  width: 100%;
+  margin-bottom: 0px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn button.btn {
+  background: linear-gradient(135deg, #eccf66, #c59402);
+  color: #fff;
+  padding: 4px 10px;
+
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn h4 s {
+  color: #e1be48;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 0px 0px;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount h5 {
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.package-card .rating-and-discount .rating {
+  float: right;
+  text-align: right;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  align-items: center;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount .rating svg {
+  font-size: 20px;
+  top: -3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  color: #e4c352;
+}
+
+@media only screen and (max-width: 600px) {
+  .package-section-slider.common-container.best-sellar2-categories-cont {
+    padding: 0px!important;
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+}
+.container-fluid.best-sellar2-categories-container button.owl-prev span{
+margin-left: -20px!important;
+left:0px!important
+}
+.container-fluid.best-sellar2-categories-container button.owl-next span{
+  margin-right: -20px!important;
+right:0px!important
+}
+
   .package-card-cont .wishlist {
     position: absolute;
     top: 4%;
-    right: 9%;
+    right: 8%;
     background: #fff;
-    width: 38px;
-    height: 38px;
-    padding: 7px;
+    width: 30px;
+    height: 30px;
+    padding: 1px 5px;
     border-radius: 50%;
     box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
     z-index: 100;
     cursor: pointer;
   }
-  
+
   .package-card-cont .wishlist svg {
-    font-size: 25px;
+    font-size: 20px;
     color: #e5c454;
     cursor: pointer;
   }
-  .package-card .details {
-    padding-left: 5px;
-    padding-right: 5px;
+  .package-card .media-img {
+    height: 150px !important;
   }
-  
-  .package-card .details h3 {
-    font-size: 16px;
-    margin-top: 8px;
-    font-weight: 500;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    display: -webkit-box;
-    cursor: pointer;
-    margin-bottom: 5px;
+  .best-sellar2-categories-container {
+    padding: 0px 0px !important;
+
+    box-shadow: none !important;
   }
-  
-  .package-card .details .price-and-btn {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    cursor: pointer;
+  .container-fluid.best-sellar2-categories-container {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
   }
-  
-  .package-card .details .price-and-btn {
-    display: flex;
-    margin: 4px 0px 5px;
-    align-items: center;
-    cursor: pointer;
+  h2.best-sellar2-categories-heading {
+    padding-top: 10px;
   }
-  
-  .package-card .details .price-and-btn h4 {
-    width: 62%;
-    margin-bottom: 0px;
-    font-size: 15px;
-    cursor: pointer;
+  .media-img.coman-img.best-sellar2-card-img {
+    height: 210px !important;
   }
-  
-  .package-card .details .price-and-btn button.btn {
-    background: linear-gradient(135deg, #eccf66, #c59402);
-    color: #fff;
-    padding: 4px 10px;
-  
-    cursor: pointer;
+  .details.best-sellar2-details h3{
+ font-size: 14px!important;
   }
-  
-  .package-card .details .price-and-btn h4 s {
-    color: #e1be48;
-    padding-left: 10px;
-    cursor: pointer;
+  .rating-and-discount.best-sellar2-discount h5{
+    font-size: 14px!important;
   }
-  
-  .package-card .rating-and-discount {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0px 0px 0px;
-    cursor: pointer;
+  .rating.best-sellar2-rating svg{
+    font-size: 16px!important;
+    top:0px!important;
   }
-  
-  .package-card .rating-and-discount h5 {
-    margin-bottom: 0px;
-    cursor: pointer;
-    font-size: 15px;
+  .rating.best-sellar2-rating span{
+    font-size: 14px!important;
   }
-  
-  .package-card .rating-and-discount .rating {
-    float: right;
-    text-align: right;
-    cursor: pointer;
+}
+
+@media screen and (min-width: 601px) and (max-width: 991px) {
+  .best-sellar2-categories-container {
+    padding: 0px 0px !important;
+    box-shadow: none !important;
   }
-  
-  .package-card .rating-and-discount {
-    align-items: center;
-    cursor: pointer;
+  .package-section-slider.common-container.best-sellar2-categories-cont {
+    padding: 10px !important;
+  }h2.best-sellar2-categories-heading {
+    padding-top: 10px;
   }
+  .container-fluid.best-sellar2-categories-container {
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+}
+.more-btn {
+  margin-top: 0px;
+  height: 40px!important;
+}
+}
+@media  screen and (min-width : 1000px)and (max-width:1024px){
   
-  .package-card .rating-and-discount .rating svg {
-    font-size: 20px;
-    top: -3px;
-    position: relative;
-    cursor: pointer;
+  .best-sellar2-categories-container {
+    padding: 0px 0px !important;
+    box-shadow: none !important;
   }
-  
-  .package-card .rating-and-discount {
-    color: #e4c352;
+  .package-section-slider.common-container.best-sellar2-categories-cont {
+    padding: 10px !important;
+  }h2.best-sellar2-categories-heading {
+    padding-top: 10px;
   }
-  
-  @media only screen and (max-width: 600px) {
-    .package-card-cont .wishlist {
-      position: absolute;
-      top: 4%;
-      right: 8%;
-      background: #fff;
-      width: 30px;
-      height: 30px;
-      padding: 1px 5px;
-      border-radius: 50%;
-      box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
-      z-index: 100;
-      cursor: pointer;
-    }
-  
-    .package-card-cont .wishlist svg {
-      font-size: 20px;
-      color: #e5c454;
-      cursor: pointer;
-    }
-  }
-  
+  .container-fluid.best-sellar2-categories-container {
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+}
+.more-btn {
+  margin-top: 5px;
+}
+button.owl-prev span {
+  left: 30px!important;
+  position: absolute;
+  background: #fff;
+  line-height: 42px;
+  border-radius: 50%;
+  font-size: 43px;
+  height: 45px;
+  width: 45px;
+  display: block;
+  box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+  cursor: pointer;
+}
+button.owl-next span {
+  right: 30px!important;
+  position: absolute;
+  background: #fff;
+  line-height: 42px;
+  border-radius: 50%;
+  font-size: 43px;
+  height: 45px;
+  width: 45px;
+  display: block;
+  box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+  cursor: pointer;
+}
+}

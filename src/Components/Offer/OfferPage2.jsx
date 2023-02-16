@@ -1,18 +1,22 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 import { useHistory, generatePath } from "react-router-dom";
-import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+import {
+  AiOutlineStar,
+  AiOutlineHeart,
+  AiTwotoneHeart,
+  AiFillLike,
+} from "react-icons/ai";
 import "./OfferPage2.css";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { endpoints } from "../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
-import NoPackages from "../../assets/images/noPackages.png"
+import NoPackages from "../../assets/images/noPackages.png";
 
 const OfferCard = (props) => {
-
-  const { offerName, offerId } = props;
+  const { offerName, offerId} = props;
   const pkgLocation = localStorage.getItem("locationDetails");
   const dispatch = useDispatch();
   const cityLocattion = JSON.parse(pkgLocation);
@@ -102,8 +106,83 @@ const OfferCard = (props) => {
 
   return (
     <>
-      <div class="col-lg-3 col-md-6 col-12">
-        <div className="package-col">
+      <div class="col-lg-3 col-md-6 col-6">
+        <div class=" package-card-cont offer-pkg-card-cont" key={props.key}>
+          <div
+            className="package-card offer-pkg-cards"
+            onClick={() => renderToOffer(props)}
+          >
+            <div className="media-img coman-img offer-card-img">
+              {props.img ? (
+                <img src={props.img} />
+              ) : (
+                <Skeleton height={250} variant="rectangular" />
+              )}
+              <div class="ribbon-wrapper">
+                <div class="ribbon">
+                  {/* {props.offerDiscountAmmount} {props.offerDicountType} */}
+                {props.offerDiscountAmmount}{props.offerDicountType && props.offerDicountType==="percent" ? (
+                 <span> % off</span>
+                ):(
+                <span>₹ off</span>
+                ) }
+                
+                </div>
+              </div>
+            </div>
+            <div className="details offer-pkg-card-details">
+              <h3>{props.heading.replaceAll("-", " ")}</h3>
+              <div className="rating-and-discount offerpkg-discount">
+                <h5></h5>
+                <div className="rating offer-pkg-card-rating">
+                  <AiFillLike />
+                  {props.rating && props.rating != 0 ? (
+                    <span>
+                      {typeof props.rating == "string"
+                        ? parseFloat(props.rating).toFixed(1)
+                        : props.rating.toFixed(1)}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </div>
+              </div>
+
+              <div className="price-and-btn offer-pkg-card-prices">
+                <h4>
+                  {/* ₹{props.discount ? (
+                    props.discount
+                  ) : (
+                    <Skeleton variant="text" width={80} />
+                  )}{" "}
+                  <s> ₹{props.prices}</s> */}
+                  ₹
+                  {props.discount && props.discount != 0 ? (
+                    <span>{props.discount}</span>
+                  ) : (
+                    <span>{props.prices}</span>
+                  )}
+                  {props.discount != 0 && <s>₹{props.prices}</s>}
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div className="wishlist">
+            <span>
+              {isFavourite?.is_fav == "true" ? (
+                <AiTwotoneHeart
+                  onClick={() => handleFavourite(props, "false")}
+                />
+              ) : (
+                <AiOutlineHeart
+                  onClick={() => handleFavourite(props, "true")}
+                />
+              )}
+            </span>
+          </div>
+        </div>
+
+        {/* <div className="package-col">
           <div className="media-img  coman-img">
             {props.img ? (
               <img src={props.img} />
@@ -147,38 +226,38 @@ const OfferCard = (props) => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
 };
 
 const OfferPage2 = (props) => {
-  const { offers, offerName, offerId, loading } = props;
-  const [item , setItem] = useState([1,2,3,4])
+  const { offers, offerName, offerId, loading,offerDicountType,offerDiscountAmmount } = props;
+  const [item, setItem] = useState([1, 2, 3, 4]);
 
   return (
     <>
-      <div className="all-pack-slider inner-row-package">
-        <div className="package-section-slider common-container">
-          <div className="container-fluid">
+      <div className="all-pack-slider inner-row-package offer-pkg-row">
+        <div className="package-section-slider common-container offer-pkg-comman-cont">
+          <div className="container-fluid offer-pkg-cont-fluid">
             <div className="title-with-button">
               <div className="row">
-                <div className="title-col">
+                <div className="title-col offers-pkg-col">
                   <h2>
                     <span
                       style={{
                         color: "var(--pink)",
                       }}
                     >
-                      {offerName.replaceAll('_'," ")}
+                      {offerName.replaceAll("_", " ")}
                     </span>
                   </h2>
                 </div>
               </div>
             </div>
 
-            <div className="row comman-card">
+            <div className="row comman-card offer-row-card">
               {offers.length != 0 &&
                 offers.map((item, index) => {
                   return (
@@ -194,6 +273,8 @@ const OfferPage2 = (props) => {
                         offerName={offerName}
                         offerId={offerId}
                         data={item}
+                        offerDiscountAmmount={offerDiscountAmmount}
+                        offerDicountType={offerDicountType}
                       />
                     </>
                   );

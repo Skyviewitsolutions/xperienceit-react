@@ -40,12 +40,22 @@ const Card = (props) => {
 
   return (
     <>
-      <div class="item" onClick={() => renderToOffer(data)}>
-        <div className="package-col">
-          <div className="media-img">
+      <div class="item " onClick={() => renderToOffer(data)}>
+        <div className="package-col offer-slide-card-col">
+          <div className="media-img offer-slide-img offer-baner">
             <img src={props.img} alt="" />
+            <div className="ribbon-2">
+              <span className="offer-discount-text">
+                {props.amount}{props.discountType && props.discountType==="percent" ? (
+                 <span> % off</span>
+                ):(
+                <span>₹ off</span>
+                ) }
+                </span>
+            </div>
           </div>
         </div>
+       
       </div>
     </>
   );
@@ -107,8 +117,8 @@ const Banner2 = (props) => {
     <>
       <div className="Offer-slider">
         <div className="offer-section-slider common-container">
-          <div className="container-fluid">
-            <h4>Offers for you</h4>
+          <div className="container-fluid offer-baner-cont">
+            <h4 className="offer-heading-baner">Offers for you</h4>
             <OwlCarousel
               className="owl-theme category"
               id="category"
@@ -128,9 +138,11 @@ const Banner2 = (props) => {
                           img={item.image_id}
                           heading={item.offer_name}
                           price={item.amount}
-                          discount={item.discount_type}
+                          // discount={item.discount_type}
                           key={index}
                           data={item}
+                          amount={item.amount}
+                          discountType={item.discount_type}
                         />
                       )}
                     </>

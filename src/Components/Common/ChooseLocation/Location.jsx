@@ -112,7 +112,7 @@ const Location = (props) => {
                         width="50px"
                         alt=""
                       />
-                      <h6 style={{ marginTop: "5px" }} className="location-city-name">{item.name}</h6>
+                      <h6 style={{ marginTop: "5px",cursor:"pointer" }} className="location-city-name">{item.name}</h6>
                     </label>
                   </div>
                 </>

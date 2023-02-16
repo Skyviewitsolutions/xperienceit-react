@@ -1,6 +1,200 @@
+@media only screen and (max-width: 600px) {
+  .container-fluid.whishlistRow {
+    margin-bottom: 50px;
+  }
+}
+.pkgCarousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.package-card-cont {
+  position: relative;
+  margin: 8px 0.5px;
+}
+
+.package-card {
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  padding: 8px;
+  margin: 0px;
+  transition: 0.6s;
+  cursor: pointer;
+  z-index: 99;
+}
+.package-card .media-img {
+  position: relative;
+  cursor: pointer;
+  height: 270px;
+}
+.package-card .media-img img {
+  height: 100%;
+  width: 100%;
+}
+.package-card-cont .wishlist {
+  position: absolute;
+  top: 4%;
+  right: 9%;
+  background: #fff;
+  width: 38px;
+  height: 38px;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  z-index: 98;
+  cursor: pointer;
+}
+
+.package-card-cont .wishlist svg {
+  font-size: 25px;
+  color: #e5c454;
+  cursor: pointer;
+}
+.package-card .details {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.package-card .details h3 {
+  font-size: 16px;
+  margin-top: 8px;
+  font-weight: 500;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.package-card .details .price-and-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn {
+  display: flex;
+  margin: 4px 0px 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn h4 {
+  width: 100%;
+  margin-bottom: 0px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn button.btn {
+  background: linear-gradient(135deg, #eccf66, #c59402);
+  color: #fff;
+  padding: 4px 10px;
+
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn h4 s {
+  color: #e1be48;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 0px 0px;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount h5 {
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.package-card .rating-and-discount .rating {
+  float: right;
+  text-align: right;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  align-items: center;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount .rating svg {
+  font-size: 20px;
+  top: -3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  color: #e4c352;
+}
 
 @media only screen and (max-width: 600px) {
-.container-fluid.whishlistRow {
-    margin-bottom: 50px;
+  .package-card-cont .wishlist {
+    position: absolute;
+    top: 4%;
+    right: 8%;
+    background: #fff;
+    width: 30px;
+    height: 30px;
+    padding: 1px 5px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    z-index: 99;
+    cursor: pointer;
+  }
+
+  .package-card-cont .wishlist svg {
+    font-size: 20px;
+    color: #e5c454;
+    cursor: pointer;
+  }
+  .media-img.coman-img.whishlist-card-img {
+    height: 150px !important;
+  }
+  .media-img.coman-img.whishlist-card-img img {
+    object-fit: cover !important;
+  }
+  .container-fluid.whishlistRow {
+    padding: 0px 0px !important;
+  }
+  .package-card-cont.whislist-card-mobile {
+    margin: 8px -7.5px;
+  }
+  .package-card.whishlist-cards {
+    padding: 5px !important;
+  }
+  .details.whishlist-details h3 {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+  }
+  h5.whishlist-dicount span {
+    font-size: 13px;
+  }
+  .rating.whishlist-rating svg {
+    font-size: 15px !important;
+    top:0px!important;
+  }
+  .rating.whishlist-rating span {
+    font-size: 13px!important;
+  }
+  .whislist-price-btn h4 {
+    font-size: 12px;
+  }
+  .whishlist-details {
+    height: 80px;
+  }
+  h2.whislist-heding {
+    margin: 8px;
+    width: 80%!important;
 }
 }

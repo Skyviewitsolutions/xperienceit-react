@@ -10,8 +10,17 @@
   top: 40%;
   cursor: pointer;
 }
+.Offer-slider {
+  margin-top: -5px !important;
+  background: #f9f9f9;
+  padding-bottom: 20px !important;
+}
 .offer-section-slider.common-container {
+  /* padding-left: 5px; */
+  margin: 5px;
+  padding: 0px 5px;
   padding-top: 0px;
+  padding-right: 5px;
 }
 
 .offer-section-slider .package-col {
@@ -28,9 +37,94 @@
   padding-top: 20px;
   padding-bottom: 12px;
 }
+h4.offer-heading-baner {
+  margin-top: -10px !important;
+  padding-top: 0px !important;
+}
+.item.offer-baner {
+  position: relative !important;
+}
+
+.ribbon-2 {
+  right: 0px;
+  width: 125px;
+  height: 36.2px;
+  position: absolute;
+  background-color:#f81258;
+  top: 20px;
+ 
+}
+
+  .ribbon-2::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    border-left: 19px solid transparent;
+    border-top: 19px solid #f81258;
+    border-bottom: 19px solid #f81258;
+    left: -18px;
+}
+.ribbon-2::after {
+  content:'';
+  width: 125px;
+  height: 36px;
+  position: absolute;
+  z-index: -1;
+  transform:skewY(35deg) skewX(0);
+}
+.offer-discount-text{
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  position: relative;
+   top: 4px;
+    right: 35px;
+    float: right;
+    cursor: pointer;
+}
+@media only screen and (max-width: 600px) {
+  .offer-baner-cont button.owl-prev span {
+    left: 15px;
+  }
+  .offer-baner-cont button.owl-next span {
+    right: 15px;
+  }
+
+  .Offer-slider .container-fluid {
+    padding-top: 6px;
+  }
+  .container-fluid.offer-baner-cont {
+    padding: 1px 0px !important;
+  }
+  .offer-heading-baner {
+    padding: 5px;
+    font-size: 18px;
+  }
+  .offer-section-slider.common-container {
+    padding-left: 5px;
+    margin: 0px;
+    padding: 0px 5px;
+    padding-top: 0px;
+    padding-right: 5px;
+  }
+  .offer-section-slider .package-col {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .offer-section-slider.common-container {
+    padding: 5px !important;
+  }
+  h4.offer-heading-baner {
+    margin-top: 8px !important;
+  }
+}
 @media only screen and (max-width: 991px) and (min-width: 768px) {
   .offer-section-slider.common-container {
     padding-top: 0px;
-   
+  }
 }
+@media screen and (min-width: 1000px) and (max-width: 1024px) {
+  .offer-section-slider.common-container {
+    margin-top: 0px !important;
+  }
 }

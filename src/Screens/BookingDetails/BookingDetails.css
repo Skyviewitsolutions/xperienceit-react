@@ -13,7 +13,9 @@
   font-weight: 800;
   bottom: 3px;
 }
-
+.product_left_details_box.booking-details-box h6 ul li {
+  margin-left: 30px!important;
+}
 .cancelation-policy {
   min-height: 600px;
   width: 80%;
@@ -197,3 +199,13 @@ span.short-text h6 ul {
       margin:5px;
     }
 }
+@media only screen and (min-width: 601px) and(max-width:767){
+.package-right-area {
+  min-height: 700px;
+}
+}
+@media only screen and (min-width: 768px) and(max-width:991){
+  .package-right-area {
+    min-height: 700px;
+  }
+  }

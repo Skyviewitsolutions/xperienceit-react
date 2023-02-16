@@ -32,6 +32,10 @@ const OfferCard = (props) => {
   };
 
   return (
+
+
+
+
     <div className="offerCards">
     <div className="offer_img">
       {props.img ? (

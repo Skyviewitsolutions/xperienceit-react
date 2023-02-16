@@ -112,7 +112,7 @@ const OtpPanel = (props) => {
                   onClick={() => setAuthScreen("loginWithOtp")}
                 >
                   {" "}
-                  <MdBackup />
+                  {/* <MdBackup /> */}
                 </span>
                 {/* <span
                   className="otp_page"

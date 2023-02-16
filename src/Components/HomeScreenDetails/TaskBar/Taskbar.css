@@ -490,7 +490,7 @@
   
   .tskList::-webkit-scrollbar {
     width: 0px !important;
-    height: 0px !important;
+    height: 2px !important;
     
   }
   

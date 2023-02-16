@@ -76,7 +76,8 @@ const SubCategory = (props) => {
     <>
       <div className="subCategoryTaskbar">
         <h6>
-          <span style={{ color: "var(--pink)",marginLeft: "40px" ,fontSize: "20px" }}>Home</span> {props.subCatePackName.replaceAll("-" , " ")}
+          <span style={{ color: "var(--pink)",marginLeft: "40px" ,fontSize: "20px" }}>Home</span>
+           {props.subCatePackName.replaceAll("-" , " ")}
         </h6>
 
         {subCatePack.length != 0 ? 

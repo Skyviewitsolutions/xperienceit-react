@@ -1,0 +1,32 @@
+.cancellation-slide-image{
+    height: 300px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+.cancellation-slide-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.cancellation-row{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.cancellation-box{
+    padding:20px;
+}
+@media screen and (max-width: 600px) {
+    .cancellation-slide-image {
+        height: 120px;
+        width: 100%;
+}
+ .cancellation-slide-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover!important;
+ }
+ .cancellation-row{
+    margin-top:10px; 
+ }
+}

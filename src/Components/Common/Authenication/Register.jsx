@@ -9,7 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Button from "../../elements/Button/Button";
 import "react-toastify/dist/ReactToastify.css";
 import { TbArrowBackUp } from "react-icons/tb";
-
+import $ from "jquery";
 const Register = (props) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,30 +18,67 @@ const Register = (props) => {
   const [phoneNo, setPhoneNo] = useState("");
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const {setShowAuthPopup,setUserLogedIn,setAuthScreen } = props;
+  const { setShowAuthPopup, setUserLogedIn, setAuthScreen } = props;
 
   const register = () => {
-    if (fullName === "") {
-      setErrors({ fullName: "Please enter your name" });
-    } else if (fullName.length < 4) {
-      setErrors({ fullName: "Full name must be greater than 3 character" });
-    } else if (email === "") {
-      setErrors({ email: "Please enter your email" });
-    } else if (!validate(email)) {
-      setErrors({ email: "Invalid email -id" });
-    } else if (phoneNo === "") {
-      setErrors({ phoneNo: "Please enter phone no." });
-    } else if (phoneNo.length !== 10) {
-      setErrors({ phoneNo: "Phone must be of 10 digit" });
-    } else if (password === "") {
-      setErrors({ password: "Please enter password" });
-    } else if (password.length < 6) {
-      setErrors({ password: "Password must be greater than 6 character" });
-    } else {
+    // if (fullName === "") {
+    //   setErrors({ fullName: "Please enter your name" });
+    // } else if (fullName.length < 4) {
+    //   setErrors({ fullName: "Full name must be greater than 3 character" });
+    // } else if (email === "") {
+    //   setErrors({ email: "Please enter your email" });
+    // } else if (!validate(email)) {
+    //   setErrors({ email: "Invalid email -id" });
+    // } else if (phoneNo === "") {
+    //   setErrors({ phoneNo: "Please enter phone no." });
+    // } else if (phoneNo.length !== 10) {
+    //   setErrors({ phoneNo: "Phone must be of 10 digit" });
+    // } else if (password === "") {
+    //   setErrors({ password: "Please enter password" });
+    // } else if (password.length < 6) {
+    //   setErrors({ password: "Password must be greater than 6 character" });
+    // }
+    function isEmail(email) {
+      var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return regex.test(email);
+    }
 
-
-       const registerUrl = endpoints.authentication.register;
-       //const registerUrl = 'https://experienceit.in/api/user-register';
+    if ($("#firstName").val() == "") {
+      $("#firstName").addClass("is-invalid");
+    } else{
+      if ($("#firstName").val().length<4) {
+        $("#firstName").addClass("is-invalid");
+        $("#firstName").parent().find('.invalid-feedback').text('Full name must be greater than 3 character');
+      }
+    }
+    
+    if ($("#mob").val() == "") {
+      $("#mob").addClass("is-invalid");
+    }else{
+      if ($("#mob").val().length!=10) {
+        $("#mob").addClass("is-invalid");
+        $("#mob").parent().find('.invalid-feedback').text('Phone must be of 10 digit');
+      }
+    }
+    if ($("#email").val() == "") {
+      $("#email").addClass("is-invalid");
+    } else{
+      if (!isEmail($("#email").val())) {
+        $("#email").addClass("is-invalid");
+        $("#email").parent().find('.invalid-feedback').text('Invalid email -id');
+      }
+    }
+    if ($("#pswd").val() == "") {
+      $("#pswd").addClass("is-invalid");
+    }
+   else if ($("#pswd").val().length<6) {
+        $("#pswd").addClass("is-invalid");
+        $("#pswd").parent().find('.invalid-feedback').text('Password must be greater than 6 character');
+      }
+    
+    else {
+      const registerUrl = endpoints.authentication.register;
+      //const registerUrl = 'https://experienceit.in/api/user-register';
 
       setErrors({});
       setIsLoading(true);
@@ -50,14 +87,13 @@ const Register = (props) => {
         first_name: fullName,
         email: email,
         password: password,
-          phone: `91${phoneNo}`,
+        phone: `91${phoneNo}`,
         referral_code: refferalCode,
       };
 
       const headers = {
         "Content-type": "application/json; charset=UTF-8",
       };
-
 
       axios
         .post(registerUrl, val, { headers: headers })
@@ -67,7 +103,7 @@ const Register = (props) => {
           if (res.data.status === true) {
             toast(res.data.message, { type: "success" });
             const token = res.data.body.access_token;
-            localStorage.setItem("access_token",token);
+            localStorage.setItem("access_token", token);
             setUserLogedIn(true);
             setShowAuthPopup(false);
           } else if (res.data.status === false) {
@@ -81,12 +117,19 @@ const Register = (props) => {
     }
   };
 
+  $( "input" ).keydown(function() {
+    if($(this).hasClass('is-invalid')){
+      $(this).removeClass('is-invalid');
+    }
+  });
   return (
     <>
-     <div className="back"   onClick={() => setAuthScreen("loginWithOtp")}>
-    {/* <span><MdBackup/></span> */}
-    <span><TbArrowBackUp/></span>
-    </div>
+      <div className="back" onClick={() => setAuthScreen("loginWithOtp")}>
+        {/* <span><MdBackup/></span> */}
+        <span>
+          <TbArrowBackUp />
+        </span>
+      </div>
       <div className="register">
         <div className="register_row row">
           <div className="register_row_col col-sm-12 col-md-6 col-lg-6 ">
@@ -101,21 +144,24 @@ const Register = (props) => {
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
             />
-            <span className="errorText">{errors.fullName}</span>
+            <div class="invalid-feedback">Please enter your Name.</div>
+            {/* <span className="errorText">{errors.fullName}</span> */}
           </div>
           <div className="register_row_col col-sm-12 col-md-6 col-lg-6 ">
-            <label htmlFor="number">
+            <label htmlFor="mob">
               Mobile No{" "}
               <span style={{ color: "red", fontSize: "20px" }}>*</span>
             </label>
             <input
               type="number"
+              className=""
               placeholder="Enter Mobile No."
-              id=" number"
+              id="mob"
               value={phoneNo}
               onChange={(e) => setPhoneNo(e.target.value)}
             />
-            <span className="errorText">{errors.phoneNo}</span>
+             <div class="invalid-feedback">Please enter your mobile no.</div>
+            {/* <span className="errorText">{errors.phoneNo}</span> */}
           </div>
         </div>
         <div className="register_row row">
@@ -128,20 +174,23 @@ const Register = (props) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <span className="errorText">{errors.email}</span>
+             <div class="invalid-feedback">Please enter your email.</div>
+            {/* <span className="errorText">{errors.email}</span> */}
           </div>
           <div className="register_row_col col-sm-12 col-md-6 col-lg-6 ">
-            <label htmlFor="number">
+            <label htmlFor="pswd" className="pswlable">
               Password <span style={{ color: "red", fontSize: "20px" }}>*</span>
             </label>
             <input
+            className="reg-pswd"
               type="password"
               placeholder="Enter Password"
-              id=" number"
+              id="pswd"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <span className="errorText">{errors.password}</span>
+             <div class="invalid-feedback">Please enter your password.</div>
+            {/* <span className="errorText">{errors.password}</span> */}
           </div>
         </div>
         <div className="register_row row">
@@ -158,9 +207,16 @@ const Register = (props) => {
         </div>
         {/* <button  className="rgst_btn">Register</button> */}
         <div style={{ marginBottom: "40px" }} className="row">
-        <div className="col-sm-12 col-md-12 col-lg-12">
-          <button onClick={register} title="Register" isLoading={isLoading} className="regBttn">Register</button>
-        </div>
+          <div className="col-sm-12 col-md-12 col-lg-12">
+            <button
+              onClick={register}
+              title="Register"
+              isLoading={isLoading}
+              className="regBttn"
+            >
+              Register
+            </button>
+          </div>
         </div>
         {/* here we are adding toast container */}
         <ToastContainer />

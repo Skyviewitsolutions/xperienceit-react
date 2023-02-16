@@ -2,7 +2,6 @@ import React from "react";
 import Contact from "./FooterImages/contact.svg";
 import Email from "./FooterImages/email.svg";
 import Facebook from "./FooterImages/facebook.svg";
-
 import Girl from "./FooterImages/Girl.png";
 import PlayStore from "./FooterImages/playstore.png";
 import AppStore from "./FooterImages/appstore.png";
@@ -13,7 +12,9 @@ import Youtube from "./FooterImages/youtube.svg";
 import "./Footer2.css";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom"
-
+import {BsWhatsapp} from 'react-icons/bs';
+import {FiPhoneCall} from 'react-icons/fi';
+import {AiOutlineMail} from 'react-icons/ai';
 const Footer2 = () => {
     const history = useHistory()
 const WhoWeAre=()=>{
@@ -51,9 +52,15 @@ const WhoWeAre=()=>{
                 <a onClick={() =>history.push("/tnc")} className="tnc">
                   Terms and Conditions
                 </a>
-                <a href="	https://admin.experienceit.in/page/become-a-vendor " className="tnc">
+                <a onClick={() =>history.push("/cancellation-policy")} className="tnc">
+                Cancellation Policy
+                </a>
+                <button className="merchant-btn">
+                <a href="	https://admin.experienceit.in/page/become-a-vendor " className="mrchant-anker">
                  Become a Merchant
                 </a>
+                </button>
+                
               </div>
             </div>
             <div className="col-lg-3 col-md-6 col-sm-12">
@@ -61,7 +68,7 @@ const WhoWeAre=()=>{
                 <h4>Contact us</h4>
                 <ul>
                   <li>
-                    <a href="">Contact us</a>
+                    <a href="/contact-us">Contact us</a>
                   </li>
                   <li>
                     <a href="https://skyviewads.com/it-services-in-lucknow/">
@@ -69,7 +76,7 @@ const WhoWeAre=()=>{
                     </a>
                   </li>
                   <li>
-                    <a href="">Services</a>
+                    <a href="/about-us">About us</a>
                   </li>
                   <li>
                     <a href="/who-we-are">Who we are</a>
@@ -86,32 +93,30 @@ const WhoWeAre=()=>{
                   <h4>Connect now for services</h4>
                   <div className="footer_col3_contact">
                     <a href="tel:7080581133">
-                      <img
-                        src={Contact}
-                        alt="contact icon"
-                        style={{ width: "30px", marginRight: "10px" }}
-                      />
+                      <FiPhoneCall style={{ width: "30px", marginRight: "10px" }}/>
+                     
                       +91 7080581133
+                    </a>
+                  </div>
+                  {/* <div className="footer_col3_email">
+                    <a href="https://api.whatsapp.com/send/?phone=7080581133&text&type=phone_number&app_absent=0">
+                      
+                      <AiOutlineMail style={{ width: "30px", marginRight: "11px" }}/>
+                      contact@experienceit.in{" "}
+                    </a>
+                  </div> */}
+                  <div className="footer_col3_whatsapp">
+                    <a href="mailto:contact@experienceit.in">
+                   <span> <BsWhatsapp style={{ width: "32px", marginRight: "11px" }}/></span>
+                     
+                       +91 7080581133
                     </a>
                   </div>
                   <div className="footer_col3_email">
                     <a href="https://api.whatsapp.com/send/?phone=7080581133&text&type=phone_number&app_absent=0">
-                      <img
-                        src={Email}
-                        alt="email icon"
-                        style={{ width: "30px", marginRight: "11px" }}
-                      />
+                      
+                      <AiOutlineMail style={{ width: "30px", marginRight: "11px" }}/>
                       contact@experienceit.in{" "}
-                    </a>
-                  </div>
-                  <div className="footer_col3_whatsapp">
-                    <a href="mailto:contact@experienceit.in">
-                      <img
-                        src={Whatsapp}
-                        alt="email icon"
-                        style={{ width: "32px", marginRight: "11px" }}
-                      />
-                       +91 7080581133
                     </a>
                   </div>
                 </div>

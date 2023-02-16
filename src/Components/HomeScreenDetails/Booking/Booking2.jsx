@@ -38,7 +38,7 @@ const Card = (props) => {
 
   return (
     <>
-      <div class="item" >
+      <div class="item" key={props.key}>
         <div className="media-img" onClick={() => renderToCategoryPage(data)}>
           <img src={data.image_id} alt="" />
           <h4>{data.name.replace("Xperience" , "")}</h4>

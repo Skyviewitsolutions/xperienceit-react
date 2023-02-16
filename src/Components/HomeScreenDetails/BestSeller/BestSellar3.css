@@ -1,6 +1,6 @@
 .best-sellar-bg-color {
   background-color: #f9f9f9;
-  margin-top: 25px!important;
+  /* margin-top: 25px!important; */
 }
 .best-sellar-container {
   margin: auto;
@@ -13,6 +13,11 @@
   height: 220px;
   max-width: 600px;
   position: relative;
+}
+.khvUfi:focus:enabled {
+  color: black;
+  background-color: none !important;
+  box-shadow: none;
 }
 .best-sellar-boxes {
   display: block;

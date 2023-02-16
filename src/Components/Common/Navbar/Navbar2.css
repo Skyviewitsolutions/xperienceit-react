@@ -97,10 +97,10 @@ button.btn-close {
 }
 .logout-nav2 {
   position: absolute;
-  background-color: white;
+ background: aliceblue;;
   justify-content: center;
   align-items: center;
-  top: 19.7%;
+margin-top: 20px;
   left: 1px;
   z-index: 101;
   font-weight: 700;
@@ -133,4 +133,7 @@ img.side-bar-user {
   height: 60px;
   width: 60px;
   border-radius: 50%;
+  object-fit: cover;
 }
+ 
+ 

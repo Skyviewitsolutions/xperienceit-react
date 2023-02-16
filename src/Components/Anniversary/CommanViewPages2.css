@@ -1,7 +1,221 @@
-
-.coman-img img{
-width: 100%;
+.coman-img img {
+  width: 100%;
 }
 .all-pack-slider.inner-row-package .package-col {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.pkgCarousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.package-card-cont {
+  position: relative;
+  margin: 8px 0.5px;
+}
+
+.package-card {
+  box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+  padding: 8px;
+  margin: 0px;
+  transition: 0.6s;
+  cursor: pointer;
+  z-index: 99;
+}
+.package-card .media-img {
+  position: relative;
+  cursor: pointer;
+  height: 270px !important;
+}
+.package-card .media-img img {
+  height: 100%;
+  width: 100%;
+}
+.package-card-cont .wishlist {
+  position: absolute;
+  top: 4%;
+  right: 9%;
+  background: #fff;
+  width: 38px;
+  height: 38px;
+  padding: 7px;
+  border-radius: 50%;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  z-index: 98;
+  cursor: pointer;
+}
+
+.package-card-cont .wishlist svg {
+  font-size: 25px;
+  color: #e5c454;
+  cursor: pointer;
+}
+.package-card .details {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.package-card .details h3 {
+  font-size: 16px;
+  margin-top: 8px;
+  font-weight: 500;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  display: -webkit-box;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.package-card .details .price-and-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn {
+  display: flex;
+  margin: 4px 0px 5px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn h4 {
+  width: 100%;
+  margin-bottom: 0px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn button.btn {
+  background: linear-gradient(135deg, #eccf66, #c59402);
+  color: #fff;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.package-card .details .price-and-btn h4 s {
+  color: #e1be48;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0px 0px 0px;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount h5 {
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.package-card .rating-and-discount .rating {
+  float: right;
+  text-align: right;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  align-items: center;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount .rating svg {
+  font-size: 20px;
+  top: -3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.package-card .rating-and-discount {
+  color: #e4c352;
+}
+.all-pack-slider.inner-row-package.comn-pkg-iner-row {
+  padding-top: 0px !important;
+}
+.package-section-slider.common-container.comn-pkg-cont {
+  padding-top: 0px !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
+.container-fluid.comn-pkg-cont-fluid {
+  padding: 0px 5px !important;
+}
+.title-col.comn-pkg-title {
+  margin-bottom: 0px !important;
+  padding: 5px !important;
+}
+h2.sub-menu-heading {
+  margin-left: 10px;
+}
+.package-card-cont.comn-pkg-card-cont {
+  margin: 8px 7.5px !important;
+}
+.row.comman-card.comn-card {
+  padding-bottom: 15px;
+}
+@media only screen and (max-width: 600px) {
+  .package-section-slider.common-container.comn-pkg-cont {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+
+  .package-card-cont .wishlist {
+    position: absolute;
+    top: 4%;
+    right: 8%;
+    background: #fff;
+    width: 30px;
+    height: 30px;
+    padding: 1px 5px;
+    border-radius: 50%;
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+    z-index: 100;
+    cursor: pointer;
+  }
+  h2.sub-menu-heading {
+    width: 100% !important;
+  }
+  .package-card-cont .wishlist svg {
+    font-size: 20px;
+    color: #e5c454;
+    cursor: pointer;
+  }
+  .media-img.coman-img.sub-menu {
+    height: 150px !important;
+  }
+  .package-card-cont.comn-pkg-card-cont {
+    margin: 8px -8.5px !important;
+  }
+  .package-card.comn-pkg-cards {
+    padding: 4px !important;
+  }
+  .details.comn-pkg-details h3 {
+    font-size: 13px !important;
+    -webkit-line-clamp: 2!important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+  }
+  .details.comn-pkg-details {
+    height: 80px !important;
+  }
+  .rating-and-discount.comn-pkg-discount h5 {
+    font-size: 13px !important;
+  }
+  .rating.comn-pkg-rating svg {
+    font-size: 14px !important;
+    top: 0px !important;
+  }
+  .rating.comn-pkg-rating span {
+    font-size: 13px !important;
+  }
+  .price-and-btn.comn-pkg-prices h4 {
+    font-size: 12px !important;
+  }
 }

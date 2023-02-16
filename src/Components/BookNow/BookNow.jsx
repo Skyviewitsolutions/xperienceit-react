@@ -11,6 +11,10 @@ import axios from "axios";
 import { endpoints } from "../../services/endpoints";
 import { useHistory, useLocation } from "react-router-dom";
 import Loader from "./../../utils/Loader";
+import $ from "jquery";
+import Razorpay from 'razorpay';
+
+
 
 const BookNow = () => {
   const history = useHistory();
@@ -23,6 +27,27 @@ const BookNow = () => {
     if (trnsDta == undefined) {
       history.push("/");
     }
+  }, []);
+
+  useEffect(() => {
+    (function () {
+      "use strict";
+      const forms = document.querySelectorAll(".requires-validation");
+      Array.from(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
   }, []);
 
   const bookingData = trnsDta && trnsDta?.bookingDetails;
@@ -57,24 +82,23 @@ const BookNow = () => {
   const booking = () => {
     const access_token = localStorage.getItem("access_token");
     if (access_token) {
-      if (address === "") {
-        setErrors({ address: "Address not must be blank" });
-        // toast("Please enter address", { type: "warning" });
-      } else if (pincode === "") {
-        setErrors({ pincode: "pincode not must be blank" });
-        // toast("Please enter pincode", { type: "warning" });
-      } else if (city === "") {
-        setErrors({ city: "city not must be blank" });
-        // toast("Please enter city", { type: "warning" });
-      } else if (states === "") {
-        setErrors({ state: "state not must be blank" });
-        // toast("Please enter state", { type: "warning" });
-      } else if (aboutInfo === "") {
-        toast("Please choose about information");
-        toast("Please enter about info", { type: "warning" });
-      } else if (occasion === "") {
-        // toast("Please choose a occasion");
-        toast("Please choose a occassion", { type: "warning" });
+      if ($("#addr").val() == "") {
+        $("#addr").addClass("is-invalid");
+      }
+      if ($("#pincode").val() == "") {
+        $("#pincode").addClass("is-invalid");
+      }
+      if ($("#city").val() == "") {
+        $("#city").addClass("is-invalid");
+      }
+      if ($("#state").val() == "") {
+        $("#state").addClass("is-invalid");
+      }
+      if ($('input[name=advert]:checked').val()==undefined) {
+        $(".error-advert").removeClass("d-none");
+      }
+      if ($('input[name=occas]:checked').val()==undefined) {
+        $(".error-occas").removeClass("d-none");
       } else {
         setErrors({});
         setIsLoading(false);
@@ -107,7 +131,6 @@ const BookNow = () => {
             total_payable: bookingData?.totalPrice,
           };
 
-          console.log(access_token, "data");
 
           const headers = {
             Authorization: `Bearer ${access_token}`,
@@ -117,7 +140,7 @@ const BookNow = () => {
 
           const api = endpoints.home.bookingDetails;
 
-          setIsLoading(true)
+          setIsLoading(true);
 
           axios
             .post(api, data, { headers: headers })
@@ -128,7 +151,7 @@ const BookNow = () => {
                 setIsLoading(false);
                 history.push("/");
               } else if (res.data.status === false) {
-                // toast(res.data.message, { type: "error" });
+                toast(res.data.message, { type: "error" });
                 setIsLoading(false);
               }
             })
@@ -178,15 +201,18 @@ const BookNow = () => {
       alert("You are offline ...Failed to load Razorpay SDK");
       return;
     }
+    else {
+      console.log(res , "here");
+    }
 
     const options = {
       // key: "rzp_test_2xp5hbZcfnYnT5",
-      key:"rzp_live_aQItc9wjdMGC69",
+      key: "rzp_live_aQItc9wjdMGC69",
       currency: "INR",
       amount: amount * 100,
       name: "XperienceIt Private Limited",
       description: "Thanks for purchasing",
-      
+
       handeler: function (response) {
         alert(response.razorpay_payment_id);
         alert("Payment Successfully");
@@ -199,8 +225,28 @@ const BookNow = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
+// Payment Gateway Intigrations end
+ 
 
-  // Payment Gateway Intigrations end
+  $( "input" ).keydown(function() {
+    if($(this).hasClass('is-invalid')){
+      $(this).removeClass('is-invalid');
+    }
+  });
+
+  $('input[name=advert]').click(function () {
+   
+    if(!$(".error-advert").hasClass('d-none')){
+      $(".error-advert").addClass('d-none');
+    }
+    });
+    $('input[name=occas]').click(function () {
+      if(!$(".error-occas").hasClass('d-none')){
+        $(".error-occas").addClass('d-none');
+      }
+      });
+    
+  
 
   return (
     <>
@@ -219,52 +265,71 @@ const BookNow = () => {
                           <div className="form-group col-lg-6 col-md-6">
                             <label for="">Your Address?* (Max 200)</label>
                             <input
+                              id="addr"
                               type="text"
                               className="form-control"
                               aria-describedby="emailHelp"
                               placeholder="Please Enter Your Address"
                               value={address}
                               onChange={(e) => setAddress(e.target.value)}
+                              required
                             />
-                            <span style={{ color: "red" }}>
+                            <div class="invalid-feedback">
+                              Please enter your address.
+                            </div>
+                            {/* <span style={{ color: "red" }}>
                               {errors.address}
+                              
                             </span>
+                          */}
                           </div>
                           <div className="form-group col-lg-6 col-md-6">
                             <label for="">Pincode*</label>
                             <input
+                              id="pincode"
                               type="text"
                               className="form-control selectpin"
                               placeholder="Please Share Pincode"
                               value={pincode}
                               readOnly={true}
                             />
-                            <span style={{ color: "red" }}>
+                            <div class="invalid-feedback">
+                              Please enter your pincode.
+                            </div>
+                            {/* <span style={{ color: "red" }}>
                               {errors.pincode}
-                            </span>
+                            </span> */}
                           </div>
 
                           <div className="form-group col-lg-6 col-md-6">
                             <label for="">City*</label>
                             <input
+                              id="city"
                               type="text"
                               className="form-control"
-                              placeholder="Please Share City Name"
+                              placeholder="Please Enter City Name"
                               value={city}
                               onChange={(e) => setCity(e.target.value)}
                             />
-                            <span style={{ color: "red" }}>{errors.city}</span>
+                            <div class="invalid-feedback">
+                              Please enter your city.
+                            </div>
+                            {/* <span style={{ color: "red" }}>{errors.city}</span> */}
                           </div>
                           <div className="form-group col-lg-6 col-md-6">
                             <label for="">State*</label>
                             <input
+                              id="state"
                               type="text"
                               className="form-control"
-                              placeholder="Please Share State Name"
+                              placeholder="Please Enter State Name"
                               value={states}
                               onChange={(e) => setStates(e.target.value)}
                             />
-                            <span style={{ color: "red" }}>{errors.state}</span>
+                            <div class="invalid-feedback">
+                              Please enter your state.
+                            </div>
+                            {/* <span style={{ color: "red" }}>{errors.state}</span> */}
                           </div>
 
                           <div className="form-group">
@@ -286,6 +351,7 @@ const BookNow = () => {
                             <p>
                               * How did you come to know about xperience it?{" "}
                             </p>
+                            <span class='text-danger error-advert d-none'>Please select Advertisements</span>
                           </div>
 
                           <div class="form-inline col-lg-3 col-md-4 col-6">
@@ -373,6 +439,7 @@ const BookNow = () => {
                         <div class="row mt-3">
                           <div class="col-sm-12">
                             <p>* What is the occasion?</p>
+                            <span class='text-danger error-occas d-none'>Please select Occasions</span>
                           </div>
 
                           <div class="form-inline col-lg-4 col-md-4 col-6">
@@ -581,7 +648,7 @@ const BookNow = () => {
                         </span>
                         <h6>{bookingData?.timeslot}</h6>
                       </div>
-                      <div className="product_edit" style={{display : "none"}}>
+                      <div className="product_edit" style={{ display: "none" }}>
                         <span>
                           <BiEdit />
                         </span>
@@ -591,7 +658,8 @@ const BookNow = () => {
 
                     <div className="bookingimgdetails">
                       <div className="booksingimg1">
-                        <img
+                        <img 
+                        className="book-now-small-img"
                           src={bookingData?.img}
                           height="80px"
                           width="80px"
@@ -599,10 +667,10 @@ const BookNow = () => {
                         />
                       </div>
                       <div className="booksingimg2">
-                        <span>{bookingData?.productTitle}
-                        <p className="bokinggstText">(Inc. 18% GST)</p>
+                        <span>
+                          {bookingData?.productTitle}
+                          <p className="bokinggstText">(Inc. 18% GST)</p>
                         </span>
-                        
                       </div>
                       <div className="booksingimg3">
                         <span> Rs {bookingData?.gstPrice}</span>
@@ -662,7 +730,7 @@ const BookNow = () => {
                       onClick={() => booking()}
                       isLoading={isLoading}
                     >
-                      <button type="button" className="ckBtn">
+                      <button type="button" className="ckBtn" id="submitBtn">
                         {isLoading ? (
                           <div class="spinner-border text-light" role="status">
                             <span class="sr-only">Loading...</span>
@@ -686,8 +754,8 @@ const BookNow = () => {
                   handleBookNow={handleBookNow}
                   packageIdd={packageIdd}
                 />
-               
-                <ToastContainer limit={1}/>
+
+                <ToastContainer limit={1} />
               </div>
             </div>
           </div>

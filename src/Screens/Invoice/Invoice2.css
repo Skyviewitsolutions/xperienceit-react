@@ -5,7 +5,7 @@
 .Invoice-box {
   min-height: 700px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  width: 60%;
+  width: 80%;
   margin: auto;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -45,6 +45,7 @@
 .Invoice-Logo img {
   height: 100%;
   width: 100%;
+  object-fit: cover!important;
 }
 .invoice-heading {
   font-size: 30px;
@@ -148,7 +149,7 @@
   margin-left: 10px;
 }
 .invoice-all-details {
-  width: 96%;
+  width: 97%;
   margin: auto;
   padding-left: 10px;
   padding-right: 10px;

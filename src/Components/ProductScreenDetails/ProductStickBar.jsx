@@ -13,6 +13,7 @@ const ProductStickBar = (props) => {
     experienceVideo,
     exclusion,
     titleContent,
+    offersPrice,
   } = props;
 
   return (
@@ -57,8 +58,8 @@ const ProductStickBar = (props) => {
               </ul>
             </div>
             <span className="stickyPackagePrice">
-              Packages Price : {props.packagePrice}/
-              <s style={{color:"#e1be48"}}>{props.discountedPrice}</s>
+              Packages Price : ₹{(packagePrice &&  packagePrice !=0) ? packagePrice: discountedPrice} /{" "}
+                      { packagePrice !=0 && <s>₹{discountedPrice}</s>}
             </span>
           </div>
         </nav>

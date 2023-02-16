@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart,AiFillLike } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { generatePath, useHistory } from "react-router-dom";
 import Skeleton from "@mui/material/Skeleton";
@@ -9,7 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
 import NoPackages from "../../assets/images/noPackages.png";
 import { useState } from "react";
-
+import './SubCategory2.css'
 const SubCategoryCard = (props) => {
 
   const { subCatePackName, subCategory_id } = props;
@@ -103,7 +103,92 @@ const SubCategoryCard = (props) => {
 
   return (
     <>
-      <div class="col-lg-3 col-md-6 col-12">
+ {/* new design */}
+ <div class="col-lg-3 col-md-6 col-6">
+    <div class=" package-card-cont subcatgry-pkg-cont" >
+      <div className="package-card subcategory-card-pkg"  onClick={() => renderToProduct(props.data)}>
+        <div className="media-img coman-img sub-category-card-img">
+          {props.img ? (
+            <img src={props.img} />
+          ) : (
+            <Skeleton height={250} variant="rectangular" />
+          )}
+       
+       {props.OfferId &&
+         <div class="ribbon-wrapper">
+    <div class="ribbon">
+    {props.OfferAmmount}{props.OfferDiscountType && props.OfferDiscountType==="percent" ? (
+                 <span> % off</span>
+                ):(
+                <span>₹ off</span>
+                ) }
+      </div>
+  </div>
+}
+        </div>
+        <div className="details subcategory-details">
+        <h3>
+        {/* <h3>{props.heading}</h3> */}
+              {props.heading ? props.heading : <Skeleton variant="text" />}
+            </h3>
+          <div className="rating-and-discount subcatgry-discount">
+            <h5>
+              {props.discount && props.discount != 0 ? (
+                <span>{props.discount}% Off </span>
+              ) : (
+                ""
+              )}
+            </h5>
+            <div className="rating subcatgry-rating">
+              <AiFillLike />
+              {props.rating && props.rating != 0 ? (
+                <span>
+                  {typeof props.rating == "string"
+                    ? parseFloat(props.rating).toFixed(1)
+                    : props.rating.toFixed(1)}
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
+          <div className="price-and-btn subcatgry-price">
+          <h4>
+                {/* <span>₹</span>
+                {props.prices}
+
+                <s>₹{props.outlayprice}</s> */}
+
+                 ₹{props.prices && props.prices!=0 ?(<span>{props.prices}</span> ):(
+                  <span>{props.outlayprice}</span>
+                )}
+               {props.prices!=0 && <s>₹{props.outlayprice}</s>}
+              </h4>
+              
+          </div>
+        </div>
+        <div className="wishlist">
+              <span>
+                {isFavourite?.is_fav == "true" ? (
+                  <AiTwotoneHeart
+                    onClick={() => handleFavourite(props, "false")}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => handleFavourite(props, "true")}
+                  />
+                )}
+              </span>
+            </div>
+      </div>
+      
+    </div>
+    </div>
+
+
+
+      {/* <div class="col-lg-3 col-md-6 col-12">
         <div className="package-col">
           <div className="media-img coman-img">
             {props.img ? (
@@ -150,7 +235,7 @@ const SubCategoryCard = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
@@ -164,13 +249,13 @@ console.log(subCatePack,"subCatePackkjhflsdhgl")
 
   return (
     <>
-      <div className="all-pack-slider inner-row-package">
-        <div className="package-section-slider common-container">
-          <div className="container-fluid">
+      <div className="all-pack-slider inner-row-package sub-cat-row ">
+        <div className="package-section-slider common-container subcat-camman-cont">
+          <div className="container-fluid subcat-fluid">
             <div className="title-with-button">
               <div className="row">
-                <div className="title-col">
-                  <h2>
+                <div className="title-col subcat-col">
+                  <h2 className="subctegory-heading">
                     <span
                       style={{
                         color: "var(--pink)",
@@ -200,6 +285,11 @@ console.log(subCatePack,"subCatePackkjhflsdhgl")
                         id={item.id}
                         subCatePackName={subCatePackName}
                         subCategory_id={subCategory_id}
+                        OfferId={item.offer_id}
+                        OfferType={item.offer_type}
+                        OfferAmmount={item.offer_amount}
+                        OfferDiscountType={item.discount_type}
+
                       />
                     </>
                   );

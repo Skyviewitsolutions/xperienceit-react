@@ -10,7 +10,26 @@
   overflow-x: hidden;
   box-sizing: border-box;
 }
-
+button.sc-bdfBQB.buNJCv.rec.rec-arrow.rec.rec-arrow-right {
+  background: none!important;
+  box-shadow: none!important;
+}
+button.sc-bdfBQB.buNJCv.rec.rec-arrow.rec.rec-arrow-right:hover{
+  color: black!important;
+}
+button.sc-bdfBQB.buNJCv.rec.rec-arrow.rec.rec-arrow-right:focus{
+  color: black!important;
+}
+button.sc-bdfBQB.buPiXl.rec.rec-arrow.rec.rec-arrow-left {
+  background: none!important;
+  box-shadow: none!important;
+}
+button.sc-bdfBQB.buPiXl.rec.rec-arrow.rec.rec-arrow-left:hover{
+  color: black!important;
+}
+button.sc-bdfBQB.buPiXl.rec.rec-arrow.rec.rec-arrow-left:focus{
+  color: black!important;
+}
 .carousel_container {
   width: 100%;
   margin: 0px;
@@ -66,6 +85,7 @@
   font-weight: 500;
   margin-top: 13px;
   cursor: pointer;
+  
 }
 
 .carousel_item_box:hover {
@@ -164,9 +184,9 @@
   .booking .carousel_item_box h4 {
     font-size: 10px;
   }
-  .rec.rec-carousel-item.rec-carousel-item-1.rec-carousel-item-visible {
+  /* .rec.rec-carousel-item.rec-carousel-item-1.rec-carousel-item-visible {
     margin-left: 30px;
-  }
+  } */
   .carousel_item {
     width: 100px;
     padding-top:5px;

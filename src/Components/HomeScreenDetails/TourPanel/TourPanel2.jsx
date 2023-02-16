@@ -95,7 +95,7 @@ const TourPanel2 = (props) => {
       <div className="tour-pack-slider">
 
         <div className="tour-section-slider">
-          <div className="container-fluid common-container">
+          <div className="container-fluid common-container tour2-cont">
             <div className="title-with-button">
               <div className="row">
                 <div className="title-col">

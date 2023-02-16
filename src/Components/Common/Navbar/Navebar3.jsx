@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import Logo from "./NavbarImages/Layer2.png";
 import User from "../../../assets/icons/user.png";
@@ -31,19 +30,18 @@ import StickyMenu from "./StickyMenu";
 import MarriageForm from "../../MarriageForm/MarriageForm";
 import MarriageEnquiry from "../../MarriageForm/MarriageEnquiry";
 
-
 const Navebar3 = (props) => {
-
   const { updateLocation, setUpdateLocation, taskBarData } = props;
+
   const history = useHistory();
   const sLocat = localStorage.getItem("locationDetails");
   const selectedLocation = JSON.parse(sLocat);
   const [userProfile, setUserProfile] = useState("");
-  const [showMarriageForm , setShowMarriageForm] = useState(false)
+  const [showMarriageForm, setShowMarriageForm] = useState(false);
   const { showSideBar, setShowSideBar } = props;
 
   const [showAuthPopup, setShowAuthPopup] = useState(false);
-  const [mapIconColor , setMapIconColor] = useState("#663399");
+  const [mapIconColor, setMapIconColor] = useState("#663399");
   const [showLocation, setShowLocation] = useState(
     selectedLocation ? false : true
   );
@@ -59,6 +57,7 @@ const Navebar3 = (props) => {
   const pkgLocation = localStorage.getItem("locationDetails");
   const cityLocattion = JSON.parse(pkgLocation);
   const [userImg, setUserImg] = useState("");
+  const [userName , setUserName] = useState("")
 
   const accessToken = localStorage.getItem("access_token");
   const [openSideBar, setOpenSideBar] = useState(false);
@@ -74,18 +73,17 @@ const Navebar3 = (props) => {
   const handleMouseOut = () => {
     setIsHovering(false);
   };
-  
 
   document.addEventListener("click", () => {
-    if(window.innerWidth > 992){
-    setIsHovering(false);
+    if (window.innerWidth > 992) {
+      setIsHovering(false);
     }
   });
 
   const logOut = () => {
     localStorage.removeItem("access_token");
     setUserLogedIn(false);
-    toast("Logout Successfully" , {type : "success"});
+    toast("Logout Successfully", { type: "success" });
     history.push("./");
     setAuthScreen("loginWithOtp");
   };
@@ -165,16 +163,14 @@ const Navebar3 = (props) => {
   });
 
   const handleSelectedPackage = (data) => {
-
-    const name = data.subcategory_nm
-    ;
+    const name = data.subcategory_nm;
     const subCategoryName = name.replaceAll(" ", "-");
     const path = generatePath(
       "/experiences/:location/subCategory/:subCategory_name/:subCategory_id",
       {
         subCategory_name: subCategoryName,
         location: cityLocattion.name,
-        subCategory_id: data.subcategory_id ,
+        subCategory_id: data.subcategory_id,
       }
     );
 
@@ -196,7 +192,6 @@ const Navebar3 = (props) => {
     history.push(path);
   };
 
-
   return (
     <>
       <div className="container-fluid header-container" id="header-container">
@@ -212,7 +207,7 @@ const Navebar3 = (props) => {
                     width={70}
                     className="logo"
                     onClick={() => history.push("/")}
-                    style={{zIndex : 1000}}
+                    style={{ zIndex: 1000 }}
                   />
                 </a>
                 <div className="form-inline for_desktop">
@@ -226,9 +221,7 @@ const Navebar3 = (props) => {
                     />
                     <span className="input-group-btn srchBtn">
                       <button className="btn btn-default srchBtn" type="button">
-                        <i
-                          className="glyphicon  srchBtn"
-                        >
+                        <i className="glyphicon  srchBtn">
                           <FaSearch />
                         </i>
                       </button>
@@ -236,18 +229,24 @@ const Navebar3 = (props) => {
 
                     {showSearchPkgBox === true && (
                       <div className="searchRslt">
-                        {allPackageData.length != 0 ? allPackageData.map((itm, ind) => {
-                          return (
-                            <>
-                              <span onClick={() => handleSelectedPackage(itm)}>
-                                {itm.name}
-                              </span>
-                            </>
-                          ) 
-                        } ) : <span >No package found !</span>}
+                        {allPackageData.length != 0 ? (
+                          allPackageData.map((itm, ind) => {
+                            return (
+                              <>
+                                <span
+                                  onClick={() => handleSelectedPackage(itm)}
+                                >
+                                  {itm.name}
+                                </span>
+                              </>
+                            );
+                          })
+                        ) : (
+                          <span>No package found !</span>
+                        )}
                         <h6></h6>
                       </div>
-                    ) }
+                    )}
                   </div>
                 </div>
               </div>
@@ -292,7 +291,7 @@ const Navebar3 = (props) => {
                       className="nav-item active ml-4 d-flex"
                       onClick={() => handleGifts()}
                     >
-                      <a className="nav-link font-weight-900" >
+                      <a className="nav-link font-weight-900">
                         <span className="nav-icon">
                           <AiOutlineGift />
                         </span>
@@ -301,7 +300,10 @@ const Navebar3 = (props) => {
                         </span>
                       </a>
                     </li>
-                    <li className="nav-item active ml-4 d-flex" onClick={() => setShowMarriageForm(true)}>
+                    <li
+                      className="nav-item active ml-4 d-flex"
+                      onClick={() => setShowMarriageForm(true)}
+                    >
                       <a className="nav-link font-weight-900" href="#">
                         <span className="nav-icon">
                           <GiBigDiamondRing />
@@ -312,12 +314,12 @@ const Navebar3 = (props) => {
                       </a>
                     </li>
 
-                    <li className="nav-item ml-4 d-flex">
-                      <a className="nav-link font-weight-900" href="#">
+                    <li className="nav-item active ml-4 d-flex">
+                      <a className="nav-link font-weight-900" href="/contact-us">
                         <span className="nav-icon">
                           <IoIosCall />
                         </span>
-                        <span className="sp" style={{ fontWeight: "600" }}>
+                        <span className="sp" style={{ fontWeight: "600",cursor:"pointer" }}>
                           {t("Contact")}
                         </span>
                       </a>
@@ -328,18 +330,21 @@ const Navebar3 = (props) => {
             </div>
             <div className="col-lg-4 col-md-6 col-10 mobile-col">
               <div className="login-and-location">
-                <div className="location_pick_btn" >
+                <div className="location_pick_btn">
                   <button
                     className="loc-btn"
                     onClick={() => setShowLocation(true)}
-                    style={{ background : mapIconColor == "#663399" ? "white" : "#fe6684" }}
+                    style={{
+                      background:
+                        mapIconColor == "#663399" ? "white" : "#fe6684",
+                    }}
                     onMouseOver={() => setMapIconColor("white")}
-                    onMouseOut={()=> setMapIconColor("#663399")}
+                    onMouseOut={() => setMapIconColor("#663399")}
                   >
                     <span className="locImg" style={{ cursor: "pointer" }}>
                       <BiMap color={mapIconColor} />
                     </span>
-                    <span className="lkn " style={{color : mapIconColor}}>
+                    <span className="lkn " style={{ color: mapIconColor }}>
                       {selectedLocation
                         ? selectedLocation.name
                         : "Accross India"}
@@ -366,7 +371,6 @@ const Navebar3 = (props) => {
                         alt="logo icon"
                         height={40}
                         width={40}
-                       
                       />
                     </a>
                     {isHovering === true && (
@@ -430,7 +434,7 @@ const Navebar3 = (props) => {
                           </span>{" "}
                           <span
                             style={{ marginLeft: "10px", fontWeight: "600" }}
-                            onClick={()=>history.push("/")}
+                            onClick={() => history.push("/")}
                           >
                             Logout
                           </span>{" "}
@@ -451,7 +455,12 @@ const Navebar3 = (props) => {
                       <span>
                         <IoMdLogIn />
                       </span>{" "}
-                      <span className="login-txt d-lg-block d-none"  onClick={() => setShowAuthPopup(true)}>Login</span>
+                      <span
+                        className="login-txt d-lg-block d-none"
+                        onClick={() => setShowAuthPopup(true)}
+                      >
+                        Login
+                      </span>
                     </a>
                   </div>
                 )}
@@ -517,6 +526,8 @@ const Navebar3 = (props) => {
           showProfile={showProfile}
           setShowProfile={setShowProfile}
           setUserImg={setUserImg}
+          userImg={userImg}
+          setUserName={setUserName}
         />
 
         {/* here we are adding the sidebar  */}
@@ -579,7 +590,10 @@ const Navebar3 = (props) => {
 
       {/* Marriage form */}
 
-      <MarriageEnquiry showMarriageForm={showMarriageForm} setShowMarriageForm={setShowMarriageForm}/>
+      <MarriageEnquiry
+        showMarriageForm={showMarriageForm}
+        setShowMarriageForm={setShowMarriageForm}
+      />
     </>
   );
 };

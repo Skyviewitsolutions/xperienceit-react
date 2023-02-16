@@ -1,0 +1,31 @@
+.about-us-slide-image{
+    height: 300px;
+    width: 100%;
+   
+    padding: 0px;
+    margin: 0px;
+}
+.about-us-slide-image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.about-row{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.about-main-box{
+padding:20px;
+}
+.about-main-box{
+    text-align: justify;
+}
+@media screen and (max-width: 600px) {
+.about-us-slide-image{
+    height: 150px;
+    width: 100%;
+}
+.about-row{
+    margin-top: 10px!important;
+}
+}

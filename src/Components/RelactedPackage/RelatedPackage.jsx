@@ -12,7 +12,7 @@ import { endpoints } from "../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import Skeleton from "@mui/material/Skeleton";
 import { BsArrowRightCircleFill } from "react-icons/bs";
-import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart,AiFillLike } from "react-icons/ai";
 import { callWishListData, updateWishList } from "../../actions";
 import { useParams } from "react-router-dom";
 
@@ -112,7 +112,76 @@ const Card = (props) => {
 
   return (
     <>
-      <div class="item">
+    {/* new design */}
+
+    <div class=" package-card-cont relpkg-card-cont" key={props.key}>
+      <div className="package-card rel-pkg-cards"  onClick={() => renderToHomeData(props)}>
+        <div className="media-img coman-img rel-pkg-img">
+          {props.img ? (
+            <img src={props.img} />
+          ) : (
+            <Skeleton height={250} variant="rectangular" />
+          )}
+        </div>
+        <div className="details rel-pkg-details">
+        <h3>
+              {props.heading ? props.heading : <Skeleton variant="text" />}
+            </h3>
+          <div className="rating-and-discount rel-pkg-discount">
+            <h5>
+              {props.discount && props.discount != 0 ? (
+                <span>{props.discount}% Off </span>
+              ) : (
+                ""
+              )}
+            </h5>
+            <div className="rating rel-pkg-rating">
+              <AiFillLike />
+              {props.rating && props.rating != 0 ? (
+                <span>
+                  {typeof props.rating == "string"
+                    ? parseFloat(props.rating).toFixed(1)
+                    : props.rating.toFixed(1)}
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
+          <div className="price-and-btn rel-pkg-price">
+             <h4>
+                <span></span>
+                {props.discountPrice ? (
+                  ` ₹${props.discountPrice}`
+                ) : (
+                  <Skeleton variant="text" width={80} />
+                )}{" "}
+                <s>₹{props.price}</s>
+              </h4>
+          </div>
+        </div>
+      </div>
+      <div className="wishlist">
+      <span>
+                {isFavourite?.is_fav == "true" ? (
+                  <AiTwotoneHeart
+                    onClick={() => handleFavourite(props, "false")}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => handleFavourite(props, "true")}
+                  />
+                )}
+              </span>
+      </div>
+    </div>
+
+    
+
+
+
+      {/* <div class="item">
         <div className="package-col">
           <div className="media-img">
             <img src={props.img} alt="" />
@@ -168,7 +237,7 @@ const Card = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
@@ -188,21 +257,21 @@ const RelatedPackage = (props) => {
     smartSpeed: 1000,
     responsive: {
       0: {
-        items: 1,
+        items: 1.5,
         // margin: 10,
       },
       400: {
-        items: 1,
+        items: 1.5,
         // margin: 10,
       },
       600: {
         items: 1.7,
       },
       700: {
-        items: 2,
+        items: 2.5,
       },
       800:{
-        items: 2.5,
+        items: 3.2,
       },
       1000: {
         items: 4.5,
@@ -252,19 +321,19 @@ const RelatedPackage = (props) => {
     <>
       {allPackage.length != 0 && (
         <div className="all-pack-slider relatedPkgCont">
-          <div className="package-section-slider common-container">
-            <div className="container-fluid">
+          <div className="package-section-slider common-container rel-pkg-commn-cont">
+            <div className="container-fluid rel-pkg-cont">
               <div className="title-with-button">
                 <div className="row">
-                  <div className="title-col">
+                  <div className="title-col rel-pkg-col">
                     <h2 className="shopbyRelatedPackagesbookingscren">
                       Shop By <span> Related Package</span>
                     </h2>
-                    <div className="more-btn"></div>
+                    
                   </div>
                 </div>
               </div>
-              <div className="row">
+              <div className="row rel-pkg-card-row">
                 {allPackage.length < 5 ? (
                   allPackage.map((itmm, idx) => {
                     return (

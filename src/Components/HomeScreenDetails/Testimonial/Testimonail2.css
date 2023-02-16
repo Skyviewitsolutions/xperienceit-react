@@ -14,7 +14,7 @@
 }
 .testimonial-pack-slider {
   padding-top: 60px;
-  padding-bottom: 60px;
+  padding-bottom: 0px;
 }
 .testimonial-pack-slider h2 {
   font-size: 36px;
@@ -179,5 +179,13 @@ img.aos-init.aos-animate {
 }
 .qt-icon {
   margin-top: -40px;
+}
+.left_element.aos-init.aos-animate {
+  position: absolute;
+ top: 43%;
+}
+.right_element.aos-init.aos-animate {
+  position: absolute;
+  top: 45%;
 }
 }

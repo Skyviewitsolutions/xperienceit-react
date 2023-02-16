@@ -67,7 +67,7 @@ const TaskBar = (props) => {
           {filterCategoryData.map((item, index) => {
             return (
               <>
-                <li onMouseOver={() => openCategory(item.sub_category)} onClick={() => openCategory(item.sub_category)}>
+                <li onMouseOver={() => openCategory(item.sub_category)} onClick={() => openCategory(item.sub_category)} key={item.key}>
                   <h5>{item.name}</h5>
                   <img src={Arrow} alt="arrow icon" />
                 </li>

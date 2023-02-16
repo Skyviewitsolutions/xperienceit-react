@@ -108,76 +108,69 @@ const Card = (props) => {
 
   return (
     <>
-
-<div class=" package-card-cont" key={props.key}>
-      <div className="package-card"  onClick={() => renderToHomeData(props)}>
-        <div className="media-img coman-img">
-          {props.img ? (
-            <img src={props.img} />
-          ) : (
-            <Skeleton height={250} variant="rectangular" />
-          )}
-        </div>
-        <div className="details">
-        <h3>
+      <div class=" package-card-cont" key={props.key}>
+        <div className="package-card" onClick={() => renderToHomeData(props)}>
+          <div className="media-img coman-img best-sellar2-card-img">
+            {props.img ? (
+              <img src={props.img} />
+            ) : (
+              <Skeleton height={250} variant="rectangular" />
+            )}
+          </div>
+          <div className="details best-sellar2-details">
+            <h3>
               {props.heading ? props.heading : <Skeleton variant="text" />}
             </h3>
-          <div className="rating-and-discount">
-            <h5>
-              {props.discount && props.discount != 0 ? (
-                <span>{props.discount}% Off </span>
-              ) : (
-                ""
-              )}
-            </h5>
-            <div className="rating">
-              <AiFillLike />
-              {props.rating && props.rating != 0 ? (
-                <span>
-                  {typeof props.rating == "string"
-                    ? parseFloat(props.rating).toFixed(1)
-                    : props.rating.toFixed(1)}
-                </span>
-              ) : (
-                ""
-              )}
+            <div className="rating-and-discount best-sellar2-discount">
+              <h5>
+                {props.discount && props.discount != 0 ? (
+                  <span>{props.discount}% Off </span>
+                ) : (
+                  ""
+                )}
+              </h5>
+              <div className="rating best-sellar2-rating">
+                <AiFillLike />
+                {props.rating && props.rating != 0 ? (
+                  <span>
+                    {typeof props.rating == "string"
+                      ? parseFloat(props.rating).toFixed(1)
+                      : props.rating.toFixed(1)}
+                  </span>
+                ) : (
+                  ""
+                )}
+              </div>
             </div>
-          </div>
 
-          <div className="price-and-btn">
-            <h4>
-            {props.discountPrice ? (
+            <div className="price-and-btn best-sellar2-price">
+              <h4>
+                {/* {props.discountPrice ? (
                   ` ₹${props.discountPrice}`
                 ) : (
                   <Skeleton variant="text" width={80} />
                 )}{" "}
-                <s>₹{props.price}</s>
-            </h4>
+                <s>₹{props.price}</s> */}
+                 {props.discountPrice && props.discountPrice!=0 ? (
+                   <span>₹{props.discountPrice}</span>
+                ) : (
+                  <span>{props.price}</span>
+                )}
+              {props.discountPrice!=0 && <s>₹{props.price}</s> }
+              </h4>
+            </div>
           </div>
         </div>
+        <div className="wishlist">
+          <span>
+            {isFavourite?.is_fav == "true" ? (
+              <AiTwotoneHeart onClick={() => handleFavourite(props, "false")} />
+            ) : (
+              <AiOutlineHeart onClick={() => handleFavourite(props, "true")} />
+            )}
+          </span>
+        </div>
       </div>
-      <div className="wishlist">
-      <span>
-                {isFavourite?.is_fav == "true" ? (
-                  <AiTwotoneHeart
-                    onClick={() => handleFavourite(props, "false")}
-                  />
-                ) : (
-                  <AiOutlineHeart
-                    onClick={() => handleFavourite(props, "true")}
-                  />
-                )}
-              </span>
-      </div>
-    </div>
-
-
-
-
-
-
-
-
 
       {/* <div class="item">
         <div className="package-col">
@@ -232,7 +225,6 @@ const Card = (props) => {
 };
 
 const BestSellerCategory2 = (props) => {
-
   const history = useHistory();
   const [item, setItem] = useState([1, 2, 3, 4]);
 
@@ -252,39 +244,39 @@ const BestSellerCategory2 = (props) => {
     smartSpeed: 1000,
     responsive: {
       0: {
-        items: 1,
+        items: 1.4,
         margin: 10,
       },
       400: {
-        items: 1,
+        items: 1.4,
         margin: 10,
       },
       600: {
-        items: 1.5,
+        items: 2.3,
       },
       700: {
-        items: 2,
+        items: 3.3,
       },
       768: {
-        items: 2,
+        items: 3,
       },
-      800:{
-        items: 2,
+      800: {
+        items: 3.2,
       },
-      820:{
-        items: 2.5,
+      820: {
+        items: 3.2,
       },
       1000: {
         items: 4.5,
       },
-      1024:{
+      1024: {
         items: 3,
       },
       1100: {
         items: 4.2,
       },
       1280: {
-        items: 3.2,
+        items: 3.5,
       },
       1300: {
         items: 4.5,
@@ -302,17 +294,16 @@ const BestSellerCategory2 = (props) => {
     <>
       {!loading &&
         showListData.map((item, index) => {
-         
           return (
-            <div className="all-pack-slider">
-              <div className="package-section-slider common-container">
-                <div className="container-fluid">
+            <div className="all-pack-slider best-sellar-all-pack-slider">
+              <div className="package-section-slider common-container best-sellar2-categories-cont">
+                <div className="container-fluid best-sellar2-categories-container">
                   {item.content && item?.content?.length != 0 && (
                     <>
                       <div className="title-with-button">
                         <div className="row">
                           <div className="title-col">
-                            <h2>
+                            <h2 className="best-sellar2-categories-heading">
                               Shop By <span> {item.heading}</span>
                             </h2>
                             <div className="more-btn">

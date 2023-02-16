@@ -43,7 +43,7 @@
   vertical-align: top;
   width: 100%px!important;
   height: 100%;
- 
+  object-fit: cover!important;
 }
 .carousel .thumb {
   height: 65px;

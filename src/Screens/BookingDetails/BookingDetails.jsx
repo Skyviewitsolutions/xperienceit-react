@@ -401,10 +401,10 @@ const BookingDetails = (props) => {
                     
 
                       {titleContent && (
-                        <div className="product_left_details common-card">
+                        <div className="product_left_details common-card ">
                           <h4>Product Details: </h4>
 
-                          <div className="product_left_details_box">
+                          <div className="product_left_details_box booking-details-box">
                             <h6>{titleContent && parse(titleContent)}</h6>
                           </div>
                         </div>

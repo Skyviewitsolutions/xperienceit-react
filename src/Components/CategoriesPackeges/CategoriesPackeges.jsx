@@ -7,7 +7,7 @@ import { useHistory, generatePath } from "react-router-dom";
 import { endpoints } from "../../services/endpoints";
 import { toast, ToastContainer } from "react-toastify";
 import { callWishListData, updateWishList } from "../../actions";
-import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart } from "react-icons/ai";
+import { AiOutlineStar, AiOutlineHeart, AiTwotoneHeart, AiFillLike} from "react-icons/ai";
 import axios from "axios";
 import NoPackages from "../../assets/images/noPackages.png";
 
@@ -109,7 +109,75 @@ const CategoryCard = (props) => {
   };
   return (
     <>
-      <div class="col-lg-3 col-md-6 col-12">
+    {/* new Card design */}
+    <div class="col-lg-3 col-md-6 col-6">
+    <div class=" package-card-cont catgry-pkg-cont" key={props.key}>
+      <div className="package-card category-card-pkg"  onClick={() => renderToProduct(props.data)}>
+        <div className="media-img coman-img categorycard-img">
+          {props.img ? (
+            <img src={props.img} />
+          ) : (
+            <Skeleton height={250} variant="rectangular" />
+          )}
+        </div>
+        <div className="details category-details">
+        <h3>
+              {props.heading ? props.heading : <Skeleton variant="text" />}
+            </h3>
+          <div className="rating-and-discount catgry-discount">
+            <h5>
+              {props.discount && props.discount != 0 ? (
+                <span>{props.discount}% Off </span>
+              ) : (
+                ""
+              )}
+            </h5>
+            <div className="rating catgry-rating">
+              <AiFillLike />
+              {props.rating && props.rating != 0 ? (
+                <span>
+                  {typeof props.rating == "string"
+                    ? parseFloat(props.rating).toFixed(1)
+                    : props.rating.toFixed(1)}
+                </span>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+
+          <div className="price-and-btn catgry-price">
+             <h4>
+                {/* <span>₹</span>
+                {props.prices}
+
+                <s>₹{props.outlayprice}</s> */}
+                ₹{props.prices && props.prices!=0 ?(<span>{props.prices}</span> ):(
+                  <span>{props.outlayprice}</span>
+                )}
+               {props.prices!=0 && <s>₹{props.outlayprice}</s>}
+              </h4>
+          </div>
+        </div>
+      </div>
+      <div className="wishlist">
+      <span>
+                {isFavourite?.is_fav == "true" ? (
+                  <AiTwotoneHeart
+                    onClick={() => handleFavourite(props, "false")}
+                  />
+                ) : (
+                  <AiOutlineHeart
+                    onClick={() => handleFavourite(props, "true")}
+                  />
+                )}
+              </span>
+      </div>
+    </div>
+
+    </div>
+
+      {/* <div class="col-lg-3 col-md-6 col-12">
         <div className="package-col">
           <div className="media-img coman-img">
             {props.img ? (
@@ -159,7 +227,7 @@ const CategoryCard = (props) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
@@ -171,13 +239,13 @@ const CategoriesPackeges = (props) => {
 
   return (
     <>
-      <div className="all-pack-slider inner-row-package">
-        <div className="package-section-slider common-container">
-          <div className="container-fluid">
+      <div className="all-pack-slider inner-row-package catgry-inner-row">
+        <div className="package-section-slider common-container catgry-comman-cont">
+          <div className="container-fluid cotegory-cont">
             <div className="title-with-button">
               <div className="row">
-                <div className="title-col">
-                  <h2>
+                <div className="title-col categry-col">
+                  <h2 className="catgory-title-packages">
                     <span
                       style={{
                         color: "var(--pink)",
@@ -185,7 +253,7 @@ const CategoriesPackeges = (props) => {
                     >
                       Home
                     </span>
-                    /<span> {categoryName.replaceAll("-", " ")}</span>
+                     / <span> {categoryName.replaceAll("-", " ")}</span>
                   </h2>
                 </div>
               </div>

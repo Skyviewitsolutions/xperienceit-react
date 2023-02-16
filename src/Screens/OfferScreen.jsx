@@ -15,6 +15,8 @@ const OfferScreen = () => {
   const [showSideBar, setShowSideBar] = useState(false);
   const [taskBarData, setTaskBarData] = useState([]);
   const [offers, setOffers] = useState([]);
+  const[offerDiscountAmmount,setOfferDiscountAmount]=useState("");
+  const[offerDicountType,setOfferDiscountType]=useState("")
   const [updateLocation, setUpdateLocation] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -33,6 +35,8 @@ const OfferScreen = () => {
         setLoading(false);
         if (res.data.status === true) {
           const val = res.data.body[0].services;
+          setOfferDiscountAmount(res.data.body[0].amount)
+          setOfferDiscountType(res.data.body[0].discount_type)
           setOffers(val);
         }
       })
@@ -41,6 +45,7 @@ const OfferScreen = () => {
         console.log(err, "offers Api  data not found");
       });
   }, [offerId]);
+
 
   useEffect(() => {
     window.scrollTo({
@@ -69,6 +74,8 @@ const OfferScreen = () => {
           offers={offers}
           offerName={offerName}
           offerId={offerId}
+          offerDiscountAmmount={offerDiscountAmmount}
+          offerDicountType={offerDicountType}
           updateLocation={updateLocation}
           loading={loading}
         />
